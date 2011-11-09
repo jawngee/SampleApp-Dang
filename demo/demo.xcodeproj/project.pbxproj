@@ -23,6 +23,8 @@
 		6269C951146A5ECE00B08F4C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6269C94F146A5ECE00B08F4C /* InfoPlist.strings */; };
 		6269C954146A5ECE00B08F4C /* demoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6269C953146A5ECE00B08F4C /* demoTests.m */; };
 		6269C95F146A734F00B08F4C /* NewNodeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6269C95E146A734F00B08F4C /* NewNodeView.m */; };
+		6269C962146A909C00B08F4C /* OverlayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6269C961146A909B00B08F4C /* OverlayViewController.m */; };
+		6269C964146A90AC00B08F4C /* OverlayView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6269C963146A90AC00B08F4C /* OverlayView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +62,9 @@
 		6269C953146A5ECE00B08F4C /* demoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = demoTests.m; sourceTree = "<group>"; };
 		6269C95D146A734F00B08F4C /* NewNodeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewNodeView.h; sourceTree = "<group>"; };
 		6269C95E146A734F00B08F4C /* NewNodeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewNodeView.m; sourceTree = "<group>"; };
+		6269C960146A909B00B08F4C /* OverlayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OverlayViewController.h; sourceTree = "<group>"; };
+		6269C961146A909B00B08F4C /* OverlayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OverlayViewController.m; sourceTree = "<group>"; };
+		6269C963146A90AC00B08F4C /* OverlayView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OverlayView.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,6 +124,8 @@
 		6269C928146A5ECD00B08F4C /* demo */ = {
 			isa = PBXGroup;
 			children = (
+				6269C960146A909B00B08F4C /* OverlayViewController.h */,
+				6269C961146A909B00B08F4C /* OverlayViewController.m */,
 				6269C931146A5ECD00B08F4C /* AppDelegate.h */,
 				6269C932146A5ECD00B08F4C /* AppDelegate.m */,
 				6269C934146A5ECD00B08F4C /* MainStoryboard_iPhone.storyboard */,
@@ -137,6 +144,7 @@
 		6269C929146A5ECD00B08F4C /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				6269C963146A90AC00B08F4C /* OverlayView.xib */,
 				6269C92A146A5ECD00B08F4C /* demo-Info.plist */,
 				6269C92B146A5ECD00B08F4C /* InfoPlist.strings */,
 				6269C92E146A5ECD00B08F4C /* main.m */,
@@ -238,6 +246,7 @@
 				6269C92D146A5ECD00B08F4C /* InfoPlist.strings in Resources */,
 				6269C936146A5ECD00B08F4C /* MainStoryboard_iPhone.storyboard in Resources */,
 				6269C939146A5ECE00B08F4C /* MainStoryboard_iPad.storyboard in Resources */,
+				6269C964146A90AC00B08F4C /* OverlayView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -277,6 +286,7 @@
 				6269C93C146A5ECE00B08F4C /* MasterViewController.m in Sources */,
 				6269C93F146A5ECE00B08F4C /* DetailViewController.m in Sources */,
 				6269C95F146A734F00B08F4C /* NewNodeView.m in Sources */,
+				6269C962146A909C00B08F4C /* OverlayViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

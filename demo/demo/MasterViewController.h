@@ -9,9 +9,24 @@
 #import <UIKit/UIKit.h>
 
 @class DetailViewController;
+@class OverlayViewController;
 
-@interface MasterViewController : UITableViewController
+@interface MasterViewController : UITableViewController {
+    NSMutableArray *listOfItems;
+
+    NSMutableArray *copyListOfItems;
+	IBOutlet UISearchBar *searchBar;
+	BOOL searching;
+	BOOL letUserSelectRow;
+	
+	OverlayViewController *ovController;
+
+}
 
 @property (strong, nonatomic) DetailViewController *detailViewController;
+
+- (void) searchTableView;
+- (void) doneSearching_Clicked:(id)sender;
+
 
 @end
