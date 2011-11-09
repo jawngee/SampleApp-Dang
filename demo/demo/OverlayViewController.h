@@ -8,13 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
-@class RootViewController;
+@class MasterViewController;
 
 @interface OverlayViewController : UIViewController {
 
-	RootViewController *rvController;
+	MasterViewController *rvController;
 }
 
-@property (nonatomic, retain) RootViewController *rvController;
+@property (nonatomic, retain) MasterViewController *rvController;
 
 @end

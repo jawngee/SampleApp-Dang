@@ -7,7 +7,7 @@
 //
 
 #import "OverlayViewController.h"
-#import "RootViewController.h"
+#import "MasterViewController.h"
 
 @implementation OverlayViewController
 
@@ -15,6 +15,8 @@
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
 	
+//    self.rvController=[self.storyboard instantiateViewControllerWithIdentifier:@"master"];
+
 	[rvController doneSearching_Clicked:nil];
 }
 
@@ -24,10 +26,11 @@
 }
 
 
+/*
 - (void)dealloc {
 	[rvController release];
     [super dealloc];
-}
+}*/
 
 
 @end
