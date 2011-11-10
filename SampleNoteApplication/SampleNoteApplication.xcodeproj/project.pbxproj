@@ -1,0 +1,339 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		621F55CF146BAA820083949A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 621F55CE146BAA820083949A /* UIKit.framework */; };
+		621F55D1146BAA820083949A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 621F55D0146BAA820083949A /* Foundation.framework */; };
+		621F55D3146BAA820083949A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 621F55D2146BAA820083949A /* CoreGraphics.framework */; };
+		621F55D5146BAA820083949A /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 621F55D4146BAA820083949A /* CoreData.framework */; };
+		621F55DB146BAA820083949A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 621F55D9146BAA820083949A /* InfoPlist.strings */; };
+		621F55DD146BAA820083949A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 621F55DC146BAA820083949A /* main.m */; };
+		621F55E1146BAA820083949A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 621F55E0146BAA820083949A /* AppDelegate.m */; };
+		621F55E4146BAA820083949A /* SampleNoteApplication.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 621F55E2146BAA820083949A /* SampleNoteApplication.xcdatamodeld */; };
+		621F55E7146BAA820083949A /* MasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 621F55E6146BAA820083949A /* MasterViewController.m */; };
+		621F55EA146BAA820083949A /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 621F55E9146BAA820083949A /* DetailViewController.m */; };
+		621F55ED146BAA820083949A /* MasterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 621F55EB146BAA820083949A /* MasterViewController.xib */; };
+		621F55F0146BAA820083949A /* DetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 621F55EE146BAA820083949A /* DetailViewController.xib */; };
+		621F5600146BB1C80083949A /* OverlayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 621F55FF146BB1C80083949A /* OverlayViewController.m */; };
+		621F5602146BB93B0083949A /* OverlayView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 621F5601146BB93B0083949A /* OverlayView.xib */; };
+		621F560A146BCB830083949A /* NewNoteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 621F5608146BCB830083949A /* NewNoteViewController.m */; };
+		621F560B146BCB830083949A /* NewNoteViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 621F5609146BCB830083949A /* NewNoteViewController.xib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		621F55CA146BAA820083949A /* SampleNoteApplication.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SampleNoteApplication.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		621F55CE146BAA820083949A /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		621F55D0146BAA820083949A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		621F55D2146BAA820083949A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		621F55D4146BAA820083949A /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		621F55D8146BAA820083949A /* SampleNoteApplication-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SampleNoteApplication-Info.plist"; sourceTree = "<group>"; };
+		621F55DA146BAA820083949A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		621F55DC146BAA820083949A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		621F55DE146BAA820083949A /* SampleNoteApplication-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SampleNoteApplication-Prefix.pch"; sourceTree = "<group>"; };
+		621F55DF146BAA820083949A /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		621F55E0146BAA820083949A /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		621F55E3146BAA820083949A /* SampleNoteApplication.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SampleNoteApplication.xcdatamodel; sourceTree = "<group>"; };
+		621F55E5146BAA820083949A /* MasterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MasterViewController.h; sourceTree = "<group>"; };
+		621F55E6146BAA820083949A /* MasterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MasterViewController.m; sourceTree = "<group>"; };
+		621F55E8146BAA820083949A /* DetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
+		621F55E9146BAA820083949A /* DetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
+		621F55EC146BAA820083949A /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MasterViewController.xib; sourceTree = "<group>"; };
+		621F55EF146BAA820083949A /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/DetailViewController.xib; sourceTree = "<group>"; };
+		621F55FE146BB1C80083949A /* OverlayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OverlayViewController.h; sourceTree = "<group>"; };
+		621F55FF146BB1C80083949A /* OverlayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OverlayViewController.m; sourceTree = "<group>"; };
+		621F5601146BB93B0083949A /* OverlayView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OverlayView.xib; sourceTree = "<group>"; };
+		621F5607146BCB820083949A /* NewNoteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewNoteViewController.h; sourceTree = "<group>"; };
+		621F5608146BCB830083949A /* NewNoteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewNoteViewController.m; sourceTree = "<group>"; };
+		621F5609146BCB830083949A /* NewNoteViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewNoteViewController.xib; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		621F55C7146BAA820083949A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				621F55CF146BAA820083949A /* UIKit.framework in Frameworks */,
+				621F55D1146BAA820083949A /* Foundation.framework in Frameworks */,
+				621F55D3146BAA820083949A /* CoreGraphics.framework in Frameworks */,
+				621F55D5146BAA820083949A /* CoreData.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		621F55BF146BAA820083949A = {
+			isa = PBXGroup;
+			children = (
+				621F55D6146BAA820083949A /* SampleNoteApplication */,
+				621F55CD146BAA820083949A /* Frameworks */,
+				621F55CB146BAA820083949A /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		621F55CB146BAA820083949A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				621F55CA146BAA820083949A /* SampleNoteApplication.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		621F55CD146BAA820083949A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				621F55CE146BAA820083949A /* UIKit.framework */,
+				621F55D0146BAA820083949A /* Foundation.framework */,
+				621F55D2146BAA820083949A /* CoreGraphics.framework */,
+				621F55D4146BAA820083949A /* CoreData.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		621F55D6146BAA820083949A /* SampleNoteApplication */ = {
+			isa = PBXGroup;
+			children = (
+				621F55DF146BAA820083949A /* AppDelegate.h */,
+				621F55E0146BAA820083949A /* AppDelegate.m */,
+				621F55E5146BAA820083949A /* MasterViewController.h */,
+				621F55E6146BAA820083949A /* MasterViewController.m */,
+				621F55FE146BB1C80083949A /* OverlayViewController.h */,
+				621F55FF146BB1C80083949A /* OverlayViewController.m */,
+				621F55E8146BAA820083949A /* DetailViewController.h */,
+				621F55E9146BAA820083949A /* DetailViewController.m */,
+				621F55EB146BAA820083949A /* MasterViewController.xib */,
+				621F55EE146BAA820083949A /* DetailViewController.xib */,
+				621F55E2146BAA820083949A /* SampleNoteApplication.xcdatamodeld */,
+				621F55D7146BAA820083949A /* Supporting Files */,
+				621F5607146BCB820083949A /* NewNoteViewController.h */,
+				621F5608146BCB830083949A /* NewNoteViewController.m */,
+				621F5609146BCB830083949A /* NewNoteViewController.xib */,
+			);
+			path = SampleNoteApplication;
+			sourceTree = "<group>";
+		};
+		621F55D7146BAA820083949A /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				621F55D8146BAA820083949A /* SampleNoteApplication-Info.plist */,
+				621F55D9146BAA820083949A /* InfoPlist.strings */,
+				621F5601146BB93B0083949A /* OverlayView.xib */,
+				621F55DC146BAA820083949A /* main.m */,
+				621F55DE146BAA820083949A /* SampleNoteApplication-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		621F55C9146BAA820083949A /* SampleNoteApplication */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 621F55F3146BAA820083949A /* Build configuration list for PBXNativeTarget "SampleNoteApplication" */;
+			buildPhases = (
+				621F55C6146BAA820083949A /* Sources */,
+				621F55C7146BAA820083949A /* Frameworks */,
+				621F55C8146BAA820083949A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SampleNoteApplication;
+			productName = SampleNoteApplication;
+			productReference = 621F55CA146BAA820083949A /* SampleNoteApplication.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		621F55C1146BAA820083949A /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0420;
+				ORGANIZATIONNAME = "Natural of Sience University";
+			};
+			buildConfigurationList = 621F55C4146BAA820083949A /* Build configuration list for PBXProject "SampleNoteApplication" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 621F55BF146BAA820083949A;
+			productRefGroup = 621F55CB146BAA820083949A /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				621F55C9146BAA820083949A /* SampleNoteApplication */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		621F55C8146BAA820083949A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				621F55DB146BAA820083949A /* InfoPlist.strings in Resources */,
+				621F55ED146BAA820083949A /* MasterViewController.xib in Resources */,
+				621F55F0146BAA820083949A /* DetailViewController.xib in Resources */,
+				621F5602146BB93B0083949A /* OverlayView.xib in Resources */,
+				621F560B146BCB830083949A /* NewNoteViewController.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		621F55C6146BAA820083949A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				621F55DD146BAA820083949A /* main.m in Sources */,
+				621F55E1146BAA820083949A /* AppDelegate.m in Sources */,
+				621F55E4146BAA820083949A /* SampleNoteApplication.xcdatamodeld in Sources */,
+				621F55E7146BAA820083949A /* MasterViewController.m in Sources */,
+				621F55EA146BAA820083949A /* DetailViewController.m in Sources */,
+				621F5600146BB1C80083949A /* OverlayViewController.m in Sources */,
+				621F560A146BCB830083949A /* NewNoteViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		621F55D9146BAA820083949A /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				621F55DA146BAA820083949A /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		621F55EB146BAA820083949A /* MasterViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				621F55EC146BAA820083949A /* en */,
+			);
+			name = MasterViewController.xib;
+			sourceTree = "<group>";
+		};
+		621F55EE146BAA820083949A /* DetailViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				621F55EF146BAA820083949A /* en */,
+			);
+			name = DetailViewController.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		621F55F1146BAA820083949A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		621F55F2146BAA820083949A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		621F55F4146BAA820083949A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SampleNoteApplication/SampleNoteApplication-Prefix.pch";
+				INFOPLIST_FILE = "SampleNoteApplication/SampleNoteApplication-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		621F55F5146BAA820083949A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SampleNoteApplication/SampleNoteApplication-Prefix.pch";
+				INFOPLIST_FILE = "SampleNoteApplication/SampleNoteApplication-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		621F55C4146BAA820083949A /* Build configuration list for PBXProject "SampleNoteApplication" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				621F55F1146BAA820083949A /* Debug */,
+				621F55F2146BAA820083949A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		621F55F3146BAA820083949A /* Build configuration list for PBXNativeTarget "SampleNoteApplication" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				621F55F4146BAA820083949A /* Debug */,
+				621F55F5146BAA820083949A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		621F55E2146BAA820083949A /* SampleNoteApplication.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				621F55E3146BAA820083949A /* SampleNoteApplication.xcdatamodel */,
+			);
+			currentVersion = 621F55E3146BAA820083949A /* SampleNoteApplication.xcdatamodel */;
+			path = SampleNoteApplication.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 621F55C1146BAA820083949A /* Project object */;
+}
