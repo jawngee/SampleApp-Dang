@@ -9,6 +9,7 @@
 #import "NewNoteViewController.h"
 
 @implementation NewNoteViewController
+//@synthesize noteNumber;
 @synthesize fetchedResultsController = __fetchedResultsController;
 @synthesize managedObjectContext = __managedObjectContext;
 
@@ -33,6 +34,8 @@
 
 - (void)dealloc
 {
+    [_noteName release];
+    [_noteDetail release];
     [__fetchedResultsController release];
     [__managedObjectContext release];
     [super dealloc];
@@ -126,39 +129,83 @@
 	}
     
     return __fetchedResultsController;
-}    
+}  
+
+#pragma mark -
+#pragma mark UIAlertView delegate
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+	
+	if (buttonIndex == 0) {
+        // Create a new instance of the entity managed by the fetched results controller.
+        NSManagedObjectContext *context = [self.fetchedResultsController managedObjectContext];
+        NSEntityDescription *entity = [[self.fetchedResultsController fetchRequest] entity];
+        NSManagedObject *newManagedObject = [NSEntityDescription insertNewObjectForEntityForName:[entity name] inManagedObjectContext:context];
+        
+        // If appropriate, configure the new managed object.
+        // Normally you should use accessor methods, but using KVC here avoids the need to add a custom class to the template.
+        
+//        [newManagedObject setValue:[NSString stringWithFormat:@"Note %d", self.noteNumber + 1] forKey:@"note_name"];
+        [newManagedObject setValue:_noteName.text forKey:@"note_name"];
+        [newManagedObject setValue:_noteDetail.text forKey:@"note_detail"];
+        
+        // Save the context.
+        NSError *error = nil;
+        if (![context save:&error]) {
+            /*
+             Replace this implementation with code to handle the error appropriately.
+             
+             abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development. 
+             */
+            NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+            abort();
+        }
+        
+        [self.navigationController popToRootViewControllerAnimated:YES];
+	}	
+}
+
 
 #pragma -
 #pragma class function
 
 - (void)insertNewObject
 {
-    // Create a new instance of the entity managed by the fetched results controller.
-    NSManagedObjectContext *context = [self.fetchedResultsController managedObjectContext];
-    NSEntityDescription *entity = [[self.fetchedResultsController fetchRequest] entity];
-    NSManagedObject *newManagedObject = [NSEntityDescription insertNewObjectForEntityForName:[entity name] inManagedObjectContext:context];
+    UIAlertView *__alertView = [[UIAlertView alloc] initWithTitle:nil 
+														  message:NSLocalizedString(@"Please enter your note name: \n\n" ,@"") 
+														 delegate:self 
+												cancelButtonTitle:NSLocalizedString(@"OK", @"") 
+												otherButtonTitles:NSLocalizedString(@"Cancel", @""), nil];
+
+//    UILabel *passwordLabel = [[UILabel alloc] initWithFrame:CGRectMake(12,40,260,25)];
+//    passwordLabel.font = [UIFont systemFontOfSize:16];
+//    passwordLabel.textColor = [UIColor whiteColor];
+//    passwordLabel.backgroundColor = [UIColor clearColor];
+//    passwordLabel.shadowColor = [UIColor blackColor];
+//    passwordLabel.shadowOffset = CGSizeMake(0,-1);
+//    passwordLabel.textAlignment = UITextAlignmentCenter;
+//    passwordLabel.text = @“Account Name”;
+//    [passwordAlert addSubview:passwordLabel];
+//    
+//    UIImageView *passwordImage = [[UIImageView alloc] initWithImage:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"passwordfield" ofType:@"png"]]];
+//    passwordImage.frame = CGRectMake(11,79,262,31);
+//    [passwordAlert addSubview:passwordImage];
     
-    // If appropriate, configure the new managed object.
-    // Normally you should use accessor methods, but using KVC here avoids the need to add a custom class to the template.
+    _noteName = [[UITextField alloc] initWithFrame:CGRectMake(16, 40, 250, 25)];
+    _noteName.font = [UIFont systemFontOfSize:18];
+    _noteName.backgroundColor = [UIColor whiteColor];
+//    passwordField.secureTextEntry = YES;
+    _noteName.keyboardAppearance = UIKeyboardAppearanceAlert;
+//    passwordField.delegate = self;
+    [_noteName becomeFirstResponder];
+    [__alertView addSubview:_noteName];
     
-    NSArray *__listOfItem = [self.fetchedResultsController fetchedObjects];
-    
-    [newManagedObject setValue:[NSString stringWithFormat:@"Note %d", [__listOfItem count] + 1] forKey:@"note_name"];
-    [newManagedObject setValue:_noteDetail.text forKey:@"note_detail"];
-    
-    // Save the context.
-    NSError *error = nil;
-    if (![context save:&error]) {
-    /*
-     Replace this implementation with code to handle the error appropriately.
-     
-     abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development. 
-     */
-        NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-        abort();
-    }
-    
-    [self.navigationController popViewControllerAnimated:YES];
+//    [__alertView setTransform:CGAffineTransformMakeTranslation(0,109)];
+    [__alertView show];
+    [__alertView release];
+// /    [passwordImage release];
+//    [passwordLabel release];
+
 }
 
 

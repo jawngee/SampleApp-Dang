@@ -67,13 +67,10 @@
     self.navigationItem.rightBarButtonItem = addButton;
     
     listOfItems = [[NSMutableArray alloc] init];
-    
-    /*
+        
     NSArray *__listOfItem = [self.fetchedResultsController fetchedObjects];
     NSDictionary *countriesToLiveInDict = [NSDictionary dictionaryWithObject:__listOfItem forKey:@"note"];
-    [listOfItems addObject:countriesToLiveInDict];*/
-    
-//    NSManagedObject *managedObject = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    [listOfItems addObject:countriesToLiveInDict];
 
     copyListOfItems = [[NSMutableArray alloc] init];
 	
@@ -97,19 +94,21 @@
 {
     [super viewWillAppear:animated];
     
-    [listOfItems removeAllObjects];
-    
-    NSArray *__listOfItem = [self.fetchedResultsController fetchedObjects];
-    NSDictionary *countriesToLiveInDict = [NSDictionary dictionaryWithObject:__listOfItem forKey:@"note"];
-    [listOfItems addObject:countriesToLiveInDict];
-    
-    [self.tableView reloadData];
     
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
+    
+//    [listOfItems removeAllObjects];
+    
+//    NSArray *__listOfItem = [self.fetchedResultsController fetchedObjects];
+//    NSDictionary *countriesToLiveInDict = [NSDictionary dictionaryWithObject:__listOfItem forKey:@"note"];
+//    [listOfItems addObject:countriesToLiveInDict];
+    
+//    [self.tableView reloadData];
+
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -179,8 +178,12 @@
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     }
     
-    if(searching) 
-		cell.textLabel.text = [copyListOfItems objectAtIndex:indexPath.row];
+    if(searching) {
+        NSManagedObject *managedObject = [copyListOfItems objectAtIndex:indexPath.row];
+        cell.textLabel.text = [[managedObject valueForKey:@"note_name"] description];
+
+//		cell.textLabel.text = [copyListOfItems objectAtIndex:indexPath.row];
+    }
 	else {
 		//First get the dictionary object
 		NSDictionary *dictionary = [listOfItems objectAtIndex:indexPath.section];
@@ -249,24 +252,44 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    
+    NSManagedObject *selectedObject = nil;
+    
+    if(searching) {
+		selectedObject = [copyListOfItems objectAtIndex:indexPath.row];
+    }
+	else {
+        
+		NSDictionary *dictionary = [listOfItems objectAtIndex:indexPath.section];
+		NSArray *array = [dictionary objectForKey:@"note"];
+		selectedObject = [array objectAtIndex:indexPath.row];
+	}
+
+    
     if (!self.detailViewController) {
         self.detailViewController = [[[DetailViewController alloc] initWithNibName:@"DetailViewController" bundle:nil] autorelease];
+        self.detailViewController.managedObjectContext = self.managedObjectContext;
     }
     
-    NSDictionary *dictionary = [listOfItems objectAtIndex:indexPath.section];
-    NSArray *array = [dictionary objectForKey:@"note"];
-    NSManagedObject *selectedObject = [array objectAtIndex:indexPath.row];
+//    NSDictionary *dictionary = [listOfItems objectAtIndex:indexPath.section];
+//    NSArray *array = [dictionary objectForKey:@"note"];
+//    NSManagedObject *selectedObject = [array objectAtIndex:indexPath.row];
     
+    NSString *__noteName = [[selectedObject valueForKey:@"note_name"] description];
+    NSString *__noteDetail = [[selectedObject valueForKey:@"note_detail"] description];
     
-    NSString *__test = [[selectedObject valueForKey:@"note_name"] description];
+    NSLog(@"note name: %@", __noteName);
+    NSLog(@"note detail: %@", __noteDetail);
     
-    NSLog(@"note name: %@", __test);
-//    NSManagedObject *selectedObject = [[self fetchedResultsController] objectAtIndexPath:indexPath];
-    self.detailViewController.detailNote = __test;
-    self.detailViewController.nameNote = __test;
+    self.detailViewController.deleteNote = selectedObject;
+//    self.detailViewController.noteNumber = [array count];
+    self.detailViewController.detailNote = __noteDetail;
+    self.detailViewController.nameNote = __noteName;
+    
     [self.navigationController pushViewController:self.detailViewController animated:YES];
 }
 
+#pragma mark -
 #pragma mark - Fetched results controller
 
 - (NSFetchedResultsController *)fetchedResultsController
@@ -311,58 +334,65 @@
     return __fetchedResultsController;
 }    
 
-- (void)controllerWillChangeContent:(NSFetchedResultsController *)controller
-{
-    [self.tableView beginUpdates];
-}
-
-- (void)controller:(NSFetchedResultsController *)controller didChangeSection:(id <NSFetchedResultsSectionInfo>)sectionInfo
-           atIndex:(NSUInteger)sectionIndex forChangeType:(NSFetchedResultsChangeType)type
-{
-    
-    switch(type) {
-        
-        case NSFetchedResultsChangeInsert:
-            [self.tableView insertSections:[NSIndexSet indexSetWithIndex:sectionIndex] withRowAnimation:UITableViewRowAnimationFade];
-            break;
-            
-        case NSFetchedResultsChangeDelete:
-            [self.tableView deleteSections:[NSIndexSet indexSetWithIndex:sectionIndex] withRowAnimation:UITableViewRowAnimationFade];
-            break;
-    }
-}
-
-- (void)controller:(NSFetchedResultsController *)controller didChangeObject:(id)anObject
-       atIndexPath:(NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type
-      newIndexPath:(NSIndexPath *)newIndexPath
-{
-    UITableView *tableView = self.tableView;
-    
-    switch(type) {
-        
-        case NSFetchedResultsChangeInsert:
-            [tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
-            break;
-            
-        case NSFetchedResultsChangeDelete:
-            [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
-            break;
-            
-        
-        case NSFetchedResultsChangeUpdate:
-//            [self configureCell:[tableView cellForRowAtIndexPath:indexPath] atIndexPath:indexPath];
-            break;
-            
-        case NSFetchedResultsChangeMove:
-            [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
-            [tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:newIndexPath]withRowAnimation:UITableViewRowAnimationFade];
-            break;
-    }
-}
+//- (void)controllerWillChangeContent:(NSFetchedResultsController *)controller
+//{
+//    [self.tableView beginUpdates];
+//}
+//
+//- (void)controller:(NSFetchedResultsController *)controller didChangeSection:(id <NSFetchedResultsSectionInfo>)sectionInfo
+//           atIndex:(NSUInteger)sectionIndex forChangeType:(NSFetchedResultsChangeType)type
+//{
+//    
+//    switch(type) {
+//        
+//        case NSFetchedResultsChangeInsert:
+//            [self.tableView insertSections:[NSIndexSet indexSetWithIndex:sectionIndex] withRowAnimation:UITableViewRowAnimationFade];
+//            break;
+//            
+//        case NSFetchedResultsChangeDelete:
+//            [self.tableView deleteSections:[NSIndexSet indexSetWithIndex:sectionIndex] withRowAnimation:UITableViewRowAnimationFade];
+//            break;
+//    }
+//}
+//
+//- (void)controller:(NSFetchedResultsController *)controller didChangeObject:(id)anObject
+//       atIndexPath:(NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type
+//      newIndexPath:(NSIndexPath *)newIndexPath
+//{
+//    UITableView *tableView = self.tableView;
+//    
+//    switch(type) {
+//        
+//        case NSFetchedResultsChangeInsert:
+//            [tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
+//            break;
+//            
+//        case NSFetchedResultsChangeDelete:
+//            [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+//            break;
+//            
+//        
+//        case NSFetchedResultsChangeUpdate:
+////            [self configureCell:[tableView cellForRowAtIndexPath:indexPath] atIndexPath:indexPath];
+//            break;
+//            
+//        case NSFetchedResultsChangeMove:
+//            [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+//            [tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:newIndexPath]withRowAnimation:UITableViewRowAnimationFade];
+//            break;
+//    }
+//}
 
 - (void)controllerDidChangeContent:(NSFetchedResultsController *)controller
 {
-    [self.tableView endUpdates];
+//    [self.tableView endUpdates];
+    [listOfItems removeAllObjects];
+    
+    NSArray *__listOfItem = [self.fetchedResultsController fetchedObjects];
+    NSDictionary *countriesToLiveInDict = [NSDictionary dictionaryWithObject:__listOfItem forKey:@"note"];
+    [listOfItems addObject:countriesToLiveInDict];
+
+    [self.tableView reloadData];
 }
 
 /*
@@ -467,7 +497,7 @@
 		NSRange titleResultsRange = [__sTemp rangeOfString:searchText options:NSCaseInsensitiveSearch];
 		
 		if (titleResultsRange.length > 0)
-			[copyListOfItems addObject:__sTemp];
+			[copyListOfItems addObject:managedObject];
 	}
 	
 	[searchArray release];
@@ -509,33 +539,16 @@
 
 - (void)insertNewObject
 {
-    // Create a new instance of the entity managed by the fetched results controller.
-//    NSManagedObjectContext *context = [self.fetchedResultsController managedObjectContext];
-//    NSEntityDescription *entity = [[self.fetchedResultsController fetchRequest] entity];
-//    NSManagedObject *newManagedObject = [NSEntityDescription insertNewObjectForEntityForName:[entity name] inManagedObjectContext:context];
-    
-    // If appropriate, configure the new managed object.
-    // Normally you should use accessor methods, but using KVC here avoids the need to add a custom class to the template.
-    
-//    [newManagedObject setValue:@"Note" forKey:@"note_name"];
-    
-    // Save the context.
-//    NSError *error = nil;
-//    if (![context save:&error]) {
-        /*
-         Replace this implementation with code to handle the error appropriately.
-         
-         abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development. 
-         */
-//        NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-//        abort();
-//    }
     
     if (!self.addNoteViewController) {
         self.addNoteViewController = [[[NewNoteViewController alloc] initWithNibName:@"NewNoteViewController" bundle:nil] autorelease];
         self.addNoteViewController.managedObjectContext = self.managedObjectContext;
     }
-    
+        
+//    NSDictionary *dictionary = [listOfItems objectAtIndex:0];
+//    NSArray *array = [dictionary objectForKey:@"note"];
+
+//    self.addNoteViewController.noteNumber = [array count];
     [self.navigationController pushViewController:self.addNoteViewController animated:YES];
 
 }

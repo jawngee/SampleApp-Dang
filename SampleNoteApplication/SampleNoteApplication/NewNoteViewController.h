@@ -10,12 +10,13 @@
 #import <CoreData/CoreData.h>
 
 
-@interface NewNoteViewController : UIViewController <NSFetchedResultsControllerDelegate> {
+@interface NewNoteViewController : UIViewController <NSFetchedResultsControllerDelegate, UIAlertViewDelegate> {
     
-    IBOutlet UITextView *_noteDetail; 
+    IBOutlet UITextView *_noteDetail;
+    UITextField *_noteName;
 }
 
-
+//@property (nonatomic) int noteNumber;
 @property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 
