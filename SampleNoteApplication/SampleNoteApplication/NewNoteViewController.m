@@ -144,8 +144,16 @@
         
         // If appropriate, configure the new managed object.
         // Normally you should use accessor methods, but using KVC here avoids the need to add a custom class to the template.
+
+        NSDate *today = [NSDate date];
         
-//        [newManagedObject setValue:[NSString stringWithFormat:@"Note %d", self.noteNumber + 1] forKey:@"note_name"];
+        NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+        [dateFormat setDateFormat:@"MMMM dd"];
+        
+        NSString *dateString = [dateFormat stringFromDate:today];
+        [dateFormat release];
+        
+        [newManagedObject setValue:dateString forKey:@"note_date"];
         [newManagedObject setValue:_noteName.text forKey:@"note_name"];
         [newManagedObject setValue:_noteDetail.text forKey:@"note_detail"];
         

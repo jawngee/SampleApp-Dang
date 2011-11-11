@@ -16,6 +16,7 @@
 @interface MasterViewController : UITableViewController <NSFetchedResultsControllerDelegate> {
     
     NSMutableArray *listOfItems;
+    NSMutableArray *listDate;
 	NSMutableArray *copyListOfItems;
     
 	IBOutlet UISearchBar *searchBar;

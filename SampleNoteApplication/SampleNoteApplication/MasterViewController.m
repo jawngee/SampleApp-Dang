@@ -67,10 +67,46 @@
     self.navigationItem.rightBarButtonItem = addButton;
     
     listOfItems = [[NSMutableArray alloc] init];
-        
+    listDate = [[NSMutableArray alloc] init];
+     
+    BOOL isContinute = NO;
+    NSString *__currentDate = nil;
+    
     NSArray *__listOfItem = [self.fetchedResultsController fetchedObjects];
-    NSDictionary *countriesToLiveInDict = [NSDictionary dictionaryWithObject:__listOfItem forKey:@"note"];
-    [listOfItems addObject:countriesToLiveInDict];
+
+    while (YES) {
+        for (int i=0; i<[__listOfItem count]; i++) {
+            NSManagedObject *managedObject = [__listOfItem objectAtIndex:i];
+            NSString *__noteDate = [[managedObject valueForKey:@"note_date"] description];
+            if ([listDate containsObject:__noteDate]) {
+                isContinute = NO;
+            } else {
+                isContinute = YES;
+                __currentDate = __noteDate;
+                [listDate addObject:__noteDate];
+                break;
+            }
+            
+        }
+        
+        if (isContinute == NO) {
+            break;
+        }
+        
+        NSMutableArray *__sectionArray = [[NSMutableArray alloc] init];
+        
+        for (int i=0; i<[__listOfItem count]; i++) {
+            NSManagedObject *managedObject = [__listOfItem objectAtIndex:i];
+            NSString *__noteDate = [[managedObject valueForKey:@"note_date"] description];
+            
+            if ([__noteDate isEqualToString:__currentDate]) {
+                [__sectionArray addObject:managedObject];
+            }
+        }
+        
+        NSDictionary *__dicItem = [NSDictionary dictionaryWithObject:__sectionArray forKey:@"note"];
+        [listOfItems addObject:__dicItem];
+    }
 
     copyListOfItems = [[NSMutableArray alloc] init];
 	
@@ -161,10 +197,12 @@
 	if(searching)
 		return @"Search Results";
 	
-	if(section == 0)
-		return @"Note Tracker";
-	else
-		return @"";
+    return [listDate objectAtIndex:section];
+    
+//	if(section == 0)
+//		return @"Note Tracker";
+//	else
+//		return @"";
 }
 
 // Customize the appearance of table view cells.
@@ -309,7 +347,7 @@
     [fetchRequest setFetchBatchSize:20];
     
     // Edit the sort key as appropriate.
-    NSSortDescriptor *sortDescriptor = [[[NSSortDescriptor alloc] initWithKey:@"note_name" ascending:YES] autorelease];
+    NSSortDescriptor *sortDescriptor = [[[NSSortDescriptor alloc] initWithKey:@"note_date" ascending:NO] autorelease];
     NSArray *sortDescriptors = [NSArray arrayWithObjects:sortDescriptor, nil];
     
     [fetchRequest setSortDescriptors:sortDescriptors];
@@ -387,10 +425,48 @@
 {
 //    [self.tableView endUpdates];
     [listOfItems removeAllObjects];
+    [listDate removeAllObjects];
     
     NSArray *__listOfItem = [self.fetchedResultsController fetchedObjects];
-    NSDictionary *countriesToLiveInDict = [NSDictionary dictionaryWithObject:__listOfItem forKey:@"note"];
-    [listOfItems addObject:countriesToLiveInDict];
+//    NSDictionary *countriesToLiveInDict = [NSDictionary dictionaryWithObject:__listOfItem forKey:@"note"];
+//    [listOfItems addObject:countriesToLiveInDict];
+
+    BOOL isContinute = NO;
+    NSString *__currentDate = nil;
+    
+    while (YES) {
+        for (int i=0; i<[__listOfItem count]; i++) {
+            NSManagedObject *managedObject = [__listOfItem objectAtIndex:i];
+            NSString *__noteDate = [[managedObject valueForKey:@"note_date"] description];
+            if ([listDate containsObject:__noteDate]) {
+                isContinute = NO;
+            } else {
+                isContinute = YES;
+                __currentDate = __noteDate;
+                [listDate addObject:__noteDate];
+                break;
+            }
+            
+        }
+        
+        if (isContinute == NO) {
+            break;
+        }
+        
+        NSMutableArray *__sectionArray = [[NSMutableArray alloc] init];
+        
+        for (int i=0; i<[__listOfItem count]; i++) {
+            NSManagedObject *managedObject = [__listOfItem objectAtIndex:i];
+            NSString *__noteDate = [[managedObject valueForKey:@"note_date"] description];
+            
+            if ([__noteDate isEqualToString:__currentDate]) {
+                [__sectionArray addObject:managedObject];
+            }
+        }
+        
+        NSDictionary *__dicItem = [NSDictionary dictionaryWithObject:__sectionArray forKey:@"note"];
+        [listOfItems addObject:__dicItem];
+    }
 
     [self.tableView reloadData];
 }
