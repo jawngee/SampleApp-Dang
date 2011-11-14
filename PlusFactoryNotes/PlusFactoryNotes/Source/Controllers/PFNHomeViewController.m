@@ -54,7 +54,7 @@
                                                                             target:nil 
                                                                             action:nil];
     
-//    self.navigationItem.leftBarButtonItem = self.editButtonItem;
+    self.navigationItem.leftBarButtonItem = self.editButtonItem;
     
 	//Add the search bar
 //	notesTableView.tableHeaderView = searchBar;
@@ -203,6 +203,32 @@
 	else
 		return nil;
 }
+
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+    // Return YES if you want the specified item to be editable.
+    return YES;
+}
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        // Delete the managed object for the given index path
+        
+        if(searching) {
+            NSString *key=[[copyNotes allKeys] objectAtIndex:[indexPath section]];
+            PFNNote *note=[[copyNotes objectForKey:key] objectAtIndex:[indexPath row]];
+            [note remove];
+        } else {
+            NSString *key=[[notes allKeys] objectAtIndex:[indexPath section]];
+            PFNNote *note=[[notes objectForKey:key] objectAtIndex:[indexPath row]];
+            [note remove];
+        }
+        
+        [self reloadData];
+
+    }   
+}
+
 
 #pragma mark -
 #pragma mark Search Bar 
