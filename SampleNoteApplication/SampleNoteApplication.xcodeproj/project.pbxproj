@@ -319,6 +319,7 @@
 				621F55F5146BAA820083949A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

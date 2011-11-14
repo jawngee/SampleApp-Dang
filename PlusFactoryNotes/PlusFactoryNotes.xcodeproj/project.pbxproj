@@ -1,0 +1,428 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		62B4E5241470F55300A8AAE8 /* OverlayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 62B4E5231470F55300A8AAE8 /* OverlayViewController.m */; };
+		62B4E5271470F5A600A8AAE8 /* OverlayView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 62B4E5261470F5A600A8AAE8 /* OverlayView.xib */; };
+		FFA86C2D146BE4C8008D609D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFA86C2C146BE4C8008D609D /* UIKit.framework */; };
+		FFA86C2F146BE4C8008D609D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFA86C2E146BE4C8008D609D /* Foundation.framework */; };
+		FFA86C31146BE4C8008D609D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFA86C30146BE4C8008D609D /* CoreGraphics.framework */; };
+		FFA86C37146BE4C8008D609D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = FFA86C35146BE4C8008D609D /* InfoPlist.strings */; };
+		FFA86C39146BE4C8008D609D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FFA86C38146BE4C8008D609D /* main.m */; };
+		FFA86C43146BE4C9008D609D /* PFNHomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FFA86C41146BE4C9008D609D /* PFNHomeViewController.xib */; };
+		FFA86C52146BE510008D609D /* PFNAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FFA86C4C146BE510008D609D /* PFNAppDelegate.m */; };
+		FFA86C53146BE510008D609D /* PFNHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FFA86C4F146BE510008D609D /* PFNHomeViewController.m */; };
+		FFA86C57146BE754008D609D /* PFNNoteEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FFA86C55146BE754008D609D /* PFNNoteEditViewController.m */; };
+		FFA86C58146BE754008D609D /* PFNNoteEditViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FFA86C56146BE754008D609D /* PFNNoteEditViewController.xib */; };
+		FFA86C5C146BE780008D609D /* PFNNoteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FFA86C5A146BE780008D609D /* PFNNoteViewController.m */; };
+		FFA86C5D146BE780008D609D /* PFNNoteViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FFA86C5B146BE780008D609D /* PFNNoteViewController.xib */; };
+		FFB0412D146D1EA80036BF1A /* PFNNote.m in Sources */ = {isa = PBXBuildFile; fileRef = FFB0412C146D1EA80036BF1A /* PFNNote.m */; };
+		FFB04131146D22900036BF1A /* NSString+UUID.m in Sources */ = {isa = PBXBuildFile; fileRef = FFB04130146D22900036BF1A /* NSString+UUID.m */; };
+		FFB04139146D25AA0036BF1A /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = FFB04134146D25AA0036BF1A /* FMDatabase.m */; };
+		FFB0413A146D25AA0036BF1A /* FMDatabaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = FFB04136146D25AA0036BF1A /* FMDatabaseAdditions.m */; };
+		FFB0413B146D25AA0036BF1A /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = FFB04138146D25AA0036BF1A /* FMResultSet.m */; };
+		FFB0413D146D25B80036BF1A /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = FFB0413C146D25B80036BF1A /* libsqlite3.dylib */; };
+		FFB04140146D27640036BF1A /* notes.db in Resources */ = {isa = PBXBuildFile; fileRef = FFB0413F146D27640036BF1A /* notes.db */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		62B4E5221470F55200A8AAE8 /* OverlayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OverlayViewController.h; sourceTree = "<group>"; };
+		62B4E5231470F55300A8AAE8 /* OverlayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OverlayViewController.m; sourceTree = "<group>"; };
+		62B4E5261470F5A600A8AAE8 /* OverlayView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OverlayView.xib; sourceTree = "<group>"; };
+		FFA86C28146BE4C8008D609D /* PlusFactoryNotes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PlusFactoryNotes.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		FFA86C2C146BE4C8008D609D /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		FFA86C2E146BE4C8008D609D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		FFA86C30146BE4C8008D609D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		FFA86C34146BE4C8008D609D /* PlusFactoryNotes-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "PlusFactoryNotes-Info.plist"; sourceTree = "<group>"; };
+		FFA86C36146BE4C8008D609D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		FFA86C38146BE4C8008D609D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		FFA86C3A146BE4C9008D609D /* PlusFactoryNotes-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PlusFactoryNotes-Prefix.pch"; sourceTree = "<group>"; };
+		FFA86C42146BE4C9008D609D /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/PFNHomeViewController.xib; sourceTree = "<group>"; };
+		FFA86C4B146BE510008D609D /* PFNAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PFNAppDelegate.h; sourceTree = "<group>"; };
+		FFA86C4C146BE510008D609D /* PFNAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PFNAppDelegate.m; sourceTree = "<group>"; };
+		FFA86C4E146BE510008D609D /* PFNHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PFNHomeViewController.h; sourceTree = "<group>"; };
+		FFA86C4F146BE510008D609D /* PFNHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PFNHomeViewController.m; sourceTree = "<group>"; };
+		FFA86C54146BE754008D609D /* PFNNoteEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PFNNoteEditViewController.h; sourceTree = "<group>"; };
+		FFA86C55146BE754008D609D /* PFNNoteEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PFNNoteEditViewController.m; sourceTree = "<group>"; };
+		FFA86C56146BE754008D609D /* PFNNoteEditViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PFNNoteEditViewController.xib; sourceTree = "<group>"; };
+		FFA86C59146BE780008D609D /* PFNNoteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PFNNoteViewController.h; sourceTree = "<group>"; };
+		FFA86C5A146BE780008D609D /* PFNNoteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PFNNoteViewController.m; sourceTree = "<group>"; };
+		FFA86C5B146BE780008D609D /* PFNNoteViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PFNNoteViewController.xib; sourceTree = "<group>"; };
+		FFB0412B146D1EA80036BF1A /* PFNNote.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PFNNote.h; sourceTree = "<group>"; };
+		FFB0412C146D1EA80036BF1A /* PFNNote.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PFNNote.m; sourceTree = "<group>"; };
+		FFB0412F146D22900036BF1A /* NSString+UUID.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+UUID.h"; sourceTree = "<group>"; };
+		FFB04130146D22900036BF1A /* NSString+UUID.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+UUID.m"; sourceTree = "<group>"; };
+		FFB04133146D25AA0036BF1A /* FMDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabase.h; sourceTree = "<group>"; };
+		FFB04134146D25AA0036BF1A /* FMDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabase.m; sourceTree = "<group>"; };
+		FFB04135146D25AA0036BF1A /* FMDatabaseAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabaseAdditions.h; sourceTree = "<group>"; };
+		FFB04136146D25AA0036BF1A /* FMDatabaseAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabaseAdditions.m; sourceTree = "<group>"; };
+		FFB04137146D25AA0036BF1A /* FMResultSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMResultSet.h; sourceTree = "<group>"; };
+		FFB04138146D25AA0036BF1A /* FMResultSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMResultSet.m; sourceTree = "<group>"; };
+		FFB0413C146D25B80036BF1A /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
+		FFB0413F146D27640036BF1A /* notes.db */ = {isa = PBXFileReference; lastKnownFileType = file; name = notes.db; path = SQL/notes.db; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		FFA86C25146BE4C8008D609D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FFB0413D146D25B80036BF1A /* libsqlite3.dylib in Frameworks */,
+				FFA86C2D146BE4C8008D609D /* UIKit.framework in Frameworks */,
+				FFA86C2F146BE4C8008D609D /* Foundation.framework in Frameworks */,
+				FFA86C31146BE4C8008D609D /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		FFA86C1D146BE4C8008D609D = {
+			isa = PBXGroup;
+			children = (
+				FFA86C32146BE4C8008D609D /* PlusFactoryNotes */,
+				FFA86C2B146BE4C8008D609D /* Frameworks */,
+				FFA86C29146BE4C8008D609D /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		FFA86C29146BE4C8008D609D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				FFA86C28146BE4C8008D609D /* PlusFactoryNotes.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		FFA86C2B146BE4C8008D609D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				FFB0413C146D25B80036BF1A /* libsqlite3.dylib */,
+				FFA86C2C146BE4C8008D609D /* UIKit.framework */,
+				FFA86C2E146BE4C8008D609D /* Foundation.framework */,
+				FFA86C30146BE4C8008D609D /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		FFA86C32146BE4C8008D609D /* PlusFactoryNotes */ = {
+			isa = PBXGroup;
+			children = (
+				FFB0413E146D27550036BF1A /* Resources */,
+				FFA86C49146BE510008D609D /* Source */,
+				FFA86C33146BE4C8008D609D /* Supporting Files */,
+			);
+			path = PlusFactoryNotes;
+			sourceTree = "<group>";
+		};
+		FFA86C33146BE4C8008D609D /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				FFA86C34146BE4C8008D609D /* PlusFactoryNotes-Info.plist */,
+				FFA86C35146BE4C8008D609D /* InfoPlist.strings */,
+				FFA86C38146BE4C8008D609D /* main.m */,
+				FFA86C3A146BE4C9008D609D /* PlusFactoryNotes-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		FFA86C49146BE510008D609D /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				FFB0412E146D22900036BF1A /* Categories */,
+				FFB04126146D1E7F0036BF1A /* Model */,
+				FFA86C4A146BE510008D609D /* App */,
+				FFA86C4D146BE510008D609D /* Controllers */,
+				FFA86C50146BE510008D609D /* External */,
+				FFA86C51146BE510008D609D /* Views */,
+			);
+			path = Source;
+			sourceTree = "<group>";
+		};
+		FFA86C4A146BE510008D609D /* App */ = {
+			isa = PBXGroup;
+			children = (
+				FFA86C4B146BE510008D609D /* PFNAppDelegate.h */,
+				FFA86C4C146BE510008D609D /* PFNAppDelegate.m */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		FFA86C4D146BE510008D609D /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				62B4E5221470F55200A8AAE8 /* OverlayViewController.h */,
+				62B4E5231470F55300A8AAE8 /* OverlayViewController.m */,
+				62B4E5261470F5A600A8AAE8 /* OverlayView.xib */,
+				FFA86C4E146BE510008D609D /* PFNHomeViewController.h */,
+				FFA86C4F146BE510008D609D /* PFNHomeViewController.m */,
+				FFA86C41146BE4C9008D609D /* PFNHomeViewController.xib */,
+				FFA86C54146BE754008D609D /* PFNNoteEditViewController.h */,
+				FFA86C55146BE754008D609D /* PFNNoteEditViewController.m */,
+				FFA86C56146BE754008D609D /* PFNNoteEditViewController.xib */,
+				FFA86C59146BE780008D609D /* PFNNoteViewController.h */,
+				FFA86C5A146BE780008D609D /* PFNNoteViewController.m */,
+				FFA86C5B146BE780008D609D /* PFNNoteViewController.xib */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		FFA86C50146BE510008D609D /* External */ = {
+			isa = PBXGroup;
+			children = (
+				FFB04132146D25AA0036BF1A /* FMDB */,
+			);
+			path = External;
+			sourceTree = "<group>";
+		};
+		FFA86C51146BE510008D609D /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		FFB04126146D1E7F0036BF1A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				FFB0412B146D1EA80036BF1A /* PFNNote.h */,
+				FFB0412C146D1EA80036BF1A /* PFNNote.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		FFB0412E146D22900036BF1A /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				FFB0412F146D22900036BF1A /* NSString+UUID.h */,
+				FFB04130146D22900036BF1A /* NSString+UUID.m */,
+			);
+			path = Categories;
+			sourceTree = "<group>";
+		};
+		FFB04132146D25AA0036BF1A /* FMDB */ = {
+			isa = PBXGroup;
+			children = (
+				FFB04133146D25AA0036BF1A /* FMDatabase.h */,
+				FFB04134146D25AA0036BF1A /* FMDatabase.m */,
+				FFB04135146D25AA0036BF1A /* FMDatabaseAdditions.h */,
+				FFB04136146D25AA0036BF1A /* FMDatabaseAdditions.m */,
+				FFB04137146D25AA0036BF1A /* FMResultSet.h */,
+				FFB04138146D25AA0036BF1A /* FMResultSet.m */,
+			);
+			path = FMDB;
+			sourceTree = "<group>";
+		};
+		FFB0413E146D27550036BF1A /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				FFB0413F146D27640036BF1A /* notes.db */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		FFA86C27146BE4C8008D609D /* PlusFactoryNotes */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FFA86C46146BE4C9008D609D /* Build configuration list for PBXNativeTarget "PlusFactoryNotes" */;
+			buildPhases = (
+				FFA86C24146BE4C8008D609D /* Sources */,
+				FFA86C25146BE4C8008D609D /* Frameworks */,
+				FFA86C26146BE4C8008D609D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = PlusFactoryNotes;
+			productName = PlusFactoryNotes;
+			productReference = FFA86C28146BE4C8008D609D /* PlusFactoryNotes.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		FFA86C1F146BE4C8008D609D /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0420;
+				ORGANIZATIONNAME = "Interfacelab LLC";
+			};
+			buildConfigurationList = FFA86C22146BE4C8008D609D /* Build configuration list for PBXProject "PlusFactoryNotes" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = FFA86C1D146BE4C8008D609D;
+			productRefGroup = FFA86C29146BE4C8008D609D /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				FFA86C27146BE4C8008D609D /* PlusFactoryNotes */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		FFA86C26146BE4C8008D609D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FFA86C37146BE4C8008D609D /* InfoPlist.strings in Resources */,
+				FFA86C43146BE4C9008D609D /* PFNHomeViewController.xib in Resources */,
+				FFA86C58146BE754008D609D /* PFNNoteEditViewController.xib in Resources */,
+				FFA86C5D146BE780008D609D /* PFNNoteViewController.xib in Resources */,
+				FFB04140146D27640036BF1A /* notes.db in Resources */,
+				62B4E5271470F5A600A8AAE8 /* OverlayView.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		FFA86C24146BE4C8008D609D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FFA86C39146BE4C8008D609D /* main.m in Sources */,
+				FFA86C52146BE510008D609D /* PFNAppDelegate.m in Sources */,
+				FFA86C53146BE510008D609D /* PFNHomeViewController.m in Sources */,
+				FFA86C57146BE754008D609D /* PFNNoteEditViewController.m in Sources */,
+				FFA86C5C146BE780008D609D /* PFNNoteViewController.m in Sources */,
+				FFB0412D146D1EA80036BF1A /* PFNNote.m in Sources */,
+				FFB04131146D22900036BF1A /* NSString+UUID.m in Sources */,
+				FFB04139146D25AA0036BF1A /* FMDatabase.m in Sources */,
+				FFB0413A146D25AA0036BF1A /* FMDatabaseAdditions.m in Sources */,
+				FFB0413B146D25AA0036BF1A /* FMResultSet.m in Sources */,
+				62B4E5241470F55300A8AAE8 /* OverlayViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		FFA86C35146BE4C8008D609D /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FFA86C36146BE4C8008D609D /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		FFA86C41146BE4C9008D609D /* PFNHomeViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FFA86C42146BE4C9008D609D /* en */,
+			);
+			name = PFNHomeViewController.xib;
+			path = ../..;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		FFA86C44146BE4C9008D609D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				BUILD_STYLE = Debug;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		FFA86C45146BE4C9008D609D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				BUILD_STYLE = Release;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		FFA86C47146BE4C9008D609D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUILD_STYLE = Debug;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "PlusFactoryNotes/PlusFactoryNotes-Prefix.pch";
+				INFOPLIST_FILE = "PlusFactoryNotes/PlusFactoryNotes-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		FFA86C48146BE4C9008D609D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUILD_STYLE = Release;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "PlusFactoryNotes/PlusFactoryNotes-Prefix.pch";
+				INFOPLIST_FILE = "PlusFactoryNotes/PlusFactoryNotes-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		FFA86C22146BE4C8008D609D /* Build configuration list for PBXProject "PlusFactoryNotes" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FFA86C44146BE4C9008D609D /* Debug */,
+				FFA86C45146BE4C9008D609D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FFA86C46146BE4C9008D609D /* Build configuration list for PBXNativeTarget "PlusFactoryNotes" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FFA86C47146BE4C9008D609D /* Debug */,
+				FFA86C48146BE4C9008D609D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = FFA86C1F146BE4C8008D609D /* Project object */;
+}
