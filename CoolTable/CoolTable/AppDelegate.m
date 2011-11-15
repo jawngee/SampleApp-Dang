@@ -27,9 +27,13 @@
     self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
     // Override point for customization after application launch.
 
+    UIImageView *backgroundImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"main_bg.jpg"]];
+    backgroundImage.frame = [[UIScreen mainScreen] bounds];
     MasterViewController *masterViewController = [[[MasterViewController alloc] initWithNibName:@"MasterViewController" bundle:nil] autorelease];
     self.navigationController = [[[UINavigationController alloc] initWithRootViewController:masterViewController] autorelease];
+    self.navigationController.navigationBar.tintColor = [UIColor blackColor];
     self.window.rootViewController = self.navigationController;
+    [self.window addSubview:backgroundImage];
     [self.window makeKeyAndVisible];
     return YES;
 }

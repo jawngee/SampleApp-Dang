@@ -54,6 +54,12 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
     
+    UIImageView *backgroundImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"main_bg.jpg"]];
+    backgroundImage.frame = [[UIScreen mainScreen] bounds];
+
+//    [self.tableView setBackgroundView:backgroundImage];
+    [self.tableView setBackgroundColor:[UIColor blackColor]];
+    
     self.thingsToLearn = [NSMutableArray arrayWithObjects:@"Drawing Rects", @"Drawing Gradients", @"Drawing Arcs", nil];
     self.thingsLearned = [NSMutableArray arrayWithObjects:@"Table Views", @"UIKit", @"Objective-C", nil];
 }
@@ -122,6 +128,8 @@
         cell.backgroundView = [[[CustomCellBackground alloc] init] autorelease];
         cell.selectedBackgroundView = [[[CustomCellBackground alloc] init] autorelease];
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        ((CustomCellBackground *)cell.selectedBackgroundView).selected = YES;
+
     }
 
     // Configure the cell.
@@ -129,10 +137,18 @@
     
     if (indexPath.section == 0) {
         entry = [_thingsToLearn objectAtIndex:indexPath.row];
+        
+        ((CustomCellBackground *)cell.backgroundView).lastCell = indexPath.row == _thingsToLearn.count - 1;
+        ((CustomCellBackground *)cell.selectedBackgroundView).lastCell = indexPath.row == _thingsToLearn.count - 1;
+        
     } else {
         entry = [_thingsLearned objectAtIndex:indexPath.row];
+        
+        ((CustomCellBackground *)cell.backgroundView).lastCell = indexPath.row == _thingsLearned.count - 1;
+        ((CustomCellBackground *)cell.selectedBackgroundView).lastCell = indexPath.row == _thingsLearned.count - 1;
     }        
     
+    cell.textLabel.highlightedTextColor = [UIColor blackColor];
     cell.textLabel.backgroundColor = [UIColor clearColor];
     cell.textLabel.text = entry;
     

@@ -11,6 +11,8 @@
 #import "Common.h"
 
 @implementation CustomCellBackground
+@synthesize lastCell = _lastCell;
+@synthesize selected = _selected;
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -42,24 +44,57 @@
     CGColorRef lightGrayColor = [UIColor colorWithRed:230.0/255.0 green:230.0/255.0 blue:230.0/255.0 alpha:1.0].CGColor;
     
     CGRect paperRect = self.bounds;        
-    drawLinearGradient(context, paperRect, whiteColor, lightGrayColor);
+//    drawLinearGradient(context, paperRect, whiteColor, lightGrayColor);
+    
+    if (_selected) {
+        drawLinearGradient(context, paperRect, lightGrayColor, separatorColor);
+    } else {
+        drawLinearGradient(context, paperRect, whiteColor, lightGrayColor);
+    }
+    
+    if (!_lastCell) {
+        // Code drawing 1 px stroke and separator
+        CGRect strokeRect = paperRect;
+        strokeRect.size.height -= 1;
+        strokeRect = rectFor1PxStroke(strokeRect);
+    }
+    
+    // Then add the following
+    else {
+        
+        CGContextSetStrokeColorWithColor(context, whiteColor);
+        CGContextSetLineWidth(context, 1.0);
+        
+        CGPoint pointA = CGPointMake(paperRect.origin.x, 
+                                     paperRect.origin.y + paperRect.size.height - 1);
+        CGPoint pointB = CGPointMake(paperRect.origin.x, paperRect.origin.y);
+        CGPoint pointC = CGPointMake(paperRect.origin.x + paperRect.size.width - 1, 
+                                     paperRect.origin.y);
+        CGPoint pointD = CGPointMake(paperRect.origin.x + paperRect.size.width - 1, 
+                                     paperRect.origin.y + paperRect.size.height - 1);
+        
+        draw1PxStroke(context, pointA, pointB, whiteColor);
+        draw1PxStroke(context, pointB, pointC, whiteColor);
+        draw1PxStroke(context, pointC, pointD, whiteColor);
+        
+    }
     
 //    CGRect strokeRect = CGRectInset(paperRect, 5.0, 5.0);
 //    CGRect strokeRect = rectFor1PxStroke(CGRectInset(paperRect, 5.0, 5.0));
     
-    CGRect strokeRect = paperRect;
-    strokeRect.size.height -= 1;
-    strokeRect = rectFor1PxStroke(strokeRect);
-    
-    CGContextSetStrokeColorWithColor(context, whiteColor);
+//    CGRect strokeRect = paperRect;
+//    strokeRect.size.height -= 1;
+//    strokeRect = rectFor1PxStroke(strokeRect);
+//    
+//    CGContextSetStrokeColorWithColor(context, whiteColor);
     
 //    CGContextSetStrokeColorWithColor(context, redColor);
-    CGContextSetLineWidth(context, 1.0);
-    CGContextStrokeRect(context, strokeRect);
-    
-    CGPoint startPoint = CGPointMake(paperRect.origin.x, paperRect.origin.y + paperRect.size.height - 1);
-    CGPoint endPoint = CGPointMake(paperRect.origin.x + paperRect.size.width - 1, paperRect.origin.y + paperRect.size.height - 1);
-    draw1PxStroke(context, startPoint, endPoint, separatorColor);
+//    CGContextSetLineWidth(context, 1.0);
+//    CGContextStrokeRect(context, strokeRect);
+//    
+//    CGPoint startPoint = CGPointMake(paperRect.origin.x, paperRect.origin.y + paperRect.size.height - 1);
+//    CGPoint endPoint = CGPointMake(paperRect.origin.x + paperRect.size.width - 1, paperRect.origin.y + paperRect.size.height - 1);
+//    draw1PxStroke(context, startPoint, endPoint, separatorColor);
 
 }
 

@@ -67,6 +67,25 @@
     CGContextRestoreGState(context);
     
     CFRelease(arcPath);
+    
+    CGContextSaveGState(context);
+    CGPoint pointA = CGPointMake(arcRect.origin.x, 
+                                 arcRect.origin.y + arcRect.size.height - 1);
+    CGPoint pointB = CGPointMake(arcRect.origin.x, arcRect.origin.y);
+    CGPoint pointC = CGPointMake(arcRect.origin.x + arcRect.size.width - 1, 
+                                 arcRect.origin.y);
+    CGPoint pointD = CGPointMake(arcRect.origin.x + arcRect.size.width - 1, 
+                                 arcRect.origin.y + arcRect.size.height - 1);
+    draw1PxStroke(context, pointA, pointB, whiteColor);
+    draw1PxStroke(context, pointC, pointD, whiteColor);    
+    CGContextRestoreGState(context);
+    
+    CGContextAddRect(context, paperRect);
+    CGContextAddPath(context, arcPath);
+    CGContextEOClip(context);
+//    CGContextAddPath(context, arcPath);
+    CGContextSetShadowWithColor(context, CGSizeMake(0, 2), 3.0, shadowColor);
+    CGContextFillPath(context);
 }
 
 
