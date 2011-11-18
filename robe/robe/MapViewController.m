@@ -7,6 +7,7 @@
 //
 
 #import "MapViewController.h"
+#import "CustomTabBarItem.h"
 
 @implementation MapViewController
 
@@ -15,8 +16,19 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-        self.tabBarItem.image = [UIImage imageNamed:@"map-icon.png"];
-        self.tabBarItem.title = [NSString stringWithString:@"店铺信息"];
+//        self.tabBarItem.image = [UIImage imageNamed:@"map-icon.png"];
+//        self.tabBarItem.title = [NSString stringWithString:@"店铺信息"];
+        
+        CustomTabBarItem *customTabBarItem = [[CustomTabBarItem alloc] initWithTitle:nil image:nil tag:0];
+        
+        customTabBarItem.customHighlightedImage = [UIImage imageNamed:@"selected-map-icon.png"];
+        customTabBarItem.customStdImage = [UIImage imageNamed:@"unselected-map-icon.png"];
+        
+        self.tabBarItem = customTabBarItem;
+        
+        UIEdgeInsets insets = UIEdgeInsetsMake(8, 0, -8, 0);
+        [self.tabBarItem setImageInsets:insets];
+
     }
     return self;
 }

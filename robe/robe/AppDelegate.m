@@ -52,7 +52,8 @@
     
     /** create home navigation controller */
     self.homeNavigationController = [[[UINavigationController alloc] initWithRootViewController:homeViewController] autorelease];
-    self.homeNavigationController.navigationBar.tintColor = [UIColor blackColor];
+    [self.homeNavigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"topbar-background-image.png"] 
+                                                      forBarMetrics:UIBarMetricsDefault];
     
     self.calendarNavigationController = [[[UINavigationController alloc] initWithRootViewController:calendarViewController] autorelease];
     self.calendarNavigationController.navigationBar.tintColor = [UIColor blackColor];
@@ -70,22 +71,46 @@
     self.tabBarController = [[[UITabBarController alloc] init] autorelease];
     self.tabBarController.viewControllers = [NSArray arrayWithObjects:self.homeNavigationController, self.calendarNavigationController, self.clothesNavigationController, self.bagNavigationController, self.mapNavigationController, nil];
     
-    UITabBarItem *homeItem = [[UITabBarItem alloc] initWithTitle:@"新闻" image:[UIImage imageNamed:@"home-icon.png"] tag:1];
-    NSArray *itemArray = [[NSArray alloc] initWithObjects:homeItem, nil];
+//    for(UIView *view in self.tabBarController.tabBar.subviews) {  
+//        if([view isKindOfClass:[UILabel class]]) {  
+//            [view removeFromSuperview];  
+//        }  
+//    }  
+        
+    UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"bottombar-background.png"]];
     
-    UIView *backgroundTabbarView = [[UIView alloc] initWithFrame:CGRectMake(0, 425, 320, 52)];
-    [backgroundTabbarView setBackgroundColor:[UIColor greenColor]];
+    if ([[[UIDevice currentDevice] systemVersion] floatValue] > 4.9) {
+        //iOS 5
+        [self.tabBarController.tabBar insertSubview:imageView atIndex:1];
+    }
+    else {
+        //iOS 4.whatever and below
+        [self.tabBarController.tabBar insertSubview:imageView atIndex:0];
+    }
     
-//    self.tabBarController.toolbarItems = itemArray;
-//    [self.tabBarController.tabBar setItems:itemArray];
-//    [[self.tabBarController tabBar] insertSubview:backgroundTabbarView atIndex:0];
-//    [self.tabBarController.view addSubview:backgroundTabbarView];
+    [imageView release];
     
-    UITabBar *customTabbar = [[UITabBar alloc] initWithFrame:CGRectMake(0, 425, 320, 52)];
-    [customTabbar setItems:itemArray];
+//    for (UIView *view in self.tabBarController.tabBar.subviews)
+//    {      
+//        if ([NSStringFromClass([view class]) isEqualToString:@"UITabBarButton"])
+//        {
+//            for (UIView *subview in view.subviews)
+//            {                                    
+//                if ([subview isKindOfClass:[UILabel class]])
+//                {
+//                    UILabel *label = (UILabel *)subview;
+//                    [label removeFromSuperview];
+//                }
+//                
+//                if ([subview isKindOfClass:[UIImageView class]])
+//                {
+//                    UIImageView *imageView = (UIImageView *)subview;
+//                    NSLog(@"w=%f, h=%f", imageView.frame.size.width, imageView.frame.size.height);
+//                }
+//            }
+//        }
+//    }      
     
-
-//    [self.tabBarController.view addSubview:customTabbar];
     self.window.rootViewController = self.tabBarController;
     [self.window makeKeyAndVisible];
     return YES;

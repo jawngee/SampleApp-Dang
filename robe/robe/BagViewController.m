@@ -7,6 +7,7 @@
 //
 
 #import "BagViewController.h"
+#import "CustomTabBarItem.h"
 
 @implementation BagViewController
 
@@ -15,8 +16,19 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-        self.tabBarItem.image = [UIImage imageNamed:@"bag-icon.png"];
-        self.tabBarItem.title = [NSString stringWithString:@"促销信息"];
+//        self.tabBarItem.image = [UIImage imageNamed:@"bag-icon.png"];
+//        self.tabBarItem.title = [NSString stringWithString:@"促销信息"];
+        
+        CustomTabBarItem *customTabBarItem = [[CustomTabBarItem alloc] initWithTitle:nil image:nil tag:0];
+        
+        customTabBarItem.customHighlightedImage = [UIImage imageNamed:@"selected-bag-icon.png"];
+        customTabBarItem.customStdImage = [UIImage imageNamed:@"unselected-bag-icon.png"];
+        
+        self.tabBarItem = customTabBarItem;
+        
+        UIEdgeInsets insets = UIEdgeInsetsMake(8, 0, -8, 0);
+        [self.tabBarItem setImageInsets:insets];
+
     }
     return self;
 }
