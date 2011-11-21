@@ -82,14 +82,23 @@
     
     if ([indexPath row] == 0) {
         __cell.imageViewCell.image = [UIImage imageNamed:@"cell-image-1.png"];
+        __cell.titleLable.text = @"古罗马新创世纪运动与时装的超现实演绎";
+        __cell.desciptionLable.text = @"— RDK 2011春夏新品静态展";
+        __cell.createTimeLable.text = @"星期二,七月 19th, 2011";
     }
     
     if ([indexPath row] == 1) {
         __cell.imageViewCell.image = [UIImage imageNamed:@"cell-image-2.png"];
+        __cell.titleLable.text = @"古罗马新创世纪运动与时装的超现实演绎";
+        __cell.desciptionLable.text = @"— RDK 2011春夏新品静态展";
+        __cell.createTimeLable.text = @"星期二,七月 19th, 2011";
     }
     
     if ([indexPath row] == 2) {
         __cell.imageViewCell.image = [UIImage imageNamed:@"cell-image-3.png"];
+        __cell.titleLable.text = @"古罗马新创世纪运动与时装的超现实演绎";
+        __cell.desciptionLable.text = @"— RDK 2011春夏新品静态展";
+        __cell.createTimeLable.text = @"星期二,七月 19th, 2011";
     }
 		
 	return __cell;

@@ -54,10 +54,29 @@
 	self.accessoryType = UITableViewCellAccessoryNone;
 
     self.imageViewCell = [[UIImageView alloc] initWithFrame:CGRectMake(10, 12, 128, 94)];
-    self.titleLable = [[UILabel alloc] initWithFrame:CGRectMake(145, 12, 160, 20)];
-    self.desciptionLable = [[UILabel alloc] initWithFrame:CGRectMake(145, 35, 160, 20)];
-    self.createTimeLable = [[UILabel alloc] initWithFrame:CGRectMake(200, 88, 105, 20)];
+    self.titleLable = [[UILabel alloc] initWithFrame:CGRectMake(145, 12, 170, 30)];
+    self.desciptionLable = [[UILabel alloc] initWithFrame:CGRectMake(145, 45, 170, 20)];
+    self.createTimeLable = [[UILabel alloc] initWithFrame:CGRectMake(170, 92, 145, 20)];
     
+    [self.titleLable setBackgroundColor:[UIColor clearColor]];
+    [self.titleLable setFont:[UIFont boldSystemFontOfSize:13]];
+    [self.titleLable setLineBreakMode:UILineBreakModeWordWrap];
+    [self.titleLable setTextColor:[UIColor colorWithRed:92 green:92 blue:92 alpha:1.0]];
+    [self.titleLable setNumberOfLines:2];
+    
+    [self.desciptionLable setBackgroundColor:[UIColor clearColor]];
+    [self.desciptionLable setFont:[UIFont systemFontOfSize:12]];
+    [self.desciptionLable setLineBreakMode:UILineBreakModeWordWrap];
+    [self.desciptionLable setTextColor:[UIColor colorWithRed:153 green:153 blue:153 alpha:1.0]];
+    [self.desciptionLable setNumberOfLines:2];
+    
+    [self.createTimeLable setBackgroundColor:[UIColor clearColor]];
+    [self.createTimeLable setFont:[UIFont boldSystemFontOfSize:12]];
+    [self.createTimeLable setLineBreakMode:UILineBreakModeWordWrap];
+    [self.createTimeLable setTextAlignment:UITextAlignmentRight];
+    [self.createTimeLable setTextColor:[UIColor colorWithRed:153 green:153 blue:153 alpha:1.0]];
+    [self.createTimeLable setNumberOfLines:2];
+
     [self addSubview:self.imageViewCell];
     [self addSubview:self.titleLable];
     [self addSubview:self.desciptionLable];
