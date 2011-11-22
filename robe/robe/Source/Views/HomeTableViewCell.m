@@ -59,22 +59,22 @@
     self.createTimeLable = [[UILabel alloc] initWithFrame:CGRectMake(170, 92, 145, 20)];
     
     [self.titleLable setBackgroundColor:[UIColor clearColor]];
-    [self.titleLable setFont:[UIFont boldSystemFontOfSize:13]];
+    [self.titleLable setFont:[UIFont boldSystemFontOfSize:12]];
     [self.titleLable setLineBreakMode:UILineBreakModeWordWrap];
-    [self.titleLable setTextColor:[UIColor colorWithRed:92 green:92 blue:92 alpha:1.0]];
+    [self.titleLable setTextColor:[UIColor colorWithRed:92.0/255.0 green:92.0/255.0 blue:92.0/255.0 alpha:1.0]];
     [self.titleLable setNumberOfLines:2];
     
     [self.desciptionLable setBackgroundColor:[UIColor clearColor]];
     [self.desciptionLable setFont:[UIFont systemFontOfSize:12]];
     [self.desciptionLable setLineBreakMode:UILineBreakModeWordWrap];
-    [self.desciptionLable setTextColor:[UIColor colorWithRed:153 green:153 blue:153 alpha:1.0]];
+    [self.desciptionLable setTextColor:[UIColor colorWithRed:153.0/255.0 green:153.0/255.0 blue:153.0/255.0 alpha:1.0]];
     [self.desciptionLable setNumberOfLines:2];
     
     [self.createTimeLable setBackgroundColor:[UIColor clearColor]];
     [self.createTimeLable setFont:[UIFont boldSystemFontOfSize:12]];
     [self.createTimeLable setLineBreakMode:UILineBreakModeWordWrap];
     [self.createTimeLable setTextAlignment:UITextAlignmentRight];
-    [self.createTimeLable setTextColor:[UIColor colorWithRed:153 green:153 blue:153 alpha:1.0]];
+    [self.createTimeLable setTextColor:[UIColor colorWithRed:153.0/255.0 green:153.0/255.0 blue:153.0/255.0 alpha:1.0]];
     [self.createTimeLable setNumberOfLines:2];
 
     [self addSubview:self.imageViewCell];

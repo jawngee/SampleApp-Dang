@@ -56,7 +56,8 @@
                                                       forBarMetrics:UIBarMetricsDefault];
     
     self.calendarNavigationController = [[[UINavigationController alloc] initWithRootViewController:calendarViewController] autorelease];
-    self.calendarNavigationController.navigationBar.tintColor = [UIColor blackColor];
+    [self.calendarNavigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"topbar-background-image.png"] 
+                                                          forBarMetrics:UIBarMetricsDefault];
 
     self.clothesNavigationController = [[[UINavigationController alloc] initWithRootViewController:clothesViewController] autorelease];
     self.clothesNavigationController.navigationBar.tintColor = [UIColor blackColor];
