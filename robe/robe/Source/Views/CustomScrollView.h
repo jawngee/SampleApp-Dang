@@ -11,9 +11,9 @@
 
 @interface CustomScrollView : UIScrollView
 {
-	id		maindelegate;
+	id maindelegate;
 }
 
-@property (retain, nonatomic) id maindelegate;
+@property(retain, nonatomic) id maindelegate;
 
 @end

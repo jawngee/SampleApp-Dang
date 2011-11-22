@@ -27,11 +27,13 @@
 - (void) scaleToFitRect:(CGRect)rect
 {
 	CGFloat newwidth, newheight;
-	if(ratio >= 1.0) {
+	if(ratio >= 1.0) 
+    {
 		newwidth = rect.size.width;
 		newheight = rect.size.width/ratio;
 	}
-	else {
+	else 
+    {
 		newwidth = rect.size.height*ratio;
 		newheight = rect.size.height;
 	}
@@ -83,42 +85,55 @@
 {
 	CGRect r = self.frame;
 	CGRect fullScreenRect = [[UIScreen mainScreen] applicationFrame];
-	if(fullScreenRect.size.width > r.size.width) {
-		if(r.origin.x < 0) {
+	if(fullScreenRect.size.width > r.size.width) 
+    {
+		if(r.origin.x < 0)
+        {
 			r.origin.x = 0;
 		}
-		else if(r.origin.x > fullScreenRect.size.width - r.size.width) {
+		else if(r.origin.x > fullScreenRect.size.width - r.size.width) 
+        {
 			r.origin.x = fullScreenRect.size.width - r.size.width;
 		}
 	}
-	else {
-		if(r.origin.x > 0) {
+	else 
+    {
+		if(r.origin.x > 0) 
+        {
 			r.origin.x = 0;
 		}
-		else if(r.origin.x < fullScreenRect.size.width - r.size.width) {
+		else if(r.origin.x < fullScreenRect.size.width - r.size.width) 
+        {
 			r.origin.x = fullScreenRect.size.width - r.size.width;
 		}
 	}
-	if(fullScreenRect.size.height > r.size.height) {
-		if(r.origin.y < 0) {
+	if(fullScreenRect.size.height > r.size.height) 
+    {
+		if(r.origin.y < 0) 
+        {
 			r.origin.y = 0;
 		}
-		else if(r.origin.y > fullScreenRect.size.height - r.size.height) {
+		else if(r.origin.y > fullScreenRect.size.height - r.size.height) 
+        {
 			r.origin.y = fullScreenRect.size.height - r.size.height;
 		}
 	}
-	else {
-		if(r.origin.y > 0) {
+	else 
+    {
+		if(r.origin.y > 0) 
+        {
 			r.origin.y = 0;
 		}
-		else if(r.origin.y < fullScreenRect.size.height - r.size.height) {
+		else if(r.origin.y < fullScreenRect.size.height - r.size.height) 
+        {
 			r.origin.y = fullScreenRect.size.height - r.size.height;
 		}
 	}
 	self.frame = r;
 }
 
-- (float) getRatio {
+- (float) getRatio 
+{
 	return ratio;
 }
 

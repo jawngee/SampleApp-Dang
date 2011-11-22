@@ -10,7 +10,8 @@
 
 @implementation StyledPageControl
 
-- (void) setCurrentPage:(NSInteger)page {
+- (void) setCurrentPage:(NSInteger)page 
+{
 	[super setCurrentPage:page];
 	
 	NSString* imgActive = [[NSBundle mainBundle] pathForResource:@"pagecontrol-active.png" ofType:nil];
