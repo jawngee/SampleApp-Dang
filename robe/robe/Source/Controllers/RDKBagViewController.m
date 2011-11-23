@@ -6,10 +6,10 @@
 //  Copyright (c) 2011 Natural of Sience University. All rights reserved.
 //
 
-#import "BagViewController.h"
+#import "RDKBagViewController.h"
 #import "CustomTabBarItem.h"
 
-@implementation BagViewController
+@implementation RDKBagViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {

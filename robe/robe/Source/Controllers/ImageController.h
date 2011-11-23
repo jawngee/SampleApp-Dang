@@ -12,11 +12,11 @@
 
 @interface ImageController : UIViewController <UIScrollViewDelegate>
 {
-	CGRect				_frame;
-	int					pageIndex;
+	CGRect _frame;
+	int pageIndex;
 	Boolean				zoomMode;
 	Boolean				maximized;
-	jmImage			*	thumb;
+	jmImage             *thumb;
 	
 	CGPoint				startPoint;
 	CGPoint				lastPoint;
@@ -28,9 +28,9 @@
 	CGAffineTransform	rotateTransform;	
 }
 
-- (id)				initWithThumb:(jmImage*)t:(CGRect)frame;
-- (void)			setPageIndex:(int)value;
-- (void)			clearTouches;
+- (id) initWithThumb:(jmImage*)t:(CGRect)frame;
+- (void)setPageIndex:(int)value;
+- (void) clearTouches;
 - (void)			resetThumb;
 - (Boolean)			getZoomMode;
 - (void)			handleSingleTap:(NSDictionary *)touches;

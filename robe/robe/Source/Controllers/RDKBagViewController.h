@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface BagViewController : UIViewController
+@interface RDKBagViewController : UIViewController
 
 @end

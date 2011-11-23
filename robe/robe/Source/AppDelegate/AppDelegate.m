@@ -11,7 +11,7 @@
 #import "HomeViewController.h"
 #import "CalendarViewController.h"
 #import "ClothesViewController.h"
-#import "BagViewController.h"
+#import "RDKBagViewController.h"
 #import "MapViewController.h"
 
 
@@ -47,7 +47,7 @@
     UIViewController *homeViewController = [[[HomeViewController alloc] initWithNibName:@"HomeViewController" bundle:nil] autorelease];
     UIViewController *calendarViewController = [[[CalendarViewController alloc] initWithNibName:@"CalendarViewController" bundle:nil] autorelease];
     UIViewController *clothesViewController = [[[ClothesViewController alloc] initWithNibName:@"ClothesViewController" bundle:nil] autorelease];
-    UIViewController *bagViewController = [[[BagViewController alloc] initWithNibName:@"BagViewController" bundle:nil] autorelease];
+    UIViewController *bagViewController = [[[RDKBagViewController alloc] initWithNibName:@"BagViewController" bundle:nil] autorelease];
     UIViewController *mapViewController = [[[MapViewController alloc] initWithNibName:@"MapViewController" bundle:nil] autorelease];
     
     /** create home navigation controller */

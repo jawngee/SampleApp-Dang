@@ -8,7 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+/** What is this? */
 @interface HomeViewController : UIViewController <UITabBarDelegate, UITableViewDataSource> {
+    
+    /** What is this */
     IBOutlet UITableView *homeTableView;
 }
 
