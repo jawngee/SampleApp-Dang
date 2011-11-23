@@ -1,28 +1,28 @@
 //
-//  MapViewController.m
+//  ClothesViewController.m
 //  robe
 //
 //  Created by Trung Dang on 11/17/11.
 //  Copyright (c) 2011 Natural of Sience University. All rights reserved.
 //
 
-#import "MapViewController.h"
-#import "CustomTabBarItem.h"
+#import "RDKClothesViewController.h"
+#import "RDKCustomTabBarItem.h"
 
-@implementation MapViewController
+@implementation RDKClothesViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-//        self.tabBarItem.image = [UIImage imageNamed:@"map-icon.png"];
-//        self.tabBarItem.title = [NSString stringWithString:@"店铺信息"];
+//        self.tabBarItem.image = [UIImage imageNamed:@"clothes-icon.png"];
+//        self.tabBarItem.title = [NSString stringWithString:@"产品介绍"];
         
-        CustomTabBarItem *customTabBarItem = [[CustomTabBarItem alloc] initWithTitle:nil image:nil tag:0];
+        RDKCustomTabBarItem *customTabBarItem = [[RDKCustomTabBarItem alloc] initWithTitle:nil image:nil tag:0];
         
-        customTabBarItem.customHighlightedImage = [UIImage imageNamed:@"selected-map-icon.png"];
-        customTabBarItem.customStdImage = [UIImage imageNamed:@"unselected-map-icon.png"];
+        customTabBarItem.customHighlightedImage = [UIImage imageNamed:@"selected-clothes-icon.png"];
+        customTabBarItem.customStdImage = [UIImage imageNamed:@"unselected-clothes-icon.png"];
         
         self.tabBarItem = customTabBarItem;
         

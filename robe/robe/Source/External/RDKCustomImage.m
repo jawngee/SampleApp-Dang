@@ -1,18 +1,18 @@
 //
-//  jmImage.m
+//  RDKCustomImage.m
 //  jmDiap
 //
-//  Created by Julien MEYER on 10/07/10.
-//  Copyright 2010 jmApp.com All rights reserved.
+//  Created by Trung Dang on 11/17/11.
+//  Copyright (c) 2011 Natural of Sience University. All rights reserved.
 //
 
-#import "jmImage.h"
+#import "RDKCustomImage.h"
 
 
-@implementation jmImage
+@implementation RDKCustomImage
 
 
-- (id) initWithName:(NSString*)imagename 
+-(id)initWithName:(NSString*)imagename 
 {
 	if(self = [super initWithImage:[UIImage imageNamed:imagename]])
 	{
@@ -24,7 +24,7 @@
     return self;
 }
 
-- (void) scaleToFitRect:(CGRect)rect
+-(void)scaleToFitRect:(CGRect)rect
 {
 	CGFloat newwidth, newheight;
 	if(ratio >= 1.0) 
@@ -46,7 +46,7 @@
     self.frame = CGRectMake(0, 0, newwidth, newheight);
 }
 
-- (void) centerImage
+-(void)centerImage
 {
 //	CGRect fullScreenRect = [[UIScreen mainScreen] applicationFrame];
 //	CGFloat xoffset = (fullScreenRect.size.width - self.frame.size.width) / 2.0;
@@ -55,7 +55,7 @@
     self.frame = CGRectMake(0, 0, self.frame.size.width, self.frame.size.height);
 }
 
-- (void) scaleToOriginalRect
+-(void)scaleToOriginalRect
 {
 //	CGRect fullScreenRect = [[UIScreen mainScreen] applicationFrame];
 //	CGFloat xoffset = (fullScreenRect.size.width - originalRect.size.width) / 2.0;
@@ -64,7 +64,7 @@
     self.frame = CGRectMake(0, 0, originalRect.size.width, originalRect.size.height);
 }
 
-- (void) setOffset:(float)xoff:(float)yoff
+-(void)setOffset:(float)xoff:(float)yoff
 {
 	CGRect r = self.frame;
 	r.origin.x = xoff;
@@ -72,7 +72,7 @@
 	self.frame = r;
 }
 
-- (void) addOffset:(float)xoff:(float)yoff
+-(void)addOffset:(float)xoff:(float)yoff
 {
 	CGRect r = self.frame;
 	r.origin.x += xoff;
@@ -81,7 +81,7 @@
 	[self boundOffset];
 }
 
-- (void) boundOffset
+-(void)boundOffset
 {
 	CGRect r = self.frame;
 	CGRect fullScreenRect = [[UIScreen mainScreen] applicationFrame];
@@ -132,12 +132,12 @@
 	self.frame = r;
 }
 
-- (float) getRatio 
+-(float)getRatio 
 {
 	return ratio;
 }
 
-- (void) dealloc 
+-(void)dealloc 
 {
     [super dealloc];
 }

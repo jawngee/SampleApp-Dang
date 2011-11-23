@@ -6,12 +6,12 @@
 //  Copyright (c) 2011 Natural of Sience University. All rights reserved.
 //
 
-#import "CalendarViewController.h"
-#import "CustomTabBarItem.h"
+#import "RDKCalendarViewController.h"
+#import "RDKCustomTabBarItem.h"
 
-@implementation CalendarViewController
+@implementation RDKCalendarViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+-(id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
@@ -19,7 +19,7 @@
 //        self.tabBarItem.image = [UIImage imageNamed:@"calendar-icon.png"];
 //        self.tabBarItem.title = [NSString stringWithString:@"2012春夏"];
         
-        CustomTabBarItem *customTabBarItem = [[CustomTabBarItem alloc] initWithTitle:nil image:nil tag:0];
+        RDKCustomTabBarItem *customTabBarItem = [[RDKCustomTabBarItem alloc] initWithTitle:nil image:nil tag:0];
         
         customTabBarItem.customHighlightedImage = [UIImage imageNamed:@"selected-calendar-icon.png"];
         customTabBarItem.customStdImage = [UIImage imageNamed:@"unselected-calendar-icon.png"];
@@ -33,7 +33,7 @@
     return self;
 }
 
-- (void)didReceiveMemoryWarning
+-(void)didReceiveMemoryWarning
 {
     // Releases the view if it doesn't have a superview.
     [super didReceiveMemoryWarning];
@@ -41,37 +41,47 @@
     // Release any cached data, images, etc that aren't in use.
 }
 
+
+#pragma mark - function class
+
+- (void)refresh:(id)sender
+{
+}
+
 #pragma mark - View lifecycle
 
-- (void)viewDidLoad
+-(void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
     
-    UIImageView *refeshImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"refresh-button.png"]];
-	UIBarButtonItem *refreshBarButton = [[UIBarButtonItem alloc] initWithCustomView:refeshImageView];
-
+    /** Do any additional setup after loading the view from its nib. */
+    UIImage *refreshImage = [UIImage imageNamed:@"refresh-button.png"];
+    UIButton *refreshButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [refreshButton setImage:refreshImage forState:UIControlStateNormal];
+    [refreshButton setFrame:CGRectMake(0.0, 0.0, refreshImage.size.width, refreshImage.size.height)];
+    [refreshButton addTarget:self action:@selector(refresh:) forControlEvents:UIControlEventTouchUpInside];    
+    [refreshButton setContentEdgeInsets:UIEdgeInsetsMake(0, -8, 0, 8)];
+    
+    UIBarButtonItem *refreshBarButton = [[UIBarButtonItem alloc] initWithCustomView:refreshButton];
     self.navigationItem.rightBarButtonItem = refreshBarButton;
     
-    //build user interface
+    /** build user interface */
     pageIndex = 0;			
     zoomMode = NO;
     
-    // fill images
+    /** fill images */
     contArray = [[NSMutableArray alloc] init];
     imagesArray = [[NSMutableArray alloc] init];
     
-    [self addImageFromName:@"1.jpg"];
-    [self addImageFromName:@"2.jpg"];
-    [self addImageFromName:@"3.jpg"];
+    [self addImageFromName:@"calendar-image-1.jpg"];
+    [self addImageFromName:@"calendar-image-2.jpg"];
+    [self addImageFromName:@"calendar-image-3.jpg"];
     
+    /** set total iamges of list */
     maxPages = [imagesArray count];
-    
-//    UIView * mainview = [[UIView alloc] initWithFrame:CGRectMake(0, 100, 320, 460)];
-//    mainview.backgroundColor = [UIColor clearColor];
-    
-    // a page is the width of the scroll view
-    scrollView = [[CustomScrollView alloc] initWithFrame:CGRectMake(0, 0, 320, 366)];
+        
+    /** a page is the width of the scroll view */
+    scrollView = [[RDKCustomScrollView alloc] initWithFrame:CGRectMake(0, 0, 320, 367)];
     scrollView.maindelegate = self;
     scrollView.pagingEnabled = YES;
     scrollView.contentSize = CGSizeMake(scrollView.frame.size.width * maxPages, scrollView.frame.size.height);
@@ -84,13 +94,13 @@
     [self.view addSubview:scrollView];
     
     for(int i=0 ; i<[imagesArray count] ; i++) {
-        jmImage * thumb = [imagesArray objectAtIndex:i];
-        ImageController * imgCont = [[ImageController alloc] initWithThumb:thumb:CGRectMake(0, 0, 320, 366)];
+        RDKCustomImage * thumb = [imagesArray objectAtIndex:i];
+        RDKImageController * imgCont = [[RDKImageController alloc] initWithThumb:thumb:CGRectMake(0, 0, 320, 367)];
         [imgCont setPageIndex:i];
         imgCont.view.userInteractionEnabled = NO; //
         [contArray addObject:imgCont];
         
-        // add the controller's view to the scroll view
+        /** add the controller's view to the scroll view */
         if (nil == imgCont.view.superview) {
             CGRect frame = scrollView.frame;
             frame.origin.x = frame.size.width * i;
@@ -100,7 +110,7 @@
         }
     }		
     
-    pageControl = [[StyledPageControl alloc] init];
+    pageControl = [[RDKStyledPageControl alloc] init];
     pageControl.numberOfPages = maxPages;
     pageControl.currentPage = 0;
     pageControl.hidesForSinglePage = NO;
@@ -109,25 +119,22 @@
     [pageControl addTarget:self action:@selector(changePage:)forControlEvents:UIControlEventValueChanged];
     [self.view addSubview:pageControl];
     
-//    self.view = mainview;
-//    [mainview release];		
-
 }
 
-- (void)viewDidUnload
+-(void)viewDidUnload
 {
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
 }
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
+-(BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     // Return YES for supported orientations
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
-- (void) changePage:(id)sender
+-(void)changePage:(id)sender
 {
 	int page = (int)pageControl.currentPage;
 	[self setCurrentPage:page];
@@ -138,73 +145,82 @@
 	[scrollView scrollRectToVisible:frame animated:YES];
 }
 
-- (void) setCurrentPage:(NSUInteger)page 
+-(void)setCurrentPage:(NSUInteger)page 
 {
-	if (page == pageIndex)
+	if (page == pageIndex) 
+    {
 		return;
-	NSLog(@"currentPage:%d", page);
+    }
+    
 	pageIndex = page;
 	pageControl.currentPage = page;
 }
 
-- (jmImage*) getCurrentImage
+-(RDKCustomImage *)getCurrentImage
 {
 	return [imagesArray objectAtIndex:pageIndex];
 }
 
-- (ImageController*) getCurrentController
+- (RDKImageController *)getCurrentController
 {
 	return [contArray objectAtIndex:pageIndex];
 }
 
-- (void) addImageFromName:(NSString*)imagename
+-(void)addImageFromName:(NSString *)imagename
 {
-	jmImage * thumb = [[jmImage alloc] initWithName:imagename];
+	RDKCustomImage *thumb = [[RDKCustomImage alloc] initWithName:imagename];
 	[imagesArray addObject:thumb];	
 }
 
 
+/** -------- Touch Events from CustomScrollView delegate -------------------- */
 
-// -------- Touch Events from CustomScrollView delegate --------
-
-- (void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event 
+-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event 
 {
 	UITouch *aTouch = [touches anyObject];
+    
     if (aTouch.tapCount == 2) {
 		[NSObject cancelPreviousPerformRequestsWithTarget:self];
 	}	
+    
 	if(zoomMode == YES) {
-		ImageController * imagecont = [self getCurrentController];
+		RDKImageController * imagecont = [self getCurrentController];
 		[imagecont touchesBegan:touches withEvent:event];
 	}
 }
 
-- (void) touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event 
+-(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event 
 {
 	UITouch *theTouch = [touches anyObject];
 	//CGPoint currentTouchPosition = [theTouch locationInView:self.view];
-	NSDictionary *touchLoc = [NSDictionary dictionaryWithObject:
-							  [NSValue valueWithCGPoint:[theTouch locationInView:self.view]] forKey:@"location"];
+	NSDictionary *touchLoc = [NSDictionary dictionaryWithObject:[NSValue valueWithCGPoint:[theTouch locationInView:self.view]] 
+                                                         forKey:@"location"];
 	
-    if (theTouch.tapCount == 1) {
+    if (theTouch.tapCount == 1) 
+    {
 		[self performSelector:@selector(handleSingleTap:) withObject:touchLoc afterDelay:0.3];
 	} 
-	else if (theTouch.tapCount == 2) {
+	else
+    { 
+        if (theTouch.tapCount == 2) 
+        {
 //		[self performSelector:@selector(handleDoubleTap:) withObject:touchLoc afterDelay:0.01];
+        }
 	}	
 	
-	if(zoomMode == YES) {
-		ImageController * imagecont = [self getCurrentController];
+	if(zoomMode == YES) 
+    {
+		RDKImageController *imagecont = [self getCurrentController];
 		[imagecont touchesEnded:touches withEvent:event];
 	}
 }
 
-- (void) touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event 
+-(void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event 
 {
-	//NSLog(@"touchesMoved");
 	NSSet *allTouches = [event allTouches];
 	NSArray *t = [allTouches allObjects];
 	NSInteger numberOfTouches = [t count];
+    
 	switch(numberOfTouches)
 	{					
 		case 2:
@@ -214,41 +230,42 @@
             break;
 	}
 	
-	if(zoomMode == YES) {
-		ImageController * imagecont = [self getCurrentController];
+	if(zoomMode == YES) 
+    {
+		RDKImageController * imagecont = [self getCurrentController];
 		[imagecont touchesMoved:touches withEvent:event];
 	}
 }
 
-- (void) touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event 
+-(void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event 
 {
-	NSLog(@"touchesCancelled");
 	//[self clearTouches];	
 	//[scrollView touchesCancelled:touches withEvent:event];
 	if(zoomMode == YES) {
-		ImageController * imagecont = [self getCurrentController];
+		RDKImageController * imagecont = [self getCurrentController];
 		[imagecont touchesCancelled:touches withEvent:event];
 	}
 }
 
-- (void) handleSingleTap:(NSDictionary *)touches 
+-(void)handleSingleTap:(NSDictionary *)touches 
 {
-	NSLog(@"simpleTap");
 }
 
-- (void) handleDoubleTap:(NSDictionary *)touches 
+-(void)handleDoubleTap:(NSDictionary *)touches 
 {
-	NSLog(@"doubleTap");
-	ImageController * imagecont = [self getCurrentController];
-	[imagecont handleDoubleTap:touches]; //
+	RDKImageController *imagecont = [self getCurrentController];
+	[imagecont handleDoubleTap:touches];
+    
 	zoomMode = [imagecont getZoomMode];
 	[self setZoomMode:zoomMode];
 }
 
-- (void) setZoomMode:(Boolean)status
+-(void)setZoomMode:(Boolean)status
 {
 	zoomMode = status;
-	if(zoomMode) {
+    
+	if(zoomMode)
+    {
 		pageControl.hidden = YES;
 		pageControl.userInteractionEnabled = NO;
 		scrollView.pagingEnabled = NO;
@@ -256,7 +273,8 @@
 		scrollView.bouncesZoom = YES;
 		scrollView.scrollEnabled = NO;
 	}
-	else {
+	else 
+    {
 		pageControl.hidden = NO;
 		pageControl.userInteractionEnabled = YES;
 		scrollView.pagingEnabled = YES;
@@ -267,52 +285,57 @@
 
 // -------- delegates UIScrollView  ---------
 
-- (UIView *) viewForZoomingInScrollView:(UIScrollView *)scrollView {
-	NSLog(@"viewForZoomingInScrollView");
-	if(zoomMode == NO) {
+-(UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView
+{
+	if(zoomMode == NO) 
+    {
 		[self setZoomMode:YES];
 	}
-	ImageController * imagecont = [self getCurrentController];
+    
+	RDKImageController *imagecont = [self getCurrentController];
 	return imagecont.view;
 }
 
-- (void) scrollViewWillBeginZooming:(UIScrollView *)scrollView withView:(UIView *)view { //__OSX_AVAILABLE_STARTING(__MAC_NA,__IPHONE_3_2); // called before the scroll view begins zooming its content
-	NSLog(@"scrollViewWillBeginZooming");
+-(void)scrollViewWillBeginZooming:(UIScrollView *)scrollView withView:(UIView *)view 
+{ 
+    /** __OSX_AVAILABLE_STARTING(__MAC_NA,__IPHONE_3_2); */
+    /** called before the scroll view begins zooming its content */
 }
 
-- (void) scrollViewDidEndZooming:(UIScrollView *)scrollView withView:(UIView *)view atScale:(float)scale {
-	NSLog(@"scrollViewDidEndZooming");
+-(void)scrollViewDidEndZooming:(UIScrollView *)scrollView withView:(UIView *)view atScale:(float)scale 
+{
 }
 
-- (void) scrollViewDidScroll:(UIScrollView *)sender {
-    // We don't want a "feedback loop" between the UIPageControl and the scroll delegate in
-    // which a scroll event generated from the user hitting the page control triggers updates from
-    // the delegate method. We use a boolean to disable the delegate logic when the page control is used.
-	if (pageControlUsed) {
-        // do nothing - the scroll was initiated from the page control, not the user dragging
+-(void)scrollViewDidScroll:(UIScrollView *)sender 
+{
+    /** We don't want a "feedback loop" between the UIPageControl and the scroll delegate in */
+    /** which a scroll event generated from the user hitting the page control triggers updates from */
+    /** the delegate method. We use a boolean to disable the delegate logic when the page control is used. */
+	if (pageControlUsed) 
+    {
+        /** do nothing - the scroll was initiated from the page control, not the user dragging */
         return;
     }
 	
-	if(zoomMode == NO) {
+	if(zoomMode == NO) 
+    {
 		int p = roundf(scrollView.contentOffset.x / 320);
 		[self setCurrentPage:p];		
 	}
 	
-    // Switch the indicator when more than 50% of the previous/next page is visible
+    /** Switch the indicator when more than 50% of the previous/next page is visible */
     CGFloat pageWidth = scrollView.frame.size.width;
     int page = floor((scrollView.contentOffset.x - pageWidth / 2) / pageWidth) + 1;
     pageControl.currentPage = page;
 }
 
-// At the begin of scroll dragging, reset the boolean used when scrolls originate from the UIPageControl
-- (void) scrollViewWillBeginDragging:(UIScrollView *)scrollView {
-	NSLog(@"scrollViewWillBeginDragging");
+/** At the begin of scroll dragging, reset the boolean used when scrolls originate from the UIPageControl */
+-(void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
     pageControlUsed = NO;
 }
 
-// At the end of scroll animation, reset the boolean used when scrolls originate from the UIPageControl
-- (void) scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
-	NSLog(@"scrollViewDidEndDecelerating");
+/** At the end of scroll animation, reset the boolean used when scrolls originate from the UIPageControl */
+-(void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
     pageControlUsed = NO;
 }
 

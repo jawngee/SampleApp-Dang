@@ -7,45 +7,37 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		620AF8A0147CD32800D2DA04 /* selected-cell-background.png in Resources */ = {isa = PBXBuildFile; fileRef = 620AF89E147CD32700D2DA04 /* selected-cell-background.png */; };
+		620AF8A1147CD32800D2DA04 /* selected-cell-background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 620AF89F147CD32700D2DA04 /* selected-cell-background@2x.png */; };
+		620AF8A3147CDA9C00D2DA04 /* RDKCalendarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 620AF8A2147CDA9C00D2DA04 /* RDKCalendarViewController.m */; };
+		620AF8A5147CDB6C00D2DA04 /* RDKMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 620AF8A4147CDB6B00D2DA04 /* RDKMapViewController.m */; };
+		620AF8A8147CEE4C00D2DA04 /* pagecontrol-active.png in Resources */ = {isa = PBXBuildFile; fileRef = 620AF8A7147CEE4A00D2DA04 /* pagecontrol-active.png */; };
 		6269F642147B8B3D008AFE51 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6269F5EE147B8B3D008AFE51 /* AppDelegate.m */; };
 		6269F643147B8B3D008AFE51 /* RDKBagViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6269F5F2147B8B3D008AFE51 /* RDKBagViewController.m */; };
 		6269F644147B8B3D008AFE51 /* RDKBagViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6269F5F3147B8B3D008AFE51 /* RDKBagViewController.xib */; };
-		6269F645147B8B3D008AFE51 /* CalendarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6269F5F5147B8B3D008AFE51 /* CalendarViewController.m */; };
-		6269F646147B8B3D008AFE51 /* CalendarViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6269F5F6147B8B3D008AFE51 /* CalendarViewController.xib */; };
-		6269F647147B8B3D008AFE51 /* ClothesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6269F5F8147B8B3D008AFE51 /* ClothesViewController.m */; };
-		6269F648147B8B3D008AFE51 /* ClothesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6269F5F9147B8B3D008AFE51 /* ClothesViewController.xib */; };
-		6269F649147B8B3D008AFE51 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6269F5FB147B8B3D008AFE51 /* HomeViewController.m */; };
-		6269F64A147B8B3D008AFE51 /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6269F5FC147B8B3D008AFE51 /* HomeViewController.xib */; };
-		6269F64B147B8B3D008AFE51 /* ImageController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6269F5FE147B8B3D008AFE51 /* ImageController.m */; };
-		6269F64C147B8B3D008AFE51 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6269F600147B8B3D008AFE51 /* MapViewController.m */; };
-		6269F64D147B8B3D008AFE51 /* MapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6269F601147B8B3D008AFE51 /* MapViewController.xib */; };
-		6269F64E147B8B3D008AFE51 /* StyledPageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 6269F603147B8B3D008AFE51 /* StyledPageControl.m */; };
-		6269F64F147B8B3D008AFE51 /* CustomTabBarItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 6269F606147B8B3D008AFE51 /* CustomTabBarItem.m */; };
-		6269F650147B8B3D008AFE51 /* jmImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 6269F608147B8B3D008AFE51 /* jmImage.m */; };
-		6269F651147B8B3D008AFE51 /* CustomScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6269F60C147B8B3D008AFE51 /* CustomScrollView.m */; };
-		6269F652147B8B3D008AFE51 /* HomeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6269F60E147B8B3D008AFE51 /* HomeTableViewCell.m */; };
+		6269F646147B8B3D008AFE51 /* RDKCalendarViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6269F5F6147B8B3D008AFE51 /* RDKCalendarViewController.xib */; };
+		6269F647147B8B3D008AFE51 /* RDKClothesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6269F5F8147B8B3D008AFE51 /* RDKClothesViewController.m */; };
+		6269F648147B8B3D008AFE51 /* RDKClothesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6269F5F9147B8B3D008AFE51 /* RDKClothesViewController.xib */; };
+		6269F649147B8B3D008AFE51 /* RDKHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6269F5FB147B8B3D008AFE51 /* RDKHomeViewController.m */; };
+		6269F64A147B8B3D008AFE51 /* RDKHomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6269F5FC147B8B3D008AFE51 /* RDKHomeViewController.xib */; };
+		6269F64B147B8B3D008AFE51 /* RDKImageController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6269F5FE147B8B3D008AFE51 /* RDKImageController.m */; };
+		6269F64D147B8B3D008AFE51 /* RDKMapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6269F601147B8B3D008AFE51 /* RDKMapViewController.xib */; };
+		6269F64E147B8B3D008AFE51 /* RDKStyledPageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 6269F603147B8B3D008AFE51 /* RDKStyledPageControl.m */; };
+		6269F64F147B8B3D008AFE51 /* RDKCustomTabBarItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 6269F606147B8B3D008AFE51 /* RDKCustomTabBarItem.m */; };
+		6269F650147B8B3D008AFE51 /* RDKCustomImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 6269F608147B8B3D008AFE51 /* RDKCustomImage.m */; };
+		6269F651147B8B3D008AFE51 /* RDKCustomScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6269F60C147B8B3D008AFE51 /* RDKCustomScrollView.m */; };
+		6269F652147B8B3D008AFE51 /* RDKHomeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6269F60E147B8B3D008AFE51 /* RDKHomeTableViewCell.m */; };
 		6269F659147B8C51008AFE51 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6269F654147B8C51008AFE51 /* InfoPlist.strings */; };
 		6269F65A147B8C51008AFE51 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6269F656147B8C51008AFE51 /* main.m */; };
 		6269F65B147B8C51008AFE51 /* robe-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6269F657147B8C51008AFE51 /* robe-Info.plist */; };
 		62C7101B14750296003DF763 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 62C7101A14750296003DF763 /* UIKit.framework */; };
 		62C7101D14750296003DF763 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 62C7101C14750296003DF763 /* Foundation.framework */; };
 		62C7101F14750296003DF763 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 62C7101E14750296003DF763 /* CoreGraphics.framework */; };
-		FFAC22D8147CAE5800FA37B8 /* 1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FFAC22A6147CAE5800FA37B8 /* 1.jpg */; };
-		FFAC22D9147CAE5800FA37B8 /* 2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FFAC22A7147CAE5800FA37B8 /* 2.jpg */; };
-		FFAC22DA147CAE5800FA37B8 /* 3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FFAC22A8147CAE5800FA37B8 /* 3.jpg */; };
-		FFAC22DB147CAE5800FA37B8 /* bag-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = FFAC22AA147CAE5800FA37B8 /* bag-icon.png */; };
-		FFAC22DC147CAE5800FA37B8 /* bag-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FFAC22AB147CAE5800FA37B8 /* bag-icon@2x.png */; };
+		FFAC22D8147CAE5800FA37B8 /* calendar-image-1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FFAC22A6147CAE5800FA37B8 /* calendar-image-1.jpg */; };
+		FFAC22D9147CAE5800FA37B8 /* calendar-image-2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FFAC22A7147CAE5800FA37B8 /* calendar-image-2.jpg */; };
+		FFAC22DA147CAE5800FA37B8 /* calendar-image-3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FFAC22A8147CAE5800FA37B8 /* calendar-image-3.jpg */; };
 		FFAC22DD147CAE5800FA37B8 /* bottombar-background.png in Resources */ = {isa = PBXBuildFile; fileRef = FFAC22AC147CAE5800FA37B8 /* bottombar-background.png */; };
 		FFAC22DE147CAE5800FA37B8 /* bottombar-background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FFAC22AD147CAE5800FA37B8 /* bottombar-background@2x.png */; };
-		FFAC22DF147CAE5800FA37B8 /* calendar-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = FFAC22AE147CAE5800FA37B8 /* calendar-icon.png */; };
-		FFAC22E0147CAE5800FA37B8 /* calendar-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FFAC22AF147CAE5800FA37B8 /* calendar-icon@2x.png */; };
-		FFAC22E1147CAE5800FA37B8 /* clothes-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = FFAC22B0147CAE5800FA37B8 /* clothes-icon.png */; };
-		FFAC22E2147CAE5800FA37B8 /* clothes-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FFAC22B1147CAE5800FA37B8 /* clothes-icon@2x.png */; };
-		FFAC22E3147CAE5800FA37B8 /* home-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = FFAC22B2147CAE5800FA37B8 /* home-icon.png */; };
-		FFAC22E4147CAE5800FA37B8 /* home-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FFAC22B3147CAE5800FA37B8 /* home-icon@2x.png */; };
-		FFAC22E5147CAE5800FA37B8 /* map-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = FFAC22B4147CAE5800FA37B8 /* map-icon.png */; };
-		FFAC22E6147CAE5800FA37B8 /* map-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FFAC22B5147CAE5800FA37B8 /* map-icon@2x.png */; };
-		FFAC22E7147CAE5800FA37B8 /* pagecontrol-active.png in Resources */ = {isa = PBXBuildFile; fileRef = FFAC22B6147CAE5800FA37B8 /* pagecontrol-active.png */; };
 		FFAC22E8147CAE5800FA37B8 /* pagecontrol-unactive.png in Resources */ = {isa = PBXBuildFile; fileRef = FFAC22B7147CAE5800FA37B8 /* pagecontrol-unactive.png */; };
 		FFAC22E9147CAE5800FA37B8 /* refresh-button.png in Resources */ = {isa = PBXBuildFile; fileRef = FFAC22B8147CAE5800FA37B8 /* refresh-button.png */; };
 		FFAC22EA147CAE5800FA37B8 /* refresh-button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FFAC22B9147CAE5800FA37B8 /* refresh-button@2x.png */; };
@@ -61,8 +53,6 @@
 		FFAC22F4147CAE5800FA37B8 /* selected-map-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FFAC22C3147CAE5800FA37B8 /* selected-map-icon@2x.png */; };
 		FFAC22F5147CAE5800FA37B8 /* topbar-background-image.png in Resources */ = {isa = PBXBuildFile; fileRef = FFAC22C4147CAE5800FA37B8 /* topbar-background-image.png */; };
 		FFAC22F6147CAE5800FA37B8 /* topbar-background-image@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FFAC22C5147CAE5800FA37B8 /* topbar-background-image@2x.png */; };
-		FFAC22F7147CAE5800FA37B8 /* topbar-background.png in Resources */ = {isa = PBXBuildFile; fileRef = FFAC22C6147CAE5800FA37B8 /* topbar-background.png */; };
-		FFAC22F8147CAE5800FA37B8 /* topbar-background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FFAC22C7147CAE5800FA37B8 /* topbar-background@2x.png */; };
 		FFAC22F9147CAE5800FA37B8 /* unselected-bag-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = FFAC22C8147CAE5800FA37B8 /* unselected-bag-icon.png */; };
 		FFAC22FA147CAE5800FA37B8 /* unselected-bag-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FFAC22C9147CAE5800FA37B8 /* unselected-bag-icon@2x.png */; };
 		FFAC22FB147CAE5800FA37B8 /* unselected-calendar-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = FFAC22CA147CAE5800FA37B8 /* unselected-calendar-icon.png */; };
@@ -81,35 +71,38 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		620AF89E147CD32700D2DA04 /* selected-cell-background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "selected-cell-background.png"; sourceTree = "<group>"; };
+		620AF89F147CD32700D2DA04 /* selected-cell-background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "selected-cell-background@2x.png"; sourceTree = "<group>"; };
+		620AF8A2147CDA9C00D2DA04 /* RDKCalendarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RDKCalendarViewController.m; sourceTree = "<group>"; };
+		620AF8A4147CDB6B00D2DA04 /* RDKMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RDKMapViewController.m; sourceTree = "<group>"; };
+		620AF8A6147CDCA500D2DA04 /* RDKCustomScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RDKCustomScrollView.h; sourceTree = "<group>"; };
+		620AF8A7147CEE4A00D2DA04 /* pagecontrol-active.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pagecontrol-active.png"; sourceTree = "<group>"; };
 		6269F5ED147B8B3D008AFE51 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		6269F5EE147B8B3D008AFE51 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		6269F5F1147B8B3D008AFE51 /* RDKBagViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; path = RDKBagViewController.h; sourceTree = "<group>"; };
+		6269F5F1147B8B3D008AFE51 /* RDKBagViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RDKBagViewController.h; sourceTree = "<group>"; };
 		6269F5F2147B8B3D008AFE51 /* RDKBagViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RDKBagViewController.m; sourceTree = "<group>"; };
 		6269F5F3147B8B3D008AFE51 /* RDKBagViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RDKBagViewController.xib; sourceTree = "<group>"; };
-		6269F5F4147B8B3D008AFE51 /* CalendarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalendarViewController.h; sourceTree = "<group>"; };
-		6269F5F5147B8B3D008AFE51 /* CalendarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalendarViewController.m; sourceTree = "<group>"; };
-		6269F5F6147B8B3D008AFE51 /* CalendarViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CalendarViewController.xib; sourceTree = "<group>"; };
-		6269F5F7147B8B3D008AFE51 /* ClothesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClothesViewController.h; sourceTree = "<group>"; };
-		6269F5F8147B8B3D008AFE51 /* ClothesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClothesViewController.m; sourceTree = "<group>"; };
-		6269F5F9147B8B3D008AFE51 /* ClothesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ClothesViewController.xib; sourceTree = "<group>"; };
-		6269F5FA147B8B3D008AFE51 /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
-		6269F5FB147B8B3D008AFE51 /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
-		6269F5FC147B8B3D008AFE51 /* HomeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomeViewController.xib; sourceTree = "<group>"; };
-		6269F5FD147B8B3D008AFE51 /* ImageController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageController.h; sourceTree = "<group>"; };
-		6269F5FE147B8B3D008AFE51 /* ImageController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageController.m; sourceTree = "<group>"; };
-		6269F5FF147B8B3D008AFE51 /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
-		6269F600147B8B3D008AFE51 /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
-		6269F601147B8B3D008AFE51 /* MapViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MapViewController.xib; sourceTree = "<group>"; };
-		6269F602147B8B3D008AFE51 /* StyledPageControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StyledPageControl.h; sourceTree = "<group>"; };
-		6269F603147B8B3D008AFE51 /* StyledPageControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StyledPageControl.m; sourceTree = "<group>"; };
-		6269F605147B8B3D008AFE51 /* CustomTabBarItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomTabBarItem.h; sourceTree = "<group>"; };
-		6269F606147B8B3D008AFE51 /* CustomTabBarItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomTabBarItem.m; sourceTree = "<group>"; };
-		6269F607147B8B3D008AFE51 /* jmImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = jmImage.h; sourceTree = "<group>"; };
-		6269F608147B8B3D008AFE51 /* jmImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = jmImage.m; sourceTree = "<group>"; };
-		6269F60B147B8B3D008AFE51 /* CustomScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomScrollView.h; sourceTree = "<group>"; };
-		6269F60C147B8B3D008AFE51 /* CustomScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomScrollView.m; sourceTree = "<group>"; };
-		6269F60D147B8B3D008AFE51 /* HomeTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeTableViewCell.h; sourceTree = "<group>"; };
-		6269F60E147B8B3D008AFE51 /* HomeTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeTableViewCell.m; sourceTree = "<group>"; };
+		6269F5F4147B8B3D008AFE51 /* RDKCalendarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RDKCalendarViewController.h; sourceTree = "<group>"; };
+		6269F5F6147B8B3D008AFE51 /* RDKCalendarViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RDKCalendarViewController.xib; sourceTree = "<group>"; };
+		6269F5F7147B8B3D008AFE51 /* RDKClothesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RDKClothesViewController.h; sourceTree = "<group>"; };
+		6269F5F8147B8B3D008AFE51 /* RDKClothesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RDKClothesViewController.m; sourceTree = "<group>"; };
+		6269F5F9147B8B3D008AFE51 /* RDKClothesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RDKClothesViewController.xib; sourceTree = "<group>"; };
+		6269F5FA147B8B3D008AFE51 /* RDKHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RDKHomeViewController.h; sourceTree = "<group>"; };
+		6269F5FB147B8B3D008AFE51 /* RDKHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RDKHomeViewController.m; sourceTree = "<group>"; };
+		6269F5FC147B8B3D008AFE51 /* RDKHomeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RDKHomeViewController.xib; sourceTree = "<group>"; };
+		6269F5FD147B8B3D008AFE51 /* RDKImageController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RDKImageController.h; sourceTree = "<group>"; };
+		6269F5FE147B8B3D008AFE51 /* RDKImageController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RDKImageController.m; sourceTree = "<group>"; };
+		6269F5FF147B8B3D008AFE51 /* RDKMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RDKMapViewController.h; sourceTree = "<group>"; };
+		6269F601147B8B3D008AFE51 /* RDKMapViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RDKMapViewController.xib; sourceTree = "<group>"; };
+		6269F602147B8B3D008AFE51 /* RDKStyledPageControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RDKStyledPageControl.h; sourceTree = "<group>"; };
+		6269F603147B8B3D008AFE51 /* RDKStyledPageControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RDKStyledPageControl.m; sourceTree = "<group>"; };
+		6269F605147B8B3D008AFE51 /* RDKCustomTabBarItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RDKCustomTabBarItem.h; sourceTree = "<group>"; };
+		6269F606147B8B3D008AFE51 /* RDKCustomTabBarItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RDKCustomTabBarItem.m; sourceTree = "<group>"; };
+		6269F607147B8B3D008AFE51 /* RDKCustomImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RDKCustomImage.h; sourceTree = "<group>"; };
+		6269F608147B8B3D008AFE51 /* RDKCustomImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RDKCustomImage.m; sourceTree = "<group>"; };
+		6269F60C147B8B3D008AFE51 /* RDKCustomScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RDKCustomScrollView.m; sourceTree = "<group>"; };
+		6269F60D147B8B3D008AFE51 /* RDKHomeTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RDKHomeTableViewCell.h; sourceTree = "<group>"; };
+		6269F60E147B8B3D008AFE51 /* RDKHomeTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RDKHomeTableViewCell.m; sourceTree = "<group>"; };
 		6269F655147B8C51008AFE51 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = InfoPlist.strings; sourceTree = "<group>"; };
 		6269F656147B8C51008AFE51 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		6269F657147B8C51008AFE51 /* robe-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "robe-Info.plist"; sourceTree = "<group>"; };
@@ -118,22 +111,11 @@
 		62C7101A14750296003DF763 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		62C7101C14750296003DF763 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		62C7101E14750296003DF763 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		FFAC22A6147CAE5800FA37B8 /* 1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 1.jpg; sourceTree = "<group>"; };
-		FFAC22A7147CAE5800FA37B8 /* 2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 2.jpg; sourceTree = "<group>"; };
-		FFAC22A8147CAE5800FA37B8 /* 3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 3.jpg; sourceTree = "<group>"; };
-		FFAC22AA147CAE5800FA37B8 /* bag-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bag-icon.png"; sourceTree = "<group>"; };
-		FFAC22AB147CAE5800FA37B8 /* bag-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bag-icon@2x.png"; sourceTree = "<group>"; };
+		FFAC22A6147CAE5800FA37B8 /* calendar-image-1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "calendar-image-1.jpg"; sourceTree = "<group>"; };
+		FFAC22A7147CAE5800FA37B8 /* calendar-image-2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "calendar-image-2.jpg"; sourceTree = "<group>"; };
+		FFAC22A8147CAE5800FA37B8 /* calendar-image-3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "calendar-image-3.jpg"; sourceTree = "<group>"; };
 		FFAC22AC147CAE5800FA37B8 /* bottombar-background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bottombar-background.png"; sourceTree = "<group>"; };
 		FFAC22AD147CAE5800FA37B8 /* bottombar-background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bottombar-background@2x.png"; sourceTree = "<group>"; };
-		FFAC22AE147CAE5800FA37B8 /* calendar-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "calendar-icon.png"; sourceTree = "<group>"; };
-		FFAC22AF147CAE5800FA37B8 /* calendar-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "calendar-icon@2x.png"; sourceTree = "<group>"; };
-		FFAC22B0147CAE5800FA37B8 /* clothes-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "clothes-icon.png"; sourceTree = "<group>"; };
-		FFAC22B1147CAE5800FA37B8 /* clothes-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "clothes-icon@2x.png"; sourceTree = "<group>"; };
-		FFAC22B2147CAE5800FA37B8 /* home-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "home-icon.png"; sourceTree = "<group>"; };
-		FFAC22B3147CAE5800FA37B8 /* home-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "home-icon@2x.png"; sourceTree = "<group>"; };
-		FFAC22B4147CAE5800FA37B8 /* map-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "map-icon.png"; sourceTree = "<group>"; };
-		FFAC22B5147CAE5800FA37B8 /* map-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "map-icon@2x.png"; sourceTree = "<group>"; };
-		FFAC22B6147CAE5800FA37B8 /* pagecontrol-active.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pagecontrol-active.png"; sourceTree = "<group>"; };
 		FFAC22B7147CAE5800FA37B8 /* pagecontrol-unactive.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pagecontrol-unactive.png"; sourceTree = "<group>"; };
 		FFAC22B8147CAE5800FA37B8 /* refresh-button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "refresh-button.png"; sourceTree = "<group>"; };
 		FFAC22B9147CAE5800FA37B8 /* refresh-button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "refresh-button@2x.png"; sourceTree = "<group>"; };
@@ -149,8 +131,6 @@
 		FFAC22C3147CAE5800FA37B8 /* selected-map-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "selected-map-icon@2x.png"; sourceTree = "<group>"; };
 		FFAC22C4147CAE5800FA37B8 /* topbar-background-image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "topbar-background-image.png"; sourceTree = "<group>"; };
 		FFAC22C5147CAE5800FA37B8 /* topbar-background-image@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "topbar-background-image@2x.png"; sourceTree = "<group>"; };
-		FFAC22C6147CAE5800FA37B8 /* topbar-background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "topbar-background.png"; sourceTree = "<group>"; };
-		FFAC22C7147CAE5800FA37B8 /* topbar-background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "topbar-background@2x.png"; sourceTree = "<group>"; };
 		FFAC22C8147CAE5800FA37B8 /* unselected-bag-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "unselected-bag-icon.png"; sourceTree = "<group>"; };
 		FFAC22C9147CAE5800FA37B8 /* unselected-bag-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "unselected-bag-icon@2x.png"; sourceTree = "<group>"; };
 		FFAC22CA147CAE5800FA37B8 /* unselected-calendar-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "unselected-calendar-icon.png"; sourceTree = "<group>"; };
@@ -231,25 +211,25 @@
 		6269F5F0147B8B3D008AFE51 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				6269F5FA147B8B3D008AFE51 /* RDKHomeViewController.h */,
+				6269F5FB147B8B3D008AFE51 /* RDKHomeViewController.m */,
+				6269F5FC147B8B3D008AFE51 /* RDKHomeViewController.xib */,
+				6269F5F4147B8B3D008AFE51 /* RDKCalendarViewController.h */,
+				620AF8A2147CDA9C00D2DA04 /* RDKCalendarViewController.m */,
+				6269F5F6147B8B3D008AFE51 /* RDKCalendarViewController.xib */,
+				6269F5F7147B8B3D008AFE51 /* RDKClothesViewController.h */,
+				6269F5F8147B8B3D008AFE51 /* RDKClothesViewController.m */,
+				6269F5F9147B8B3D008AFE51 /* RDKClothesViewController.xib */,
 				6269F5F1147B8B3D008AFE51 /* RDKBagViewController.h */,
 				6269F5F2147B8B3D008AFE51 /* RDKBagViewController.m */,
 				6269F5F3147B8B3D008AFE51 /* RDKBagViewController.xib */,
-				6269F5F4147B8B3D008AFE51 /* CalendarViewController.h */,
-				6269F5F5147B8B3D008AFE51 /* CalendarViewController.m */,
-				6269F5F6147B8B3D008AFE51 /* CalendarViewController.xib */,
-				6269F5F7147B8B3D008AFE51 /* ClothesViewController.h */,
-				6269F5F8147B8B3D008AFE51 /* ClothesViewController.m */,
-				6269F5F9147B8B3D008AFE51 /* ClothesViewController.xib */,
-				6269F5FA147B8B3D008AFE51 /* HomeViewController.h */,
-				6269F5FB147B8B3D008AFE51 /* HomeViewController.m */,
-				6269F5FC147B8B3D008AFE51 /* HomeViewController.xib */,
-				6269F5FD147B8B3D008AFE51 /* ImageController.h */,
-				6269F5FE147B8B3D008AFE51 /* ImageController.m */,
-				6269F5FF147B8B3D008AFE51 /* MapViewController.h */,
-				6269F600147B8B3D008AFE51 /* MapViewController.m */,
-				6269F601147B8B3D008AFE51 /* MapViewController.xib */,
-				6269F602147B8B3D008AFE51 /* StyledPageControl.h */,
-				6269F603147B8B3D008AFE51 /* StyledPageControl.m */,
+				6269F5FF147B8B3D008AFE51 /* RDKMapViewController.h */,
+				620AF8A4147CDB6B00D2DA04 /* RDKMapViewController.m */,
+				6269F601147B8B3D008AFE51 /* RDKMapViewController.xib */,
+				6269F5FD147B8B3D008AFE51 /* RDKImageController.h */,
+				6269F5FE147B8B3D008AFE51 /* RDKImageController.m */,
+				6269F602147B8B3D008AFE51 /* RDKStyledPageControl.h */,
+				6269F603147B8B3D008AFE51 /* RDKStyledPageControl.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -257,10 +237,10 @@
 		6269F604147B8B3D008AFE51 /* External */ = {
 			isa = PBXGroup;
 			children = (
-				6269F605147B8B3D008AFE51 /* CustomTabBarItem.h */,
-				6269F606147B8B3D008AFE51 /* CustomTabBarItem.m */,
-				6269F607147B8B3D008AFE51 /* jmImage.h */,
-				6269F608147B8B3D008AFE51 /* jmImage.m */,
+				6269F605147B8B3D008AFE51 /* RDKCustomTabBarItem.h */,
+				6269F606147B8B3D008AFE51 /* RDKCustomTabBarItem.m */,
+				6269F607147B8B3D008AFE51 /* RDKCustomImage.h */,
+				6269F608147B8B3D008AFE51 /* RDKCustomImage.m */,
 			);
 			path = External;
 			sourceTree = "<group>";
@@ -275,10 +255,10 @@
 		6269F60A147B8B3D008AFE51 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				6269F60B147B8B3D008AFE51 /* CustomScrollView.h */,
-				6269F60C147B8B3D008AFE51 /* CustomScrollView.m */,
-				6269F60D147B8B3D008AFE51 /* HomeTableViewCell.h */,
-				6269F60E147B8B3D008AFE51 /* HomeTableViewCell.m */,
+				620AF8A6147CDCA500D2DA04 /* RDKCustomScrollView.h */,
+				6269F60C147B8B3D008AFE51 /* RDKCustomScrollView.m */,
+				6269F60D147B8B3D008AFE51 /* RDKHomeTableViewCell.h */,
+				6269F60E147B8B3D008AFE51 /* RDKHomeTableViewCell.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -343,9 +323,9 @@
 		FFAC22A5147CAE5800FA37B8 /* Calendar */ = {
 			isa = PBXGroup;
 			children = (
-				FFAC22A6147CAE5800FA37B8 /* 1.jpg */,
-				FFAC22A7147CAE5800FA37B8 /* 2.jpg */,
-				FFAC22A8147CAE5800FA37B8 /* 3.jpg */,
+				FFAC22A6147CAE5800FA37B8 /* calendar-image-1.jpg */,
+				FFAC22A7147CAE5800FA37B8 /* calendar-image-2.jpg */,
+				FFAC22A8147CAE5800FA37B8 /* calendar-image-3.jpg */,
 			);
 			path = Calendar;
 			sourceTree = "<group>";
@@ -353,19 +333,9 @@
 		FFAC22A9147CAE5800FA37B8 /* Global */ = {
 			isa = PBXGroup;
 			children = (
-				FFAC22AA147CAE5800FA37B8 /* bag-icon.png */,
-				FFAC22AB147CAE5800FA37B8 /* bag-icon@2x.png */,
+				620AF8A7147CEE4A00D2DA04 /* pagecontrol-active.png */,
 				FFAC22AC147CAE5800FA37B8 /* bottombar-background.png */,
 				FFAC22AD147CAE5800FA37B8 /* bottombar-background@2x.png */,
-				FFAC22AE147CAE5800FA37B8 /* calendar-icon.png */,
-				FFAC22AF147CAE5800FA37B8 /* calendar-icon@2x.png */,
-				FFAC22B0147CAE5800FA37B8 /* clothes-icon.png */,
-				FFAC22B1147CAE5800FA37B8 /* clothes-icon@2x.png */,
-				FFAC22B2147CAE5800FA37B8 /* home-icon.png */,
-				FFAC22B3147CAE5800FA37B8 /* home-icon@2x.png */,
-				FFAC22B4147CAE5800FA37B8 /* map-icon.png */,
-				FFAC22B5147CAE5800FA37B8 /* map-icon@2x.png */,
-				FFAC22B6147CAE5800FA37B8 /* pagecontrol-active.png */,
 				FFAC22B7147CAE5800FA37B8 /* pagecontrol-unactive.png */,
 				FFAC22B8147CAE5800FA37B8 /* refresh-button.png */,
 				FFAC22B9147CAE5800FA37B8 /* refresh-button@2x.png */,
@@ -381,8 +351,6 @@
 				FFAC22C3147CAE5800FA37B8 /* selected-map-icon@2x.png */,
 				FFAC22C4147CAE5800FA37B8 /* topbar-background-image.png */,
 				FFAC22C5147CAE5800FA37B8 /* topbar-background-image@2x.png */,
-				FFAC22C6147CAE5800FA37B8 /* topbar-background.png */,
-				FFAC22C7147CAE5800FA37B8 /* topbar-background@2x.png */,
 				FFAC22C8147CAE5800FA37B8 /* unselected-bag-icon.png */,
 				FFAC22C9147CAE5800FA37B8 /* unselected-bag-icon@2x.png */,
 				FFAC22CA147CAE5800FA37B8 /* unselected-calendar-icon.png */,
@@ -400,6 +368,8 @@
 		FFAC22D2147CAE5800FA37B8 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				620AF89E147CD32700D2DA04 /* selected-cell-background.png */,
+				620AF89F147CD32700D2DA04 /* selected-cell-background@2x.png */,
 				FFAC22D3147CAE5800FA37B8 /* background-view-image.png */,
 				FFAC22D4147CAE5800FA37B8 /* background-view-image@2x.png */,
 				FFAC22D5147CAE5800FA37B8 /* cell-image-1.png */,
@@ -461,28 +431,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				6269F644147B8B3D008AFE51 /* RDKBagViewController.xib in Resources */,
-				6269F646147B8B3D008AFE51 /* CalendarViewController.xib in Resources */,
-				6269F648147B8B3D008AFE51 /* ClothesViewController.xib in Resources */,
-				6269F64A147B8B3D008AFE51 /* HomeViewController.xib in Resources */,
-				6269F64D147B8B3D008AFE51 /* MapViewController.xib in Resources */,
+				6269F646147B8B3D008AFE51 /* RDKCalendarViewController.xib in Resources */,
+				6269F648147B8B3D008AFE51 /* RDKClothesViewController.xib in Resources */,
+				6269F64A147B8B3D008AFE51 /* RDKHomeViewController.xib in Resources */,
+				6269F64D147B8B3D008AFE51 /* RDKMapViewController.xib in Resources */,
 				6269F659147B8C51008AFE51 /* InfoPlist.strings in Resources */,
 				6269F65B147B8C51008AFE51 /* robe-Info.plist in Resources */,
-				FFAC22D8147CAE5800FA37B8 /* 1.jpg in Resources */,
-				FFAC22D9147CAE5800FA37B8 /* 2.jpg in Resources */,
-				FFAC22DA147CAE5800FA37B8 /* 3.jpg in Resources */,
-				FFAC22DB147CAE5800FA37B8 /* bag-icon.png in Resources */,
-				FFAC22DC147CAE5800FA37B8 /* bag-icon@2x.png in Resources */,
+				FFAC22D8147CAE5800FA37B8 /* calendar-image-1.jpg in Resources */,
+				FFAC22D9147CAE5800FA37B8 /* calendar-image-2.jpg in Resources */,
+				FFAC22DA147CAE5800FA37B8 /* calendar-image-3.jpg in Resources */,
 				FFAC22DD147CAE5800FA37B8 /* bottombar-background.png in Resources */,
 				FFAC22DE147CAE5800FA37B8 /* bottombar-background@2x.png in Resources */,
-				FFAC22DF147CAE5800FA37B8 /* calendar-icon.png in Resources */,
-				FFAC22E0147CAE5800FA37B8 /* calendar-icon@2x.png in Resources */,
-				FFAC22E1147CAE5800FA37B8 /* clothes-icon.png in Resources */,
-				FFAC22E2147CAE5800FA37B8 /* clothes-icon@2x.png in Resources */,
-				FFAC22E3147CAE5800FA37B8 /* home-icon.png in Resources */,
-				FFAC22E4147CAE5800FA37B8 /* home-icon@2x.png in Resources */,
-				FFAC22E5147CAE5800FA37B8 /* map-icon.png in Resources */,
-				FFAC22E6147CAE5800FA37B8 /* map-icon@2x.png in Resources */,
-				FFAC22E7147CAE5800FA37B8 /* pagecontrol-active.png in Resources */,
 				FFAC22E8147CAE5800FA37B8 /* pagecontrol-unactive.png in Resources */,
 				FFAC22E9147CAE5800FA37B8 /* refresh-button.png in Resources */,
 				FFAC22EA147CAE5800FA37B8 /* refresh-button@2x.png in Resources */,
@@ -498,8 +457,6 @@
 				FFAC22F4147CAE5800FA37B8 /* selected-map-icon@2x.png in Resources */,
 				FFAC22F5147CAE5800FA37B8 /* topbar-background-image.png in Resources */,
 				FFAC22F6147CAE5800FA37B8 /* topbar-background-image@2x.png in Resources */,
-				FFAC22F7147CAE5800FA37B8 /* topbar-background.png in Resources */,
-				FFAC22F8147CAE5800FA37B8 /* topbar-background@2x.png in Resources */,
 				FFAC22F9147CAE5800FA37B8 /* unselected-bag-icon.png in Resources */,
 				FFAC22FA147CAE5800FA37B8 /* unselected-bag-icon@2x.png in Resources */,
 				FFAC22FB147CAE5800FA37B8 /* unselected-calendar-icon.png in Resources */,
@@ -515,6 +472,9 @@
 				FFAC2305147CAE5800FA37B8 /* cell-image-1.png in Resources */,
 				FFAC2306147CAE5800FA37B8 /* cell-image-2.png in Resources */,
 				FFAC2307147CAE5800FA37B8 /* cell-image-3.png in Resources */,
+				620AF8A0147CD32800D2DA04 /* selected-cell-background.png in Resources */,
+				620AF8A1147CD32800D2DA04 /* selected-cell-background@2x.png in Resources */,
+				620AF8A8147CEE4C00D2DA04 /* pagecontrol-active.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -527,17 +487,17 @@
 			files = (
 				6269F642147B8B3D008AFE51 /* AppDelegate.m in Sources */,
 				6269F643147B8B3D008AFE51 /* RDKBagViewController.m in Sources */,
-				6269F645147B8B3D008AFE51 /* CalendarViewController.m in Sources */,
-				6269F647147B8B3D008AFE51 /* ClothesViewController.m in Sources */,
-				6269F649147B8B3D008AFE51 /* HomeViewController.m in Sources */,
-				6269F64B147B8B3D008AFE51 /* ImageController.m in Sources */,
-				6269F64C147B8B3D008AFE51 /* MapViewController.m in Sources */,
-				6269F64E147B8B3D008AFE51 /* StyledPageControl.m in Sources */,
-				6269F64F147B8B3D008AFE51 /* CustomTabBarItem.m in Sources */,
-				6269F650147B8B3D008AFE51 /* jmImage.m in Sources */,
-				6269F651147B8B3D008AFE51 /* CustomScrollView.m in Sources */,
-				6269F652147B8B3D008AFE51 /* HomeTableViewCell.m in Sources */,
+				6269F647147B8B3D008AFE51 /* RDKClothesViewController.m in Sources */,
+				6269F649147B8B3D008AFE51 /* RDKHomeViewController.m in Sources */,
+				6269F64B147B8B3D008AFE51 /* RDKImageController.m in Sources */,
+				6269F64E147B8B3D008AFE51 /* RDKStyledPageControl.m in Sources */,
+				6269F64F147B8B3D008AFE51 /* RDKCustomTabBarItem.m in Sources */,
+				6269F650147B8B3D008AFE51 /* RDKCustomImage.m in Sources */,
+				6269F651147B8B3D008AFE51 /* RDKCustomScrollView.m in Sources */,
+				6269F652147B8B3D008AFE51 /* RDKHomeTableViewCell.m in Sources */,
 				6269F65A147B8C51008AFE51 /* main.m in Sources */,
+				620AF8A3147CDA9C00D2DA04 /* RDKCalendarViewController.m in Sources */,
+				620AF8A5147CDB6C00D2DA04 /* RDKMapViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

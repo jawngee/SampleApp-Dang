@@ -6,9 +6,9 @@
 //  Copyright (c) 2011 Natural of Sience University. All rights reserved.
 //
 
-#import "CustomTabBarItem.h"
+#import "RDKCustomTabBarItem.h"
 
-@implementation CustomTabBarItem
+@implementation RDKCustomTabBarItem
 
 @synthesize customHighlightedImage;
 @synthesize customStdImage;
@@ -20,12 +20,12 @@
     [super dealloc];
 }
 
--(UIImage *) selectedImage
+-(UIImage *)selectedImage
 {
     return self.customHighlightedImage;
 }
 
--(UIImage *) unselectedImage
+-(UIImage *)unselectedImage
 {
     return self.customStdImage;
 }

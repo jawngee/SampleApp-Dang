@@ -7,7 +7,7 @@
 //
 
 #import "RDKBagViewController.h"
-#import "CustomTabBarItem.h"
+#import "RDKCustomTabBarItem.h"
 
 @implementation RDKBagViewController
 
@@ -19,7 +19,7 @@
 //        self.tabBarItem.image = [UIImage imageNamed:@"bag-icon.png"];
 //        self.tabBarItem.title = [NSString stringWithString:@"促销信息"];
         
-        CustomTabBarItem *customTabBarItem = [[CustomTabBarItem alloc] initWithTitle:nil image:nil tag:0];
+        RDKCustomTabBarItem *customTabBarItem = [[RDKCustomTabBarItem alloc] initWithTitle:nil image:nil tag:0];
         
         customTabBarItem.customHighlightedImage = [UIImage imageNamed:@"selected-bag-icon.png"];
         customTabBarItem.customStdImage = [UIImage imageNamed:@"unselected-bag-icon.png"];

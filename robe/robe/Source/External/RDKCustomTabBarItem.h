@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface CustomTabBarItem : UITabBarItem  
+@interface RDKCustomTabBarItem : UITabBarItem  
 {
     UIImage *customHighlightedImage;
     UIImage *customStdImage;

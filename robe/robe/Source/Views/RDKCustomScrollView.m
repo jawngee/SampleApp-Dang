@@ -2,14 +2,14 @@
 //  CustomScrollView.m
 //  jmDiap
 //
-//  Created by Julien MEYER on 11/07/10.
-//  Copyright 2010 jmApp.com All rights reserved.
+//  Created by Trung Dang on 11/17/11.
+//  Copyright (c) 2011 Natural of Sience University. All rights reserved.
 //
 
-#import "CustomScrollView.h"
+#import "RDKCustomScrollView.h"
 
 
-@implementation CustomScrollView
+@implementation RDKCustomScrollView
 
 @synthesize maindelegate;
 

@@ -6,11 +6,11 @@
 //  Copyright (c) 2011 Natural of Sience University. All rights reserved.
 //
 
-#import "HomeViewController.h"
-#import "CustomTabBarItem.h"
-#import "HomeTableViewCell.h"
+#import "RDKHomeViewController.h"
+#import "RDKCustomTabBarItem.h"
+#import "RDKHomeTableViewCell.h"
 
-@implementation HomeViewController
+@implementation RDKHomeViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -21,7 +21,7 @@
 //        self.tabBarItem.image = [UIImage imageNamed:@"home-icon.png"];
 //        self.tabBarItem.title = [NSString stringWithString:@"新闻"];
         
-        CustomTabBarItem *customTabBarItem = [[CustomTabBarItem alloc] initWithTitle:nil image:nil tag:0];
+        RDKCustomTabBarItem *customTabBarItem = [[RDKCustomTabBarItem alloc] initWithTitle:nil image:nil tag:0];
         
         customTabBarItem.customHighlightedImage = [UIImage imageNamed:@"selected-home-icon.png"];
         customTabBarItem.customStdImage = [UIImage imageNamed:@"unselected-home-icon.png"];
@@ -67,17 +67,17 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath 
 {
-	return 122;
+	return 123;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
 	static NSString *CellIdentifier = @"TableViewCell";
     
-	HomeTableViewCell *__cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+	RDKHomeTableViewCell *__cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
     if (__cell == nil) {
-        __cell = [[[HomeTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+        __cell = [[[RDKHomeTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
     }
     
     if ([indexPath row] == 0) {
@@ -112,14 +112,15 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-	UIImageView *refeshImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"refresh-button.png"]];
-	UIBarButtonItem *refreshBarButton = [[UIBarButtonItem alloc] initWithCustomView:refeshImageView];
+    UIImage *refreshImage = [UIImage imageNamed:@"refresh-button.png"];
+    UIButton *refreshButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [refreshButton setImage:refreshImage forState:UIControlStateNormal];
+    [refreshButton setFrame:CGRectMake(0.0, 0.0, refreshImage.size.width, refreshImage.size.height)];
+    [refreshButton addTarget:self action:@selector(refresh:) forControlEvents:UIControlEventTouchUpInside];
+    [refreshButton setContentEdgeInsets:UIEdgeInsetsMake(0, -8, 0, 8)];
     
-//    UIBarButtonItem *refreshButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"refresh-button.png"] 
-//                                                                      style:UIBarButtonSystemItemDone target:self 
-//                                                                     action:@selector(refresh:)];
+    UIBarButtonItem *refreshBarButton = [[UIBarButtonItem alloc] initWithCustomView:refreshButton];
     self.navigationItem.rightBarButtonItem = refreshBarButton;
-
 }
 
 - (void)viewDidUnload

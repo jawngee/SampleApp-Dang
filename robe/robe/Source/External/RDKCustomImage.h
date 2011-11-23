@@ -1,15 +1,15 @@
 //
-//  jmImage.h
+//  RDKCustomImage.h
 //  jmDiap
 //
-//  Created by Julien MEYER on 10/07/10.
-//  Copyright 2010 jmApp.com All rights reserved.
+//  Created by Trung Dang on 11/17/11.
+//  Copyright (c) 2011 Natural of Sience University. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
 
 
-@interface jmImage : UIImageView 
+@interface RDKCustomImage : UIImageView 
 {
 	CGRect originalRect;
 	CGFloat ratio;

@@ -6,16 +6,16 @@
 //  Copyright (c) 2011 Natural of Sience University. All rights reserved.
 //
 
-#import "HomeTableViewCell.h"
+#import "RDKHomeTableViewCell.h"
 
-@interface HomeTableViewCell (Private)
+@interface RDKHomeTableViewCell (Private)
 
 - (void)buildCell;
 
 @end
 
 
-@implementation HomeTableViewCell
+@implementation RDKHomeTableViewCell
 @synthesize imageViewCell = _imageViewCell;
 @synthesize titleLable = _titleLable;
 @synthesize desciptionLable = _desciptionLable;
@@ -44,15 +44,19 @@
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
 {
     [super setSelected:selected animated:animated];
-
+    
     // Configure the view for the selected state
 }
 
 - (void)buildCell
 {
-    self.backgroundColor = [UIColor whiteColor];
+    self.backgroundColor = [UIColor clearColor];
 	self.accessoryType = UITableViewCellAccessoryNone;
-
+    
+    UIImageView *selectedBackground = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"selected-cell-background.png"]];
+    [self setSelectedBackgroundView:selectedBackground];
+    [selectedBackground release];
+    
     self.imageViewCell = [[UIImageView alloc] initWithFrame:CGRectMake(10, 12, 128, 94)];
     self.titleLable = [[UILabel alloc] initWithFrame:CGRectMake(145, 12, 170, 30)];
     self.desciptionLable = [[UILabel alloc] initWithFrame:CGRectMake(145, 45, 170, 20)];
@@ -61,12 +65,14 @@
     [self.titleLable setBackgroundColor:[UIColor clearColor]];
     [self.titleLable setFont:[UIFont boldSystemFontOfSize:12]];
     [self.titleLable setLineBreakMode:UILineBreakModeWordWrap];
+    [self.titleLable setHighlightedTextColor:[UIColor whiteColor]];
     [self.titleLable setTextColor:[UIColor colorWithRed:92.0/255.0 green:92.0/255.0 blue:92.0/255.0 alpha:1.0]];
     [self.titleLable setNumberOfLines:2];
     
     [self.desciptionLable setBackgroundColor:[UIColor clearColor]];
     [self.desciptionLable setFont:[UIFont systemFontOfSize:12]];
     [self.desciptionLable setLineBreakMode:UILineBreakModeWordWrap];
+    [self.desciptionLable setHighlightedTextColor:[UIColor whiteColor]];
     [self.desciptionLable setTextColor:[UIColor colorWithRed:153.0/255.0 green:153.0/255.0 blue:153.0/255.0 alpha:1.0]];
     [self.desciptionLable setNumberOfLines:2];
     
@@ -74,6 +80,7 @@
     [self.createTimeLable setFont:[UIFont boldSystemFontOfSize:12]];
     [self.createTimeLable setLineBreakMode:UILineBreakModeWordWrap];
     [self.createTimeLable setTextAlignment:UITextAlignmentRight];
+    [self.createTimeLable setHighlightedTextColor:[UIColor whiteColor]];
     [self.createTimeLable setTextColor:[UIColor colorWithRed:153.0/255.0 green:153.0/255.0 blue:153.0/255.0 alpha:1.0]];
     [self.createTimeLable setNumberOfLines:2];
 

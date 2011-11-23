@@ -2,15 +2,15 @@
 //  StyledPageControl.m
 //  VDC
 //
-//  Created by Julien MEYER on 1/29/10.
-//  Copyright 2010 jmApp.com All rights reserved.
+//  Created by Trung Dang on 11/17/11.
+//  Copyright (c) 2011 Natural of Sience University. All rights reserved.
 //
 
-#import "StyledPageControl.h"
+#import "RDKStyledPageControl.h"
 
-@implementation StyledPageControl
+@implementation RDKStyledPageControl
 
-- (void) setCurrentPage:(NSInteger)page 
+-(void)setCurrentPage:(NSInteger)page 
 {
 	[super setCurrentPage:page];
 	
@@ -27,7 +27,7 @@
 	}
 }
 
-- (void) setNumberOfPages:(NSInteger)pages 
+-(void)setNumberOfPages:(NSInteger)pages 
 {
 	[super setNumberOfPages:pages];
 	
