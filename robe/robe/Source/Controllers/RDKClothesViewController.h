@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface RDKClothesViewController : UIViewController
+@interface RDKClothesViewController : UIViewController <UITabBarDelegate, UITableViewDataSource> {
+    
+    IBOutlet UITableView *clothesTableView;
+}
 
 @end

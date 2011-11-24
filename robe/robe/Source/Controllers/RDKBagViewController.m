@@ -41,12 +41,29 @@
     // Release any cached data, images, etc that aren't in use.
 }
 
+#pragma mark - function class
+
+- (void)refresh:(id)sender
+{
+}
+
 #pragma mark - View lifecycle
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    
+    UIImage *refreshImage = [UIImage imageNamed:@"refresh-button.png"];
+    UIButton *refreshButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [refreshButton setImage:refreshImage forState:UIControlStateNormal];
+    [refreshButton setFrame:CGRectMake(0.0, 0.0, refreshImage.size.width, refreshImage.size.height)];
+    [refreshButton addTarget:self action:@selector(refresh:) forControlEvents:UIControlEventTouchUpInside];
+    [refreshButton setContentEdgeInsets:UIEdgeInsetsMake(0, -8, 0, 8)];
+    
+    UIBarButtonItem *refreshBarButton = [[UIBarButtonItem alloc] initWithCustomView:refreshButton];
+    self.navigationItem.rightBarButtonItem = refreshBarButton;
+
 }
 
 - (void)viewDidUnload

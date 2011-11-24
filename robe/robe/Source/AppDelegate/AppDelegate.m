@@ -44,11 +44,11 @@
     self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
     
     /** Override point for customization after application launch */
-    UIViewController *homeViewController = [[[RDKHomeViewController alloc] initWithNibName:@"HomeViewController" bundle:nil] autorelease];
-    UIViewController *calendarViewController = [[[RDKCalendarViewController alloc] initWithNibName:@"CalendarViewController" bundle:nil] autorelease];
-    UIViewController *clothesViewController = [[[RDKClothesViewController alloc] initWithNibName:@"ClothesViewController" bundle:nil] autorelease];
-    UIViewController *bagViewController = [[[RDKBagViewController alloc] initWithNibName:@"BagViewController" bundle:nil] autorelease];
-    UIViewController *mapViewController = [[[RDKMapViewController alloc] initWithNibName:@"MapViewController" bundle:nil] autorelease];
+    UIViewController *homeViewController = [[[RDKHomeViewController alloc] initWithNibName:@"RDKHomeViewController" bundle:nil] autorelease];
+    UIViewController *calendarViewController = [[[RDKCalendarViewController alloc] initWithNibName:@"RDKCalendarViewController" bundle:nil] autorelease];
+    UIViewController *clothesViewController = [[[RDKClothesViewController alloc] initWithNibName:@"RDKClothesViewController" bundle:nil] autorelease];
+    UIViewController *bagViewController = [[[RDKBagViewController alloc] initWithNibName:@"RDKBagViewController" bundle:nil] autorelease];
+    UIViewController *mapViewController = [[[RDKMapViewController alloc] initWithNibName:@"RDKMapViewController" bundle:nil] autorelease];
     
     /** create home navigation controller */
     self.homeNavigationController = [[[UINavigationController alloc] initWithRootViewController:homeViewController] autorelease];
@@ -60,13 +60,16 @@
                                                           forBarMetrics:UIBarMetricsDefault];
 
     self.clothesNavigationController = [[[UINavigationController alloc] initWithRootViewController:clothesViewController] autorelease];
-    self.clothesNavigationController.navigationBar.tintColor = [UIColor blackColor];
+    [self.clothesNavigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"topbar-background-image.png"] 
+                                                          forBarMetrics:UIBarMetricsDefault];
 
     self.bagNavigationController = [[[UINavigationController alloc] initWithRootViewController:bagViewController] autorelease];
-    self.bagNavigationController.navigationBar.tintColor = [UIColor blackColor];
+    [self.bagNavigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"topbar-background-image.png"] 
+                                                         forBarMetrics:UIBarMetricsDefault];
 
     self.mapNavigationController = [[[UINavigationController alloc] initWithRootViewController:mapViewController] autorelease];
-    self.mapNavigationController.navigationBar.tintColor = [UIColor blackColor];
+    [self.mapNavigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"topbar-background-image.png"] 
+                                                         forBarMetrics:UIBarMetricsDefault];
 
     /** create tab bar controller */
     self.tabBarController = [[[UITabBarController alloc] init] autorelease];

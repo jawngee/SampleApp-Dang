@@ -35,7 +35,7 @@
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
-        // Initialization code
+        /** Initialization code */
         [self buildCell];
     }
     return self;
@@ -45,7 +45,7 @@
 {
     [super setSelected:selected animated:animated];
     
-    // Configure the view for the selected state
+    /** Configure the view for the selected state */
 }
 
 - (void)buildCell
