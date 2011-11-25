@@ -19,7 +19,18 @@
 		620FF1C9147E353E002D31DB /* clothes-shoe-image.png in Resources */ = {isa = PBXBuildFile; fileRef = 620FF1C3147E353E002D31DB /* clothes-shoe-image.png */; };
 		620FF1CA147E353E002D31DB /* clothes-trousers-image.png in Resources */ = {isa = PBXBuildFile; fileRef = 620FF1C4147E353E002D31DB /* clothes-trousers-image.png */; };
 		620FF1CD147E4225002D31DB /* RDKClothesTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 620FF1CC147E4225002D31DB /* RDKClothesTableViewCell.m */; };
-		620FF1EB147E55C5002D31DB /* libMFGridView.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 620FF1E9147E55C4002D31DB /* libMFGridView.a */; };
+		62100B72147F4747003453B0 /* clothes-bag-image@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 62100B6E147F4747003453B0 /* clothes-bag-image@2x.png */; };
+		62100B73147F4747003453B0 /* clothes-clothes-image@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 62100B6F147F4747003453B0 /* clothes-clothes-image@2x.png */; };
+		62100B74147F4747003453B0 /* clothes-shoe-image@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 62100B70147F4747003453B0 /* clothes-shoe-image@2x.png */; };
+		62100B75147F4747003453B0 /* clothes-trousers-image@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 62100B71147F4747003453B0 /* clothes-trousers-image@2x.png */; };
+		62100B8E147F74EB003453B0 /* clothes-bag-cover-image.png in Resources */ = {isa = PBXBuildFile; fileRef = 62100B86147F74E8003453B0 /* clothes-bag-cover-image.png */; };
+		62100B8F147F74EB003453B0 /* clothes-bag-cover-image@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 62100B87147F74E8003453B0 /* clothes-bag-cover-image@2x.png */; };
+		62100B90147F74EB003453B0 /* clothes-clothes-cover-image.png in Resources */ = {isa = PBXBuildFile; fileRef = 62100B88147F74E8003453B0 /* clothes-clothes-cover-image.png */; };
+		62100B91147F74EB003453B0 /* clothes-clothes-cover-image@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 62100B89147F74E9003453B0 /* clothes-clothes-cover-image@2x.png */; };
+		62100B92147F74EB003453B0 /* clothes-shoe-cover-image.png in Resources */ = {isa = PBXBuildFile; fileRef = 62100B8A147F74E9003453B0 /* clothes-shoe-cover-image.png */; };
+		62100B93147F74EB003453B0 /* clothes-shoe-cover-image@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 62100B8B147F74E9003453B0 /* clothes-shoe-cover-image@2x.png */; };
+		62100B94147F74EB003453B0 /* clothes-trousers-cover-image.png in Resources */ = {isa = PBXBuildFile; fileRef = 62100B8C147F74EA003453B0 /* clothes-trousers-cover-image.png */; };
+		62100B95147F74EB003453B0 /* clothes-trousers-cover-image@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 62100B8D147F74EB003453B0 /* clothes-trousers-cover-image@2x.png */; };
 		6269F642147B8B3D008AFE51 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6269F5EE147B8B3D008AFE51 /* AppDelegate.m */; };
 		6269F643147B8B3D008AFE51 /* RDKBagViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6269F5F2147B8B3D008AFE51 /* RDKBagViewController.m */; };
 		6269F644147B8B3D008AFE51 /* RDKBagViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6269F5F3147B8B3D008AFE51 /* RDKBagViewController.xib */; };
@@ -93,8 +104,18 @@
 		620FF1C4147E353E002D31DB /* clothes-trousers-image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "clothes-trousers-image.png"; sourceTree = "<group>"; };
 		620FF1CB147E4225002D31DB /* RDKClothesTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RDKClothesTableViewCell.h; sourceTree = "<group>"; };
 		620FF1CC147E4225002D31DB /* RDKClothesTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RDKClothesTableViewCell.m; sourceTree = "<group>"; };
-		620FF1E9147E55C4002D31DB /* libMFGridView.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libMFGridView.a; sourceTree = "<group>"; };
-		620FF1EA147E55C4002D31DB /* MFGridView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFGridView.h; sourceTree = "<group>"; };
+		62100B6E147F4747003453B0 /* clothes-bag-image@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "clothes-bag-image@2x.png"; sourceTree = "<group>"; };
+		62100B6F147F4747003453B0 /* clothes-clothes-image@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "clothes-clothes-image@2x.png"; sourceTree = "<group>"; };
+		62100B70147F4747003453B0 /* clothes-shoe-image@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "clothes-shoe-image@2x.png"; sourceTree = "<group>"; };
+		62100B71147F4747003453B0 /* clothes-trousers-image@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "clothes-trousers-image@2x.png"; sourceTree = "<group>"; };
+		62100B86147F74E8003453B0 /* clothes-bag-cover-image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "clothes-bag-cover-image.png"; sourceTree = "<group>"; };
+		62100B87147F74E8003453B0 /* clothes-bag-cover-image@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "clothes-bag-cover-image@2x.png"; sourceTree = "<group>"; };
+		62100B88147F74E8003453B0 /* clothes-clothes-cover-image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "clothes-clothes-cover-image.png"; sourceTree = "<group>"; };
+		62100B89147F74E9003453B0 /* clothes-clothes-cover-image@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "clothes-clothes-cover-image@2x.png"; sourceTree = "<group>"; };
+		62100B8A147F74E9003453B0 /* clothes-shoe-cover-image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "clothes-shoe-cover-image.png"; sourceTree = "<group>"; };
+		62100B8B147F74E9003453B0 /* clothes-shoe-cover-image@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "clothes-shoe-cover-image@2x.png"; sourceTree = "<group>"; };
+		62100B8C147F74EA003453B0 /* clothes-trousers-cover-image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "clothes-trousers-cover-image.png"; sourceTree = "<group>"; };
+		62100B8D147F74EB003453B0 /* clothes-trousers-cover-image@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "clothes-trousers-cover-image@2x.png"; sourceTree = "<group>"; };
 		6269F5ED147B8B3D008AFE51 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		6269F5EE147B8B3D008AFE51 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		6269F5F1147B8B3D008AFE51 /* RDKBagViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RDKBagViewController.h; sourceTree = "<group>"; };
@@ -174,7 +195,6 @@
 				62C7101B14750296003DF763 /* UIKit.framework in Frameworks */,
 				62C7101D14750296003DF763 /* Foundation.framework in Frameworks */,
 				62C7101F14750296003DF763 /* CoreGraphics.framework in Frameworks */,
-				620FF1EB147E55C5002D31DB /* libMFGridView.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -184,6 +204,18 @@
 		620FF1BD147E306A002D31DB /* Clothes */ = {
 			isa = PBXGroup;
 			children = (
+				62100B86147F74E8003453B0 /* clothes-bag-cover-image.png */,
+				62100B87147F74E8003453B0 /* clothes-bag-cover-image@2x.png */,
+				62100B88147F74E8003453B0 /* clothes-clothes-cover-image.png */,
+				62100B89147F74E9003453B0 /* clothes-clothes-cover-image@2x.png */,
+				62100B8A147F74E9003453B0 /* clothes-shoe-cover-image.png */,
+				62100B8B147F74E9003453B0 /* clothes-shoe-cover-image@2x.png */,
+				62100B8C147F74EA003453B0 /* clothes-trousers-cover-image.png */,
+				62100B8D147F74EB003453B0 /* clothes-trousers-cover-image@2x.png */,
+				62100B6E147F4747003453B0 /* clothes-bag-image@2x.png */,
+				62100B6F147F4747003453B0 /* clothes-clothes-image@2x.png */,
+				62100B70147F4747003453B0 /* clothes-shoe-image@2x.png */,
+				62100B71147F4747003453B0 /* clothes-trousers-image@2x.png */,
 				620FF1BF147E353E002D31DB /* clothes-bag-image.png */,
 				620FF1C0147E353E002D31DB /* clothes-clothes-image.png */,
 				620FF1C1147E353E002D31DB /* clothes-selected-cell-background-image.png */,
@@ -228,8 +260,6 @@
 		6269F5EC147B8B3D008AFE51 /* AppDelegate */ = {
 			isa = PBXGroup;
 			children = (
-				620FF1E9147E55C4002D31DB /* libMFGridView.a */,
-				620FF1EA147E55C4002D31DB /* MFGridView.h */,
 				6269F5ED147B8B3D008AFE51 /* AppDelegate.h */,
 				6269F5EE147B8B3D008AFE51 /* AppDelegate.m */,
 			);
@@ -518,6 +548,18 @@
 				620FF1C8147E353E002D31DB /* clothes-selected-cell-background-image@2x.png in Resources */,
 				620FF1C9147E353E002D31DB /* clothes-shoe-image.png in Resources */,
 				620FF1CA147E353E002D31DB /* clothes-trousers-image.png in Resources */,
+				62100B72147F4747003453B0 /* clothes-bag-image@2x.png in Resources */,
+				62100B73147F4747003453B0 /* clothes-clothes-image@2x.png in Resources */,
+				62100B74147F4747003453B0 /* clothes-shoe-image@2x.png in Resources */,
+				62100B75147F4747003453B0 /* clothes-trousers-image@2x.png in Resources */,
+				62100B8E147F74EB003453B0 /* clothes-bag-cover-image.png in Resources */,
+				62100B8F147F74EB003453B0 /* clothes-bag-cover-image@2x.png in Resources */,
+				62100B90147F74EB003453B0 /* clothes-clothes-cover-image.png in Resources */,
+				62100B91147F74EB003453B0 /* clothes-clothes-cover-image@2x.png in Resources */,
+				62100B92147F74EB003453B0 /* clothes-shoe-cover-image.png in Resources */,
+				62100B93147F74EB003453B0 /* clothes-shoe-cover-image@2x.png in Resources */,
+				62100B94147F74EB003453B0 /* clothes-trousers-cover-image.png in Resources */,
+				62100B95147F74EB003453B0 /* clothes-trousers-cover-image@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

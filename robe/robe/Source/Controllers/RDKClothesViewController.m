@@ -84,25 +84,29 @@
         
     if ([indexPath row] == 0) {
         __cell.imageViewCell.image = [UIImage imageNamed:@"clothes-clothes-image.png"];
-        __cell.imageViewCell.frame = CGRectMake(20, 30, 35, 45);
+        [__cell.imageViewCell setHighlightedImage:[UIImage imageNamed:@"clothes-clothes-cover-image.png"]];
+//        __cell.imageViewCell.frame = CGRectMake(20, 30, 35, 45);
         __cell.titleLable.text = @"上衣";
     }
     
     if ([indexPath row] == 1) {
         __cell.imageViewCell.image = [UIImage imageNamed:@"clothes-trousers-image.png"];
-        __cell.imageViewCell.frame = CGRectMake(30, 30, 19, 45);
+        [__cell.imageViewCell setHighlightedImage:[UIImage imageNamed:@"clothes-trousers-cover-image.png"]];
+//        __cell.imageViewCell.frame = CGRectMake(30, 30, 19, 45);
         __cell.titleLable.text = @"裤子";
     }
     
     if ([indexPath row] == 2) {
         __cell.imageViewCell.image = [UIImage imageNamed:@"clothes-shoe-image.png"];
-        __cell.imageViewCell.frame = CGRectMake(20, 30, 32, 43);
+        [__cell.imageViewCell setHighlightedImage:[UIImage imageNamed:@"clothes-shoe-cover-image.png"]];
+//        __cell.imageViewCell.frame = CGRectMake(20, 30, 32, 43);
         __cell.titleLable.text = @"鞋子";
     }
     
     if ([indexPath row] == 3) {
         __cell.imageViewCell.image = [UIImage imageNamed:@"clothes-bag-image.png"];
-        __cell.imageViewCell.frame = CGRectMake(20, 25, 36, 45);
+        [__cell.imageViewCell setHighlightedImage:[UIImage imageNamed:@"clothes-bag-cover-image.png"]];
+//        __cell.imageViewCell.frame = CGRectMake(20, 25, 36, 45);
         __cell.titleLable.text = @"配饰";
     }
 
