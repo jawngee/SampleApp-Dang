@@ -10,8 +10,11 @@
 
 #import "RDKCustomTabBarItem.h"
 #import "RDKClothesTableViewCell.h"
+#import "RDKClothesGridViewController.h"
 
 @implementation RDKClothesViewController
+@synthesize clothesGridViewController = _clothesGridViewController;
+
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -43,12 +46,28 @@
     // Release any cached data, images, etc that aren't in use.
 }
 
+- (void)dealloc
+{
+    [super dealloc];
+    [_clothesGridViewController release];
+}
+
 #pragma mark - function class
 
 - (void)refresh:(id)sender
 {
 }
 
+#pragma mark Table view delegate
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (!self.clothesGridViewController) {
+        self.clothesGridViewController = [[[RDKClothesGridViewController alloc] initWithNibName:@"RDKClothesGridViewController" bundle:nil] autorelease];
+    }
+    
+    [self.navigationController pushViewController:self.clothesGridViewController animated:YES];
+}
 
 #pragma mark -
 #pragma mark Table view data source

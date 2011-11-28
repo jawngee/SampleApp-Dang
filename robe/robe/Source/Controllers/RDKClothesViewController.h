@@ -8,9 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
+@class RDKClothesGridViewController;
+
 @interface RDKClothesViewController : UIViewController <UITabBarDelegate, UITableViewDataSource> {
     
     IBOutlet UITableView *clothesTableView;
 }
+
+@property (strong, nonatomic) RDKClothesGridViewController *clothesGridViewController;
+
 
 @end

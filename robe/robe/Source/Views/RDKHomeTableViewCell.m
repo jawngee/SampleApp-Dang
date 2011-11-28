@@ -24,7 +24,6 @@
 - (void)dealloc
 {
     [super dealloc];
-    
     [_imageViewCell release];
     [_titleLable release];
     [_desciptionLable release];

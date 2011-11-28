@@ -22,7 +22,6 @@
 {
     [_imageViewCell release];
     [_titleLable release];
-
     [super dealloc];
 }
 
