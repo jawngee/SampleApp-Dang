@@ -20,15 +20,11 @@
 //        self.tabBarItem.title = [NSString stringWithString:@"店铺信息"];
         
         RDKCustomTabBarItem *customTabBarItem = [[RDKCustomTabBarItem alloc] initWithTitle:nil image:nil tag:0];
+        [customTabBarItem setCustomStdImage:[UIImage imageNamed:@"unselected-map-icon.png"]];
+        [customTabBarItem setCustomHighlightedImage:[UIImage imageNamed:@"selected-map-icon.png"]];
+        [customTabBarItem setImageInsets:UIEdgeInsetsMake(8, 0, -8, 0)];
         
-        customTabBarItem.customHighlightedImage = [UIImage imageNamed:@"selected-map-icon.png"];
-        customTabBarItem.customStdImage = [UIImage imageNamed:@"unselected-map-icon.png"];
-        
-        self.tabBarItem = customTabBarItem;
-        
-        UIEdgeInsets insets = UIEdgeInsetsMake(8, 0, -8, 0);
-        [self.tabBarItem setImageInsets:insets];
-
+        [self setTabBarItem:customTabBarItem];        
     }
     return self;
 }

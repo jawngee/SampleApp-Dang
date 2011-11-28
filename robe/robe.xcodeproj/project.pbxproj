@@ -13,6 +13,7 @@
 		620AF8A5147CDB6C00D2DA04 /* RDKMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 620AF8A4147CDB6B00D2DA04 /* RDKMapViewController.m */; };
 		620AF8A8147CEE4C00D2DA04 /* pagecontrol-active.png in Resources */ = {isa = PBXBuildFile; fileRef = 620AF8A7147CEE4A00D2DA04 /* pagecontrol-active.png */; };
 		620C29D514835C3E006141F7 /* RDKCustomNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 620C29D414835C3E006141F7 /* RDKCustomNavigationController.m */; };
+		620C29D9148394C2006141F7 /* RDKCustomTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 620C29D8148394C2006141F7 /* RDKCustomTabBarController.m */; };
 		620FF1C5147E353E002D31DB /* clothes-bag-image.png in Resources */ = {isa = PBXBuildFile; fileRef = 620FF1BF147E353E002D31DB /* clothes-bag-image.png */; };
 		620FF1C6147E353E002D31DB /* clothes-clothes-image.png in Resources */ = {isa = PBXBuildFile; fileRef = 620FF1C0147E353E002D31DB /* clothes-clothes-image.png */; };
 		620FF1C7147E353E002D31DB /* clothes-selected-cell-background-image.png in Resources */ = {isa = PBXBuildFile; fileRef = 620FF1C1147E353E002D31DB /* clothes-selected-cell-background-image.png */; };
@@ -110,6 +111,8 @@
 		620AF8A7147CEE4A00D2DA04 /* pagecontrol-active.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pagecontrol-active.png"; sourceTree = "<group>"; };
 		620C29D314835C3E006141F7 /* RDKCustomNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RDKCustomNavigationController.h; path = robe/Source/Controllers/RDKCustomNavigationController.h; sourceTree = SOURCE_ROOT; };
 		620C29D414835C3E006141F7 /* RDKCustomNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RDKCustomNavigationController.m; path = robe/Source/Controllers/RDKCustomNavigationController.m; sourceTree = SOURCE_ROOT; };
+		620C29D7148394C2006141F7 /* RDKCustomTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RDKCustomTabBarController.h; sourceTree = "<group>"; };
+		620C29D8148394C2006141F7 /* RDKCustomTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RDKCustomTabBarController.m; sourceTree = "<group>"; };
 		620FF1BF147E353E002D31DB /* clothes-bag-image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "clothes-bag-image.png"; sourceTree = "<group>"; };
 		620FF1C0147E353E002D31DB /* clothes-clothes-image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "clothes-clothes-image.png"; sourceTree = "<group>"; };
 		620FF1C1147E353E002D31DB /* clothes-selected-cell-background-image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "clothes-selected-cell-background-image.png"; sourceTree = "<group>"; };
@@ -335,6 +338,8 @@
 				621EBE9E14822B1000F649BC /* RDKClothesGridViewController.xib */,
 				620C29D314835C3E006141F7 /* RDKCustomNavigationController.h */,
 				620C29D414835C3E006141F7 /* RDKCustomNavigationController.m */,
+				620C29D7148394C2006141F7 /* RDKCustomTabBarController.h */,
+				620C29D8148394C2006141F7 /* RDKCustomTabBarController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -638,6 +643,7 @@
 				621EBE9F14822B1000F649BC /* RDKClothesGridViewController.m in Sources */,
 				621EBEA81482301600F649BC /* RDKClothesItemTableViewCell.m in Sources */,
 				620C29D514835C3E006141F7 /* RDKCustomNavigationController.m in Sources */,
+				620C29D9148394C2006141F7 /* RDKCustomTabBarController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

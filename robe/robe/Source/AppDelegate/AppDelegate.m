@@ -14,6 +14,7 @@
 #import "RDKBagViewController.h"
 #import "RDKMapViewController.h"
 #import "RDKCustomNavigationController.h"
+#import "RDKCustomTabBarController.h"
 
 
 @implementation AppDelegate
@@ -59,7 +60,7 @@
     self.mapNavigationController = [[[RDKCustomNavigationController alloc] initWithRootViewController:mapViewController] autorelease];
 
     /** create tab bar controller */
-    self.tabBarController = [[[UITabBarController alloc] init] autorelease];
+    self.tabBarController = [[[RDKCustomTabBarController alloc] init] autorelease];
     self.tabBarController.viewControllers = [NSArray arrayWithObjects:self.homeNavigationController, self.calendarNavigationController, self.clothesNavigationController, self.bagNavigationController, self.mapNavigationController, nil];
     
 //    for(UIView *view in self.tabBarController.tabBar.subviews) {  

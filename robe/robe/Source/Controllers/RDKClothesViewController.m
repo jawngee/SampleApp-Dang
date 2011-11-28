@@ -25,15 +25,11 @@
 //        self.tabBarItem.title = [NSString stringWithString:@"产品介绍"];
         
         RDKCustomTabBarItem *customTabBarItem = [[RDKCustomTabBarItem alloc] initWithTitle:nil image:nil tag:0];
+        [customTabBarItem setCustomStdImage:[UIImage imageNamed:@"unselected-clothes-icon.png"]];
+        [customTabBarItem setCustomHighlightedImage:[UIImage imageNamed:@"selected-clothes-icon.png"]];
+        [customTabBarItem setImageInsets:UIEdgeInsetsMake(8, 0, -8, 0)];
         
-        customTabBarItem.customHighlightedImage = [UIImage imageNamed:@"selected-clothes-icon.png"];
-        customTabBarItem.customStdImage = [UIImage imageNamed:@"unselected-clothes-icon.png"];
-        
-        self.tabBarItem = customTabBarItem;
-        
-        UIEdgeInsets insets = UIEdgeInsetsMake(8, 0, -8, 0);
-        [self.tabBarItem setImageInsets:insets];
-
+        [self setTabBarItem:customTabBarItem];        
     }
     return self;
 }

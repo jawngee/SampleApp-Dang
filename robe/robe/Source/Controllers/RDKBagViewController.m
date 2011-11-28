@@ -20,15 +20,11 @@
 //        self.tabBarItem.title = [NSString stringWithString:@"促销信息"];
         
         RDKCustomTabBarItem *customTabBarItem = [[RDKCustomTabBarItem alloc] initWithTitle:nil image:nil tag:0];
+        [customTabBarItem setCustomStdImage:[UIImage imageNamed:@"unselected-bag-icon.png"]];
+        [customTabBarItem setCustomHighlightedImage:[UIImage imageNamed:@"selected-bag-icon.png"]];
+        [customTabBarItem setImageInsets:UIEdgeInsetsMake(8, 0, -8, 0)];
         
-        customTabBarItem.customHighlightedImage = [UIImage imageNamed:@"selected-bag-icon.png"];
-        customTabBarItem.customStdImage = [UIImage imageNamed:@"unselected-bag-icon.png"];
-        
-        self.tabBarItem = customTabBarItem;
-        
-        UIEdgeInsets insets = UIEdgeInsetsMake(8, 0, -8, 0);
-        [self.tabBarItem setImageInsets:insets];
-
+        [self setTabBarItem:customTabBarItem];        
     }
     return self;
 }

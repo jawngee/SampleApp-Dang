@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @class RDKCustomNavigationController;
+@class RDKCustomTabBarController;
 
 /** application delegate */
 @interface AppDelegate : UIResponder <UIApplicationDelegate, UITabBarControllerDelegate> {
@@ -18,7 +19,7 @@
 /** main window */
 @property (strong, nonatomic) UIWindow *window;
 /** tab bar controller */
-@property (strong, nonatomic) UITabBarController *tabBarController;
+@property (strong, nonatomic) RDKCustomTabBarController *tabBarController;
 
 /** navigation controller for home view */
 @property (strong, nonatomic) RDKCustomNavigationController *homeNavigationController;
