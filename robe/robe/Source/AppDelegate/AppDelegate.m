@@ -13,6 +13,7 @@
 #import "RDKClothesViewController.h"
 #import "RDKBagViewController.h"
 #import "RDKMapViewController.h"
+#import "RDKCustomNavigationController.h"
 
 
 @implementation AppDelegate
@@ -50,26 +51,12 @@
     UIViewController *bagViewController = [[[RDKBagViewController alloc] initWithNibName:@"RDKBagViewController" bundle:nil] autorelease];
     UIViewController *mapViewController = [[[RDKMapViewController alloc] initWithNibName:@"RDKMapViewController" bundle:nil] autorelease];
     
-    /** create home navigation controller */
-    self.homeNavigationController = [[[UINavigationController alloc] initWithRootViewController:homeViewController] autorelease];
-    [self.homeNavigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"topbar-background-image.png"] 
-                                                      forBarMetrics:UIBarMetricsDefault];
-    
-    self.calendarNavigationController = [[[UINavigationController alloc] initWithRootViewController:calendarViewController] autorelease];
-    [self.calendarNavigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"topbar-background-image.png"] 
-                                                          forBarMetrics:UIBarMetricsDefault];
-
-    self.clothesNavigationController = [[[UINavigationController alloc] initWithRootViewController:clothesViewController] autorelease];
-    [self.clothesNavigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"topbar-background-image.png"] 
-                                                          forBarMetrics:UIBarMetricsDefault];
-
-    self.bagNavigationController = [[[UINavigationController alloc] initWithRootViewController:bagViewController] autorelease];
-    [self.bagNavigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"topbar-background-image.png"] 
-                                                         forBarMetrics:UIBarMetricsDefault];
-
-    self.mapNavigationController = [[[UINavigationController alloc] initWithRootViewController:mapViewController] autorelease];
-    [self.mapNavigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"topbar-background-image.png"] 
-                                                         forBarMetrics:UIBarMetricsDefault];
+    /** create navigation controller for all UIViewController */
+    self.homeNavigationController = [[[RDKCustomNavigationController alloc] initWithRootViewController:homeViewController] autorelease];    
+    self.calendarNavigationController = [[[RDKCustomNavigationController alloc] initWithRootViewController:calendarViewController] autorelease];
+    self.clothesNavigationController = [[[RDKCustomNavigationController alloc] initWithRootViewController:clothesViewController] autorelease];
+    self.bagNavigationController = [[[RDKCustomNavigationController alloc] initWithRootViewController:bagViewController] autorelease];
+    self.mapNavigationController = [[[RDKCustomNavigationController alloc] initWithRootViewController:mapViewController] autorelease];
 
     /** create tab bar controller */
     self.tabBarController = [[[UITabBarController alloc] init] autorelease];

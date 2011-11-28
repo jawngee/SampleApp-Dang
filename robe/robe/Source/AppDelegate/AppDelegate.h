@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+@class RDKCustomNavigationController;
+
 /** application delegate */
 @interface AppDelegate : UIResponder <UIApplicationDelegate, UITabBarControllerDelegate> {
     
@@ -19,15 +21,15 @@
 @property (strong, nonatomic) UITabBarController *tabBarController;
 
 /** navigation controller for home view */
-@property (strong, nonatomic) UINavigationController *homeNavigationController;
+@property (strong, nonatomic) RDKCustomNavigationController *homeNavigationController;
 /** navigation controller for calendar view */
-@property (strong, nonatomic) UINavigationController *calendarNavigationController;
+@property (strong, nonatomic) RDKCustomNavigationController *calendarNavigationController;
 /** navigation controller for clothes view */
-@property (strong, nonatomic) UINavigationController *clothesNavigationController;
+@property (strong, nonatomic) RDKCustomNavigationController *clothesNavigationController;
 /** navigation controller for bag view */
-@property (strong, nonatomic) UINavigationController *bagNavigationController;
+@property (strong, nonatomic) RDKCustomNavigationController *bagNavigationController;
 /** navigation controller for map view */
-@property (strong, nonatomic) UINavigationController *mapNavigationController;
+@property (strong, nonatomic) RDKCustomNavigationController *mapNavigationController;
 
 
 @end

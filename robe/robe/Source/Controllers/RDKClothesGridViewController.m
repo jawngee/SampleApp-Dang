@@ -101,7 +101,7 @@
     if ([indexPath row] == 4) {
         __cell.imageViewCell_1.image = [UIImage imageNamed:@"clothes-gridview-cell-image-1.png"];
         __cell.imageViewCell_2.image = [UIImage imageNamed:@"clothes-gridview-cell-image-3.png"];
-        __cell.imageViewCell_3.image = [UIImage imageNamed:@"clothes-gridview-cell-image-2.png"];        
+//        __cell.imageViewCell_3.image = [UIImage imageNamed:@"clothes-gridview-cell-image-2.png"];        
     }
 
     
