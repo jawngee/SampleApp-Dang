@@ -7,7 +7,6 @@
 //
 
 #import "RDKHomeViewController.h"
-#import "RDKCustomTabBarItem.h"
 #import "RDKHomeTableViewCell.h"
 
 @implementation RDKHomeViewController
@@ -17,16 +16,6 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-//        self.title = NSLocalizedString(@"First", @"First");
-//        self.tabBarItem.image = [UIImage imageNamed:@"home-icon.png"];
-//        self.tabBarItem.title = [NSString stringWithString:@"新闻"];
-        
-        RDKCustomTabBarItem *customTabBarItem = [[RDKCustomTabBarItem alloc] initWithTitle:nil image:nil tag:0];
-        [customTabBarItem setCustomStdImage:[UIImage imageNamed:@"unselected-home-icon.png"]];
-        [customTabBarItem setCustomHighlightedImage:[UIImage imageNamed:@"selected-home-icon.png"]];
-        [customTabBarItem setImageInsets:UIEdgeInsetsMake(8, 0, -8, 0)];
-        
-        [self setTabBarItem:customTabBarItem];
     }
     return self;
 }

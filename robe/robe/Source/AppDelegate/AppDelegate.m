@@ -62,47 +62,7 @@
     /** create tab bar controller */
     self.tabBarController = [[[RDKCustomTabBarController alloc] init] autorelease];
     self.tabBarController.viewControllers = [NSArray arrayWithObjects:self.homeNavigationController, self.calendarNavigationController, self.clothesNavigationController, self.bagNavigationController, self.mapNavigationController, nil];
-    
-//    for(UIView *view in self.tabBarController.tabBar.subviews) {  
-//        if([view isKindOfClass:[UILabel class]]) {  
-//            [view removeFromSuperview];  
-//        }  
-//    }  
         
-    UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"bottombar-background.png"]];
-    
-    if ([[[UIDevice currentDevice] systemVersion] floatValue] > 4.9) {
-        //iOS 5
-        [self.tabBarController.tabBar insertSubview:imageView atIndex:1];
-    }
-    else {
-        //iOS 4.whatever and below
-        [self.tabBarController.tabBar insertSubview:imageView atIndex:0];
-    }
-    
-    [imageView release];
-    
-//    for (UIView *view in self.tabBarController.tabBar.subviews)
-//    {      
-//        if ([NSStringFromClass([view class]) isEqualToString:@"UITabBarButton"])
-//        {
-//            for (UIView *subview in view.subviews)
-//            {                                    
-//                if ([subview isKindOfClass:[UILabel class]])
-//                {
-//                    UILabel *label = (UILabel *)subview;
-//                    [label removeFromSuperview];
-//                }
-//                
-//                if ([subview isKindOfClass:[UIImageView class]])
-//                {
-//                    UIImageView *imageView = (UIImageView *)subview;
-//                    NSLog(@"w=%f, h=%f", imageView.frame.size.width, imageView.frame.size.height);
-//                }
-//            }
-//        }
-//    }      
-    
     self.window.rootViewController = self.tabBarController;
     [self.window makeKeyAndVisible];
     return YES;

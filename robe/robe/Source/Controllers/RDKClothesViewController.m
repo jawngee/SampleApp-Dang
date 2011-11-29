@@ -8,7 +8,6 @@
 
 #import "RDKClothesViewController.h"
 
-#import "RDKCustomTabBarItem.h"
 #import "RDKClothesTableViewCell.h"
 #import "RDKClothesGridViewController.h"
 
@@ -21,15 +20,6 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-//        self.tabBarItem.image = [UIImage imageNamed:@"clothes-icon.png"];
-//        self.tabBarItem.title = [NSString stringWithString:@"产品介绍"];
-        
-        RDKCustomTabBarItem *customTabBarItem = [[RDKCustomTabBarItem alloc] initWithTitle:nil image:nil tag:0];
-        [customTabBarItem setCustomStdImage:[UIImage imageNamed:@"unselected-clothes-icon.png"]];
-        [customTabBarItem setCustomHighlightedImage:[UIImage imageNamed:@"selected-clothes-icon.png"]];
-        [customTabBarItem setImageInsets:UIEdgeInsetsMake(8, 0, -8, 0)];
-        
-        [self setTabBarItem:customTabBarItem];        
     }
     return self;
 }

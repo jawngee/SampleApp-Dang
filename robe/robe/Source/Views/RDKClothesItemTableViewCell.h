@@ -18,6 +18,10 @@
 @property (strong, nonatomic) UIImageView *imageViewCell_2;
 @property (strong, nonatomic) UIImageView *imageViewCell_3;
 
+@property (strong, nonatomic) UIImage *image_1;
+@property (strong, nonatomic) UIImage *image_2;
+@property (strong, nonatomic) UIImage *image_3;
+
 - (void)unselectAllItem:(id)sender;
 
 @end

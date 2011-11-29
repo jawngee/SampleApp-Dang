@@ -7,7 +7,6 @@
 //
 
 #import "RDKMapViewController.h"
-#import "RDKCustomTabBarItem.h"
 
 @implementation RDKMapViewController
 
@@ -16,15 +15,6 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-//        self.tabBarItem.image = [UIImage imageNamed:@"map-icon.png"];
-//        self.tabBarItem.title = [NSString stringWithString:@"店铺信息"];
-        
-        RDKCustomTabBarItem *customTabBarItem = [[RDKCustomTabBarItem alloc] initWithTitle:nil image:nil tag:0];
-        [customTabBarItem setCustomStdImage:[UIImage imageNamed:@"unselected-map-icon.png"]];
-        [customTabBarItem setCustomHighlightedImage:[UIImage imageNamed:@"selected-map-icon.png"]];
-        [customTabBarItem setImageInsets:UIEdgeInsetsMake(8, 0, -8, 0)];
-        
-        [self setTabBarItem:customTabBarItem];        
     }
     return self;
 }

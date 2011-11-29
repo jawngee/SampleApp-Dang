@@ -7,7 +7,6 @@
 //
 
 #import "RDKCalendarViewController.h"
-#import "RDKCustomTabBarItem.h"
 
 @implementation RDKCalendarViewController
 
@@ -16,15 +15,6 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-//        self.tabBarItem.image = [UIImage imageNamed:@"calendar-icon.png"];
-//        self.tabBarItem.title = [NSString stringWithString:@"2012春夏"];
-        
-        RDKCustomTabBarItem *customTabBarItem = [[RDKCustomTabBarItem alloc] initWithTitle:nil image:nil tag:0];
-        [customTabBarItem setCustomStdImage:[UIImage imageNamed:@"unselected-calendar-icon.png"]];
-        [customTabBarItem setCustomHighlightedImage:[UIImage imageNamed:@"selected-calendar-icon.png"]];
-        [customTabBarItem setImageInsets:UIEdgeInsetsMake(8, 0, -8, 0)];
-        
-        [self setTabBarItem:customTabBarItem];        
     }
     return self;
 }

@@ -75,32 +75,53 @@
     }
     
     if ([indexPath row] == 0) {
-        __cell.imageViewCell_1.image = [UIImage imageNamed:@"clothes-gridview-cell-image-1.png"];
-        __cell.imageViewCell_2.image = [UIImage imageNamed:@"clothes-gridview-cell-image-2.png"];
-        __cell.imageViewCell_3.image = [UIImage imageNamed:@"clothes-gridview-cell-image-3.png"];        
+        
+        __cell.image_1 = [UIImage imageNamed:@"clothes-gridview-cell-image-1.png"];
+        __cell.image_2 = [UIImage imageNamed:@"clothes-gridview-cell-image-2.png"];
+        __cell.image_3 = [UIImage imageNamed:@"clothes-gridview-cell-image-3.png"];
+        
+//        __cell.imageViewCell_1.image = [UIImage imageNamed:@"clothes-gridview-cell-image-1.png"];
+//        __cell.imageViewCell_2.image = [UIImage imageNamed:@"clothes-gridview-cell-image-2.png"];
+//        __cell.imageViewCell_3.image = [UIImage imageNamed:@"clothes-gridview-cell-image-3.png"];        
     }
     
     if ([indexPath row] == 1) {
-        __cell.imageViewCell_1.image = [UIImage imageNamed:@"clothes-gridview-cell-image-3.png"];
-        __cell.imageViewCell_2.image = [UIImage imageNamed:@"clothes-gridview-cell-image-1.png"];
-        __cell.imageViewCell_3.image = [UIImage imageNamed:@"clothes-gridview-cell-image-2.png"];        
+        __cell.image_1 = [UIImage imageNamed:@"clothes-gridview-cell-image-3.png"];
+        __cell.image_2 = [UIImage imageNamed:@"clothes-gridview-cell-image-1.png"];
+        __cell.image_3 = [UIImage imageNamed:@"clothes-gridview-cell-image-2.png"];
+
+//        __cell.imageViewCell_1.image = [UIImage imageNamed:@"clothes-gridview-cell-image-3.png"];
+//        __cell.imageViewCell_2.image = [UIImage imageNamed:@"clothes-gridview-cell-image-1.png"];
+//        __cell.imageViewCell_3.image = [UIImage imageNamed:@"clothes-gridview-cell-image-2.png"];        
     }
     
     if ([indexPath row] == 2) {
-        __cell.imageViewCell_1.image = [UIImage imageNamed:@"clothes-gridview-cell-image-2.png"];
-        __cell.imageViewCell_2.image = [UIImage imageNamed:@"clothes-gridview-cell-image-1.png"];
-        __cell.imageViewCell_3.image = [UIImage imageNamed:@"clothes-gridview-cell-image-3.png"];        
+        __cell.image_1 = [UIImage imageNamed:@"clothes-gridview-cell-image-2.png"];
+        __cell.image_2 = [UIImage imageNamed:@"clothes-gridview-cell-image-1.png"];
+        __cell.image_3 = [UIImage imageNamed:@"clothes-gridview-cell-image-3.png"];
+
+//        __cell.imageViewCell_1.image = [UIImage imageNamed:@"clothes-gridview-cell-image-2.png"];
+//        __cell.imageViewCell_2.image = [UIImage imageNamed:@"clothes-gridview-cell-image-1.png"];
+//        __cell.imageViewCell_3.image = [UIImage imageNamed:@"clothes-gridview-cell-image-3.png"];        
     }
     
     if ([indexPath row] == 3) {
-        __cell.imageViewCell_1.image = [UIImage imageNamed:@"clothes-gridview-cell-image-3.png"];
-        __cell.imageViewCell_2.image = [UIImage imageNamed:@"clothes-gridview-cell-image-2.png"];
-        __cell.imageViewCell_3.image = [UIImage imageNamed:@"clothes-gridview-cell-image-1.png"];        
+        __cell.image_1 = [UIImage imageNamed:@"clothes-gridview-cell-image-3.png"];
+        __cell.image_2 = [UIImage imageNamed:@"clothes-gridview-cell-image-2.png"];
+        __cell.image_3 = [UIImage imageNamed:@"clothes-gridview-cell-image-1.png"];
+
+//        __cell.imageViewCell_1.image = [UIImage imageNamed:@"clothes-gridview-cell-image-3.png"];
+//        __cell.imageViewCell_2.image = [UIImage imageNamed:@"clothes-gridview-cell-image-2.png"];
+//        __cell.imageViewCell_3.image = [UIImage imageNamed:@"clothes-gridview-cell-image-1.png"];        
     }
 
     if ([indexPath row] == 4) {
-        __cell.imageViewCell_1.image = [UIImage imageNamed:@"clothes-gridview-cell-image-1.png"];
-        __cell.imageViewCell_2.image = [UIImage imageNamed:@"clothes-gridview-cell-image-3.png"];
+        __cell.image_1 = [UIImage imageNamed:@"clothes-gridview-cell-image-1.png"];
+        __cell.image_2 = [UIImage imageNamed:@"clothes-gridview-cell-image-3.png"];
+//        __cell.image_3 = [UIImage imageNamed:@"clothes-gridview-cell-image-3.png"];
+
+//        __cell.imageViewCell_1.image = [UIImage imageNamed:@"clothes-gridview-cell-image-1.png"];
+//        __cell.imageViewCell_2.image = [UIImage imageNamed:@"clothes-gridview-cell-image-3.png"];
 //        __cell.imageViewCell_3.image = [UIImage imageNamed:@"clothes-gridview-cell-image-2.png"];        
     }
 
