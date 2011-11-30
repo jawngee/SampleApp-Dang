@@ -39,6 +39,14 @@
         [self setBackgroundColor:[UIColor clearColor]];
         [self setAccessoryType:UITableViewCellAccessoryNone];
 //        [self setUserInteractionEnabled:NO];
+        
+        /** declare background button for cell */
+        UIButton *backgroundButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        [backgroundButton setFrame:CGRectMake(0, 0, 320, 123)];
+        [backgroundButton setBackgroundColor:[UIColor clearColor]];
+        
+        /** add background view for cell */
+        [self addSubview:backgroundButton];
 
     }
     return self;
