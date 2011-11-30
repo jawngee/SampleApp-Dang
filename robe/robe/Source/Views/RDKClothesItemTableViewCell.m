@@ -102,6 +102,7 @@
 - (void)setImage_1:(UIImage *)image_1
 {
     self.imageViewCell_1 = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 107, 123)];
+    [self.imageViewCell_1 setBackgroundColor:[UIColor clearColor]];
     [self.imageViewCell_1 setContentMode:UIViewContentModeCenter];
     [self.imageViewCell_1 setImage:image_1];
     
@@ -129,6 +130,7 @@
 - (void)setImage_2:(UIImage *)image_2
 {
     self.imageViewCell_2 = [[UIImageView alloc] initWithFrame:CGRectMake(108, 0, 107, 123)];
+    [self.imageViewCell_2 setBackgroundColor:[UIColor clearColor]];
     [self.imageViewCell_2 setContentMode:UIViewContentModeCenter];
     [self.imageViewCell_2 setImage:image_2];
     
@@ -156,6 +158,7 @@
 - (void)setImage_3:(UIImage *)image_3
 {
     self.imageViewCell_3 = [[UIImageView alloc] initWithFrame:CGRectMake(215, 0, 106, 123)];
+    [self.imageViewCell_1 setBackgroundColor:[UIColor clearColor]];
     [self.imageViewCell_3 setContentMode:UIViewContentModeCenter];
     [self.imageViewCell_3 setImage:image_3];
     
