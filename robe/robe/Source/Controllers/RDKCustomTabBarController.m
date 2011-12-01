@@ -50,7 +50,19 @@
     //        }  
     //    }  
     
-    UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"bottombar-background.png"]];
+//    UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"bottombar-background.png"]];
+    UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 320, 53)];
+    [imageView setImage:[UIImage imageNamed:@"bottombar-background.png"]];
+    
+//    [self.view setFrame:CGRectMake(0, 0, 320, 53)];
+    
+//    for (UIView *view in self.view.subviews) 
+//    {
+//        if (![view isKindOfClass:[UITabBar class]]) 
+//        {
+//            [view setFrame:CGRectMake(0, 0, 320, 53)];
+//        }
+//    }
     
     if ([[[UIDevice currentDevice] systemVersion] floatValue] > 4.9) 
     {

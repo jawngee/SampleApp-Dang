@@ -8,11 +8,18 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol RDKClothesItemTableViewCellDelegate
+
+- (void)itemClick:(id)sender;
+
+@end
+
 @interface RDKClothesItemTableViewCell : UITableViewCell {
     
 }
 
 @property (strong, nonatomic) NSMutableArray *cellList;
+@property (retain, nonatomic) id <RDKClothesItemTableViewCellDelegate> delegate;
 
 @property (strong, nonatomic) UIImageView *imageViewCell_1;
 @property (strong, nonatomic) UIImageView *imageViewCell_2;

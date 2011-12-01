@@ -13,15 +13,19 @@
 @synthesize imageViewCell_1 = _imageViewCell_1;
 @synthesize imageViewCell_2 = _imageViewCell_2;
 @synthesize imageViewCell_3 = _imageViewCell_3;
+
 @synthesize image_1 = _image_1;
 @synthesize image_2 = _image_2;
 @synthesize image_3 = _image_3;
+
 @synthesize cellList = _cellList;
+@synthesize delegate = _delegate;
 
 
 - (void)dealloc
 {
     [_cellList release];
+//    [_delegate release];
     [_image_1 release];
     [_image_2 release];
     [_image_3 release];
@@ -77,6 +81,8 @@
             [[self.cellList objectAtIndex:i] unselectAllItem:self];
         }
     }
+    
+    [self.delegate itemClick:sender];
 }
 
 - (void)itemFress_2:(id)sender 
@@ -91,6 +97,7 @@
         }
     }
 
+    [self.delegate itemClick:sender];
 }
 
 - (void)itemFress_3:(id)sender 
@@ -105,6 +112,7 @@
         }
     }
 
+    [self.delegate itemClick:sender];
 }
 
 - (void)setImage_1:(UIImage *)image_1
@@ -178,8 +186,8 @@
     UIView *seperateView_1 = [[UIView alloc] initWithFrame:CGRectMake(215, 0, 107, 1)];
     [seperateView_1 setBackgroundColor:[UIColor colorWithRed:145.0/255.0 green:145.0/255.0 blue:145.0/255.0 alpha:1.0]];
     
-//    UIView *seperateView_2 = [[UIView alloc] initWithFrame:CGRectMake(107, 0, 1, 123)];
-//    [seperateView_2 setBackgroundColor:[UIColor colorWithRed:145.0/255.0 green:145.0/255.0 blue:145.0/255.0 alpha:1.0]];
+    UIView *seperateView_2 = [[UIView alloc] initWithFrame:CGRectMake(319, 0, 1, 123)];
+    [seperateView_2 setBackgroundColor:[UIColor colorWithRed:145.0/255.0 green:145.0/255.0 blue:145.0/255.0 alpha:1.0]];
     
     UIView *seperateView_3 = [[UIView alloc] initWithFrame:CGRectMake(215, 123, 107, 1)];
     [seperateView_3 setBackgroundColor:[UIColor colorWithRed:145.0/255.0 green:145.0/255.0 blue:145.0/255.0 alpha:1.0]];
@@ -187,7 +195,7 @@
     [self addSubview:self.imageViewCell_3];
     [self addSubview:itemButton_3];
     [self addSubview:seperateView_1];
-//    [self addSubview:seperateView_2];
+    [self addSubview:seperateView_2];
     [self addSubview:seperateView_3];
 }
 

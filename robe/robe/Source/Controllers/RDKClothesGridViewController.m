@@ -7,10 +7,10 @@
 //
 
 #import "RDKClothesGridViewController.h"
-
-#import "RDKClothesItemTableViewCell.h"
+#import "RDKClothesDetailViewController.h"
 
 @implementation RDKClothesGridViewController
+@synthesize clothesDetailViewController = _clothesDetailViewController;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -29,12 +29,31 @@
     // Release any cached data, images, etc that aren't in use.
 }
 
+- (void)dealloc
+{
+    [super dealloc];
+    [_clothesDetailViewController release];
+}
+
 #pragma mark Table view delegate
 
 //- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 //{
 //    NSLog(@"did selected row");
 //}
+
+#pragma mark -
+#pragma mark RDKClothesItemTableViewCellDelegate
+
+- (void)itemClick:(id)sender
+{
+    if (!self.clothesDetailViewController) {
+        self.clothesDetailViewController = [[[RDKClothesDetailViewController alloc] initWithNibName:@"RDKClothesDetailViewController" bundle:nil] autorelease];
+    }
+    
+    [self.navigationController pushViewController:self.clothesDetailViewController animated:YES];
+
+}
 
 
 #pragma mark -
@@ -70,6 +89,8 @@
         __cell = [[[RDKClothesItemTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
         
         __cell.cellList = cellList;
+        __cell.delegate = self;
+        
         [cellList addObject:__cell];
         
         if ([indexPath row] == 0) {

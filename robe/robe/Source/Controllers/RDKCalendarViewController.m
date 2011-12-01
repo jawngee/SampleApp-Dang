@@ -211,7 +211,7 @@
 	{					
 		case 2:
 		{	
-			[self setZoomMode:YES];
+//			[self setZoomMode:YES];
 		}
             break;
 	}

@@ -7,11 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "RDKClothesItemTableViewCell.h"
 
-@interface RDKClothesGridViewController : UIViewController <UITabBarDelegate, UITableViewDataSource> {
+@class RDKClothesDetailViewController;
+
+@interface RDKClothesGridViewController : UIViewController <UITabBarDelegate, UITableViewDataSource, RDKClothesItemTableViewCellDelegate> {
     
     IBOutlet UITableView *clothesItemTableView;
     NSMutableArray *cellList;
+    
 }
+
+@property (strong, nonatomic) RDKClothesDetailViewController *clothesDetailViewController;
 
 @end
