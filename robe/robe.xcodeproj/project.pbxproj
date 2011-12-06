@@ -44,6 +44,15 @@
 		621EBE9F14822B1000F649BC /* RDKClothesGridViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 621EBE9D14822B1000F649BC /* RDKClothesGridViewController.m */; };
 		621EBEA014822B1000F649BC /* RDKClothesGridViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 621EBE9E14822B1000F649BC /* RDKClothesGridViewController.xib */; };
 		621EBEA81482301600F649BC /* RDKClothesItemTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 621EBEA71482301600F649BC /* RDKClothesItemTableViewCell.m */; };
+		62304599148DEFCD00759597 /* map-cell-image-1.png in Resources */ = {isa = PBXBuildFile; fileRef = 62304595148DEFCD00759597 /* map-cell-image-1.png */; };
+		6230459A148DEFCD00759597 /* map-cell-image-1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 62304596148DEFCD00759597 /* map-cell-image-1@2x.png */; };
+		6230459B148DEFCD00759597 /* map-cell-image-2.png in Resources */ = {isa = PBXBuildFile; fileRef = 62304597148DEFCD00759597 /* map-cell-image-2.png */; };
+		6230459C148DEFCD00759597 /* map-cell-image-2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 62304598148DEFCD00759597 /* map-cell-image-2@2x.png */; };
+		623045A0148DF10500759597 /* RDKMapTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6230459F148DF10500759597 /* RDKMapTableViewCell.m */; };
+		623045A4148DFA0F00759597 /* RDKSubMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 623045A2148DFA0F00759597 /* RDKSubMapViewController.m */; };
+		623045A5148DFA0F00759597 /* RDKSubMapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 623045A3148DFA0F00759597 /* RDKSubMapViewController.xib */; };
+		623045A7148DFE1500759597 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 623045A6148DFE1500759597 /* MapKit.framework */; };
+		623045AA148E051A00759597 /* RDKCustomAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 623045A9148E051A00759597 /* RDKCustomAnnotation.m */; };
 		6269F642147B8B3D008AFE51 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6269F5EE147B8B3D008AFE51 /* AppDelegate.m */; };
 		6269F643147B8B3D008AFE51 /* RDKBagViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6269F5F2147B8B3D008AFE51 /* RDKBagViewController.m */; };
 		6269F644147B8B3D008AFE51 /* RDKBagViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6269F5F3147B8B3D008AFE51 /* RDKBagViewController.xib */; };
@@ -164,6 +173,18 @@
 		621EBE9E14822B1000F649BC /* RDKClothesGridViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RDKClothesGridViewController.xib; sourceTree = "<group>"; };
 		621EBEA61482301600F649BC /* RDKClothesItemTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RDKClothesItemTableViewCell.h; sourceTree = "<group>"; };
 		621EBEA71482301600F649BC /* RDKClothesItemTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RDKClothesItemTableViewCell.m; sourceTree = "<group>"; };
+		62304595148DEFCD00759597 /* map-cell-image-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "map-cell-image-1.png"; sourceTree = "<group>"; };
+		62304596148DEFCD00759597 /* map-cell-image-1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "map-cell-image-1@2x.png"; sourceTree = "<group>"; };
+		62304597148DEFCD00759597 /* map-cell-image-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "map-cell-image-2.png"; sourceTree = "<group>"; };
+		62304598148DEFCD00759597 /* map-cell-image-2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "map-cell-image-2@2x.png"; sourceTree = "<group>"; };
+		6230459E148DF10500759597 /* RDKMapTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RDKMapTableViewCell.h; sourceTree = "<group>"; };
+		6230459F148DF10500759597 /* RDKMapTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RDKMapTableViewCell.m; sourceTree = "<group>"; };
+		623045A1148DFA0F00759597 /* RDKSubMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RDKSubMapViewController.h; sourceTree = "<group>"; };
+		623045A2148DFA0F00759597 /* RDKSubMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RDKSubMapViewController.m; sourceTree = "<group>"; };
+		623045A3148DFA0F00759597 /* RDKSubMapViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RDKSubMapViewController.xib; sourceTree = "<group>"; };
+		623045A6148DFE1500759597 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		623045A8148E051A00759597 /* RDKCustomAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RDKCustomAnnotation.h; sourceTree = "<group>"; };
+		623045A9148E051A00759597 /* RDKCustomAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RDKCustomAnnotation.m; sourceTree = "<group>"; };
 		6269F5ED147B8B3D008AFE51 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		6269F5EE147B8B3D008AFE51 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		6269F5F1147B8B3D008AFE51 /* RDKBagViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RDKBagViewController.h; sourceTree = "<group>"; };
@@ -259,6 +280,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				623045A7148DFE1500759597 /* MapKit.framework in Frameworks */,
 				62C7101B14750296003DF763 /* UIKit.framework in Frameworks */,
 				62C7101D14750296003DF763 /* Foundation.framework in Frameworks */,
 				62C7101F14750296003DF763 /* CoreGraphics.framework in Frameworks */,
@@ -317,9 +339,21 @@
 			path = Clothes;
 			sourceTree = "<group>";
 		};
+		62304590148DECC100759597 /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				62304595148DEFCD00759597 /* map-cell-image-1.png */,
+				62304596148DEFCD00759597 /* map-cell-image-1@2x.png */,
+				62304597148DEFCD00759597 /* map-cell-image-2.png */,
+				62304598148DEFCD00759597 /* map-cell-image-2@2x.png */,
+			);
+			path = Map;
+			sourceTree = "<group>";
+		};
 		6269F5B3147B8B3D008AFE51 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				62304590148DECC100759597 /* Map */,
 				620FF1BD147E306A002D31DB /* Clothes */,
 				FFAC22A5147CAE5800FA37B8 /* Calendar */,
 				FFAC22A9147CAE5800FA37B8 /* Global */,
@@ -396,6 +430,9 @@
 				62ED314E148765870097B6B5 /* RDKClothesDetailViewController.h */,
 				62ED314F148765870097B6B5 /* RDKClothesDetailViewController.m */,
 				62ED3150148765870097B6B5 /* RDKClothesDetailViewController.xib */,
+				623045A1148DFA0F00759597 /* RDKSubMapViewController.h */,
+				623045A2148DFA0F00759597 /* RDKSubMapViewController.m */,
+				623045A3148DFA0F00759597 /* RDKSubMapViewController.xib */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -407,6 +444,8 @@
 				6269F606147B8B3D008AFE51 /* RDKCustomTabBarItem.m */,
 				6269F607147B8B3D008AFE51 /* RDKCustomImage.h */,
 				6269F608147B8B3D008AFE51 /* RDKCustomImage.m */,
+				623045A8148E051A00759597 /* RDKCustomAnnotation.h */,
+				623045A9148E051A00759597 /* RDKCustomAnnotation.m */,
 			);
 			path = External;
 			sourceTree = "<group>";
@@ -429,6 +468,8 @@
 				620FF1CC147E4225002D31DB /* RDKClothesTableViewCell.m */,
 				621EBEA61482301600F649BC /* RDKClothesItemTableViewCell.h */,
 				621EBEA71482301600F649BC /* RDKClothesItemTableViewCell.m */,
+				6230459E148DF10500759597 /* RDKMapTableViewCell.h */,
+				6230459F148DF10500759597 /* RDKMapTableViewCell.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -461,6 +502,7 @@
 		62C7101914750296003DF763 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				623045A6148DFE1500759597 /* MapKit.framework */,
 				62C7101A14750296003DF763 /* UIKit.framework */,
 				62C7101C14750296003DF763 /* Foundation.framework */,
 				62C7101E14750296003DF763 /* CoreGraphics.framework */,
@@ -689,6 +731,11 @@
 				62ED314B148764EA0097B6B5 /* clothes-small-silver-bag-image.png in Resources */,
 				62ED314C148764EA0097B6B5 /* clothes-small-silver-bag-image@2x.png in Resources */,
 				62ED3152148765870097B6B5 /* RDKClothesDetailViewController.xib in Resources */,
+				62304599148DEFCD00759597 /* map-cell-image-1.png in Resources */,
+				6230459A148DEFCD00759597 /* map-cell-image-1@2x.png in Resources */,
+				6230459B148DEFCD00759597 /* map-cell-image-2.png in Resources */,
+				6230459C148DEFCD00759597 /* map-cell-image-2@2x.png in Resources */,
+				623045A5148DFA0F00759597 /* RDKSubMapViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -718,6 +765,9 @@
 				620C29D514835C3E006141F7 /* RDKCustomNavigationController.m in Sources */,
 				620C29D9148394C2006141F7 /* RDKCustomTabBarController.m in Sources */,
 				62ED3151148765870097B6B5 /* RDKClothesDetailViewController.m in Sources */,
+				623045A0148DF10500759597 /* RDKMapTableViewCell.m in Sources */,
+				623045A4148DFA0F00759597 /* RDKSubMapViewController.m in Sources */,
+				623045AA148E051A00759597 /* RDKCustomAnnotation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -64,6 +64,11 @@
 //        }
 //    }
     
+//    CGRect tabBarFrame = self.tabBar.frame;
+//    tabBarFrame.size.height = 52;
+//    tabBarFrame.origin.y -= 52;
+//    self.tabBar.frame = tabBarFrame;
+
     if ([[[UIDevice currentDevice] systemVersion] floatValue] > 4.9) 
     {
         //iOS 5

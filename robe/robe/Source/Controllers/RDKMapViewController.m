@@ -8,7 +8,11 @@
 
 #import "RDKMapViewController.h"
 
+#import "RDKMapTableViewCell.h"
+#import "RDKSubMapViewController.h"
+
 @implementation RDKMapViewController
+@synthesize subMapViewController = _subMapViewController;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -27,11 +31,79 @@
     // Release any cached data, images, etc that aren't in use.
 }
 
+- (void)dealloc
+{
+    [super dealloc];
+    [_subMapViewController release];
+}
+
 #pragma mark - function class
 
 - (void)refresh:(id)sender
 {
 }
+
+#pragma mark Table view delegate
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (!self.subMapViewController) {
+        self.subMapViewController = [[[RDKSubMapViewController alloc] initWithNibName:@"RDKSubMapViewController" bundle:nil] autorelease];
+    }
+    
+    [self.navigationController pushViewController:self.subMapViewController animated:YES];
+}
+
+#pragma mark -
+#pragma mark Table view data source
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView 
+{
+	return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section 
+{
+	return 2;
+}
+
+//- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
+//	return @"";
+//}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath 
+{
+	return 123;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+	static NSString *CellIdentifier = @"TableViewCell";
+    
+	RDKMapTableViewCell *__cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    
+    if (__cell == nil) {
+        __cell = [[[RDKMapTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+    }
+    
+    if ([indexPath row] == 0) {
+        __cell.imageViewCell.image = [UIImage imageNamed:@"map-cell-image-1.png"];
+        __cell.titleLable.text = @"北京东方新天地店";
+        __cell.desciptionLable.text = @"开业全场买赠优惠";
+        __cell.createTimeLable.text = @"地址：北京东城区东长安街1号东方新天地商场首层第四区AA61B";
+    }
+    
+    if ([indexPath row] == 1) {
+        __cell.imageViewCell.image = [UIImage imageNamed:@"map-cell-image-2.png"];
+        __cell.titleLable.text = @"北京国贸店";
+        __cell.desciptionLable.text = @"";
+        __cell.createTimeLable.text = @"地址：北京东城区东长安街1号东方新天地商场首层第四区AA61B";
+    }
+        
+	return __cell;
+}
+
+
 
 #pragma mark - View lifecycle
 

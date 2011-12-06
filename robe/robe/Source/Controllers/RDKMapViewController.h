@@ -8,6 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
-@interface RDKMapViewController : UIViewController
+@class RDKSubMapViewController;
+
+@interface RDKMapViewController : UIViewController <UITabBarDelegate, UITableViewDataSource> {
+    
+    IBOutlet UITableView *mapTableView;
+}
+
+@property (strong, nonatomic) RDKSubMapViewController *subMapViewController;
+
 
 @end
