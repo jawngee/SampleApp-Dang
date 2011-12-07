@@ -32,8 +32,9 @@
 
 - (void)dealloc
 {
-    [super dealloc];
+    NSLog(@"DEALLOC %@",NSStringFromClass([self class]));
     [_mapView release];
+    [super dealloc];
 }
 
 #pragma mark - Map view delegate

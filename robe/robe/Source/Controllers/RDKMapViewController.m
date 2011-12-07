@@ -33,8 +33,9 @@
 
 - (void)dealloc
 {
-    [super dealloc];
+    NSLog(@"DEALLOC %@",NSStringFromClass([self class]));
     [_subMapViewController release];
+    [super dealloc];
 }
 
 #pragma mark - function class

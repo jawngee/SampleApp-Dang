@@ -57,17 +57,17 @@
     UIView *bottomView = [[UIView alloc] initWithFrame:CGRectMake(0, 280, 320, 105)];
 //    [bottomView setBackgroundColor:[UIColor blackColor]];
     
-    UIImageView *bottomBackgroundImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 320, 105)];
+    UIImageView *bottomBackgroundImageView = [[[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 320, 105)] autorelease];
     [bottomBackgroundImageView setImage:[UIImage imageNamed:@"clothes-bottom-background-image.png"]];
     
-    UILabel *titleLable = [[UILabel alloc] initWithFrame:CGRectMake(5, 10, 150, 20)];
+    UILabel *titleLable = [[[UILabel alloc] initWithFrame:CGRectMake(5, 10, 150, 20)] autorelease];
     [titleLable setBackgroundColor:[UIColor clearColor]];
     [titleLable setFont:[UIFont boldSystemFontOfSize:13]];
     [titleLable setLineBreakMode:UILineBreakModeWordWrap];
     [titleLable setTextColor:[UIColor whiteColor]];
     [titleLable setText:@"多层次小手提包"];
     
-    UILabel *descriptionLable = [[UILabel alloc] initWithFrame:CGRectMake(5, 32, 150, 20)];
+    UILabel *descriptionLable = [[[UILabel alloc] initWithFrame:CGRectMake(5, 32, 150, 20)] autorelease];
     [descriptionLable setBackgroundColor:[UIColor clearColor]];
     [descriptionLable setFont:[UIFont systemFontOfSize:10]];
     [descriptionLable setLineBreakMode:UILineBreakModeWordWrap];
@@ -123,7 +123,7 @@
     [thumbImageView_3 setContentMode:UIViewContentModeCenter];
     [thumbImageView_3 setImage:[UIImage imageNamed:@"clothes-small-silver-bag-image.png"]];
     
-    self.itemImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 320, 250)];
+    self.itemImageView = [[[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 320, 250)] autorelease];
     [self.itemImageView setBackgroundColor:[UIColor clearColor]];
     [self.itemImageView setContentMode:UIViewContentModeCenter];
     [self.itemImageView setImage:[UIImage imageNamed:@"clothes-silver-bag-image.png"]];

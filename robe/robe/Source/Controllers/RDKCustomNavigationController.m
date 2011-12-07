@@ -21,6 +21,7 @@
 
 - (void)didReceiveMemoryWarning
 {
+    NSLog(@"THE FUCK DUDE");
     // Releases the view if it doesn't have a superview.
     [super didReceiveMemoryWarning];
     
@@ -60,6 +61,7 @@
 
 - (void)viewDidUnload
 {
+    NSLog(@"UNLOAD BIATCH");
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
