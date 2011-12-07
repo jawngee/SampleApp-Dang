@@ -34,6 +34,7 @@
 {
     NSLog(@"DEALLOC %@",NSStringFromClass([self class]));
     [_mapView release];
+    [_annotationArray release];
     [super dealloc];
 }
 
@@ -118,6 +119,9 @@
 
 - (void)viewDidUnload
 {
+    _mapView =  nil;
+    _annotationArray = nil;
+    
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;

@@ -28,6 +28,12 @@
     // Release any cached data, images, etc that aren't in use.
 }
 
+- (void)dealloc
+{
+    [homeTableView release];
+    [super dealloc];
+}
+
 #pragma mark - function class
 
 - (void)refresh:(id)sender
@@ -112,6 +118,7 @@
 
 - (void)viewDidUnload
 {
+    homeTableView = nil;
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;

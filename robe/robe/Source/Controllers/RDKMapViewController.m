@@ -34,6 +34,7 @@
 - (void)dealloc
 {
     NSLog(@"DEALLOC %@",NSStringFromClass([self class]));
+    [mapTableView release];
     [_subMapViewController release];
     [super dealloc];
 }
@@ -127,6 +128,8 @@
 
 - (void)viewDidUnload
 {
+    self.subMapViewController = nil;
+    mapTableView = nil;
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;

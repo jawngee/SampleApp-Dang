@@ -27,6 +27,14 @@
     // Release any cached data, images, etc that aren't in use.
 }
 
+- (void)dealloc
+{
+    [imagesArray release];
+    [contArray release];
+    [scrollView release];
+    [pageControl release];
+    [super dealloc];
+}
 
 #pragma mark - function class
 
@@ -111,6 +119,11 @@
 
 -(void)viewDidUnload
 {
+    imagesArray = nil;
+    contArray = nil;
+    scrollView = nil;
+    pageControl = nil;
+
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;

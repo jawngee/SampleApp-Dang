@@ -34,8 +34,9 @@
 
 - (void)dealloc
 {
-    [super dealloc];
     [_clothesGridViewController release];
+    [clothesTableView release];
+    [super dealloc];
 }
 
 #pragma mark - function class
@@ -140,6 +141,8 @@
 
 - (void)viewDidUnload
 {
+    self.clothesGridViewController = nil;
+    clothesTableView = nil;
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;

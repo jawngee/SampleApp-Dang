@@ -31,8 +31,10 @@
 
 - (void)dealloc
 {
-    [super dealloc];
     [_clothesDetailViewController release];
+    [clothesItemTableView release];
+    [cellList release];
+    [super dealloc];
 }
 
 #pragma mark Table view delegate
@@ -136,13 +138,16 @@
 
 - (void)viewDidLoad
 {
+    cellList = [[NSMutableArray alloc] init];
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    cellList = [[NSMutableArray alloc] init];
 }
 
 - (void)viewDidUnload
 {
+    cellList = nil;
+    clothesItemTableView = nil;
+    self.clothesDetailViewController = nil;
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
