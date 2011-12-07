@@ -26,7 +26,7 @@
 		rotateTransform = CGAffineTransformIdentity;
 		
 		/** create view container */
-		self.view = [[UIView alloc] initWithFrame:_frame];
+		self.view = [[[UIView alloc] initWithFrame:_frame] autorelease];
 		self.view.backgroundColor = [UIColor clearColor];
 		self.view.multipleTouchEnabled = YES;
 		self.view.exclusiveTouch = YES;

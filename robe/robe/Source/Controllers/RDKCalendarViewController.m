@@ -50,6 +50,7 @@
     
     UIBarButtonItem *refreshBarButton = [[UIBarButtonItem alloc] initWithCustomView:refreshButton];
     self.navigationItem.rightBarButtonItem = refreshBarButton;
+    [refreshBarButton release];
     
     /** build user interface */
     pageIndex = 0;			
@@ -85,6 +86,7 @@
         [imgCont setPageIndex:i];
         imgCont.view.userInteractionEnabled = NO; //
         [contArray addObject:imgCont];
+        [imgCont release];
         
         /** add the controller's view to the scroll view */
         if (nil == imgCont.view.superview) {
@@ -156,6 +158,7 @@
 {
 	RDKCustomImage *thumb = [[RDKCustomImage alloc] initWithName:imagename];
 	[imagesArray addObject:thumb];	
+    [thumb release];
 }
 
 

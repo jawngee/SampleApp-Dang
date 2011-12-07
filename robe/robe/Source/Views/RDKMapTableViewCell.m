@@ -55,10 +55,10 @@
     [self setSelectedBackgroundView:selectedBackground];
     [selectedBackground release];
     
-    self.imageViewCell = [[UIImageView alloc] initWithFrame:CGRectMake(10, 15, 128, 94)];
-    self.titleLable = [[UILabel alloc] initWithFrame:CGRectMake(145, 12, 170, 20)];
-    self.desciptionLable = [[UILabel alloc] initWithFrame:CGRectMake(145, 30, 170, 20)];
-    self.createTimeLable = [[UILabel alloc] initWithFrame:CGRectMake(145, 80, 170, 30)];
+    self.imageViewCell = [[[UIImageView alloc] initWithFrame:CGRectMake(10, 15, 128, 94)] autorelease];
+    self.titleLable = [[[UILabel alloc] initWithFrame:CGRectMake(145, 12, 170, 20)] autorelease];
+    self.desciptionLable = [[[UILabel alloc] initWithFrame:CGRectMake(145, 30, 170, 20)] autorelease];
+    self.createTimeLable = [[[UILabel alloc] initWithFrame:CGRectMake(145, 80, 170, 30)] autorelease];
     
     [self.titleLable setBackgroundColor:[UIColor clearColor]];
     [self.titleLable setFont:[UIFont boldSystemFontOfSize:15]];

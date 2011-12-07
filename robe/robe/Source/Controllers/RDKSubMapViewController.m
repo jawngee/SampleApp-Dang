@@ -51,7 +51,7 @@
         
         if (annotationView == nil) 
         {
-            annotationView = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:identifier];
+            annotationView = [[[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:identifier] autorelease];
         } 
         else 
         {

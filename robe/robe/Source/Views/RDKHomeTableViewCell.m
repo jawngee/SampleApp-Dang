@@ -23,11 +23,11 @@
 
 - (void)dealloc
 {
-    [super dealloc];
     [_imageViewCell release];
     [_titleLable release];
     [_desciptionLable release];
     [_createTimeLable release];
+    [super dealloc];
 }
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
@@ -56,10 +56,10 @@
     [self setSelectedBackgroundView:selectedBackground];
     [selectedBackground release];
     
-    self.imageViewCell = [[UIImageView alloc] initWithFrame:CGRectMake(10, 12, 128, 94)];
-    self.titleLable = [[UILabel alloc] initWithFrame:CGRectMake(145, 12, 170, 30)];
-    self.desciptionLable = [[UILabel alloc] initWithFrame:CGRectMake(145, 45, 170, 20)];
-    self.createTimeLable = [[UILabel alloc] initWithFrame:CGRectMake(170, 92, 145, 20)];
+    self.imageViewCell = [[[UIImageView alloc] initWithFrame:CGRectMake(10, 12, 128, 94)] autorelease];
+    self.titleLable = [[[UILabel alloc] initWithFrame:CGRectMake(145, 12, 170, 30)] autorelease];
+    self.desciptionLable = [[[UILabel alloc] initWithFrame:CGRectMake(145, 45, 170, 20)] autorelease];
+    self.createTimeLable = [[[UILabel alloc] initWithFrame:CGRectMake(170, 92, 145, 20)] autorelease];
     
     [self.titleLable setBackgroundColor:[UIColor clearColor]];
     [self.titleLable setFont:[UIFont boldSystemFontOfSize:12]];

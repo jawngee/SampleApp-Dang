@@ -141,6 +141,11 @@
     [[self.viewControllers objectAtIndex:3] setTabBarItem:customBagTabBarItem];
     [[self.viewControllers objectAtIndex:4] setTabBarItem:customMapTabBarItem];
 
+    [customHomeTabBarItem release];
+    [customCalendarTabBarItem release];
+    [customClothesTabBarItem release];
+    [customBagTabBarItem release];
+    [customMapTabBarItem release];
 }
 
 - (void)viewDidUnload

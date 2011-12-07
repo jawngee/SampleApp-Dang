@@ -150,6 +150,17 @@
     [self.view addSubview:self.itemImageView];
     [self.view addSubview:shadowImageView];
     
+    [colorLable release];
+    [shadowImageView release];
+    [bottomView release];
+    
+    [thumbBackgroundImage_1 release];
+    [thumbBackgroundImage_2 release];
+    [thumbBackgroundImage_3 release];
+    
+    [thumbImageView_1 release];
+    [thumbImageView_2 release];
+    [thumbImageView_3 release];
 }
 
 - (void)viewDidUnload

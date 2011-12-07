@@ -52,11 +52,10 @@
     [self setSelectedBackgroundView:selectedBackground];
     [selectedBackground release];
     
-    self.imageViewCell = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 70, 92)];
-    self.titleLable = [[UILabel alloc] initWithFrame:CGRectMake(140, 36, 50, 20)];
-    
+    self.imageViewCell = [[[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 70, 92)] autorelease];
     [self.imageViewCell setContentMode:UIViewContentModeCenter];
-     
+
+    self.titleLable = [[[UILabel alloc] initWithFrame:CGRectMake(140, 36, 50, 20)] autorelease];
     [self.titleLable setBackgroundColor:[UIColor clearColor]];
     [self.titleLable setFont:[UIFont boldSystemFontOfSize:16]];
     [self.titleLable setLineBreakMode:UILineBreakModeWordWrap];

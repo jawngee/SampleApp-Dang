@@ -107,6 +107,7 @@
     
     UIBarButtonItem *refreshBarButton = [[UIBarButtonItem alloc] initWithCustomView:refreshButton];
     self.navigationItem.rightBarButtonItem = refreshBarButton;
+    [refreshBarButton release];
 }
 
 - (void)viewDidUnload
