@@ -13,8 +13,11 @@
 @interface RDKClothesViewController : UIViewController <UITabBarDelegate, UITableViewDataSource> {
     
     IBOutlet UITableView *clothesTableView;
+    UIBarButtonItem *_refreshBarButtonItem;
+
 }
 
+@property (nonatomic, strong) UIBarButtonItem *refreshBarButtonItem;
 @property (strong, nonatomic) RDKClothesGridViewController *clothesGridViewController;
 
 

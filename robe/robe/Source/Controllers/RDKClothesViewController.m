@@ -13,6 +13,7 @@
 
 @implementation RDKClothesViewController
 @synthesize clothesGridViewController = _clothesGridViewController;
+@synthesize refreshBarButtonItem = _refreshBarButtonItem;
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -20,6 +21,16 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+        UIImage *refreshImage = [UIImage imageNamed:@"refresh-button.png"];
+        UIButton *refreshButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        [refreshButton setImage:refreshImage forState:UIControlStateNormal];
+        [refreshButton setFrame:CGRectMake(0.0, 0.0, refreshImage.size.width, refreshImage.size.height)];
+        [refreshButton addTarget:self action:@selector(refresh:) forControlEvents:UIControlEventTouchUpInside];
+        //    [refreshButton setContentEdgeInsets:UIEdgeInsetsMake(0, -8, 0, 8)];
+        
+        _refreshBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:refreshButton];
+        self.navigationItem.rightBarButtonItem = _refreshBarButtonItem;
+
     }
     return self;
 }
@@ -35,6 +46,7 @@
 - (void)dealloc
 {
     [_clothesGridViewController release];
+    [_refreshBarButtonItem release];
     [clothesTableView release];
     [super dealloc];
 }
@@ -127,16 +139,18 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-    UIImage *refreshImage = [UIImage imageNamed:@"refresh-button.png"];
-    UIButton *refreshButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [refreshButton setImage:refreshImage forState:UIControlStateNormal];
-    [refreshButton setFrame:CGRectMake(0.0, 0.0, refreshImage.size.width, refreshImage.size.height)];
-    [refreshButton addTarget:self action:@selector(refresh:) forControlEvents:UIControlEventTouchUpInside];
-    [refreshButton setContentEdgeInsets:UIEdgeInsetsMake(0, -8, 0, 8)];
+    /** create custom refresh button */
+//    UIImage *refreshImage = [UIImage imageNamed:@"refresh-button.png"];
+//    UIButton *refreshButton = [UIButton buttonWithType:UIButtonTypeCustom];
+//    [refreshButton setImage:refreshImage forState:UIControlStateNormal];
+//    [refreshButton setFrame:CGRectMake(0.0, 0.0, refreshImage.size.width, refreshImage.size.height)];
+//    [refreshButton addTarget:self action:@selector(refresh:) forControlEvents:UIControlEventTouchUpInside];
+////    [refreshButton setContentEdgeInsets:UIEdgeInsetsMake(0, -8, 0, 8)];
+//    
+//    _refreshBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:refreshButton];
+//    self.navigationItem.rightBarButtonItem = _refreshBarButtonItem;
+//    [refreshBarButton release];    
     
-    UIBarButtonItem *refreshBarButton = [[UIBarButtonItem alloc] initWithCustomView:refreshButton];
-    self.navigationItem.rightBarButtonItem = refreshBarButton;
-    [refreshBarButton release];
 }
 
 - (void)viewDidUnload

@@ -8,6 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-@interface RDKCustomNavigationController : UINavigationController
+@interface RDKCustomNavigationController : UINavigationController {
+    
+    UIBarButtonItem *_refreshBarButtonItem;
+}
+
+@property (nonatomic, strong) UIBarButtonItem *refreshBarButtonItem;
 
 @end

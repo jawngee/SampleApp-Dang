@@ -17,6 +17,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+        
     }
     return self;
 }
@@ -134,13 +135,25 @@
 	return __cell;
 }
 
+#pragma mark -
+#pragma mark Private Methods
+
+- (void)pushBackButton:(id)sender {
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
 #pragma mark - View lifecycle
 
 - (void)viewDidLoad
 {
-    cellList = [[NSMutableArray alloc] init];
+
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    
+    /** init cell list */
+    cellList = [[NSMutableArray alloc] init];
+    
+
 }
 
 - (void)viewDidUnload

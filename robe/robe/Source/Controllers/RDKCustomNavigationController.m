@@ -9,6 +9,7 @@
 #import "RDKCustomNavigationController.h"
 
 @implementation RDKCustomNavigationController
+@synthesize refreshBarButtonItem = _refreshBarButtonItem;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -28,6 +29,12 @@
     // Release any cached data, images, etc that aren't in use.
 }
 
+- (void)dealloc
+{
+    [super dealloc];
+    [_refreshBarButtonItem release];
+}
+
 #pragma mark - View lifecycle
 
 /*
@@ -37,6 +44,24 @@
 }
 */
 
+- (void)pushViewController:(UIViewController *)viewController animated:(BOOL)animated
+{  
+//    if (self.topViewController == nil)
+//    {
+//        [super pushViewController:viewController animated:animated];
+//        return;
+//    }
+
+    [super pushViewController:viewController animated:animated];
+//    viewController.navigationItem.rightBarButtonItem = _refreshBarButtonItem;
+}
+
+- (UIViewController *)popViewControllerAnimated:(BOOL)animated
+{
+    UIViewController *viewController = [super popViewControllerAnimated:animated];
+//    viewController.navigationItem.rightBarButtonItem = _refreshBarButtonItem;
+    return viewController;
+}
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad
@@ -55,6 +80,15 @@
         //iOS 4.whatever and below
         [self.navigationBar insertSubview:topBarBackground atIndex:0];
     }
+    
+    UIImage *refreshImage = [UIImage imageNamed:@"refresh-button.png"];
+    UIButton *refreshButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [refreshButton setImage:refreshImage forState:UIControlStateNormal];
+    [refreshButton setFrame:CGRectMake(0.0, 0.0, refreshImage.size.width, refreshImage.size.height)];
+    [refreshButton addTarget:self action:@selector(refresh:) forControlEvents:UIControlEventTouchUpInside];
+    [refreshButton setContentEdgeInsets:UIEdgeInsetsMake(0, -8, 0, 8)];
+
+    _refreshBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:refreshButton];
 
 }
 
