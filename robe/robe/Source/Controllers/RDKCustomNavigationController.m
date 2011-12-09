@@ -7,6 +7,19 @@
 //
 
 #import "RDKCustomNavigationController.h"
+#import "SCAppUtils.h"
+
+
+//@implementation UINavigationBar (UINavigationBarCategory)  
+//
+//- (void)drawRect:(CGRect)rect  
+//{  
+//    UIImage *image = [UIImage imageNamed:@"topbar-background-image.png"];  
+//    
+//    [image drawInRect:rect];  
+//}  
+//
+//@end  
 
 @implementation RDKCustomNavigationController
 @synthesize refreshBarButtonItem = _refreshBarButtonItem;
@@ -15,7 +28,7 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
+        // Custom initialization        
     }
     return self;
 }
@@ -46,21 +59,12 @@
 
 - (void)pushViewController:(UIViewController *)viewController animated:(BOOL)animated
 {  
-//    if (self.topViewController == nil)
-//    {
-//        [super pushViewController:viewController animated:animated];
-//        return;
-//    }
-
     [super pushViewController:viewController animated:animated];
-//    viewController.navigationItem.rightBarButtonItem = _refreshBarButtonItem;
 }
 
 - (UIViewController *)popViewControllerAnimated:(BOOL)animated
 {
-    UIViewController *viewController = [super popViewControllerAnimated:animated];
-//    viewController.navigationItem.rightBarButtonItem = _refreshBarButtonItem;
-    return viewController;
+    return [super popViewControllerAnimated:animated];
 }
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
@@ -68,30 +72,26 @@
 {
     [super viewDidLoad];
     
-    UIImageView *topBarBackground=[[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"topbar-background-image.png"]] autorelease];
-    
-    if ([[[UIDevice currentDevice] systemVersion] floatValue] > 4.9) 
-    {
-        //iOS 5
-        [self.navigationBar insertSubview:topBarBackground atIndex:1];
-    }
-    else 
-    {
-        //iOS 4.whatever and below
-        [self.navigationBar insertSubview:topBarBackground atIndex:0];
-    }
-    
-    UIImage *refreshImage = [UIImage imageNamed:@"refresh-button.png"];
-    UIButton *refreshButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [refreshButton setImage:refreshImage forState:UIControlStateNormal];
-    [refreshButton setFrame:CGRectMake(0.0, 0.0, refreshImage.size.width, refreshImage.size.height)];
-    [refreshButton addTarget:self action:@selector(refresh:) forControlEvents:UIControlEventTouchUpInside];
-    [refreshButton setContentEdgeInsets:UIEdgeInsetsMake(0, -8, 0, 8)];
+//    UINavigationController *nc = [[UINavigationController alloc] initWithRootViewController:tvc];
+    [SCAppUtils customizeNavigationController:self];
+//    [self setNavController:nc];
 
-    _refreshBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:refreshButton];
+    
+//    UIImageView *topBarBackground=[[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"topbar-background-image.png"]] autorelease];
+//    
+//    if ([[[UIDevice currentDevice] systemVersion] floatValue] > 4.9) 
+//    {
+//        //iOS 5
+//        [self.navigationBar insertSubview:topBarBackground atIndex:2];
+//    }
+//    else 
+//    {
+//        //iOS 4.whatever and below
+//        [self.navigationBar insertSubview:topBarBackground atIndex:2];
+//        
+//    }
 
 }
-
 
 - (void)viewDidUnload
 {

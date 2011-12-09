@@ -85,6 +85,18 @@
     // Do any additional setup after loading the view from its nib.
     _annotationArray = [[NSMutableArray alloc] init];
     
+    UIImage *refreshImage = [UIImage imageNamed:@"global-back-button.png"];
+    UIButton *refreshButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [refreshButton setImage:refreshImage forState:UIControlStateNormal];
+    [refreshButton setFrame:CGRectMake(0.0, 0.0, refreshImage.size.width, refreshImage.size.height)];
+    [refreshButton addTarget:self action:@selector(backButtonPress:) forControlEvents:UIControlEventTouchUpInside];
+    [refreshButton setContentEdgeInsets:UIEdgeInsetsMake(0, 8, 0, -8)];//  UIEdgeInsetsMake(0, -8, 0, 8)];
+    
+    UIBarButtonItem *refreshBarButton = [[UIBarButtonItem alloc] initWithCustomView:refreshButton];
+    self.navigationItem.hidesBackButton = YES;
+    self.navigationItem.leftBarButtonItem = refreshBarButton;
+    [refreshBarButton release];
+    
     CLLocationCoordinate2D zoomLocation;
     zoomLocation.latitude = 10.791036;
     zoomLocation.longitude = 106.631327;
@@ -115,6 +127,11 @@
     
 //    [_mapView addAnnotations:_annotationArray];
 
+}
+
+- (void)backButtonPress:(id)sender
+{
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)viewDidUnload

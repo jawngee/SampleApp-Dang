@@ -40,16 +40,16 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-//    UIImage *refreshImage = [UIImage imageNamed:@"refresh-button.png"];
-//    UIButton *refreshButton = [UIButton buttonWithType:UIButtonTypeCustom];
-//    [refreshButton setImage:refreshImage forState:UIControlStateNormal];
-//    [refreshButton setFrame:CGRectMake(0.0, 0.0, refreshImage.size.width, refreshImage.size.height)];
-//    [refreshButton addTarget:self action:@selector(refresh:) forControlEvents:UIControlEventTouchUpInside];
-//    [refreshButton setContentEdgeInsets:UIEdgeInsetsMake(0, -8, 0, 8)];
-//    
-//    UIBarButtonItem *refreshBarButton = [[UIBarButtonItem alloc] initWithCustomView:refreshButton];
-//    self.navigationItem.rightBarButtonItem = refreshBarButton;
-//    [refreshBarButton release];
+    UIImage *refreshImage = [UIImage imageNamed:@"refresh-button.png"];
+    UIButton *refreshButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [refreshButton setImage:refreshImage forState:UIControlStateNormal];
+    [refreshButton setFrame:CGRectMake(0.0, 0.0, refreshImage.size.width, refreshImage.size.height)];
+    [refreshButton addTarget:self action:@selector(refresh:) forControlEvents:UIControlEventTouchUpInside];
+    [refreshButton setContentEdgeInsets:UIEdgeInsetsMake(0, -8, 0, 8)];
+    
+    UIBarButtonItem *refreshBarButton = [[UIBarButtonItem alloc] initWithCustomView:refreshButton];
+    self.navigationItem.rightBarButtonItem = refreshBarButton;
+    [refreshBarButton release];
     
     /** build user interface */
     pageIndex = 0;			

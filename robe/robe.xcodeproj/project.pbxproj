@@ -41,6 +41,9 @@
 		62100BFD147FA231003453B0 /* clothes-gridview-cell-image-2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 62100BF7147FA22D003453B0 /* clothes-gridview-cell-image-2@2x.png */; };
 		62100BFE147FA231003453B0 /* clothes-gridview-cell-image-3.png in Resources */ = {isa = PBXBuildFile; fileRef = 62100BF8147FA22E003453B0 /* clothes-gridview-cell-image-3.png */; };
 		62100BFF147FA231003453B0 /* clothes-gridview-cell-image-3@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 62100BF9147FA22F003453B0 /* clothes-gridview-cell-image-3@2x.png */; };
+		621BF1D31491BCDE00B40B84 /* SCAppUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 621BF1D01491BCDE00B40B84 /* SCAppUtils.m */; };
+		621BF1D41491BCDE00B40B84 /* SCClassUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 621BF1D21491BCDE00B40B84 /* SCClassUtils.m */; };
+		621BF1D71491BCEA00B40B84 /* UINavigationBar+SCBackgroundImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 621BF1D61491BCEA00B40B84 /* UINavigationBar+SCBackgroundImage.m */; };
 		621EBE9F14822B1000F649BC /* RDKClothesGridViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 621EBE9D14822B1000F649BC /* RDKClothesGridViewController.m */; };
 		621EBEA014822B1000F649BC /* RDKClothesGridViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 621EBE9E14822B1000F649BC /* RDKClothesGridViewController.xib */; };
 		621EBEA81482301600F649BC /* RDKClothesItemTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 621EBEA71482301600F649BC /* RDKClothesItemTableViewCell.m */; };
@@ -178,6 +181,12 @@
 		62100BF7147FA22D003453B0 /* clothes-gridview-cell-image-2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "clothes-gridview-cell-image-2@2x.png"; sourceTree = "<group>"; };
 		62100BF8147FA22E003453B0 /* clothes-gridview-cell-image-3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "clothes-gridview-cell-image-3.png"; sourceTree = "<group>"; };
 		62100BF9147FA22F003453B0 /* clothes-gridview-cell-image-3@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "clothes-gridview-cell-image-3@2x.png"; sourceTree = "<group>"; };
+		621BF1CF1491BCDE00B40B84 /* SCAppUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCAppUtils.h; sourceTree = "<group>"; };
+		621BF1D01491BCDE00B40B84 /* SCAppUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCAppUtils.m; sourceTree = "<group>"; };
+		621BF1D11491BCDE00B40B84 /* SCClassUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCClassUtils.h; sourceTree = "<group>"; };
+		621BF1D21491BCDE00B40B84 /* SCClassUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCClassUtils.m; sourceTree = "<group>"; };
+		621BF1D51491BCEA00B40B84 /* UINavigationBar+SCBackgroundImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationBar+SCBackgroundImage.h"; sourceTree = "<group>"; };
+		621BF1D61491BCEA00B40B84 /* UINavigationBar+SCBackgroundImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationBar+SCBackgroundImage.m"; sourceTree = "<group>"; };
 		621EBE9C14822B1000F649BC /* RDKClothesGridViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RDKClothesGridViewController.h; sourceTree = "<group>"; };
 		621EBE9D14822B1000F649BC /* RDKClothesGridViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RDKClothesGridViewController.m; sourceTree = "<group>"; };
 		621EBE9E14822B1000F649BC /* RDKClothesGridViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RDKClothesGridViewController.xib; sourceTree = "<group>"; };
@@ -393,8 +402,8 @@
 		6269F5EB147B8B3D008AFE51 /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				6269F5EC147B8B3D008AFE51 /* AppDelegate */,
 				6269F5EF147B8B3D008AFE51 /* Categories */,
+				6269F5EC147B8B3D008AFE51 /* AppDelegate */,
 				6269F5F0147B8B3D008AFE51 /* Controllers */,
 				6269F604147B8B3D008AFE51 /* External */,
 				6269F609147B8B3D008AFE51 /* Models */,
@@ -461,6 +470,12 @@
 		6269F604147B8B3D008AFE51 /* External */ = {
 			isa = PBXGroup;
 			children = (
+				621BF1D51491BCEA00B40B84 /* UINavigationBar+SCBackgroundImage.h */,
+				621BF1D61491BCEA00B40B84 /* UINavigationBar+SCBackgroundImage.m */,
+				621BF1CF1491BCDE00B40B84 /* SCAppUtils.h */,
+				621BF1D01491BCDE00B40B84 /* SCAppUtils.m */,
+				621BF1D11491BCDE00B40B84 /* SCClassUtils.h */,
+				621BF1D21491BCDE00B40B84 /* SCClassUtils.m */,
 				6269F605147B8B3D008AFE51 /* RDKCustomTabBarItem.h */,
 				6269F606147B8B3D008AFE51 /* RDKCustomTabBarItem.m */,
 				6269F607147B8B3D008AFE51 /* RDKCustomImage.h */,
@@ -816,6 +831,9 @@
 				623045A0148DF10500759597 /* RDKMapTableViewCell.m in Sources */,
 				623045A4148DFA0F00759597 /* RDKSubMapViewController.m in Sources */,
 				623045AA148E051A00759597 /* RDKCustomAnnotation.m in Sources */,
+				621BF1D31491BCDE00B40B84 /* SCAppUtils.m in Sources */,
+				621BF1D41491BCDE00B40B84 /* SCClassUtils.m in Sources */,
+				621BF1D71491BCEA00B40B84 /* UINavigationBar+SCBackgroundImage.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

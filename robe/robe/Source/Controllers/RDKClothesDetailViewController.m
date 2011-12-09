@@ -52,6 +52,19 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    UIImage *refreshImage = [UIImage imageNamed:@"global-back-button.png"];
+    UIButton *refreshButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [refreshButton setImage:refreshImage forState:UIControlStateNormal];
+    [refreshButton setFrame:CGRectMake(0.0, 0.0, refreshImage.size.width, refreshImage.size.height)];
+    [refreshButton addTarget:self action:@selector(backButtonPress:) forControlEvents:UIControlEventTouchUpInside];
+    [refreshButton setContentEdgeInsets:UIEdgeInsetsMake(0, 8, 0, -8)];//  UIEdgeInsetsMake(0, -8, 0, 8)];
+    
+    UIBarButtonItem *refreshBarButton = [[UIBarButtonItem alloc] initWithCustomView:refreshButton];
+    self.navigationItem.hidesBackButton = YES;
+    self.navigationItem.leftBarButtonItem = refreshBarButton;
+    [refreshBarButton release];
+    
     // Do any additional setup after loading the view from its nib.
     
     UIView *bottomView = [[UIView alloc] initWithFrame:CGRectMake(0, 280, 320, 105)];
@@ -166,9 +179,15 @@
 - (void)viewDidUnload
 {
     _itemImageView = nil;
+    
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
+}
+
+- (void)backButtonPress:(id)sender
+{
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
