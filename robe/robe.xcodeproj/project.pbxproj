@@ -44,6 +44,18 @@
 		621BF1D31491BCDE00B40B84 /* SCAppUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 621BF1D01491BCDE00B40B84 /* SCAppUtils.m */; };
 		621BF1D41491BCDE00B40B84 /* SCClassUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 621BF1D21491BCDE00B40B84 /* SCClassUtils.m */; };
 		621BF1D71491BCEA00B40B84 /* UINavigationBar+SCBackgroundImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 621BF1D61491BCEA00B40B84 /* UINavigationBar+SCBackgroundImage.m */; };
+		621BF1F01491EEF700B40B84 /* clothes-female-icon-selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 621BF1E41491EEF700B40B84 /* clothes-female-icon-selected.png */; };
+		621BF1F11491EEF700B40B84 /* clothes-female-icon-selected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 621BF1E51491EEF700B40B84 /* clothes-female-icon-selected@2x.png */; };
+		621BF1F21491EEF700B40B84 /* clothes-female-icon-unselected.png in Resources */ = {isa = PBXBuildFile; fileRef = 621BF1E61491EEF700B40B84 /* clothes-female-icon-unselected.png */; };
+		621BF1F31491EEF700B40B84 /* clothes-female-icon-unselected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 621BF1E71491EEF700B40B84 /* clothes-female-icon-unselected@2x.png */; };
+		621BF1F41491EEF700B40B84 /* clothes-male-icon-selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 621BF1E81491EEF700B40B84 /* clothes-male-icon-selected.png */; };
+		621BF1F51491EEF700B40B84 /* clothes-male-icon-selected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 621BF1E91491EEF700B40B84 /* clothes-male-icon-selected@2x.png */; };
+		621BF1F61491EEF700B40B84 /* clothes-male-icon-unselected.png in Resources */ = {isa = PBXBuildFile; fileRef = 621BF1EA1491EEF700B40B84 /* clothes-male-icon-unselected.png */; };
+		621BF1F71491EEF700B40B84 /* clothes-male-icon-unselected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 621BF1EB1491EEF700B40B84 /* clothes-male-icon-unselected@2x.png */; };
+		621BF1F81491EEF700B40B84 /* clothes-unisex-icon-selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 621BF1EC1491EEF700B40B84 /* clothes-unisex-icon-selected.png */; };
+		621BF1F91491EEF700B40B84 /* clothes-unisex-icon-selected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 621BF1ED1491EEF700B40B84 /* clothes-unisex-icon-selected@2x.png */; };
+		621BF1FA1491EEF700B40B84 /* clothes-unisex-icon-unselected.png in Resources */ = {isa = PBXBuildFile; fileRef = 621BF1EE1491EEF700B40B84 /* clothes-unisex-icon-unselected.png */; };
+		621BF1FB1491EEF700B40B84 /* clothes-unisex-icon-unselected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 621BF1EF1491EEF700B40B84 /* clothes-unisex-icon-unselected@2x.png */; };
 		621EBE9F14822B1000F649BC /* RDKClothesGridViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 621EBE9D14822B1000F649BC /* RDKClothesGridViewController.m */; };
 		621EBEA014822B1000F649BC /* RDKClothesGridViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 621EBE9E14822B1000F649BC /* RDKClothesGridViewController.xib */; };
 		621EBEA81482301600F649BC /* RDKClothesItemTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 621EBEA71482301600F649BC /* RDKClothesItemTableViewCell.m */; };
@@ -187,6 +199,18 @@
 		621BF1D21491BCDE00B40B84 /* SCClassUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCClassUtils.m; sourceTree = "<group>"; };
 		621BF1D51491BCEA00B40B84 /* UINavigationBar+SCBackgroundImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationBar+SCBackgroundImage.h"; sourceTree = "<group>"; };
 		621BF1D61491BCEA00B40B84 /* UINavigationBar+SCBackgroundImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationBar+SCBackgroundImage.m"; sourceTree = "<group>"; };
+		621BF1E41491EEF700B40B84 /* clothes-female-icon-selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "clothes-female-icon-selected.png"; sourceTree = "<group>"; };
+		621BF1E51491EEF700B40B84 /* clothes-female-icon-selected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "clothes-female-icon-selected@2x.png"; sourceTree = "<group>"; };
+		621BF1E61491EEF700B40B84 /* clothes-female-icon-unselected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "clothes-female-icon-unselected.png"; sourceTree = "<group>"; };
+		621BF1E71491EEF700B40B84 /* clothes-female-icon-unselected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "clothes-female-icon-unselected@2x.png"; sourceTree = "<group>"; };
+		621BF1E81491EEF700B40B84 /* clothes-male-icon-selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "clothes-male-icon-selected.png"; sourceTree = "<group>"; };
+		621BF1E91491EEF700B40B84 /* clothes-male-icon-selected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "clothes-male-icon-selected@2x.png"; sourceTree = "<group>"; };
+		621BF1EA1491EEF700B40B84 /* clothes-male-icon-unselected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "clothes-male-icon-unselected.png"; sourceTree = "<group>"; };
+		621BF1EB1491EEF700B40B84 /* clothes-male-icon-unselected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "clothes-male-icon-unselected@2x.png"; sourceTree = "<group>"; };
+		621BF1EC1491EEF700B40B84 /* clothes-unisex-icon-selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "clothes-unisex-icon-selected.png"; sourceTree = "<group>"; };
+		621BF1ED1491EEF700B40B84 /* clothes-unisex-icon-selected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "clothes-unisex-icon-selected@2x.png"; sourceTree = "<group>"; };
+		621BF1EE1491EEF700B40B84 /* clothes-unisex-icon-unselected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "clothes-unisex-icon-unselected.png"; sourceTree = "<group>"; };
+		621BF1EF1491EEF700B40B84 /* clothes-unisex-icon-unselected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "clothes-unisex-icon-unselected@2x.png"; sourceTree = "<group>"; };
 		621EBE9C14822B1000F649BC /* RDKClothesGridViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RDKClothesGridViewController.h; sourceTree = "<group>"; };
 		621EBE9D14822B1000F649BC /* RDKClothesGridViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RDKClothesGridViewController.m; sourceTree = "<group>"; };
 		621EBE9E14822B1000F649BC /* RDKClothesGridViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RDKClothesGridViewController.xib; sourceTree = "<group>"; };
@@ -322,6 +346,18 @@
 		620FF1BD147E306A002D31DB /* Clothes */ = {
 			isa = PBXGroup;
 			children = (
+				621BF1E41491EEF700B40B84 /* clothes-female-icon-selected.png */,
+				621BF1E51491EEF700B40B84 /* clothes-female-icon-selected@2x.png */,
+				621BF1E61491EEF700B40B84 /* clothes-female-icon-unselected.png */,
+				621BF1E71491EEF700B40B84 /* clothes-female-icon-unselected@2x.png */,
+				621BF1E81491EEF700B40B84 /* clothes-male-icon-selected.png */,
+				621BF1E91491EEF700B40B84 /* clothes-male-icon-selected@2x.png */,
+				621BF1EA1491EEF700B40B84 /* clothes-male-icon-unselected.png */,
+				621BF1EB1491EEF700B40B84 /* clothes-male-icon-unselected@2x.png */,
+				621BF1EC1491EEF700B40B84 /* clothes-unisex-icon-selected.png */,
+				621BF1ED1491EEF700B40B84 /* clothes-unisex-icon-selected@2x.png */,
+				621BF1EE1491EEF700B40B84 /* clothes-unisex-icon-unselected.png */,
+				621BF1EF1491EEF700B40B84 /* clothes-unisex-icon-unselected@2x.png */,
 				62ED312D148764EA0097B6B5 /* clothes-bag-background-image.png */,
 				62ED312E148764EA0097B6B5 /* clothes-bag-background-image@2x.png */,
 				62ED312F148764EA0097B6B5 /* Clothes-bag-shadow-image.png */,
@@ -799,6 +835,18 @@
 				62FF9B3C1490A68600734FAA /* bag-image-3@2x.png in Resources */,
 				62FF9B3D1490A68600734FAA /* bag-image-4.png in Resources */,
 				62FF9B3E1490A68600734FAA /* bag-image-4@2x.png in Resources */,
+				621BF1F01491EEF700B40B84 /* clothes-female-icon-selected.png in Resources */,
+				621BF1F11491EEF700B40B84 /* clothes-female-icon-selected@2x.png in Resources */,
+				621BF1F21491EEF700B40B84 /* clothes-female-icon-unselected.png in Resources */,
+				621BF1F31491EEF700B40B84 /* clothes-female-icon-unselected@2x.png in Resources */,
+				621BF1F41491EEF700B40B84 /* clothes-male-icon-selected.png in Resources */,
+				621BF1F51491EEF700B40B84 /* clothes-male-icon-selected@2x.png in Resources */,
+				621BF1F61491EEF700B40B84 /* clothes-male-icon-unselected.png in Resources */,
+				621BF1F71491EEF700B40B84 /* clothes-male-icon-unselected@2x.png in Resources */,
+				621BF1F81491EEF700B40B84 /* clothes-unisex-icon-selected.png in Resources */,
+				621BF1F91491EEF700B40B84 /* clothes-unisex-icon-selected@2x.png in Resources */,
+				621BF1FA1491EEF700B40B84 /* clothes-unisex-icon-unselected.png in Resources */,
+				621BF1FB1491EEF700B40B84 /* clothes-unisex-icon-unselected@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
