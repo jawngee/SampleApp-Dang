@@ -1,18 +1,18 @@
 //
-//  ClothesViewController.m
+//  RDKProductDetailViewController.m
 //  robe
 //
-//  Created by Trung Dang on 11/17/11.
+//  Created by Trung Dang on 12/12/11.
 //  Copyright (c) 2011 Natural of Sience University. All rights reserved.
 //
 
-#import "RDKClothesViewController.h"
-
-#import "RDKClothesTableViewCell.h"
 #import "RDKProductDetailViewController.h"
 
-@implementation RDKClothesViewController
-@synthesize productDetailViewController = _productDetailViewController;
+#import "RDKClothesTableViewCell.h"
+#import "RDKClothesGridViewController.h"
+
+@implementation RDKProductDetailViewController
+@synthesize clothesGridViewController = _clothesGridViewController;
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -34,8 +34,8 @@
 
 - (void)dealloc
 {
-    [_productDetailViewController release];
-    [clothesTableView release];
+    [_clothesGridViewController release];
+    [productDetailTableView release];
     [super dealloc];
 }
 
@@ -45,15 +45,20 @@
 {
 }
 
+- (void)backButtonPress:(id)sender {
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+
 #pragma mark Table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (!self.productDetailViewController) {
-        self.productDetailViewController = [[[RDKProductDetailViewController alloc] initWithNibName:@"RDKProductDetailViewController" bundle:nil] autorelease];
+    if (!self.clothesGridViewController) {
+        self.clothesGridViewController = [[[RDKClothesGridViewController alloc] initWithNibName:@"RDKClothesGridViewController" bundle:nil] autorelease];
     }
     
-    [self.navigationController pushViewController:self.productDetailViewController animated:YES];
+    [self.navigationController pushViewController:self.clothesGridViewController animated:YES];
 }
 
 #pragma mark -
@@ -66,7 +71,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section 
 {
-	return 3;
+	return 4;
 }
 
 //- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
@@ -87,38 +92,37 @@
     if (__cell == nil) {
         __cell = [[[RDKClothesTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
     }
-        
+    
     if ([indexPath row] == 0) {
-        __cell.imageViewCell.image = [UIImage imageNamed:@"clothes-male-icon-unselected.png"];
-        [__cell.imageViewCell setHighlightedImage:[UIImage imageNamed:@"clothes-male-icon-selected.png"]];
-//        __cell.imageViewCell.frame = CGRectMake(20, 30, 35, 45);
-        __cell.titleLable.text = @"中性";
+        __cell.imageViewCell.image = [UIImage imageNamed:@"clothes-clothes-image.png"];
+        [__cell.imageViewCell setHighlightedImage:[UIImage imageNamed:@"clothes-clothes-cover-image.png"]];
+        //        __cell.imageViewCell.frame = CGRectMake(20, 30, 35, 45);
+        __cell.titleLable.text = @"上衣";
     }
     
     if ([indexPath row] == 1) {
-        __cell.imageViewCell.image = [UIImage imageNamed:@"clothes-female-icon-unselected.png"];
-        [__cell.imageViewCell setHighlightedImage:[UIImage imageNamed:@"clothes-female-icon-selected.png"]];
-//        __cell.imageViewCell.frame = CGRectMake(30, 30, 19, 45);
-        __cell.titleLable.text = @"女装";
+        __cell.imageViewCell.image = [UIImage imageNamed:@"clothes-trousers-image.png"];
+        [__cell.imageViewCell setHighlightedImage:[UIImage imageNamed:@"clothes-trousers-cover-image.png"]];
+        //        __cell.imageViewCell.frame = CGRectMake(30, 30, 19, 45);
+        __cell.titleLable.text = @"裤子";
     }
     
     if ([indexPath row] == 2) {
-        __cell.imageViewCell.image = [UIImage imageNamed:@"clothes-unisex-icon-unselected.png"];
-        [__cell.imageViewCell setHighlightedImage:[UIImage imageNamed:@"clothes-unisex-icon-selected.png"]];
-//        __cell.imageViewCell.frame = CGRectMake(20, 30, 32, 43);
-        __cell.titleLable.text = @"中性";
+        __cell.imageViewCell.image = [UIImage imageNamed:@"clothes-shoe-image.png"];
+        [__cell.imageViewCell setHighlightedImage:[UIImage imageNamed:@"clothes-shoe-cover-image.png"]];
+        //        __cell.imageViewCell.frame = CGRectMake(20, 30, 32, 43);
+        __cell.titleLable.text = @"鞋子";
     }
     
-//    if ([indexPath row] == 3) {
-//        __cell.imageViewCell.image = [UIImage imageNamed:@"clothes-bag-image.png"];
-//        [__cell.imageViewCell setHighlightedImage:[UIImage imageNamed:@"clothes-bag-cover-image.png"]];
-//        __cell.imageViewCell.frame = CGRectMake(20, 25, 36, 45);
-//        __cell.titleLable.text = @"配饰";
-//    }
-
+    if ([indexPath row] == 3) {
+        __cell.imageViewCell.image = [UIImage imageNamed:@"clothes-bag-image.png"];
+        [__cell.imageViewCell setHighlightedImage:[UIImage imageNamed:@"clothes-bag-cover-image.png"]];
+        __cell.imageViewCell.frame = CGRectMake(20, 25, 36, 45);
+        __cell.titleLable.text = @"配饰";
+    }
+    
 	return __cell;
 }
-
 
 #pragma mark - View lifecycle
 
@@ -127,23 +131,22 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-    /** create custom refresh button */
-    UIImage *refreshImage = [UIImage imageNamed:@"refresh-button.png"];
+    UIImage *refreshImage = [UIImage imageNamed:@"global-back-button.png"];
     UIButton *refreshButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [refreshButton setImage:refreshImage forState:UIControlStateNormal];
     [refreshButton setFrame:CGRectMake(0.0, 0.0, refreshImage.size.width, refreshImage.size.height)];
-    [refreshButton addTarget:self action:@selector(refresh:) forControlEvents:UIControlEventTouchUpInside];    
-    [refreshButton setContentEdgeInsets:UIEdgeInsetsMake(0, -8, 0, 8)];
+    [refreshButton addTarget:self action:@selector(backButtonPress:) forControlEvents:UIControlEventTouchUpInside];
+    [refreshButton setContentEdgeInsets:UIEdgeInsetsMake(0, 8, 0, -8)];//  UIEdgeInsetsMake(0, -8, 0, 8)];
     
     UIBarButtonItem *refreshBarButton = [[UIBarButtonItem alloc] initWithCustomView:refreshButton];
-    self.navigationItem.rightBarButtonItem = refreshBarButton;
-    [refreshBarButton release];    
+    self.navigationItem.hidesBackButton = YES;
+    self.navigationItem.leftBarButtonItem = refreshBarButton;
+    [refreshBarButton release];
+
 }
 
 - (void)viewDidUnload
 {
-    self.productDetailViewController = nil;
-    clothesTableView = nil;
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
