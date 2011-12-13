@@ -59,6 +59,7 @@
 		621EBE9F14822B1000F649BC /* RDKClothesGridViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 621EBE9D14822B1000F649BC /* RDKClothesGridViewController.m */; };
 		621EBEA014822B1000F649BC /* RDKClothesGridViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 621EBE9E14822B1000F649BC /* RDKClothesGridViewController.xib */; };
 		621EBEA81482301600F649BC /* RDKClothesItemTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 621EBEA71482301600F649BC /* RDKClothesItemTableViewCell.m */; };
+		62208EAB14973F3300CB67F1 /* RDKDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 62208EAA14973F3300CB67F1 /* RDKDataManager.m */; };
 		62304599148DEFCD00759597 /* map-cell-image-1.png in Resources */ = {isa = PBXBuildFile; fileRef = 62304595148DEFCD00759597 /* map-cell-image-1.png */; };
 		6230459A148DEFCD00759597 /* map-cell-image-1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 62304596148DEFCD00759597 /* map-cell-image-1@2x.png */; };
 		6230459B148DEFCD00759597 /* map-cell-image-2.png in Resources */ = {isa = PBXBuildFile; fileRef = 62304597148DEFCD00759597 /* map-cell-image-2.png */; };
@@ -218,6 +219,8 @@
 		621EBE9E14822B1000F649BC /* RDKClothesGridViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RDKClothesGridViewController.xib; sourceTree = "<group>"; };
 		621EBEA61482301600F649BC /* RDKClothesItemTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RDKClothesItemTableViewCell.h; sourceTree = "<group>"; };
 		621EBEA71482301600F649BC /* RDKClothesItemTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RDKClothesItemTableViewCell.m; sourceTree = "<group>"; };
+		62208EA914973F3300CB67F1 /* RDKDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RDKDataManager.h; sourceTree = "<group>"; };
+		62208EAA14973F3300CB67F1 /* RDKDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RDKDataManager.m; sourceTree = "<group>"; };
 		62304595148DEFCD00759597 /* map-cell-image-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "map-cell-image-1.png"; sourceTree = "<group>"; };
 		62304596148DEFCD00759597 /* map-cell-image-1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "map-cell-image-1@2x.png"; sourceTree = "<group>"; };
 		62304597148DEFCD00759597 /* map-cell-image-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "map-cell-image-2.png"; sourceTree = "<group>"; };
@@ -533,6 +536,8 @@
 		6269F609147B8B3D008AFE51 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				62208EA914973F3300CB67F1 /* RDKDataManager.h */,
+				62208EAA14973F3300CB67F1 /* RDKDataManager.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -892,6 +897,7 @@
 				621BF1D41491BCDE00B40B84 /* SCClassUtils.m in Sources */,
 				621BF1D71491BCEA00B40B84 /* UINavigationBar+SCBackgroundImage.m in Sources */,
 				6292D5341495E996004E2175 /* RDKProductDetailViewController.m in Sources */,
+				62208EAB14973F3300CB67F1 /* RDKDataManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -961,7 +967,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "robe/robe-Prefix.pch";
 				INFOPLIST_FILE = "robe/robe-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 4.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 3.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/robe/Source/AppDelegate\"",
@@ -978,7 +984,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "robe/robe-Prefix.pch";
 				INFOPLIST_FILE = "robe/robe-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 4.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 3.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/robe/Source/AppDelegate\"",
