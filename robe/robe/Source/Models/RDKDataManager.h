@@ -13,4 +13,9 @@
 
 +(void)initialize;
 
+-(NSArray *)getNewsList;
+-(NSArray *)getCollectionImageList;
+-(NSArray *)getProductList;
+-(NSArray *)getEventImageList;
+
 @end

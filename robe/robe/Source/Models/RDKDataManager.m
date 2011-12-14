@@ -23,4 +23,28 @@ static RDKDataManager *gInstance = nil;
     }
 }
 
+-(NSArray *)getNewsList
+{
+    NSArray *newsList = [[[NSArray alloc] init] autorelease];
+    return newsList;
+}
+
+-(NSArray *)getCollectionImageList
+{
+    NSArray *collectionImageList = [[[NSArray alloc] init] autorelease];
+    return collectionImageList
+}
+
+-(NSArray *)getProductList
+{
+    NSArray *productList = [[[NSArray alloc] init] autorelease];
+    return productList;
+}
+
+-(NSArray *)getEventImageList
+{
+    NSArray *eventImageList = [[[NSArray alloc] init] autorelease];
+    return eventImageList;
+}
+
 @end
