@@ -11,7 +11,7 @@
 
 @class RDKProductListViewController;
 
-@interface RDKCollectionViewController : UIViewController <UITabBarDelegate, UITableViewDataSource, RDKClothesItemTableViewCellDelegate> {
+@interface RDKCollectionViewController : UIViewController <UITabBarDelegate, UITableViewDataSource, RDKCollectionTableViewCellDelegate> {
     
     NSMutableArray *cellList;    
 }

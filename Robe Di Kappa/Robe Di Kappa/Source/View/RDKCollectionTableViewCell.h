@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@protocol RDKClothesItemTableViewCellDelegate
+@protocol RDKCollectionTableViewCellDelegate
 
 - (void)itemClick:(id)sender;
 
@@ -19,7 +19,7 @@
 }
 
 @property (strong, nonatomic) NSMutableArray *cellList;
-@property (retain, nonatomic) id <RDKClothesItemTableViewCellDelegate> delegate;
+@property (retain, nonatomic) id <RDKCollectionTableViewCellDelegate> delegate;
 
 @property (strong, nonatomic) UIImageView *imageViewCell_1;
 @property (strong, nonatomic) UIImageView *imageViewCell_2;

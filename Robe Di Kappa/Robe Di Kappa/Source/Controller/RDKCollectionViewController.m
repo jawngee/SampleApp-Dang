@@ -48,6 +48,7 @@
 
 - (void)itemClick:(id)sender
 {
+    /** transmit to another screen */
     if (!self.productListViewController) {
         self.productListViewController = [[[RDKProductListViewController alloc] initWithNibName:@"RDKProductListViewController" bundle:nil] autorelease];
     }
