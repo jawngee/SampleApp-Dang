@@ -42,6 +42,24 @@
 {
     self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
     
+    /** create directory for cache data */
+    NSArray *documentDirectory = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
+    NSString *homeDirectory = [[documentDirectory objectAtIndex:0] stringByAppendingPathComponent:@"Home"];
+	NSString *calendarDirectory = [[documentDirectory objectAtIndex:0] stringByAppendingPathComponent:@"Calendar"];
+	NSString *clothesDirectory = [[documentDirectory objectAtIndex:0] stringByAppendingPathComponent:@"Clothes"];
+    NSString *shoppingDirectory = [[documentDirectory objectAtIndex:0] stringByAppendingPathComponent:@"Shopping"];
+    NSString *mapDirectory = [[documentDirectory objectAtIndex:0] stringByAppendingPathComponent:@"Map"];
+
+    /** declare file manger variable */
+    NSFileManager * fileManager = [NSFileManager defaultManager];
+    
+    /** create directory with path */
+    [fileManager createDirectoryAtPath:homeDirectory withIntermediateDirectories:YES attributes:nil error:nil];
+	[fileManager createDirectoryAtPath:calendarDirectory withIntermediateDirectories:YES attributes:nil error:nil];
+	[fileManager createDirectoryAtPath:clothesDirectory withIntermediateDirectories:YES attributes:nil error:nil];
+    [fileManager createDirectoryAtPath:shoppingDirectory withIntermediateDirectories:YES attributes:nil error:nil];
+    [fileManager createDirectoryAtPath:mapDirectory withIntermediateDirectories:YES attributes:nil error:nil];
+    
     /** Override point for customization after application launch */
     UIViewController *homeViewController = [[[RDKHomeViewController alloc] initWithNibName:@"RDKHomeViewController" bundle:nil] autorelease];
     UIViewController *calendarViewController = [[[RDKCalendarViewController alloc] initWithNibName:@"RDKCalendarViewController" bundle:nil] autorelease];
@@ -60,8 +78,10 @@
     self.tabBarController = [[[RDKCustomTabBarController alloc] init] autorelease];
     self.tabBarController.viewControllers = [NSArray arrayWithObjects:self.homeNavigationController, self.calendarNavigationController, self.clothesNavigationController, self.shoppingNavigationController, self.mapNavigationController, nil];
     
+    /** set root view for tab bar controller */
     self.window.rootViewController = self.tabBarController;
     [self.window makeKeyAndVisible];
+    
     return YES;
 }
 

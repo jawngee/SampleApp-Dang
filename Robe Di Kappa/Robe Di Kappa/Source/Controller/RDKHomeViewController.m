@@ -7,9 +7,24 @@
 //
 
 #import "RDKHomeViewController.h"
+
 #import "RDKHomeTableViewCell.h"
+#import "RDKNewsItem.h"
+
+#define kCustomRowHeight    60.0
+#define kCustomRowCount     1
+
+@interface RDKHomeViewController ()
+
+- (void)startIconDownload:(RDKNewsItem *)newsItem forIndexPath:(NSIndexPath *)indexPath;
+
+@end
+
 
 @implementation RDKHomeViewController
+@synthesize newsArray = _newsArray;
+@synthesize homeTableView = _homeTableView;
+@synthesize imageDownloadsInProgress = _imageDownloadsInProgress;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -26,10 +41,15 @@
     [super didReceiveMemoryWarning];
     
     // Release any cached data, images, etc that aren't in use.
+    NSArray *allDownloads = [self.imageDownloadsInProgress allValues];
+    [allDownloads makeObjectsPerformSelector:@selector(cancelDownload)];
 }
 
 - (void)dealloc
 {
+    [_newsArray release];
+    [_homeTableView release];
+    [_imageDownloadsInProgress release];
     [super dealloc];
 }
 
@@ -49,47 +69,187 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section 
 {
-	return 3;
+    NSLog(@"NUMBER OF ROW: %d", [self.newsArray count]);
+    
+	int count = [self.newsArray count];
+	
+	/** ff there's no data yet, return enough rows to fill the screen */
+    if (count == 0)
+	{
+        return kCustomRowCount;
+    }
+    
+    return count;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath 
 {
-	return 123;
+    int count = [self.newsArray count];
+	
+	/** ff there's no data yet, return enough rows to fill the screen */
+    if (count == 0)
+	{
+        return kCustomRowHeight;
+    }
+    
+    return 123;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-	static NSString *CellIdentifier = @"TableViewCell";
+//	static NSString *CellIdentifier = @"LazyTableCell";
+    static NSString *PlaceholderCellIdentifier = @"PlaceholderCell";
+    NSString *CellIdentifier = [NSString stringWithFormat:@"TableViewCell_%d", [indexPath row]];
     
-	RDKHomeTableViewCell *__cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    
-    if (__cell == nil) {
-        __cell = [[[RDKHomeTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+    // add a placeholder cell while waiting on table data
+    int nodeCount = [self.newsArray count];
+	
+
+	if (nodeCount == 0 && indexPath.row == 0)
+	{
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:PlaceholderCellIdentifier];
+        
+        if (cell == nil)
+		{
+            cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle
+										   reuseIdentifier:PlaceholderCellIdentifier] autorelease];   
+            cell.detailTextLabel.textAlignment = UITextAlignmentCenter;
+			cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        }
+        
+		cell.detailTextLabel.text = @"Loading … ";
+		
+		return cell;
+    }
+	
+    RDKHomeTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    RDKNewsItem *newsItem = [self.newsArray objectAtIndex:[indexPath row]];
+
+    if (cell == nil) {
+        
+        cell = [[[RDKHomeTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault newsItem:newsItem reuseIdentifier:CellIdentifier] autorelease];
+        
+//        [newsItem release];
     }
     
-    if ([indexPath row] == 0) {
-        [__cell.imageViewCell setImage:[UIImage imageNamed:@"home-cell-image-1.png"]];
-        [__cell.titleLable setText:@"古罗马新创世纪运动与时装的超现实演绎"];
-        [__cell.desciptionLable setText:@"— RDK 2011春夏新品静态展"];
-        [__cell.createTimeLable setText:@"星期二,七月 19th, 2011"];
-    }
-    
-    if ([indexPath row] == 1) {
-        [__cell.imageViewCell setImage:[UIImage imageNamed:@"home-cell-image-2.png"]];
-        [__cell.titleLable setText:@"古罗马新创世纪运动与时装的超现实演绎"];
-        [__cell.desciptionLable setText:@"— RDK 2011春夏新品静态展"];
-        [__cell.createTimeLable setText:@"星期二,七月 19th, 2011"];
-    }
-    
-    if ([indexPath row] == 2) {
-        [__cell.imageViewCell setImage:[UIImage imageNamed:@"home-cell-image-3.png"]];
-        [__cell.titleLable setText:@"古罗马新创世纪运动与时装的超现实演绎"];
-        [__cell.desciptionLable setText:@"— RDK 2011春夏新品静态展"];
-        [__cell.createTimeLable setText:@"星期二,七月 19th, 2011"];
+    /** Leave cells empty if there's no data yet */
+    if (nodeCount > 0)
+	{
+
+        /** Set up the cell... */
+//        RDKNewsItem *newsItem = [self.newsArray objectAtIndex:[indexPath row]];
+		
+        /** Only load cached images; defer new downloads until scrolling ends */
+        if (!newsItem.iconImage)
+        {
+            if (self.homeTableView.dragging == NO && self.homeTableView.decelerating == NO)
+            {
+                [self startIconDownload:newsItem forIndexPath:indexPath];
+            }
+            /** if a download is deferred or in progress, return a placeholder image */
+            cell.imageView.image = [UIImage imageNamed:@"home-placeholder.png"];                
+        }
+        else
+        {
+            cell.imageViewCell.image = newsItem.iconImage;
+        }
     }
 		
-	return __cell;
+    return cell;
 }
+
+#pragma mark - RDKDataManagerDelegate
+
+-(void)getNewsFinished:(id)sender
+{
+    /** declare array for pass data from data manager */
+    NSArray *newsArray = [RDKDataManager share].newsArray;
+    
+    /** init new array with data from data manager */
+    if ([self.newsArray count] > 0) 
+    {
+        [self.newsArray removeAllObjects];
+    }
+    
+    /** convert to news array */
+    for (int i=0; i<[newsArray count]; i++) {
+        NSDictionary *newsDictinary = [newsArray objectAtIndex:i];
+        RDKNewsItem *newsItem = [[RDKNewsItem alloc] initWithItem:newsDictinary];
+        [self.newsArray addObject:newsItem];
+        [newsItem release];
+    }
+    
+    /** reload data for table view */
+    [self.homeTableView reloadData];
+}
+
+#pragma mark -
+#pragma mark Table cell image support
+
+- (void)startIconDownload:(RDKNewsItem *)newsItem forIndexPath:(NSIndexPath *)indexPath
+{
+    IconDownloader *iconDownloader = [self.imageDownloadsInProgress objectForKey:indexPath];
+    if (iconDownloader == nil) 
+    {
+        iconDownloader = [[IconDownloader alloc] init];
+        iconDownloader.newsItem = newsItem;
+        iconDownloader.indexPathInTableView = indexPath;
+        iconDownloader.delegate = self;
+        [self.imageDownloadsInProgress setObject:iconDownloader forKey:indexPath];
+        [iconDownloader startDownload];
+        [iconDownloader release];   
+    }
+}
+
+// this method is used in case the user scrolled into a set of cells that don't have their app icons yet
+- (void)loadImagesForOnscreenRows
+{
+    if ([self.newsArray count] > 0)
+    {
+        NSArray *visiblePaths = [self.homeTableView indexPathsForVisibleRows];
+        for (NSIndexPath *indexPath in visiblePaths)
+        {
+            RDKNewsItem *newsItem = [self.newsArray objectAtIndex:[indexPath row]];
+
+            if (!newsItem.iconImage) // avoid the app icon download if the app already has an icon
+            {
+                [self startIconDownload:newsItem forIndexPath:indexPath];
+            }
+        }
+    }
+}
+
+// called by our ImageDownloader when an icon is ready to be displayed
+- (void)appImageDidLoad:(NSIndexPath *)indexPath
+{
+    IconDownloader *iconDownloader = [self.imageDownloadsInProgress objectForKey:indexPath];
+    if (iconDownloader != nil)
+    {
+        RDKHomeTableViewCell *cell = (RDKHomeTableViewCell *) [self.homeTableView cellForRowAtIndexPath:iconDownloader.indexPathInTableView];
+        
+        // Display the newly loaded image
+        cell.imageViewCell.image = iconDownloader.newsItem.iconImage;
+    }
+}
+
+
+#pragma mark -
+#pragma mark Deferred image loading (UIScrollViewDelegate)
+
+// Load images for all onscreen rows when scrolling is finished
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
+{
+    if (!decelerate)
+	{
+        [self loadImagesForOnscreenRows];
+    }
+}
+
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
+{
+    [self loadImagesForOnscreenRows];
+}
+
 
 #pragma mark - View lifecycle
 
@@ -108,6 +268,14 @@
     UIBarButtonItem *refreshBarButton = [[UIBarButtonItem alloc] initWithCustomView:refreshButton];
     self.navigationItem.rightBarButtonItem = refreshBarButton;
     [refreshBarButton release];
+    
+    /** init image download progress */
+    self.imageDownloadsInProgress = [NSMutableDictionary dictionary];
+    self.newsArray = [[[NSMutableArray alloc] init] autorelease];
+    
+    /** set data manager deleagte and get news fron web service */
+    [[RDKDataManager share] setDelegate:self];
+    [[RDKDataManager share] getNews];
 }
 
 - (void)viewDidUnload

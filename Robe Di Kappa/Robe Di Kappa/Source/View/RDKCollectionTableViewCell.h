@@ -14,7 +14,8 @@
 
 @end
 
-@interface RDKCollectionTableViewCell : UITableViewCell {
+@interface RDKCollectionTableViewCell : UITableViewCell 
+{
     
 }
 

@@ -8,14 +8,22 @@
 
 #import <Foundation/Foundation.h>
 
+@protocol RDKDataManagerDelegate
+
+-(void)getNewsFinished:(id)sender;
+
+@end
+
+
 @interface RDKDataManager : NSObject
+{
+    
+}
 
+@property (retain, nonatomic) id <RDKDataManagerDelegate> delegate;
+@property (strong , nonatomic) NSMutableArray *newsArray;
 
-+(void)initialize;
-
--(NSArray *)getNewsList;
--(NSArray *)getCollectionImageList;
--(NSArray *)getProductList;
--(NSArray *)getEventImageList;
++(RDKDataManager *)share;
+-(void)getNews;
 
 @end
