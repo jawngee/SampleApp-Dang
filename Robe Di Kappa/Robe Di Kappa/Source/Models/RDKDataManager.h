@@ -10,6 +10,8 @@
 
 @protocol RDKDataManagerDelegate
 
+@optional
+
 -(void)getNewsFinished:(id)sender;
 
 @end
@@ -20,7 +22,7 @@
     
 }
 
-@property (retain, nonatomic) id <RDKDataManagerDelegate> delegate;
+@property (retain, nonatomic) NSObject<RDKDataManagerDelegate> *delegate;
 @property (strong , nonatomic) NSMutableArray *newsArray;
 
 +(RDKDataManager *)share;
