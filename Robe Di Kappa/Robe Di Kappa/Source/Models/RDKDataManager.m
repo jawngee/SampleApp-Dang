@@ -73,9 +73,50 @@ static RDKDataManager *gInstance = nil;
         if (dateComarisonResult == NSOrderedDescending) 
         {
             ASIHTTPRequest *newsRequest = [ASIHTTPRequest requestWithURL:newsUrl];
+<<<<<<< HEAD
             [newsRequest setDidFinishSelector:@selector(getNewsFinished:)];
             [newsRequest setDidFailSelector:@selector(getNewsFailed:)];
             [newsRequest setDelegate:self];
+=======
+            [newsRequest setCompletionBlock:^{
+                /** declare variable for parsing json */
+                NSData *newsFileData = [newsRequest responseData];
+                NSString *responseString = [newsRequest responseString];
+                NSArray *newsArray = [responseString objectFromJSONString];
+                
+                NSLog(@"NUMBER OF ITEM FROM INTERNET: %d", [newsArray count]);
+                
+                /** declare dictionary varibale for file manager */
+                NSFileManager *fileManager = [NSFileManager defaultManager];
+                NSArray *cacheDirectory = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
+                NSString *homeDirectory = [[cacheDirectory objectAtIndex:0] stringByAppendingPathComponent:@"Home"];
+                NSString *newsDataFile = [homeDirectory stringByAppendingPathComponent:@"NewsData.dat"];
+                
+                /** save data file content into cache */
+                [fileManager createFileAtPath:newsDataFile contents:newsFileData attributes:nil]; 
+                
+                /** init array variable */
+                if (self.newsArray) {
+                    [self.newsArray removeAllObjects];
+                    [self.newsArray addObjectsFromArray:newsArray];
+                }
+                else
+                {
+                    self.newsArray = [[[NSMutableArray alloc] initWithArray:newsArray] autorelease];
+                }
+                
+                
+                /** call delegate for home view */
+                if ([self.delegate respondsToSelector:@selector(getNewsFinished:)])
+                    [self.delegate getNewsFinished:self];
+
+            }];
+            
+//            [newsRequest setDidFinishSelector:@selector(getNewsFinished:)];
+//            [newsRequest setDidFailSelector:@selector(getNewsFailed:)];
+////            [newsRequest setDownloadDestinationPath:newsDataFile];
+//            [newsRequest setDelegate:self];
+>>>>>>> 0ffa637488c7ecbae2e358a8ed87c655f8676cff
             [newsRequest startAsynchronous];
         }
         else
@@ -193,7 +234,8 @@ static RDKDataManager *gInstance = nil;
     [self.newsArray addObjectsFromArray:newsArray];
     
     /** call delegate for home view */
-    [self.delegate getNewsFinished:self];
+    if ([self.delegate respondsToSelector:@selector(getNewsFinished:)])
+        [self.delegate getNewsFinished:self];
 }
 
 -(void)getNewsFailed:(ASIHTTPRequest *)request
