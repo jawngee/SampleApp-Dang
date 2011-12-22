@@ -253,6 +253,12 @@
 
 #pragma mark - View lifecycle
 
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [[RDKDataManager share] setDelegate:self];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
