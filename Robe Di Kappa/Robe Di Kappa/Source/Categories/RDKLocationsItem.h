@@ -10,4 +10,14 @@
 
 @interface RDKLocationsItem : NSObject
 
+@property (nonatomic) double longtitude;
+@property (nonatomic) double latitude;
+@property (strong, nonatomic) NSString *title;
+@property (strong, nonatomic) NSString *subtitle;
+@property (strong, nonatomic) NSString *content;
+@property (strong, nonatomic) NSString *icon;
+@property (strong, nonatomic) UIImage *iconImage;
+
+-(id)initWithItem:(NSDictionary *)locationsDictionary;
+
 @end

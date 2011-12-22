@@ -12,10 +12,12 @@
 #import "JSONKit.h"
 
 #define _newsUrl @"http://localhost/robe/news"
+#define _locationUrl @"http://localhost/robe/locations"
 
 @implementation RDKDataManager
 @synthesize delegate = _delegate;
 @synthesize newsArray = _newsArray;
+@synthesize locationsArray = _locationsArray;
 
 static RDKDataManager *gInstance = nil;
 
@@ -32,6 +34,18 @@ static RDKDataManager *gInstance = nil;
     }
     
     return gInstance;
+}
+
+-(id)init
+{
+    self = [super init];
+    
+    if (self) {
+        self.newsArray = [[[NSMutableArray alloc] init] autorelease];
+        self.locationsArray = [[[NSMutableArray alloc] init] autorelease];
+    }
+    
+    return self;
 }
 
 #pragma mark - private function
@@ -61,7 +75,6 @@ static RDKDataManager *gInstance = nil;
             ASIHTTPRequest *newsRequest = [ASIHTTPRequest requestWithURL:newsUrl];
             [newsRequest setDidFinishSelector:@selector(getNewsFinished:)];
             [newsRequest setDidFailSelector:@selector(getNewsFailed:)];
-//            [newsRequest setDownloadDestinationPath:newsDataFile];
             [newsRequest setDelegate:self];
             [newsRequest startAsynchronous];
         }
@@ -70,21 +83,17 @@ static RDKDataManager *gInstance = nil;
             /** declare array for convert dictionary to array */
             NSData *newsFileData = [[NSData alloc] initWithContentsOfFile:newsDataFile];
             NSString *newsFileString = [[NSString alloc] initWithData:newsFileData encoding:NSUTF8StringEncoding];
-            NSArray *newsArray = [newsFileString objectFromJSONString]; 
+            NSArray *newsArray = [newsFileString objectFromJSONString];
             
+            /** release variable never use again */
+            [newsFileString release];
+            [newsFileData release];
+
             NSLog(@"NUMBER OF ITEM FROM FILE: %d", [newsArray count]);
             
             /** init array variable */
-            if (self.newsArray) {
-                [self.newsArray removeAllObjects];
-                [self.newsArray addObjectsFromArray:newsArray];
-            }
-            else
-            {
-                self.newsArray = [[[NSMutableArray alloc] initWithArray:newsArray] autorelease];
-            }
-            
-            [newsFileData release];
+            [self.newsArray removeAllObjects];
+            [self.newsArray addObjectsFromArray:newsArray];
             
             /** call delegate for home view */
             [self.delegate getNewsFinished:self];
@@ -94,7 +103,66 @@ static RDKDataManager *gInstance = nil;
     {
         ASIHTTPRequest *newsRequest = [ASIHTTPRequest requestWithURL:newsUrl];
         [newsRequest setDidFinishSelector:@selector(getNewsFinished:)];
-//        [newsRequest setDownloadDestinationPath:newsDataFile];
+        [newsRequest setDidFailSelector:@selector(getNewsFailed:)];
+        [newsRequest setDelegate:self];
+        [newsRequest startAsynchronous];
+    }
+}
+
+-(void)getLocations
+{
+    /** declare dictionary varibale for file manager */
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    NSArray *cacheDirectory = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
+    NSString *homeDirectory = [[cacheDirectory objectAtIndex:0] stringByAppendingPathComponent:@"Map"];
+    NSString *newsDataFile = [homeDirectory stringByAppendingPathComponent:@"LocationsData.dat"];
+    
+    /** declare url string for ASIHTTPRequest */
+    NSString *newsString = [NSString stringWithString:_locationUrl];
+    NSURL *newsUrl = [NSURL URLWithString:[newsString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+    
+    /** check data file is exist in cache */
+    if ([fileManager fileExistsAtPath:newsDataFile]) 
+    {
+        NSDictionary *fileAttributesDictionary = [fileManager attributesOfItemAtPath:newsDataFile error:nil];
+        NSDate *fileModificationDate = [fileAttributesDictionary valueForKey:NSFileModificationDate];
+        NSDate *oneHourFromcurrentDate = [[NSDate date] dateByAddingTimeInterval:-3600];
+        NSComparisonResult dateComarisonResult = [oneHourFromcurrentDate compare:fileModificationDate];
+        
+        if (dateComarisonResult == NSOrderedDescending) 
+        {
+            ASIHTTPRequest *newsRequest = [ASIHTTPRequest requestWithURL:newsUrl];
+            [newsRequest setDidFinishSelector:@selector(getLocationsFinished:)];
+            [newsRequest setDidFailSelector:@selector(getLocationsFailed:)];
+            [newsRequest setDelegate:self];
+            [newsRequest startAsynchronous];
+        }
+        else
+        {
+            /** declare array for convert dictionary to array */
+            NSData *newsFileData = [[NSData alloc] initWithContentsOfFile:newsDataFile];
+            NSString *newsFileString = [[NSString alloc] initWithData:newsFileData encoding:NSUTF8StringEncoding];
+            NSArray *newsArray = [newsFileString objectFromJSONString];
+            
+            /** release variable never use again */
+            [newsFileString release];
+            [newsFileData release];
+            
+            NSLog(@"NUMBER OF ITEM FROM FILE: %d", [newsArray count]);
+            
+            /** init array variable */
+            [self.locationsArray removeAllObjects];
+            [self.locationsArray addObjectsFromArray:newsArray];
+            
+            /** call delegate for home view */
+            [self.delegate getLocationsFinished:self];
+        }
+    } 
+    else 
+    {
+        ASIHTTPRequest *newsRequest = [ASIHTTPRequest requestWithURL:newsUrl];
+        [newsRequest setDidFinishSelector:@selector(getLocationsFinished:)];
+        [newsRequest setDidFailSelector:@selector(getLocationsFailed:)];
         [newsRequest setDelegate:self];
         [newsRequest startAsynchronous];
     }
@@ -121,15 +189,8 @@ static RDKDataManager *gInstance = nil;
     [fileManager createFileAtPath:newsDataFile contents:newsFileData attributes:nil]; 
     
     /** init array variable */
-    if (self.newsArray) {
-        [self.newsArray removeAllObjects];
-        [self.newsArray addObjectsFromArray:newsArray];
-    }
-    else
-    {
-        self.newsArray = [[[NSMutableArray alloc] initWithArray:newsArray] autorelease];
-    }
-    
+    [self.newsArray removeAllObjects];
+    [self.newsArray addObjectsFromArray:newsArray];
     
     /** call delegate for home view */
     [self.delegate getNewsFinished:self];
@@ -141,11 +202,44 @@ static RDKDataManager *gInstance = nil;
 }
 
 
+-(void)getLocationsFinished:(ASIHTTPRequest *)request
+{
+    /** declare variable for parsing json */
+    NSData *newsFileData = [request responseData];
+    NSString *responseString = [request responseString];
+    NSArray *newsArray = [responseString objectFromJSONString];
+    
+    NSLog(@"NUMBER OF ITEM FROM INTERNET: %d", [newsArray count]);
+    
+    /** declare dictionary varibale for file manager */
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    NSArray *cacheDirectory = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
+    NSString *homeDirectory = [[cacheDirectory objectAtIndex:0] stringByAppendingPathComponent:@"Map"];
+    NSString *newsDataFile = [homeDirectory stringByAppendingPathComponent:@"LocationsData.dat"];
+    
+    /** save data file content into cache */
+    [fileManager createFileAtPath:newsDataFile contents:newsFileData attributes:nil]; 
+    
+    /** init array variable */
+    [self.locationsArray removeAllObjects];
+    [self.locationsArray addObjectsFromArray:newsArray];
+    
+    /** call delegate for home view */
+    [self.delegate getLocationsFinished:self];
+}
+
+-(void)getLocationsFailed:(ASIHTTPRequest *)request
+{
+    NSLog(@"ASIHTTPRequest get locations fail");
+}
+
+
 #pragma mark - View lifecycle
 
 -(void)dealloc
 {
     [_newsArray release];
+    [_locationsArray release];
     [super dealloc];
 }
 

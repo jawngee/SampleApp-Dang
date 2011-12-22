@@ -10,9 +10,23 @@
 
 #import "RDKMapTableViewCell.h"
 #import "RDKLocationViewController.h"
+#import "RDKLocationsItem.h"
+
+#define kCustomRowHeight    60.0
+#define kCustomRowCount     1
+
+@interface RDKMapViewController ()
+
+- (void)startIconDownload:(RDKLocationsItem *)locationsItem forIndexPath:(NSIndexPath *)indexPath;
+
+@end
 
 @implementation RDKMapViewController
 @synthesize locationViewController = _locationViewController;
+@synthesize locationsArray = _locationsArray;
+@synthesize mapTableView = _mapTableView;
+@synthesize imageDownloadsInProgress = _imageDownloadsInProgress;
+
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -28,12 +42,17 @@
     // Releases the view if it doesn't have a superview.
     [super didReceiveMemoryWarning];
     
-    // Release any cached data, images, etc that aren't in use.
+    /** Release any cached data, images, etc that aren't in use. */
+    NSArray *allDownloads = [self.imageDownloadsInProgress allValues];
+    [allDownloads makeObjectsPerformSelector:@selector(cancelDownload)];
 }
 
 - (void)dealloc
 {
     [_locationViewController release];
+    [_locationsArray release];
+    [_mapTableView release];
+    [_imageDownloadsInProgress release];
     [super dealloc];
 }
 
@@ -64,12 +83,30 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section 
 {
-	return 2;
+    NSLog(@"NUMBER OF ROW: %d", [self.locationsArray count]);
+    
+	int count = [self.locationsArray count];
+	
+	/** ff there's no data yet, return enough rows to fill the screen */
+    if (count == 0)
+	{
+        return kCustomRowCount;
+    }
+    
+    return count;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath 
 {
-	return 123;
+    int count = [self.locationsArray count];
+	
+	/** ff there's no data yet, return enough rows to fill the screen */
+    if (count == 0)
+	{
+        return kCustomRowHeight;
+    }
+    
+    return 123;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -82,19 +119,19 @@
         __cell = [[[RDKMapTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
     }
     
-    if ([indexPath row] == 0) {
-        [__cell.imageViewCell setImage:[UIImage imageNamed:@"map-cell-image-1.png"]];
-        [__cell.titleLable setText:@"北京东方新天地店"];
-        [__cell.desciptionLable setText:@"开业全场买赠优惠"];
-        [__cell.createTimeLable setText:@"地址：北京东城区东长安街1号东方新天地商场首层第四区AA61B"];
-    }
-    
-    if ([indexPath row] == 1) {
-        [__cell.imageViewCell setImage:[UIImage imageNamed:@"map-cell-image-2.png"]];
-        [__cell.titleLable setText:@"北京国贸店"];
-        [__cell.desciptionLable setText:@""];
-        [__cell.createTimeLable setText:@"地址：北京东城区东长安街1号东方新天地商场首层第四区AA61B"];
-    }
+//    if ([indexPath row] == 0) {
+//        [__cell.imageViewCell setImage:[UIImage imageNamed:@"map-cell-image-1.png"]];
+//        [__cell.titleLable setText:@"北京东方新天地店"];
+//        [__cell.desciptionLable setText:@"开业全场买赠优惠"];
+//        [__cell.createTimeLable setText:@"地址：北京东城区东长安街1号东方新天地商场首层第四区AA61B"];
+//    }
+//    
+//    if ([indexPath row] == 1) {
+//        [__cell.imageViewCell setImage:[UIImage imageNamed:@"map-cell-image-2.png"]];
+//        [__cell.titleLable setText:@"北京国贸店"];
+//        [__cell.desciptionLable setText:@""];
+//        [__cell.createTimeLable setText:@"地址：北京东城区东长安街1号东方新天地商场首层第四区AA61B"];
+//    }
         
 	return __cell;
 }

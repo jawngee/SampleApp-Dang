@@ -40,7 +40,7 @@
     // Releases the view if it doesn't have a superview.
     [super didReceiveMemoryWarning];
     
-    // Release any cached data, images, etc that aren't in use.
+    /** Release any cached data, images, etc that aren't in use. */
     NSArray *allDownloads = [self.imageDownloadsInProgress allValues];
     [allDownloads makeObjectsPerformSelector:@selector(cancelDownload)];
 }
@@ -104,15 +104,14 @@
     // add a placeholder cell while waiting on table data
     int nodeCount = [self.newsArray count];
 	
-
+    /** create cell when there is no item */
 	if (nodeCount == 0 && indexPath.row == 0)
 	{
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:PlaceholderCellIdentifier];
         
         if (cell == nil)
 		{
-            cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle
-										   reuseIdentifier:PlaceholderCellIdentifier] autorelease];   
+            cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:PlaceholderCellIdentifier] autorelease];   
             cell.detailTextLabel.textAlignment = UITextAlignmentCenter;
 			cell.selectionStyle = UITableViewCellSelectionStyleNone;
         }
@@ -128,17 +127,11 @@
     if (cell == nil) {
         
         cell = [[[RDKHomeTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault newsItem:newsItem reuseIdentifier:CellIdentifier] autorelease];
-        
-//        [newsItem release];
     }
     
     /** Leave cells empty if there's no data yet */
     if (nodeCount > 0)
 	{
-
-        /** Set up the cell... */
-//        RDKNewsItem *newsItem = [self.newsArray objectAtIndex:[indexPath row]];
-		
         /** Only load cached images; defer new downloads until scrolling ends */
         if (!newsItem.iconImage)
         {
@@ -166,10 +159,7 @@
     NSArray *newsArray = [RDKDataManager share].newsArray;
     
     /** init new array with data from data manager */
-    if ([self.newsArray count] > 0) 
-    {
-        [self.newsArray removeAllObjects];
-    }
+    [self.newsArray removeAllObjects];
     
     /** convert to news array */
     for (int i=0; i<[newsArray count]; i++) {
@@ -181,6 +171,11 @@
     
     /** reload data for table view */
     [self.homeTableView reloadData];
+}
+
+-(void)getLocationsFinished:(id)sender
+{
+    NSLog(@"DOING NOTHING");
 }
 
 #pragma mark -

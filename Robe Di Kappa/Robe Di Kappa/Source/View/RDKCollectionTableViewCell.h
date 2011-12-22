@@ -15,12 +15,9 @@
 @end
 
 @interface RDKCollectionTableViewCell : UITableViewCell 
-{
-    
-}
 
 @property (strong, nonatomic) NSMutableArray *cellList;
-@property (retain, nonatomic) id <RDKCollectionTableViewCellDelegate> delegate;
+@property (strong, nonatomic) id <RDKCollectionTableViewCellDelegate> delegate;
 
 @property (strong, nonatomic) UIImageView *imageViewCell_1;
 @property (strong, nonatomic) UIImageView *imageViewCell_2;
