@@ -9,9 +9,12 @@
 #import "RDKLocationViewController.h"
 
 #import "RDKCustomAnnotation.h"
+#import "RDKLocationsItem.h"
 
 @implementation RDKLocationViewController
 @synthesize mapView = _mapView;
+@synthesize annotationArray = _annotationArray;
+@synthesize locationsItem = _locationsItem;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -24,16 +27,15 @@
 
 - (void)didReceiveMemoryWarning
 {
-    // Releases the view if it doesn't have a superview.
+    /** Releases the view if it doesn't have a superview. */
     [super didReceiveMemoryWarning];
-    
-    // Release any cached data, images, etc that aren't in use.
 }
 
 - (void)dealloc
 {
     [_mapView release];
     [_annotationArray release];
+    [_locationsItem release];
     [super dealloc];
 }
 
@@ -45,7 +47,7 @@
     
     if ([annotation isKindOfClass:[RDKCustomAnnotation class]]) 
     {
-        MKPinAnnotationView *annotationView = (MKPinAnnotationView *) [_mapView dequeueReusableAnnotationViewWithIdentifier:identifier];
+        MKPinAnnotationView *annotationView = (MKPinAnnotationView *) [self.mapView dequeueReusableAnnotationViewWithIdentifier:identifier];
         
         if (annotationView == nil) 
         {
@@ -72,15 +74,35 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
-    [_mapView removeAnnotations:_annotationArray];
-    [_mapView addAnnotations:_annotationArray];
+    CLLocationCoordinate2D zoomLocation;
+    zoomLocation.latitude = self.locationsItem.latitude;
+    zoomLocation.longitude = self.locationsItem.longtitude;
+    
+    MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(zoomLocation, 15*METERS_PER_MILE, 15*METERS_PER_MILE);
+    MKCoordinateRegion adjustedRegion = [self.mapView regionThatFits:viewRegion];                
+    [self.mapView setRegion:adjustedRegion animated:YES];        
+    
+    CLLocationCoordinate2D coordinate;
+    coordinate.latitude = self.locationsItem.latitude;
+    coordinate.longitude = self.locationsItem.longtitude; 
+    
+    RDKCustomAnnotation *customAnnotation = [[[RDKCustomAnnotation alloc] initWithName:self.locationsItem.title 
+                                                                                 address:self.locationsItem.subtitle 
+                                                                              coordinate:coordinate] autorelease];
+    
+    [self.mapView removeAnnotations:self.annotationArray];
+    
+    [self.annotationArray removeAllObjects];
+    [self.annotationArray addObject:customAnnotation];
+
+    [self.mapView addAnnotations:self.annotationArray];
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    _annotationArray = [[NSMutableArray alloc] init];
+    self.annotationArray = [[NSMutableArray alloc] init];
     
     UIImage *backImage = [UIImage imageNamed:@"global-back-button.png"];
     UIButton *backButton = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -94,33 +116,6 @@
     self.navigationItem.leftBarButtonItem = backBarButton;
     [backBarButton release];
     
-    CLLocationCoordinate2D zoomLocation;
-    zoomLocation.latitude = 10.791036;
-    zoomLocation.longitude = 106.631327;
-    
-    MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(zoomLocation, 15*METERS_PER_MILE, 15*METERS_PER_MILE);
-    
-    MKCoordinateRegion adjustedRegion = [_mapView regionThatFits:viewRegion];                
-    
-    [_mapView setRegion:adjustedRegion animated:YES];        
-
-    CLLocationCoordinate2D coordinate_1;
-    coordinate_1.latitude = 10.791036;
-    coordinate_1.longitude = 106.631327; 
-    
-    RDKCustomAnnotation *customAnnotation_1 = [[[RDKCustomAnnotation alloc] initWithName:@"HCM City" 
-                                                                                 address:@"Plus Factory" 
-                                                                              coordinate:coordinate_1] autorelease];
-    
-    CLLocationCoordinate2D coordinate_2;
-    coordinate_2.latitude = 10.743817;
-    coordinate_2.longitude = 106.568156; 
-    
-    RDKCustomAnnotation *customAnnotation_2 = [[[RDKCustomAnnotation alloc] initWithName:@"HCM City" 
-                                                                                 address:@"My House" 
-                                                                              coordinate:coordinate_2] autorelease];
-    [_annotationArray addObject:customAnnotation_1];
-    [_annotationArray addObject:customAnnotation_2];    
 }
 
 - (void)backButtonPress:(id)sender

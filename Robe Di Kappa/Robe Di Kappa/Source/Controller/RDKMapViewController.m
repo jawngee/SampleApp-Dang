@@ -11,21 +11,15 @@
 #import "RDKMapTableViewCell.h"
 #import "RDKLocationViewController.h"
 #import "RDKLocationsItem.h"
+#import "UIImageView+WebCache.h"
 
 #define kCustomRowHeight    60.0
 #define kCustomRowCount     1
-
-@interface RDKMapViewController ()
-
-- (void)startIconDownload:(RDKLocationsItem *)locationsItem forIndexPath:(NSIndexPath *)indexPath;
-
-@end
 
 @implementation RDKMapViewController
 @synthesize locationViewController = _locationViewController;
 @synthesize locationsArray = _locationsArray;
 @synthesize mapTableView = _mapTableView;
-@synthesize imageDownloadsInProgress = _imageDownloadsInProgress;
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -41,10 +35,6 @@
 {
     // Releases the view if it doesn't have a superview.
     [super didReceiveMemoryWarning];
-    
-    /** Release any cached data, images, etc that aren't in use. */
-    NSArray *allDownloads = [self.imageDownloadsInProgress allValues];
-    [allDownloads makeObjectsPerformSelector:@selector(cancelDownload)];
 }
 
 - (void)dealloc
@@ -52,7 +42,6 @@
     [_locationViewController release];
     [_locationsArray release];
     [_mapTableView release];
-    [_imageDownloadsInProgress release];
     [super dealloc];
 }
 
@@ -60,6 +49,7 @@
 
 - (void)refresh:(id)sender
 {
+    
 }
 
 #pragma mark Table view delegate
@@ -69,7 +59,9 @@
     if (!self.locationViewController) {
         self.locationViewController = [[[RDKLocationViewController alloc] initWithNibName:@"RDKLocationViewController" bundle:nil] autorelease];
     }
-    
+
+    /** set locations item for view controller and push */
+    self.locationViewController.locationsItem = [self.locationsArray objectAtIndex:[indexPath row]];
     [self.navigationController pushViewController:self.locationViewController animated:YES];
 }
 
@@ -111,34 +103,82 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-	static NSString *CellIdentifier = @"TableViewCell";
+    static NSString *CellIdentifier = @"TableViewCell";
+    static NSString *PlaceholderCellIdentifier = @"PlaceholderCell";
     
-	RDKMapTableViewCell *__cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    // add a placeholder cell while waiting on table data
+    int nodeCount = [self.locationsArray count];
+	
+    /** create cell when there is no item */
+	if (nodeCount == 0 && indexPath.row == 0)
+	{
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:PlaceholderCellIdentifier];
+        
+        if (cell == nil)
+		{
+            cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:PlaceholderCellIdentifier] autorelease];   
+            cell.detailTextLabel.textAlignment = UITextAlignmentCenter;
+			cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        }
+        
+		cell.detailTextLabel.text = @"Loading … ";
+		
+		return cell;
+    }
+	
+    RDKMapTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    RDKLocationsItem *locationsItem = [self.locationsArray objectAtIndex:[indexPath row]];
     
-    if (__cell == nil) {
-        __cell = [[[RDKMapTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+    if (cell == nil) 
+    {
+        cell = [[[RDKMapTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault locationsItem:locationsItem reuseIdentifier:CellIdentifier] autorelease];
     }
     
-//    if ([indexPath row] == 0) {
-//        [__cell.imageViewCell setImage:[UIImage imageNamed:@"map-cell-image-1.png"]];
-//        [__cell.titleLable setText:@"北京东方新天地店"];
-//        [__cell.desciptionLable setText:@"开业全场买赠优惠"];
-//        [__cell.createTimeLable setText:@"地址：北京东城区东长安街1号东方新天地商场首层第四区AA61B"];
-//    }
-//    
-//    if ([indexPath row] == 1) {
-//        [__cell.imageViewCell setImage:[UIImage imageNamed:@"map-cell-image-2.png"]];
-//        [__cell.titleLable setText:@"北京国贸店"];
-//        [__cell.desciptionLable setText:@""];
-//        [__cell.createTimeLable setText:@"地址：北京东城区东长安街1号东方新天地商场首层第四区AA61B"];
-//    }
-        
-	return __cell;
+    /** Leave cells empty if there's no data yet */
+    if (nodeCount > 0)
+	{
+        [cell.icon setImageWithURL:[NSURL URLWithString:locationsItem.icon] placeholderImage:nil];
+    }
+    
+    return cell;
 }
 
+#pragma mark - RDKDataManagerDelegate
 
+-(void)getLocationsFinished:(id)sender
+{
+    /** declare array for pass data from data manager */
+    NSArray *locationsArray = [RDKDataManager share].locationsArray;
+    
+    /** init new array with data from data manager */
+    [self.locationsArray removeAllObjects];
+    
+    /** convert to news array */
+    for (int i=0; i<[locationsArray count]; i++) 
+    {
+        /** declare news item */
+        RDKLocationsItem *locationsItem = [[RDKLocationsItem alloc] initWithItem:[locationsArray objectAtIndex:i]];
+        
+        /** add news item to news array */
+        [self.locationsArray addObject:locationsItem];
+        
+        /** release item */
+        [locationsItem release];
+    }
+    
+    /** reload data for table view */
+    [self.mapTableView reloadData];
+}
 
 #pragma mark - View lifecycle
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    /** set data manager deleagte and get news fron web service */
+    [[RDKDataManager share] setDelegate:self];
+}
 
 - (void)viewDidLoad
 {
@@ -155,6 +195,13 @@
     UIBarButtonItem *refreshBarButton = [[UIBarButtonItem alloc] initWithCustomView:refreshButton];
     self.navigationItem.rightBarButtonItem = refreshBarButton;
     [refreshBarButton release];
+    
+    /** init image download progress */
+    self.locationsArray = [[[NSMutableArray alloc] init] autorelease];
+    
+    /** set data manager deleagte and get news fron web service */
+    [[RDKDataManager share] setDelegate:self];
+    [[RDKDataManager share] getLocations];
 }
 
 - (void)viewDidUnload

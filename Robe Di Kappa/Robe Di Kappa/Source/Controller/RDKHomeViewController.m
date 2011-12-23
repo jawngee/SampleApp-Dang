@@ -8,23 +8,16 @@
 
 #import "RDKHomeViewController.h"
 
+#import "UIImageView+WebCache.h"
 #import "RDKHomeTableViewCell.h"
 #import "RDKNewsItem.h"
 
 #define kCustomRowHeight    60.0
 #define kCustomRowCount     1
 
-@interface RDKHomeViewController ()
-
-- (void)startIconDownload:(RDKNewsItem *)newsItem forIndexPath:(NSIndexPath *)indexPath;
-
-@end
-
-
 @implementation RDKHomeViewController
 @synthesize newsArray = _newsArray;
 @synthesize homeTableView = _homeTableView;
-@synthesize imageDownloadsInProgress = _imageDownloadsInProgress;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -37,19 +30,14 @@
 
 - (void)didReceiveMemoryWarning
 {
-    // Releases the view if it doesn't have a superview.
+    /** Releases the view if it doesn't have a superview. */
     [super didReceiveMemoryWarning];
-    
-    /** Release any cached data, images, etc that aren't in use. */
-    NSArray *allDownloads = [self.imageDownloadsInProgress allValues];
-    [allDownloads makeObjectsPerformSelector:@selector(cancelDownload)];
 }
 
 - (void)dealloc
 {
     [_newsArray release];
     [_homeTableView release];
-    [_imageDownloadsInProgress release];
     [super dealloc];
 }
 
@@ -59,8 +47,7 @@
 {
 }
 
-#pragma mark -
-#pragma mark Table view data source
+#pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView 
 {
@@ -97,9 +84,8 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-//	static NSString *CellIdentifier = @"LazyTableCell";
+	static NSString *CellIdentifier = @"TableViewCell";
     static NSString *PlaceholderCellIdentifier = @"PlaceholderCell";
-    NSString *CellIdentifier = [NSString stringWithFormat:@"TableViewCell_%d", [indexPath row]];
     
     // add a placeholder cell while waiting on table data
     int nodeCount = [self.newsArray count];
@@ -124,28 +110,15 @@
     RDKHomeTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     RDKNewsItem *newsItem = [self.newsArray objectAtIndex:[indexPath row]];
 
-    if (cell == nil) {
-        
+    if (cell == nil) 
+    {
         cell = [[[RDKHomeTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault newsItem:newsItem reuseIdentifier:CellIdentifier] autorelease];
     }
     
     /** Leave cells empty if there's no data yet */
     if (nodeCount > 0)
 	{
-        /** Only load cached images; defer new downloads until scrolling ends */
-        if (!newsItem.iconImage)
-        {
-            if (self.homeTableView.dragging == NO && self.homeTableView.decelerating == NO)
-            {
-                [self startIconDownload:newsItem forIndexPath:indexPath];
-            }
-            /** if a download is deferred or in progress, return a placeholder image */
-            cell.imageView.image = [UIImage imageNamed:@"home-placeholder.png"];                
-        }
-        else
-        {
-            cell.imageViewCell.image = newsItem.iconImage;
-        }
+        [cell.icon setImageWithURL:[NSURL URLWithString:newsItem.icon] placeholderImage:nil];
     }
 		
     return cell;
@@ -162,10 +135,15 @@
     [self.newsArray removeAllObjects];
     
     /** convert to news array */
-    for (int i=0; i<[newsArray count]; i++) {
-        NSDictionary *newsDictinary = [newsArray objectAtIndex:i];
-        RDKNewsItem *newsItem = [[RDKNewsItem alloc] initWithItem:newsDictinary];
+    for (int i=0; i<[newsArray count]; i++) 
+    {
+        /** declare news item */
+        RDKNewsItem *newsItem = [[RDKNewsItem alloc] initWithItem:[newsArray objectAtIndex:i]];
+        
+        /** add news item to news array */
         [self.newsArray addObject:newsItem];
+        
+        /** release item */
         [newsItem release];
     }
     
@@ -173,84 +151,13 @@
     [self.homeTableView reloadData];
 }
 
--(void)getLocationsFinished:(id)sender
-{
-    NSLog(@"DOING NOTHING");
-}
-
-#pragma mark -
-#pragma mark Table cell image support
-
-- (void)startIconDownload:(RDKNewsItem *)newsItem forIndexPath:(NSIndexPath *)indexPath
-{
-    IconDownloader *iconDownloader = [self.imageDownloadsInProgress objectForKey:indexPath];
-    if (iconDownloader == nil) 
-    {
-        iconDownloader = [[IconDownloader alloc] init];
-        iconDownloader.newsItem = newsItem;
-        iconDownloader.indexPathInTableView = indexPath;
-        iconDownloader.delegate = self;
-        [self.imageDownloadsInProgress setObject:iconDownloader forKey:indexPath];
-        [iconDownloader startDownload];
-        [iconDownloader release];   
-    }
-}
-
-// this method is used in case the user scrolled into a set of cells that don't have their app icons yet
-- (void)loadImagesForOnscreenRows
-{
-    if ([self.newsArray count] > 0)
-    {
-        NSArray *visiblePaths = [self.homeTableView indexPathsForVisibleRows];
-        for (NSIndexPath *indexPath in visiblePaths)
-        {
-            RDKNewsItem *newsItem = [self.newsArray objectAtIndex:[indexPath row]];
-
-            if (!newsItem.iconImage) // avoid the app icon download if the app already has an icon
-            {
-                [self startIconDownload:newsItem forIndexPath:indexPath];
-            }
-        }
-    }
-}
-
-// called by our ImageDownloader when an icon is ready to be displayed
-- (void)appImageDidLoad:(NSIndexPath *)indexPath
-{
-    IconDownloader *iconDownloader = [self.imageDownloadsInProgress objectForKey:indexPath];
-    if (iconDownloader != nil)
-    {
-        RDKHomeTableViewCell *cell = (RDKHomeTableViewCell *) [self.homeTableView cellForRowAtIndexPath:iconDownloader.indexPathInTableView];
-        
-        // Display the newly loaded image
-        cell.imageViewCell.image = iconDownloader.newsItem.iconImage;
-    }
-}
-
-
-#pragma mark -
-#pragma mark Deferred image loading (UIScrollViewDelegate)
-
-// Load images for all onscreen rows when scrolling is finished
-- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
-{
-    if (!decelerate)
-	{
-        [self loadImagesForOnscreenRows];
-    }
-}
-
-- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
-{
-    [self loadImagesForOnscreenRows];
-}
-
-
 #pragma mark - View lifecycle
 
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    
+    /** set data manager deleagte and get news fron web service */
     [[RDKDataManager share] setDelegate:self];
 }
 
@@ -271,7 +178,6 @@
     [refreshBarButton release];
     
     /** init image download progress */
-    self.imageDownloadsInProgress = [NSMutableDictionary dictionary];
     self.newsArray = [[[NSMutableArray alloc] init] autorelease];
     
     /** set data manager deleagte and get news fron web service */

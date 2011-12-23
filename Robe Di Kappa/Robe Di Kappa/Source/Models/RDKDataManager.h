@@ -11,7 +11,6 @@
 @protocol RDKDataManagerDelegate
 
 @optional
-
 -(void)getNewsFinished:(id)sender;
 -(void)getLocationsFinished:(id)sender;
 
@@ -19,14 +18,9 @@
 
 @interface RDKDataManager : NSObject
 
-<<<<<<< HEAD
-@property (strong, nonatomic) id <RDKDataManagerDelegate> delegate;
+@property (retain, nonatomic) NSObject <RDKDataManagerDelegate> *delegate;
 @property (strong, nonatomic) NSMutableArray *newsArray;
 @property (strong, nonatomic) NSMutableArray *locationsArray;
-=======
-@property (retain, nonatomic) NSObject<RDKDataManagerDelegate> *delegate;
-@property (strong , nonatomic) NSMutableArray *newsArray;
->>>>>>> 0ffa637488c7ecbae2e358a8ed87c655f8676cff
 
 +(RDKDataManager *)share;
 -(void)getNews;

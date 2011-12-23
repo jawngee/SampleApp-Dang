@@ -11,12 +11,12 @@
 
 #define METERS_PER_MILE 1609.344
 
+@class RDKLocationsItem;
+
 @interface RDKLocationViewController : UIViewController <MKMapViewDelegate> 
-{
-    MKMapView *_mapView;
-    NSMutableArray *_annotationArray;
-}
 
 @property (strong, nonatomic) IBOutlet MKMapView *mapView;
+@property (strong, nonatomic) NSMutableArray *annotationArray;
+@property (strong, nonatomic) RDKLocationsItem *locationsItem;
 
 @end

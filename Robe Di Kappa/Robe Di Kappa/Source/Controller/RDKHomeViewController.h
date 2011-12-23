@@ -8,16 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
-#import "IconDownloader.h"
 #import "RDKDataManager.h"
 
 /** home view controller */
-@interface RDKHomeViewController : UIViewController <UITabBarDelegate, UITableViewDataSource, UIScrollViewDelegate, RDKDataManagerDelegate, IconDownloaderDelegate> 
+@interface RDKHomeViewController : UIViewController <UITabBarDelegate, UITableViewDataSource, RDKDataManagerDelegate>
 
 @property (strong, nonatomic) NSMutableArray *newsArray;
-@property (strong, nonatomic) NSMutableDictionary *imageDownloadsInProgress;
 @property (strong, nonatomic) IBOutlet UITableView *homeTableView;
-
-- (void)appImageDidLoad:(NSIndexPath *)indexPath;
 
 @end

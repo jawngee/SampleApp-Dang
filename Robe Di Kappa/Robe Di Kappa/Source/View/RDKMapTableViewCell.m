@@ -8,6 +8,8 @@
 
 #import "RDKMapTableViewCell.h"
 
+#import "RDKLocationsItem.h"
+
 @interface RDKMapTableViewCell (Private)
 
 - (void)buildCell;
@@ -15,25 +17,28 @@
 @end
 
 @implementation RDKMapTableViewCell
-@synthesize imageViewCell = _imageViewCell;
-@synthesize titleLable = _titleLable;
-@synthesize desciptionLable = _desciptionLable;
-@synthesize createTimeLable = _createTimeLable;
+@synthesize icon = _icon;
+@synthesize title = _title;
+@synthesize subtitle = _subtitle;
+@synthesize content = _content;
+@synthesize locationsItem = _locationsItem;
 
 - (void)dealloc
 {
+    [_icon release];
+    [_title release];
+    [_subtitle release];
+    [_content release];
+    [_locationsItem release];
     [super dealloc];
-    [_imageViewCell release];
-    [_titleLable release];
-    [_desciptionLable release];
-    [_createTimeLable release];
 }
 
-- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
+- (id)initWithStyle:(UITableViewCellStyle)style locationsItem:(RDKLocationsItem *)locationsItem reuseIdentifier:(NSString *)reuseIdentifier;
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         /** Initialization code */
+        [self setLocationsItem:locationsItem];
         [self buildCell];
     }
     return self;
@@ -42,7 +47,6 @@
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
 {
     [super setSelected:selected animated:animated];
-    
     /** Configure the view for the selected state */
 }
 
@@ -55,38 +59,62 @@
     [self setSelectedBackgroundView:selectedBackground];
     [selectedBackground release];
     
-    self.imageViewCell = [[[UIImageView alloc] initWithFrame:CGRectMake(10, 15, 128, 94)] autorelease];
-    self.titleLable = [[[UILabel alloc] initWithFrame:CGRectMake(145, 12, 170, 20)] autorelease];
-    self.desciptionLable = [[[UILabel alloc] initWithFrame:CGRectMake(145, 30, 170, 20)] autorelease];
-    self.createTimeLable = [[[UILabel alloc] initWithFrame:CGRectMake(145, 80, 170, 30)] autorelease];
+    /** declare icon image */
+    self.icon = [[[UIImageView alloc] initWithFrame:CGRectMake(8, 15, 133, 94)] autorelease];
     
-    [self.titleLable setBackgroundColor:[UIColor clearColor]];
-    [self.titleLable setFont:[UIFont boldSystemFontOfSize:15]];
-    [self.titleLable setLineBreakMode:UILineBreakModeWordWrap];
-    [self.titleLable setHighlightedTextColor:[UIColor whiteColor]];
-    [self.titleLable setTextColor:[UIColor colorWithRed:92.0/255.0 green:92.0/255.0 blue:92.0/255.0 alpha:1.0]];
-    [self.titleLable setNumberOfLines:2];
+    /** delare title lable */
+    CGSize titleSize = [self.locationsItem.title sizeWithFont:[UIFont boldSystemFontOfSize:15]
+                                             constrainedToSize:CGSizeMake(170, 999) 
+                                                 lineBreakMode:UILineBreakModeWordWrap];
     
-    [self.desciptionLable setBackgroundColor:[UIColor clearColor]];
-    [self.desciptionLable setFont:[UIFont systemFontOfSize:12]];
-    [self.desciptionLable setLineBreakMode:UILineBreakModeWordWrap];
-    [self.desciptionLable setHighlightedTextColor:[UIColor whiteColor]];
-    [self.desciptionLable setTextColor:[UIColor colorWithRed:153.0/255.0 green:153.0/255.0 blue:153.0/255.0 alpha:1.0]];
-    [self.desciptionLable setNumberOfLines:2];
+    NSLog(@"HEIGH TITLE: %f", titleSize.height);
+
+    self.title = [[[UILabel alloc] initWithFrame:CGRectMake(145, 12, 170, titleSize.height)] autorelease];
+    [self.title setTextColor:[UIColor colorWithRed:92.0/255.0 green:92.0/255.0 blue:92.0/255.0 alpha:1.0]];
+    [self.title setBackgroundColor:[UIColor clearColor]];
+    [self.title setFont:[UIFont boldSystemFontOfSize:15]];
+    [self.title setLineBreakMode:UILineBreakModeWordWrap];
+    [self.title setHighlightedTextColor:[UIColor whiteColor]];
+    [self.title setText:self.locationsItem.title];
+    [self.title setNumberOfLines:0];
     
-    [self.createTimeLable setBackgroundColor:[UIColor clearColor]];
-    [self.createTimeLable setFont:[UIFont boldSystemFontOfSize:10]];
-    [self.createTimeLable setLineBreakMode:UILineBreakModeWordWrap];
-    [self.createTimeLable setTextAlignment:UITextAlignmentLeft];
-    [self.createTimeLable setHighlightedTextColor:[UIColor whiteColor]];
-    [self.createTimeLable setTextColor:[UIColor colorWithRed:153.0/255.0 green:153.0/255.0 blue:153.0/255.0 alpha:1.0]];
-    [self.createTimeLable setNumberOfLines:2];
+    /** declare sub title lable */
+    CGSize subtitleSize = [self.locationsItem.subtitle sizeWithFont:[UIFont systemFontOfSize:12]
+                                               constrainedToSize:CGSizeMake(170, 999) 
+                                                   lineBreakMode:UILineBreakModeWordWrap];
     
-    [self addSubview:self.imageViewCell];
-    [self addSubview:self.titleLable];
-    [self addSubview:self.desciptionLable];
-    [self addSubview:self.createTimeLable];
+    NSLog(@"HEIGH SUBTITLE: %f", subtitleSize.height);
     
+    self.subtitle = [[[UILabel alloc] initWithFrame:CGRectMake(145, 17+subtitleSize.height, 170, subtitleSize.height)] autorelease];
+    [self.subtitle setTextColor:[UIColor colorWithRed:153.0/255.0 green:153.0/255.0 blue:153.0/255.0 alpha:1.0]];
+    [self.subtitle setBackgroundColor:[UIColor clearColor]];
+    [self.subtitle setFont:[UIFont systemFontOfSize:12]];
+    [self.subtitle setLineBreakMode:UILineBreakModeWordWrap];
+    [self.subtitle setHighlightedTextColor:[UIColor whiteColor]];
+    [self.subtitle setText:self.locationsItem.subtitle];
+    [self.subtitle setNumberOfLines:0];
+    
+    /** create bi-line lable */
+    CGSize contentSize = [self.locationsItem.content sizeWithFont:[UIFont systemFontOfSize:10]
+                                           constrainedToSize:CGSizeMake(170, 999) 
+                                               lineBreakMode:UILineBreakModeWordWrap];
+    
+    NSLog(@"HEIGH CONTENT: %f", contentSize.height);
+
+    self.content = [[[UILabel alloc] initWithFrame:CGRectMake(145, 85, 170, contentSize.height)] autorelease];
+    [self.content setTextColor:[UIColor colorWithRed:153.0/255.0 green:153.0/255.0 blue:153.0/255.0 alpha:1.0]];
+    [self.content setBackgroundColor:[UIColor clearColor]];
+    [self.content setFont:[UIFont boldSystemFontOfSize:10]];
+    [self.content setLineBreakMode:UILineBreakModeWordWrap];
+    [self.content setTextAlignment:UITextAlignmentLeft];
+    [self.content setHighlightedTextColor:[UIColor whiteColor]];
+    [self.content setText:self.locationsItem.content];
+    [self.content setNumberOfLines:0];
+    
+    [self addSubview:self.icon];
+    [self addSubview:self.title];
+    [self addSubview:self.subtitle];
+    [self addSubview:self.content];
 }
 
 @end

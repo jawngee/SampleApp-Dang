@@ -8,13 +8,18 @@
 
 #import <UIKit/UIKit.h>
 
+@class RDKLocationsItem;
+
 @interface RDKMapTableViewCell : UITableViewCell {
     
 }
 
-@property (strong, nonatomic) UIImageView *imageViewCell;
-@property (strong, nonatomic) UILabel *titleLable;
-@property (strong, nonatomic) UILabel *desciptionLable;
-@property (strong, nonatomic) UILabel *createTimeLable;
+@property (strong, nonatomic) UIImageView *icon;
+@property (strong, nonatomic) UILabel *title;
+@property (strong, nonatomic) UILabel *subtitle;
+@property (strong, nonatomic) UILabel *content;
+@property (strong, nonatomic) RDKLocationsItem *locationsItem;
+
+- (id)initWithStyle:(UITableViewCellStyle)style locationsItem:(RDKLocationsItem *)locationsItem reuseIdentifier:(NSString *)reuseIdentifier;
 
 @end

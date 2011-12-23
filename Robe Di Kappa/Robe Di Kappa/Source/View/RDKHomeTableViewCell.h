@@ -12,10 +12,10 @@
 
 @interface RDKHomeTableViewCell : UITableViewCell 
 
-@property (strong, nonatomic) UIImageView *imageViewCell;
-@property (strong, nonatomic) UILabel *titleLable;
-@property (strong, nonatomic) UILabel *desciptionLable;
-@property (strong, nonatomic) UILabel *createTimeLable;
+@property (strong, nonatomic) UIImageView *icon;
+@property (strong, nonatomic) UILabel *headline;
+@property (strong, nonatomic) UILabel *subheader;
+@property (strong, nonatomic) UILabel *bi_line;
 @property (strong, nonatomic) RDKNewsItem *newsItem;
 
 - (id)initWithStyle:(UITableViewCellStyle)style newsItem:(RDKNewsItem *)newsItem reuseIdentifier:(NSString *)reuseIdentifier;
