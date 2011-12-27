@@ -151,6 +151,7 @@
 		6222EE1214A9740A0049EDCB /* RDKProductView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6222EE1114A9740A0049EDCB /* RDKProductView.m */; };
 		6222EE1D14A9AA620049EDCB /* SDWebImageDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 6222EE1C14A9AA620049EDCB /* SDWebImageDownloader.m */; };
 		6222EE1F14A9AA720049EDCB /* SDWebImageDecoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 6222EE1E14A9AA720049EDCB /* SDWebImageDecoder.m */; };
+		6222EE2A14A9D9260049EDCB /* RDKColorButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 6222EE2914A9D9250049EDCB /* RDKColorButton.m */; };
 		623A1D8014A30B6300AB2410 /* RDKLocationsItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 623A1D7F14A30B6300AB2410 /* RDKLocationsItem.m */; };
 		623A1D9814A3241F00AB2410 /* SDImageCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 623A1D8714A3241F00AB2410 /* SDImageCache.m */; };
 		623A1D9B14A3241F00AB2410 /* SDWebImageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 623A1D9014A3241F00AB2410 /* SDWebImageManager.m */; };
@@ -356,10 +357,12 @@
 		620EBAF114A1D9520086576C /* IconDownloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IconDownloader.m; sourceTree = "<group>"; };
 		620EBAF314A1F0E40086576C /* home-placeholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "home-placeholder.png"; sourceTree = "<group>"; };
 		620EBAF414A1F0E40086576C /* home-placeholder@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "home-placeholder@2x.png"; sourceTree = "<group>"; };
-		6222EE1014A9740A0049EDCB /* RDKProductView.h */ = {isa = PBXFileReference; fileEncoding = 4; path = RDKProductView.h; sourceTree = "<group>"; };
+		6222EE1014A9740A0049EDCB /* RDKProductView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RDKProductView.h; sourceTree = "<group>"; };
 		6222EE1114A9740A0049EDCB /* RDKProductView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RDKProductView.m; sourceTree = "<group>"; };
 		6222EE1C14A9AA620049EDCB /* SDWebImageDownloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDWebImageDownloader.m; sourceTree = "<group>"; };
 		6222EE1E14A9AA720049EDCB /* SDWebImageDecoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDWebImageDecoder.m; sourceTree = "<group>"; };
+		6222EE2814A9D9240049EDCB /* RDKColorButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RDKColorButton.h; sourceTree = "<group>"; };
+		6222EE2914A9D9250049EDCB /* RDKColorButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RDKColorButton.m; sourceTree = "<group>"; };
 		623A1D7E14A30B6300AB2410 /* RDKLocationsItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RDKLocationsItem.h; sourceTree = "<group>"; };
 		623A1D7F14A30B6300AB2410 /* RDKLocationsItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RDKLocationsItem.m; sourceTree = "<group>"; };
 		623A1D8614A3241F00AB2410 /* SDImageCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDImageCache.h; sourceTree = "<group>"; };
@@ -779,6 +782,8 @@
 				620537AE149F190B00B589A6 /* RDKMapTableViewCell.m */,
 				6222EE1014A9740A0049EDCB /* RDKProductView.h */,
 				6222EE1114A9740A0049EDCB /* RDKProductView.m */,
+				6222EE2814A9D9240049EDCB /* RDKColorButton.h */,
+				6222EE2914A9D9250049EDCB /* RDKColorButton.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1058,6 +1063,7 @@
 				6222EE1214A9740A0049EDCB /* RDKProductView.m in Sources */,
 				6222EE1D14A9AA620049EDCB /* SDWebImageDownloader.m in Sources */,
 				6222EE1F14A9AA720049EDCB /* SDWebImageDecoder.m in Sources */,
+				6222EE2A14A9D9260049EDCB /* RDKColorButton.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

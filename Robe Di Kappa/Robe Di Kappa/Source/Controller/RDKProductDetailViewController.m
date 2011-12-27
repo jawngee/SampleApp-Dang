@@ -8,8 +8,12 @@
 
 #import "RDKProductDetailViewController.h"
 
+#import "RDKProductsItem.h"
+#import "RDKColorButton.h"
+
 @implementation RDKProductDetailViewController
 @synthesize productImageView = _productImageView;
+@synthesize productsItem = _productsItem;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -30,6 +34,7 @@
 
 - (void)dealloc
 {
+    [_productsItem release];
     [_productImageView release];
     [super dealloc];
 }
@@ -53,18 +58,6 @@
 {
     [super viewDidLoad];
     
-//    UIImage *backImage = [UIImage imageNamed:@"global-back-button.png"];
-//    UIButton *backButton = [UIButton buttonWithType:UIButtonTypeCustom];
-//    [backButton setImage:backImage forState:UIControlStateNormal];
-//    [backButton setFrame:CGRectMake(0.0, 0.0, backImage.size.width, backImage.size.height)];
-//    [backButton addTarget:self action:@selector(backButtonPress:) forControlEvents:UIControlEventTouchUpInside];
-//    [backButton setContentEdgeInsets:UIEdgeInsetsMake(0, 8, 0, -8)];
-//    
-//    UIBarButtonItem *backBarButton = [[UIBarButtonItem alloc] initWithCustomView:backButton];
-//    self.navigationItem.hidesBackButton = YES;
-//    self.navigationItem.leftBarButtonItem = backBarButton;
-//    [backBarButton release];
-//    
     // Do any additional setup after loading the view from its nib.
     UIView *bottomView = [[UIView alloc] initWithFrame:CGRectMake(0, 280, 320, 105)];
     
@@ -92,17 +85,29 @@
     [colorLable setTextColor:[UIColor colorWithRed:209.0/255.0 green:209.0/255.0 blue:209.0/255.0 alpha:1.0]];
     [colorLable setText:@"颜色："];
     
-    UIImage *silverImage = [UIImage imageNamed:@"clothes-silver-color.png"];
-    UIButton *silverColor = [UIButton buttonWithType:UIButtonTypeCustom];
-    [silverColor setImage:silverImage forState:UIControlStateNormal];
-    [silverColor setFrame:CGRectMake(40, 55, silverImage.size.width, silverImage.size.height)];
-    [silverColor addTarget:self action:@selector(silverButtonPress:) forControlEvents:UIControlEventTouchUpInside];
+//    UIImage *silverImage = [UIImage imageNamed:@"clothes-silver-color.png"];
+//    UIButton *silverColor = [UIButton buttonWithType:UIButtonTypeCustom];
+//    [silverColor setImage:silverImage forState:UIControlStateNormal];
+//    [silverColor setFrame:CGRectMake(40, 55, silverImage.size.width, silverImage.size.height)];
+//    [silverColor addTarget:self action:@selector(silverButtonPress:) forControlEvents:UIControlEventTouchUpInside];
+    NSString *secondColor = [[self.productsItem.colors objectAtIndex:0] valueForKey:@"color"];
+//    NSLog(@"COLOR - 1: %@", secondColor);
+
+    RDKColorButton *silverColorButton = [[RDKColorButton alloc] initWithFrame:CGRectMake(40, 55, 25, 25)];
+    [silverColorButton setColor:secondColor];
+    [silverColorButton addTarget:self action:@selector(silverButtonPress:) forControlEvents:UIControlEventTouchUpInside];
     
-    UIImage *orangeImage = [UIImage imageNamed:@"clothes-orange-color.png"];
-    UIButton *orangeColor = [UIButton buttonWithType:UIButtonTypeCustom];
-    [orangeColor setImage:orangeImage forState:UIControlStateNormal];
-    [orangeColor setFrame:CGRectMake(70, 55, orangeImage.size.width, orangeImage.size.height)];
-    [orangeColor addTarget:self action:@selector(orangeButtonPress:) forControlEvents:UIControlEventTouchUpInside];
+//    UIImage *orangeImage = [UIImage imageNamed:@"clothes-orange-color.png"];
+//    UIButton *orangeColor = [UIButton buttonWithType:UIButtonTypeCustom];
+//    [orangeColor setImage:orangeImage forState:UIControlStateNormal];
+//    [orangeColor setFrame:CGRectMake(70, 55, orangeImage.size.width, orangeImage.size.height)];
+//    [orangeColor addTarget:self action:@selector(orangeButtonPress:) forControlEvents:UIControlEventTouchUpInside];
+    
+    NSString *firstColor = [[self.productsItem.colors objectAtIndex:1] valueForKey:@"color"];
+//    NSLog(@"COLOR - 2: %@", firstColor);
+    RDKColorButton *orangeColorButton = [[RDKColorButton alloc] initWithFrame:CGRectMake(70, 55, 25, 25)];
+    [orangeColorButton setColor:firstColor];
+    [orangeColorButton addTarget:self action:@selector(orangeButtonPress:) forControlEvents:UIControlEventTouchUpInside];
     
     UIImageView *thumbBackgroundImage_1 = [[UIImageView alloc] initWithFrame:CGRectMake(170, 35, 44, 44)];
     [thumbBackgroundImage_1 setImage:[UIImage imageNamed:@"clothes-view-background.png"]];
@@ -142,8 +147,8 @@
     [bottomView addSubview:titleLable];
     [bottomView addSubview:descriptionLable];
     [bottomView addSubview:colorLable];
-    [bottomView addSubview:silverColor];
-    [bottomView addSubview:orangeColor];
+    [bottomView addSubview:silverColorButton];
+    [bottomView addSubview:orangeColorButton];
     [bottomView addSubview:thumbBackgroundImage_1];
     [bottomView addSubview:thumbBackgroundImage_2];
     [bottomView addSubview:thumbBackgroundImage_3];

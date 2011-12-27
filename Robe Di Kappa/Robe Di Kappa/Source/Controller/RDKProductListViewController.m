@@ -11,6 +11,8 @@
 #import "RDKProductDetailViewController.h"
 
 @implementation RDKProductListViewController
+@synthesize productsArray = _productsArray;
+@synthesize productDetailViewArray = _productDetailViewArray;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -28,6 +30,14 @@
     
     // Release any cached data, images, etc that aren't in use.
 }
+
+- (void)dealloc
+{
+    [_productsArray release];
+    [_productDetailViewArray release];
+    [super dealloc];
+}
+
 #pragma mark -
 #pragma mark Private Methods
 
@@ -64,16 +74,28 @@
     scrollView.delegate = self;
     scrollView.autoresizesSubviews = YES;
     
-	for (int i=0; i < 4; i++) {
-        RDKProductDetailViewController *productDetail = [[RDKProductDetailViewController alloc] init];
-        [productDetail.view setFrame:CGRectMake(i*320, 0, 320, 367)];
-		[scrollView addSubview:productDetail.view];
-//		[productDetail release];
+    NSLog(@"COUNT VIEW: %d", [self.productsArray count]);
+    
+    /** create product detail view array */
+	for (int i=0; i < [self.productsArray count]; i++) 
+    {
+        /** declare product detail view */
+        RDKProductDetailViewController *productDetailView = [[RDKProductDetailViewController alloc] init];
+        [productDetailView setProductsItem:[self.productsArray objectAtIndex:i]];
+        [productDetailView.view setFrame:CGRectMake(i*320, 0, 320, 367)];
+        
+        /** add product detail view into scroll view */
+        [scrollView addSubview:productDetailView.view];
+        /** add product detail view into array */
+		[self.productDetailViewArray addObject:productDetailView];
+        
+        /** release product detail view */
+//		[productDetailView release];
 	}
     
     // Set the contentSize equal to the size of the UIImageView
     // scrollView.contentSize = imageView.scrollview.size;
-	scrollView.contentSize = CGSizeMake(4*320, 367);
+	scrollView.contentSize = CGSizeMake([self.productsArray count] * 320, 367);
     
 	// Finally, add the UIScrollView to the controller's view
     [self.view addSubview:scrollView];	

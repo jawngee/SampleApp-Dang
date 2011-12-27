@@ -66,6 +66,7 @@
     /** transmit to another screen */
     if (!self.productListViewController) {
         self.productListViewController = [[[RDKProductListViewController alloc] initWithNibName:@"RDKProductListViewController" bundle:nil] autorelease];
+        [self.productListViewController setProductsArray:self.collectionArray];
     }
     
     [self.navigationController pushViewController:self.productListViewController animated:YES];
@@ -209,9 +210,6 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    
-    /** init cell list */
-//    cellList = [[NSMutableArray alloc] init];
     
     UIImage *backImage = [UIImage imageNamed:@"global-back-button.png"];
     UIButton *backButton = [UIButton buttonWithType:UIButtonTypeCustom];

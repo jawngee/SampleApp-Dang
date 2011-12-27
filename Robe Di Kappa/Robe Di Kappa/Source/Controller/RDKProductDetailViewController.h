@@ -8,8 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
+@class RDKProductsItem;
+
 @interface RDKProductDetailViewController : UIViewController
 
 @property (strong, nonatomic) UIImageView *productImageView;
+@property (strong, nonatomic) RDKProductsItem *productsItem;
 
 @end

@@ -10,4 +10,7 @@
 
 @interface RDKProductListViewController : UIViewController <UIScrollViewDelegate>
 
+@property (strong, nonatomic) NSMutableArray *productsArray;
+@property (strong, nonatomic) NSMutableArray *productDetailViewArray;
+
 @end

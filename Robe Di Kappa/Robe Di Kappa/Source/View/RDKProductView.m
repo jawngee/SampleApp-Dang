@@ -71,11 +71,11 @@
 //    CGContextRef context = UIGraphicsGetCurrentContext();
 //    CGColorRef color = [UIColor colorWithRed:145.0/255.0 green:145.0/255.0 blue:145.0/255.0 alpha:1.0].CGColor;
 //    CGRect rectangleRect = CGRectMake(0, 0, 107, 123);
-    
+//    
 //    CGContextClearRect(context, rectangleRect);
 //    CGContextSetFillColorWithColor(context, [UIColor clearColor].CGColor);
 //    CGContextFillRect(context, rectangleRect);
-    
+//    
 //    CGContextSetStrokeColorWithColor(context, color);
 //    CGContextSetLineWidth(context, 1.0);
 //    CGContextStrokeRect(context, rectangleRect);

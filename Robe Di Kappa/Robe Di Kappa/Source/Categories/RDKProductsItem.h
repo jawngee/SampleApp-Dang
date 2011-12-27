@@ -15,7 +15,7 @@
 @property (strong, nonatomic) NSString *rsp;
 @property (strong, nonatomic) NSString *icon;
 @property (strong, nonatomic) UIImage *iconImage;
-@property (strong, nonatomic) NSArray *color;
+@property (strong, nonatomic) NSArray *colors;
 
 -(id)initWithItem:(NSDictionary *)productsDictionary;
 

@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface RDKColorButton : UIView
+@interface RDKColorButton : UIButton
+
+@property (strong, nonatomic) NSString *color;
 
 @end

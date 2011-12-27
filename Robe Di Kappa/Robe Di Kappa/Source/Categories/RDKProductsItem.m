@@ -14,7 +14,7 @@
 @synthesize rsp = _rsp;
 @synthesize icon = _icon;
 @synthesize iconImage = _iconImage;
-@synthesize color = _color;
+@synthesize colors = _colors;
 
 -(id)initWithItem:(NSDictionary *)productsDictionary
 {
@@ -25,7 +25,7 @@
         [self setDescription:[productsDictionary objectForKey:@"description"]];
         [self setRsp:[productsDictionary objectForKey:@"rsp"]];
         [self setIcon:[productsDictionary objectForKey:@"icon"]];
-        [self setColor:[productsDictionary objectForKey:@"color"]];
+        [self setColors:[productsDictionary objectForKey:@"colors"]];
     }
     
     return self;
@@ -40,7 +40,7 @@
     [_rsp release];
     [_icon release];
     [_iconImage release];
-    [_color release];
+    [_colors release];
     [super dealloc];
 }
 
