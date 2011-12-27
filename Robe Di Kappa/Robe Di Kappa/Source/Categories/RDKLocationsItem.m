@@ -17,7 +17,6 @@
 @synthesize icon = _icon;
 @synthesize iconImage = _iconImage;
 
-
 -(id)initWithItem:(NSDictionary *)locationsDictionary
 {
     self = [super init];
@@ -45,6 +44,5 @@
     [_iconImage release];
     [super dealloc];
 }
-
 
 @end

@@ -97,8 +97,8 @@
         
     /** create bi-line lable */
     CGSize bi_lineSize = [self.newsItem.bi_line sizeWithFont:[UIFont systemFontOfSize:12]
-                                               constrainedToSize:CGSizeMake(170, 999) 
-                                                   lineBreakMode:UILineBreakModeWordWrap];
+                                           constrainedToSize:CGSizeMake(170, 999) 
+                                               lineBreakMode:UILineBreakModeWordWrap];
 
     self.bi_line = [[[UILabel alloc] initWithFrame:CGRectMake(145, 92, 170, bi_lineSize.height)] autorelease];
     [self.bi_line setTextColor:[UIColor colorWithRed:153.0/255.0 green:153.0/255.0 blue:153.0/255.0 alpha:1.0]];

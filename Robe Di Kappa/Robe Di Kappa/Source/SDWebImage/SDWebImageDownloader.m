@@ -126,11 +126,14 @@ NSString *const SDWebImageDownloadStopNotification = @"SDWebImageDownloadStopNot
     if ([delegate respondsToSelector:@selector(imageDownloader:didFinishWithImage:)])
     {
         UIImage *image = [[UIImage alloc] initWithData:imageData];
+        // scale image for retina display
+        float scale=([[UIScreen mainScreen] scale]<2) ? 2 : [[UIScreen mainScreen] scale];
+        UIImage *decompressedImage = [UIImage imageWithCGImage:image.CGImage scale:scale orientation:image.imageOrientation];
 
 #ifdef ENABLE_SDWEBIMAGE_DECODER
-        [[SDWebImageDecoder sharedImageDecoder] decodeImage:image withDelegate:self userInfo:nil];
+        [[SDWebImageDecoder sharedImageDecoder] decodeImage:decompressedImage withDelegate:self userInfo:nil];
 #else
-        [delegate performSelector:@selector(imageDownloader:didFinishWithImage:) withObject:self withObject:image];
+        [delegate performSelector:@selector(imageDownloader:didFinishWithImage:) withObject:self withObject:decompressedImage];
 #endif
         [image release];
     }

@@ -11,11 +11,7 @@
 @class RDKCollectionViewController;
 
 @interface RDKProductViewController : UIViewController <UITabBarDelegate, UITableViewDataSource>
-{
-    
-}
 
 @property (strong, nonatomic) RDKCollectionViewController *collectionViewController;
-
 
 @end

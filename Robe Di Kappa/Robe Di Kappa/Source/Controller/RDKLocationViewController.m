@@ -102,7 +102,7 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    self.annotationArray = [[NSMutableArray alloc] init];
+    self.annotationArray = [[[NSMutableArray alloc] init] autorelease];
     
     UIImage *backImage = [UIImage imageNamed:@"global-back-button.png"];
     UIButton *backButton = [UIButton buttonWithType:UIButtonTypeCustom];

@@ -7,17 +7,23 @@
 //
 
 #import "RDKCollectionViewController.h"
+
 #import "RDKProductListViewController.h"
+#import "RDKProductsItem.h"
+
+#define kCustomRowHeight    60.0
+#define kCustomRowCount     1
 
 @implementation RDKCollectionViewController
 @synthesize productListViewController = _productListViewController;
+@synthesize collectionTableView = _collectionTableView;
+@synthesize collectionArray = _collectionArray;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-        
     }
     return self;
 }
@@ -26,14 +32,13 @@
 {
     // Releases the view if it doesn't have a superview.
     [super didReceiveMemoryWarning];
-    
-    // Release any cached data, images, etc that aren't in use.
 }
 
 - (void)dealloc
 {
     [_productListViewController release];
-    [cellList release];
+    [_collectionTableView release];
+    [_collectionArray release];
     [super dealloc];
 }
 
@@ -46,7 +51,7 @@
 #pragma mark -
 #pragma mark RDKClothesItemTableViewCellDelegate
 
-- (void)itemClick:(id)sender
+- (void)selectProduct:(id)sender
 {
     /** transmit to another screen */
     if (!self.productListViewController) {
@@ -66,59 +71,111 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section 
-{
-	return 5;
+{    
+	int row = [self.collectionArray count]/3;
+    int col = [self.collectionArray count]%3;
+	
+    NSLog(@"ROW = %d", row);
+    NSLog(@"COL = %d", col);
+	
+	/** ff there's no data yet, return enough rows to fill the screen */
+    if (row == 0 && col == 0) return kCustomRowCount;
+    if (col > 0) return row + 1;
+    
+    return row;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath 
 {
-	return 123;
+	int row = [self.collectionArray count]/3;
+    int col = [self.collectionArray count]%3;
+    
+	/** ff there's no data yet, return enough rows to fill the screen */
+    if (row == 0 && col == 0) return kCustomRowHeight;
+    
+    return 123;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+//    static NSString *CellIdentifier = @"TableViewCell";
+    static NSString *PlaceholderCellIdentifier = @"PlaceholderCell";
     NSString *CellIdentifier = [NSString stringWithFormat:@"TableViewCell_%d", [indexPath row]];
-    
-	RDKCollectionTableViewCell *__cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    
-    if (__cell == nil) {
-        __cell = [[[RDKCollectionTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+    /** add a placeholder cell while waiting on table data */
+	int row = [self.collectionArray count]/3;
+    int col = [self.collectionArray count]%3;
+	
+    /** create cell when there is no item */
+	if (row == 0 && col == 0 && indexPath.row == 0)
+	{
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:PlaceholderCellIdentifier];
         
-        __cell.cellList = cellList;
-        __cell.delegate = self;
-        
-        [cellList addObject:__cell];
-        
-        if ([indexPath row] == 0) {
-            __cell.image_1 = [UIImage imageNamed:@"clothes-item-1.png"];
-            __cell.image_2 = [UIImage imageNamed:@"clothes-item-2.png"];
-            __cell.image_3 = [UIImage imageNamed:@"clothes-item-3.png"];
+        if (cell == nil)
+		{
+            cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:PlaceholderCellIdentifier] autorelease];   
+            cell.detailTextLabel.textAlignment = UITextAlignmentCenter;
+			cell.selectionStyle = UITableViewCellSelectionStyleNone;
         }
         
-        if ([indexPath row] == 1) {
-            __cell.image_1 = [UIImage imageNamed:@"clothes-item-3.png"];
-            __cell.image_2 = [UIImage imageNamed:@"clothes-item-1.png"];
-            __cell.image_3 = [UIImage imageNamed:@"clothes-item-2.png"];
-        }
-        
-        if ([indexPath row] == 2) {
-            __cell.image_1 = [UIImage imageNamed:@"clothes-item-2.png"];
-            __cell.image_2 = [UIImage imageNamed:@"clothes-item-1.png"];
-            __cell.image_3 = [UIImage imageNamed:@"clothes-item-3.png"];
-        }
-        
-        if ([indexPath row] == 3) {
-            __cell.image_1 = [UIImage imageNamed:@"clothes-item-3.png"];
-            __cell.image_2 = [UIImage imageNamed:@"clothes-item-2.png"];
-            __cell.image_3 = [UIImage imageNamed:@"clothes-item-1.png"];
-        }
-        
-        if ([indexPath row] == 4) {
-            __cell.image_1 = [UIImage imageNamed:@"clothes-item-1.png"];
-        }
+		cell.detailTextLabel.text = @"Loading … ";
+		
+		return cell;
     }
+	
+    RDKCollectionTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    
+    if (cell == nil) 
+    {
+        int count = [indexPath row] * 3;
+        
+        NSMutableArray *productsArray = [[NSMutableArray alloc] init]; 
+        
+        for (int i=0; count < [self.collectionArray count] && i < 3; i++) 
+        {
+            [productsArray addObject:[self.collectionArray objectAtIndex:count++]];
+        }
 
-	return __cell;
+        cell = [[[RDKCollectionTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault productsArray:productsArray reuseIdentifier:CellIdentifier] autorelease];
+        
+        [cell setDelegate:self];
+        
+        [productsArray release];
+    }
+    
+    /** Leave cells empty if there's no data yet */
+//    if (nodeCount > 0)
+//	{
+//        [cell.icon setImageWithURL:[NSURL URLWithString:newsItem.icon] placeholderImage:nil];
+//    }
+    
+    return cell;
+}
+
+#pragma mark - RDKDataManagerDelegate
+
+-(void)getProductsFinished:(id)sender
+{
+    /** declare array for pass data from data manager */
+    NSArray *productsArray = [RDKDataManager share].productsArray;
+    
+    /** init new array with data from data manager */
+    [self.collectionArray removeAllObjects];
+    
+    /** convert to news array */
+    for (int i=0; i<[productsArray count]; i++) 
+    {
+        /** declare news item */
+        RDKProductsItem *productsItem = [[RDKProductsItem alloc] initWithItem:[productsArray objectAtIndex:i]];
+        
+        /** add news item to news array */
+        [self.collectionArray addObject:productsItem];
+        
+        /** release item */
+        [productsItem release];
+    }
+    
+    /** reload data for table view */
+    [self.collectionTableView reloadData];
 }
 
 #pragma mark -
@@ -130,30 +187,41 @@
 
 #pragma mark - View lifecycle
 
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    /** set data manager deleagte and get news fron web service */
+    [[RDKDataManager share] setDelegate:self];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
     /** init cell list */
-    cellList = [[NSMutableArray alloc] init];
+//    cellList = [[NSMutableArray alloc] init];
     
     UIImage *backImage = [UIImage imageNamed:@"global-back-button.png"];
     UIButton *backButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [backButton setImage:backImage forState:UIControlStateNormal];
     [backButton setFrame:CGRectMake(0.0, 0.0, backImage.size.width, backImage.size.height)];
-    [backButton addTarget:self action:@selector(backButtonPress:) forControlEvents:UIControlEventTouchUpInside];
+    [backButton addTarget:self action:@selector(pushBackButton:) forControlEvents:UIControlEventTouchUpInside];
     [backButton setContentEdgeInsets:UIEdgeInsetsMake(0, 8, 0, -8)];
     
     UIBarButtonItem *backBarButton = [[UIBarButtonItem alloc] initWithCustomView:backButton];
     self.navigationItem.hidesBackButton = YES;
     self.navigationItem.leftBarButtonItem = backBarButton;
     [backBarButton release];
-}
+    
+    /** init image download progress */
+    self.collectionArray = [[[NSMutableArray alloc] init] autorelease];
+    
+    /** set data manager deleagte and get news fron web service */
+    [[RDKDataManager share] setDelegate:self];
+    [[RDKDataManager share] getProducts];
 
-- (void)backButtonPress:(id)sender
-{
-    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)viewDidUnload

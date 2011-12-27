@@ -116,9 +116,13 @@ static SDWebImageDecoder *sharedInstance;
     CGImageRef decompressedImageRef = CGBitmapContextCreateImage(context);
     CGContextRelease(context);
 
-    UIImage *decompressedImage = [[UIImage alloc] initWithCGImage:decompressedImageRef];
+    // scale image for retina display
+    float scale=([[UIScreen mainScreen] scale]<2) ? 2 : [[UIScreen mainScreen] scale];
+    UIImage *decompressedImage = [UIImage imageWithCGImage:decompressedImageRef scale:scale orientation:image.imageOrientation];
+
+//    UIImage *decompressedImage = [[UIImage alloc] initWithCGImage:decompressedImageRef];
     CGImageRelease(decompressedImageRef);
-    return [decompressedImage autorelease];
+    return decompressedImage;
 }
 
 @end

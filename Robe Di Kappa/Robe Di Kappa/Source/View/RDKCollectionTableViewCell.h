@@ -8,25 +8,21 @@
 
 #import <UIKit/UIKit.h>
 
+#import "RDKProductView.h"
+
+@class RDKProductsItem;
+
 @protocol RDKCollectionTableViewCellDelegate
 
-- (void)itemClick:(id)sender;
+- (void)selectProduct:(id)sender;
 
 @end
 
-@interface RDKCollectionTableViewCell : UITableViewCell 
+@interface RDKCollectionTableViewCell : UITableViewCell <RDKProductViewDelegate>
 
-@property (strong, nonatomic) NSMutableArray *cellList;
-@property (strong, nonatomic) id <RDKCollectionTableViewCellDelegate> delegate;
+@property (strong, nonatomic) NSMutableArray *productsArray;
+@property (strong, nonatomic) NSObject <RDKCollectionTableViewCellDelegate> *delegate;
 
-@property (strong, nonatomic) UIImageView *imageViewCell_1;
-@property (strong, nonatomic) UIImageView *imageViewCell_2;
-@property (strong, nonatomic) UIImageView *imageViewCell_3;
-
-@property (strong, nonatomic) UIImage *image_1;
-@property (strong, nonatomic) UIImage *image_2;
-@property (strong, nonatomic) UIImage *image_3;
-
-- (void)unselectAllItem:(id)sender;
+- (id)initWithStyle:(UITableViewCellStyle)style productsArray:(NSMutableArray *)productsArray reuseIdentifier:(NSString *)reuseIdentifier;
 
 @end

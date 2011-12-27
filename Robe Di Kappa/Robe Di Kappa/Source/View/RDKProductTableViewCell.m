@@ -55,12 +55,11 @@
     [_imageViewCell setContentMode:UIViewContentModeCenter];
     
     self.titleLable = [[[UILabel alloc] initWithFrame:CGRectMake(140, 36, 50, 20)] autorelease];
+    [self.titleLable setTextColor:[UIColor colorWithRed:92.0/255.0 green:92.0/255.0 blue:92.0/255.0 alpha:1.0]];
     [self.titleLable setBackgroundColor:[UIColor clearColor]];
     [self.titleLable setFont:[UIFont boldSystemFontOfSize:16]];
     [self.titleLable setLineBreakMode:UILineBreakModeWordWrap];
     [self.titleLable setHighlightedTextColor:[UIColor whiteColor]];
-    [self.titleLable setTextColor:[UIColor colorWithRed:92.0/255.0 green:92.0/255.0 blue:92.0/255.0 alpha:1.0]];
-    [self.titleLable setNumberOfLines:2];
     
     [self addSubview:self.imageViewCell];
     [self addSubview:self.titleLable];

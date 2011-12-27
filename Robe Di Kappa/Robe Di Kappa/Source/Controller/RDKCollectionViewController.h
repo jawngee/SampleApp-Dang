@@ -7,15 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
+
 #import "RDKCollectionTableViewCell.h"
+#import "RDKDataManager.h"
 
 @class RDKProductListViewController;
 
-@interface RDKCollectionViewController : UIViewController <UITabBarDelegate, UITableViewDataSource, RDKCollectionTableViewCellDelegate> {
-    
-    NSMutableArray *cellList;    
-}
+@interface RDKCollectionViewController : UIViewController <UITabBarDelegate, UITableViewDataSource, RDKCollectionTableViewCellDelegate, RDKDataManagerDelegate> 
 
 @property (strong, nonatomic) RDKProductListViewController *productListViewController;
+@property (strong, nonatomic) IBOutlet UITableView *collectionTableView;
+@property (strong, nonatomic) NSMutableArray *collectionArray;
 
 @end

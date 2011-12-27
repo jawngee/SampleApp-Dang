@@ -79,7 +79,7 @@
 		62053749149F103A00B589A6 /* clothes-selected-cell-background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 62053713149F103A00B589A6 /* clothes-selected-cell-background@2x.png */; };
 		6205374A149F103A00B589A6 /* clothes-shoe-cover.png in Resources */ = {isa = PBXBuildFile; fileRef = 62053714149F103A00B589A6 /* clothes-shoe-cover.png */; };
 		6205374B149F103A00B589A6 /* clothes-shoe-cover@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 62053715149F103A00B589A6 /* clothes-shoe-cover@2x.png */; };
-		6205374C149F103A00B589A6 /* clothes-shoe-image.png in Resources */ = {isa = PBXBuildFile; fileRef = 62053716149F103A00B589A6 /* clothes-shoe-image.png */; };
+		6205374C149F103A00B589A6 /* clothes-shoe.png in Resources */ = {isa = PBXBuildFile; fileRef = 62053716149F103A00B589A6 /* clothes-shoe.png */; };
 		6205374D149F103A00B589A6 /* clothes-shoe@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 62053717149F103A00B589A6 /* clothes-shoe@2x.png */; };
 		6205374E149F103A00B589A6 /* clothes-silver-bag.png in Resources */ = {isa = PBXBuildFile; fileRef = 62053718149F103A00B589A6 /* clothes-silver-bag.png */; };
 		6205374F149F103A00B589A6 /* clothes-silver-bag@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 62053719149F103A00B589A6 /* clothes-silver-bag@2x.png */; };
@@ -148,14 +148,16 @@
 		620EBAF214A1D9520086576C /* IconDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 620EBAF114A1D9520086576C /* IconDownloader.m */; };
 		620EBAF514A1F0E40086576C /* home-placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = 620EBAF314A1F0E40086576C /* home-placeholder.png */; };
 		620EBAF614A1F0E40086576C /* home-placeholder@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 620EBAF414A1F0E40086576C /* home-placeholder@2x.png */; };
+		6222EE1214A9740A0049EDCB /* RDKProductView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6222EE1114A9740A0049EDCB /* RDKProductView.m */; };
+		6222EE1D14A9AA620049EDCB /* SDWebImageDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 6222EE1C14A9AA620049EDCB /* SDWebImageDownloader.m */; };
+		6222EE1F14A9AA720049EDCB /* SDWebImageDecoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 6222EE1E14A9AA720049EDCB /* SDWebImageDecoder.m */; };
 		623A1D8014A30B6300AB2410 /* RDKLocationsItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 623A1D7F14A30B6300AB2410 /* RDKLocationsItem.m */; };
 		623A1D9814A3241F00AB2410 /* SDImageCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 623A1D8714A3241F00AB2410 /* SDImageCache.m */; };
-		623A1D9914A3241F00AB2410 /* SDWebImageDecoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 623A1D8B14A3241F00AB2410 /* SDWebImageDecoder.m */; };
-		623A1D9A14A3241F00AB2410 /* SDWebImageDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 623A1D8D14A3241F00AB2410 /* SDWebImageDownloader.m */; };
 		623A1D9B14A3241F00AB2410 /* SDWebImageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 623A1D9014A3241F00AB2410 /* SDWebImageManager.m */; };
 		623A1D9C14A3241F00AB2410 /* SDWebImagePrefetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 623A1D9314A3241F00AB2410 /* SDWebImagePrefetcher.m */; };
 		623A1D9D14A3241F00AB2410 /* UIButton+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 623A1D9514A3241F00AB2410 /* UIButton+WebCache.m */; };
 		623A1D9E14A3241F00AB2410 /* UIImageView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 623A1D9714A3241F00AB2410 /* UIImageView+WebCache.m */; };
+		62BE18FB14A748540045FE5F /* RDKProductsItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 62BE18FA14A748540045FE5F /* RDKProductsItem.m */; };
 		62EDB9C714A04181000A9B96 /* SCAppUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 62EDB9C214A04181000A9B96 /* SCAppUtils.m */; };
 		62EDB9C814A04181000A9B96 /* SCClassUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 62EDB9C414A04181000A9B96 /* SCClassUtils.m */; };
 		62EDB9CD14A0418F000A9B96 /* RDKDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 62EDB9CC14A0418F000A9B96 /* RDKDataManager.m */; };
@@ -251,7 +253,7 @@
 		62053713149F103A00B589A6 /* clothes-selected-cell-background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "clothes-selected-cell-background@2x.png"; sourceTree = "<group>"; };
 		62053714149F103A00B589A6 /* clothes-shoe-cover.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "clothes-shoe-cover.png"; sourceTree = "<group>"; };
 		62053715149F103A00B589A6 /* clothes-shoe-cover@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "clothes-shoe-cover@2x.png"; sourceTree = "<group>"; };
-		62053716149F103A00B589A6 /* clothes-shoe-image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "clothes-shoe-image.png"; sourceTree = "<group>"; };
+		62053716149F103A00B589A6 /* clothes-shoe.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "clothes-shoe.png"; sourceTree = "<group>"; };
 		62053717149F103A00B589A6 /* clothes-shoe@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "clothes-shoe@2x.png"; sourceTree = "<group>"; };
 		62053718149F103A00B589A6 /* clothes-silver-bag.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "clothes-silver-bag.png"; sourceTree = "<group>"; };
 		62053719149F103A00B589A6 /* clothes-silver-bag@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "clothes-silver-bag@2x.png"; sourceTree = "<group>"; };
@@ -354,6 +356,10 @@
 		620EBAF114A1D9520086576C /* IconDownloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IconDownloader.m; sourceTree = "<group>"; };
 		620EBAF314A1F0E40086576C /* home-placeholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "home-placeholder.png"; sourceTree = "<group>"; };
 		620EBAF414A1F0E40086576C /* home-placeholder@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "home-placeholder@2x.png"; sourceTree = "<group>"; };
+		6222EE1014A9740A0049EDCB /* RDKProductView.h */ = {isa = PBXFileReference; fileEncoding = 4; path = RDKProductView.h; sourceTree = "<group>"; };
+		6222EE1114A9740A0049EDCB /* RDKProductView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RDKProductView.m; sourceTree = "<group>"; };
+		6222EE1C14A9AA620049EDCB /* SDWebImageDownloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDWebImageDownloader.m; sourceTree = "<group>"; };
+		6222EE1E14A9AA720049EDCB /* SDWebImageDecoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDWebImageDecoder.m; sourceTree = "<group>"; };
 		623A1D7E14A30B6300AB2410 /* RDKLocationsItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RDKLocationsItem.h; sourceTree = "<group>"; };
 		623A1D7F14A30B6300AB2410 /* RDKLocationsItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RDKLocationsItem.m; sourceTree = "<group>"; };
 		623A1D8614A3241F00AB2410 /* SDImageCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDImageCache.h; sourceTree = "<group>"; };
@@ -361,9 +367,7 @@
 		623A1D8814A3241F00AB2410 /* SDImageCacheDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDImageCacheDelegate.h; sourceTree = "<group>"; };
 		623A1D8914A3241F00AB2410 /* SDWebImageCompat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDWebImageCompat.h; sourceTree = "<group>"; };
 		623A1D8A14A3241F00AB2410 /* SDWebImageDecoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDWebImageDecoder.h; sourceTree = "<group>"; };
-		623A1D8B14A3241F00AB2410 /* SDWebImageDecoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDWebImageDecoder.m; sourceTree = "<group>"; };
 		623A1D8C14A3241F00AB2410 /* SDWebImageDownloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDWebImageDownloader.h; sourceTree = "<group>"; };
-		623A1D8D14A3241F00AB2410 /* SDWebImageDownloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDWebImageDownloader.m; sourceTree = "<group>"; };
 		623A1D8E14A3241F00AB2410 /* SDWebImageDownloaderDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDWebImageDownloaderDelegate.h; sourceTree = "<group>"; };
 		623A1D8F14A3241F00AB2410 /* SDWebImageManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDWebImageManager.h; sourceTree = "<group>"; };
 		623A1D9014A3241F00AB2410 /* SDWebImageManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDWebImageManager.m; sourceTree = "<group>"; };
@@ -374,6 +378,8 @@
 		623A1D9514A3241F00AB2410 /* UIButton+WebCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+WebCache.m"; sourceTree = "<group>"; };
 		623A1D9614A3241F00AB2410 /* UIImageView+WebCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+WebCache.h"; sourceTree = "<group>"; };
 		623A1D9714A3241F00AB2410 /* UIImageView+WebCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+WebCache.m"; sourceTree = "<group>"; };
+		62BE18F914A748540045FE5F /* RDKProductsItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RDKProductsItem.h; sourceTree = "<group>"; };
+		62BE18FA14A748540045FE5F /* RDKProductsItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RDKProductsItem.m; sourceTree = "<group>"; };
 		62EDB9C114A04181000A9B96 /* SCAppUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCAppUtils.h; sourceTree = "<group>"; };
 		62EDB9C214A04181000A9B96 /* SCAppUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCAppUtils.m; sourceTree = "<group>"; };
 		62EDB9C314A04181000A9B96 /* SCClassUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCClassUtils.h; sourceTree = "<group>"; };
@@ -448,7 +454,6 @@
 				620536F9149F103A00B589A6 /* clothes-bag@2x.png */,
 				620536FA149F103A00B589A6 /* clothes-clothes-cover.png */,
 				620536FB149F103A00B589A6 /* clothes-clothes-cover@2x.png */,
-				620536FC149F103A00B589A6 /* clothes-clothes.png */,
 				620536FD149F103A00B589A6 /* clothes-clothes@2x.png */,
 				620536FE149F103A00B589A6 /* clothes-female-cover.png */,
 				620536FF149F103A00B589A6 /* clothes-female-cover@2x.png */,
@@ -457,6 +462,7 @@
 				62053702149F103A00B589A6 /* clothes-footer-background.png */,
 				62053703149F103A00B589A6 /* clothes-footer-backgrounde@2x.png */,
 				62053704149F103A00B589A6 /* clothes-item-1.png */,
+				620536FC149F103A00B589A6 /* clothes-clothes.png */,
 				62053705149F103A00B589A6 /* clothes-item-1@2x.png */,
 				62053706149F103A00B589A6 /* clothes-item-2.png */,
 				62053707149F103A00B589A6 /* clothes-item-2@2x.png */,
@@ -474,7 +480,7 @@
 				62053713149F103A00B589A6 /* clothes-selected-cell-background@2x.png */,
 				62053714149F103A00B589A6 /* clothes-shoe-cover.png */,
 				62053715149F103A00B589A6 /* clothes-shoe-cover@2x.png */,
-				62053716149F103A00B589A6 /* clothes-shoe-image.png */,
+				62053716149F103A00B589A6 /* clothes-shoe.png */,
 				62053717149F103A00B589A6 /* clothes-shoe@2x.png */,
 				62053718149F103A00B589A6 /* clothes-silver-bag.png */,
 				62053719149F103A00B589A6 /* clothes-silver-bag@2x.png */,
@@ -526,9 +532,9 @@
 				623A1D8814A3241F00AB2410 /* SDImageCacheDelegate.h */,
 				623A1D8914A3241F00AB2410 /* SDWebImageCompat.h */,
 				623A1D8A14A3241F00AB2410 /* SDWebImageDecoder.h */,
-				623A1D8B14A3241F00AB2410 /* SDWebImageDecoder.m */,
+				6222EE1E14A9AA720049EDCB /* SDWebImageDecoder.m */,
 				623A1D8C14A3241F00AB2410 /* SDWebImageDownloader.h */,
-				623A1D8D14A3241F00AB2410 /* SDWebImageDownloader.m */,
+				6222EE1C14A9AA620049EDCB /* SDWebImageDownloader.m */,
 				623A1D8E14A3241F00AB2410 /* SDWebImageDownloaderDelegate.h */,
 				623A1D8F14A3241F00AB2410 /* SDWebImageManager.h */,
 				623A1D9014A3241F00AB2410 /* SDWebImageManager.m */,
@@ -612,6 +618,8 @@
 				620EBAE514A1BD040086576C /* RDKNewsItem.m */,
 				623A1D7E14A30B6300AB2410 /* RDKLocationsItem.h */,
 				623A1D7F14A30B6300AB2410 /* RDKLocationsItem.m */,
+				62BE18F914A748540045FE5F /* RDKProductsItem.h */,
+				62BE18FA14A748540045FE5F /* RDKProductsItem.m */,
 			);
 			path = Categories;
 			sourceTree = "<group>";
@@ -769,6 +777,8 @@
 				620537AC149F190B00B589A6 /* RDKCollectionTableViewCell.m */,
 				620537AD149F190B00B589A6 /* RDKMapTableViewCell.h */,
 				620537AE149F190B00B589A6 /* RDKMapTableViewCell.m */,
+				6222EE1014A9740A0049EDCB /* RDKProductView.h */,
+				6222EE1114A9740A0049EDCB /* RDKProductView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -952,7 +962,7 @@
 				62053749149F103A00B589A6 /* clothes-selected-cell-background@2x.png in Resources */,
 				6205374A149F103A00B589A6 /* clothes-shoe-cover.png in Resources */,
 				6205374B149F103A00B589A6 /* clothes-shoe-cover@2x.png in Resources */,
-				6205374C149F103A00B589A6 /* clothes-shoe-image.png in Resources */,
+				6205374C149F103A00B589A6 /* clothes-shoe.png in Resources */,
 				6205374D149F103A00B589A6 /* clothes-shoe@2x.png in Resources */,
 				6205374E149F103A00B589A6 /* clothes-silver-bag.png in Resources */,
 				6205374F149F103A00B589A6 /* clothes-silver-bag@2x.png in Resources */,
@@ -1040,12 +1050,14 @@
 				620EBAF214A1D9520086576C /* IconDownloader.m in Sources */,
 				623A1D8014A30B6300AB2410 /* RDKLocationsItem.m in Sources */,
 				623A1D9814A3241F00AB2410 /* SDImageCache.m in Sources */,
-				623A1D9914A3241F00AB2410 /* SDWebImageDecoder.m in Sources */,
-				623A1D9A14A3241F00AB2410 /* SDWebImageDownloader.m in Sources */,
 				623A1D9B14A3241F00AB2410 /* SDWebImageManager.m in Sources */,
 				623A1D9C14A3241F00AB2410 /* SDWebImagePrefetcher.m in Sources */,
 				623A1D9D14A3241F00AB2410 /* UIButton+WebCache.m in Sources */,
 				623A1D9E14A3241F00AB2410 /* UIImageView+WebCache.m in Sources */,
+				62BE18FB14A748540045FE5F /* RDKProductsItem.m in Sources */,
+				6222EE1214A9740A0049EDCB /* RDKProductView.m in Sources */,
+				6222EE1D14A9AA620049EDCB /* SDWebImageDownloader.m in Sources */,
+				6222EE1F14A9AA720049EDCB /* SDWebImageDecoder.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

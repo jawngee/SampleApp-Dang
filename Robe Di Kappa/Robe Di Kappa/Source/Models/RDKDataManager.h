@@ -13,6 +13,7 @@
 @optional
 -(void)getNewsFinished:(id)sender;
 -(void)getLocationsFinished:(id)sender;
+-(void)getProductsFinished:(id)sender;
 
 @end
 
@@ -21,9 +22,11 @@
 @property (retain, nonatomic) NSObject <RDKDataManagerDelegate> *delegate;
 @property (strong, nonatomic) NSMutableArray *newsArray;
 @property (strong, nonatomic) NSMutableArray *locationsArray;
+@property (strong, nonatomic) NSMutableArray *productsArray;
 
 +(RDKDataManager *)share;
 -(void)getNews;
 -(void)getLocations;
+-(void)getProducts;
 
 @end

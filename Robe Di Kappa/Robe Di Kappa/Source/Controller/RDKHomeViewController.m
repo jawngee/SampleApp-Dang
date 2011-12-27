@@ -87,7 +87,7 @@
 	static NSString *CellIdentifier = @"TableViewCell";
     static NSString *PlaceholderCellIdentifier = @"PlaceholderCell";
     
-    // add a placeholder cell while waiting on table data
+    /** add a placeholder cell while waiting on table data */
     int nodeCount = [self.newsArray count];
 	
     /** create cell when there is no item */
