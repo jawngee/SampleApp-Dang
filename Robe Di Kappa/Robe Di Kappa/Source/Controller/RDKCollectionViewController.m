@@ -15,6 +15,7 @@
 #define kCustomRowCount     1
 
 @implementation RDKCollectionViewController
+@synthesize previousCollectionTableViewCell = _previousCollectionTableViewCell;
 @synthesize productListViewController = _productListViewController;
 @synthesize collectionTableView = _collectionTableView;
 @synthesize collectionArray = _collectionArray;
@@ -36,6 +37,7 @@
 
 - (void)dealloc
 {
+    [_previousCollectionTableViewCell release];
     [_productListViewController release];
     [_collectionTableView release];
     [_collectionArray release];
@@ -53,6 +55,14 @@
 
 - (void)selectProduct:(id)sender
 {
+    /** clear background color for previous cell */
+    if (self.previousCollectionTableViewCell) {
+        [self.previousCollectionTableViewCell.previousProductView setBackgroundColor:[UIColor clearColor]];
+    }
+    
+    /** set previouse cell */
+    self.previousCollectionTableViewCell = (RDKCollectionTableViewCell *)sender;
+    
     /** transmit to another screen */
     if (!self.productListViewController) {
         self.productListViewController = [[[RDKProductListViewController alloc] initWithNibName:@"RDKProductListViewController" bundle:nil] autorelease];

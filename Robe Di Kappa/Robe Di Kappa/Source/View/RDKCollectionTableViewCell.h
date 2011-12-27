@@ -21,6 +21,7 @@
 @interface RDKCollectionTableViewCell : UITableViewCell <RDKProductViewDelegate>
 
 @property (strong, nonatomic) NSMutableArray *productsArray;
+@property (strong, nonatomic) RDKProductView *previousProductView;
 @property (strong, nonatomic) NSObject <RDKCollectionTableViewCellDelegate> *delegate;
 
 - (id)initWithStyle:(UITableViewCellStyle)style productsArray:(NSMutableArray *)productsArray reuseIdentifier:(NSString *)reuseIdentifier;

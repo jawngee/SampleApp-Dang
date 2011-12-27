@@ -18,6 +18,7 @@
 @end
 
 @implementation RDKCollectionTableViewCell
+@synthesize previousProductView = _previousProductView;
 @synthesize productsArray = _productsArray;
 @synthesize delegate = _delegate;
 
@@ -25,6 +26,7 @@
 {
     [_delegate release];
     [_productsArray release];
+    [_previousProductView release];
     [super dealloc];
 }
 
@@ -97,7 +99,12 @@
 
 -(void)selectProduct:(id)sender
 {
-    [self.delegate selectProduct:sender];
+    if (self.previousProductView) {
+        [self.previousProductView setBackgroundColor:[UIColor clearColor]];
+    }
+    
+    self.previousProductView = (RDKProductView *)sender;
+    [self.delegate selectProduct:self];
 }
 
 @end

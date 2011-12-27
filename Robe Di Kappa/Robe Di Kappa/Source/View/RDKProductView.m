@@ -83,7 +83,8 @@
 
 -(void)selectProduct:(id)sender
 {
-    [self.delegate selectProduct:sender];
+    [self.delegate selectProduct:self];
+    [self setBackgroundColor:[UIColor colorWithRed:35.0/255.0 green:150.0/255.0 blue:210.0/255.0 alpha:1.0]];
 }
 
 - (void)dealloc

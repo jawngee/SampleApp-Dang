@@ -15,6 +15,7 @@
 
 @interface RDKCollectionViewController : UIViewController <UITabBarDelegate, UITableViewDataSource, RDKCollectionTableViewCellDelegate, RDKDataManagerDelegate> 
 
+@property (strong, nonatomic) RDKCollectionTableViewCell *previousCollectionTableViewCell;
 @property (strong, nonatomic) RDKProductListViewController *productListViewController;
 @property (strong, nonatomic) IBOutlet UITableView *collectionTableView;
 @property (strong, nonatomic) NSMutableArray *collectionArray;
