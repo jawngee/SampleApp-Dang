@@ -8,34 +8,33 @@
 
 #import "RDKColorButton.h"
 
+#import "UIColor+HexString.h"
+
 @implementation RDKColorButton
 @synthesize color = _color;
 
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
-    if (self) {
-        // Initialization code
+    if (self) 
+    {
+        /** Initialization code */
+        UIImageView *gradientOverlay = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 25, 25)];
+        [gradientOverlay setImage:[UIImage imageNamed:@"clothes-color-button.png"]];
+        
+        /** add gradient overlay image view */
+        [self addSubview:gradientOverlay];
     }
     return self;
 }
-
 
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.
 - (void)drawRect:(CGRect)rect
 {
     // Drawing code
-    unsigned scanColor;
-    NSScanner *scanner = [NSScanner scannerWithString:self.color];
-    [scanner scanHexInt:&scanColor]; 
-    
-    CGFloat red  = ((scanColor & 0xFF0000) >> 16) / 255.0f;
-    CGFloat green = ((scanColor & 0x00FF00) >> 8) / 255.0f;
-    CGFloat blue = (scanColor & 0x0000FF) / 255.0f;
-    
     CGContextRef context = UIGraphicsGetCurrentContext();
-    CGColorRef colorRef = [UIColor colorWithRed:red green:green blue:blue alpha:1.0].CGColor;
+    CGColorRef colorRef = [UIColor colorWithHexString:self.color].CGColor;
     CGRect rectangleRect = CGRectMake(0, 0, 25, 25);
 
     /** fill background with color */
@@ -44,8 +43,8 @@
     
     /** declare three point for fill color */
     CGPoint A = CGPointMake(25, 25);
-    CGPoint B = CGPointMake(20, 25);
-    CGPoint C = CGPointMake(25, 20);
+    CGPoint B = CGPointMake(21, 25);
+    CGPoint C = CGPointMake(25, 21);
     
     /** fill color with three point */
     CGContextMoveToPoint(context, A.x, A.y);

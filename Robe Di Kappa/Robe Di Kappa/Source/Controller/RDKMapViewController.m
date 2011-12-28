@@ -145,10 +145,10 @@
 
 #pragma mark - RDKDataManagerDelegate
 
--(void)getLocationsFinished:(id)sender
+-(void)getJsonDataFinished:(id)sender
 {
     /** declare array for pass data from data manager */
-    NSArray *locationsArray = [RDKDataManager share].locationsArray;
+    NSArray *locationsArray = [RDKDataManager share].jsonDataArray;
     
     /** init new array with data from data manager */
     [self.locationsArray removeAllObjects];
@@ -168,6 +168,11 @@
     
     /** reload data for table view */
     [self.mapTableView reloadData];
+}
+
+-(void)getJsonDataFailed:(id)sender
+{
+    
 }
 
 #pragma mark - View lifecycle

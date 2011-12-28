@@ -126,10 +126,10 @@
 
 #pragma mark - RDKDataManagerDelegate
 
--(void)getNewsFinished:(id)sender
+-(void)getJsonDataFinished:(id)sender
 {
     /** declare array for pass data from data manager */
-    NSArray *newsArray = [RDKDataManager share].newsArray;
+    NSArray *newsArray = [RDKDataManager share].jsonDataArray;
     
     /** init new array with data from data manager */
     [self.newsArray removeAllObjects];
@@ -149,6 +149,11 @@
     
     /** reload data for table view */
     [self.homeTableView reloadData];
+}
+
+-(void)getJsonDataFailed:(id)sender
+{
+    
 }
 
 #pragma mark - View lifecycle

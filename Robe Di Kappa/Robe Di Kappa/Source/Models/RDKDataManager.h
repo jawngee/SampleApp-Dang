@@ -11,22 +11,22 @@
 @protocol RDKDataManagerDelegate
 
 @optional
--(void)getNewsFinished:(id)sender;
--(void)getLocationsFinished:(id)sender;
--(void)getProductsFinished:(id)sender;
+-(void)getJsonDataFinished:(id)sender;
+-(void)getJsonDataFailed:(id)sender;
 
 @end
 
 @interface RDKDataManager : NSObject
 
 @property (retain, nonatomic) NSObject <RDKDataManagerDelegate> *delegate;
-@property (strong, nonatomic) NSMutableArray *newsArray;
-@property (strong, nonatomic) NSMutableArray *locationsArray;
-@property (strong, nonatomic) NSMutableArray *productsArray;
+@property (strong, nonatomic) NSMutableArray *jsonDataArray;
 
 +(RDKDataManager *)share;
+
 -(void)getNews;
--(void)getLocations;
 -(void)getProducts;
+-(void)getLocations;
+
+-(BOOL)getJsonData:(NSString *)directory fileName:(NSString *)fileName urlString:(NSString *)urlString;
 
 @end

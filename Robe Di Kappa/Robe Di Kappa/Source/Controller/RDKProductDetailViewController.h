@@ -14,5 +14,6 @@
 
 @property (strong, nonatomic) UIImageView *productImageView;
 @property (strong, nonatomic) RDKProductsItem *productsItem;
+@property (strong, nonatomic) NSMutableArray *thumbArray;
 
 @end

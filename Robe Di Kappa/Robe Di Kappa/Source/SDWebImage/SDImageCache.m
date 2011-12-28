@@ -185,6 +185,9 @@ static SDImageCache *instance;
             image = decodedImage;
         }
 #endif
+        float scale=([[UIScreen mainScreen] scale]<2) ? 2 : [[UIScreen mainScreen] scale];
+        image = [UIImage imageWithCGImage:image.CGImage scale:scale orientation:image.imageOrientation];
+        
         [mutableArguments setObject:image forKey:@"image"];
     }
 
@@ -252,6 +255,12 @@ static SDImageCache *instance;
         {
             [memCache setObject:image forKey:key];
         }
+    }
+    
+    if (image)
+    {
+        float scale=([[UIScreen mainScreen] scale]<2) ? 2 : [[UIScreen mainScreen] scale];
+        image = [UIImage imageWithCGImage:image.CGImage scale:scale orientation:image.imageOrientation];
     }
 
     return image;

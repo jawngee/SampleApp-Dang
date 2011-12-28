@@ -164,10 +164,10 @@
 
 #pragma mark - RDKDataManagerDelegate
 
--(void)getProductsFinished:(id)sender
+-(void)getJsonDataFinished:(id)sender
 {
     /** declare array for pass data from data manager */
-    NSArray *productsArray = [RDKDataManager share].productsArray;
+    NSArray *productsArray = [RDKDataManager share].jsonDataArray;
     
     /** init new array with data from data manager */
     [self.collectionArray removeAllObjects];
@@ -187,6 +187,11 @@
     
     /** reload data for table view */
     [self.collectionTableView reloadData];
+}
+
+-(void)getJsonDataFailed:(id)sender
+{
+    
 }
 
 #pragma mark -

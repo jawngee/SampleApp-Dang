@@ -16,6 +16,9 @@
 #import "RDKCustomNavigationController.h"
 #import "RDKCustomTabBarController.h"
 
+#import "SDImageCache.h"
+
+
 @implementation RDKAppDelegate
 
 @synthesize window = _window;
@@ -40,6 +43,11 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    
+//    [[SDImageCache sharedImageCache] clearDisk];
+//    [[SDImageCache sharedImageCache] clearMemory];
+//    [[SDImageCache sharedImageCache] cleanDisk];
+    
     self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
     
     /** create directory for cache data */

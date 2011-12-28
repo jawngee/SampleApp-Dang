@@ -17,9 +17,7 @@
 
 @implementation RDKDataManager
 @synthesize delegate = _delegate;
-@synthesize newsArray = _newsArray;
-@synthesize locationsArray = _locationsArray;
-@synthesize productsArray = _productsArray;
+@synthesize jsonDataArray = _jsonDataArray;
 
 static RDKDataManager *gInstance = nil;
 
@@ -43,9 +41,7 @@ static RDKDataManager *gInstance = nil;
     self = [super init];
     
     if (self) {
-        self.newsArray = [[[NSMutableArray alloc] init] autorelease];
-        self.locationsArray = [[[NSMutableArray alloc] init] autorelease];
-        self.productsArray = [[[NSMutableArray alloc] init] autorelease];
+        self.jsonDataArray = [[[NSMutableArray alloc] init] autorelease];
     }
     
     return self;
@@ -53,292 +49,222 @@ static RDKDataManager *gInstance = nil;
 
 #pragma mark - private function
 
--(void)getNews
+-(BOOL)getJsonData:(NSString *)directory fileName:(NSString *)fileName urlString:(NSString *)urlString
 {
-    /** declare dictionary varibale for file manager */
     NSFileManager *fileManager = [NSFileManager defaultManager];
     NSArray *cacheDirectory = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
-    NSString *homeDirectory = [[cacheDirectory objectAtIndex:0] stringByAppendingPathComponent:@"Home"];
-    NSString *newsDataFile = [homeDirectory stringByAppendingPathComponent:@"NewsData.dat"];
+    NSString *subDirectory = [[cacheDirectory objectAtIndex:0] stringByAppendingPathComponent:directory];
+    NSString *jsonDataFile = [subDirectory stringByAppendingPathComponent:fileName];
     
     /** declare url string for ASIHTTPRequest */
-    NSString *newsString = [NSString stringWithString:_newsUrl];
-    NSURL *newsUrl = [NSURL URLWithString:[newsString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+    NSString *jsonString = [NSString stringWithString:urlString];
+    NSURL *jsonUrl = [NSURL URLWithString:[jsonString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
     
     /** check data file is exist in cache */
-    if ([fileManager fileExistsAtPath:newsDataFile]) 
+    if ([fileManager fileExistsAtPath:jsonDataFile]) 
     {
-        NSDictionary *fileAttributesDictionary = [fileManager attributesOfItemAtPath:newsDataFile error:nil];
+        NSDictionary *fileAttributesDictionary = [fileManager attributesOfItemAtPath:jsonDataFile error:nil];
         NSDate *fileModificationDate = [fileAttributesDictionary valueForKey:NSFileModificationDate];
         NSDate *oneHourFromcurrentDate = [[NSDate date] dateByAddingTimeInterval:-3600];
         NSComparisonResult dateComarisonResult = [oneHourFromcurrentDate compare:fileModificationDate];
         
         if (dateComarisonResult == NSOrderedDescending) 
         {
-            ASIHTTPRequest *newsRequest = [ASIHTTPRequest requestWithURL:newsUrl];
-            [newsRequest setDidFinishSelector:@selector(getNewsFinished:)];
-            [newsRequest setDidFailSelector:@selector(getNewsFailed:)];
+            ASIHTTPRequest *newsRequest = [ASIHTTPRequest requestWithURL:jsonUrl];
+            [newsRequest setDidFinishSelector:@selector(getJsonDataFinished:)];
+            [newsRequest setDidFailSelector:@selector(getJsonDataFailed:)];
             [newsRequest setDelegate:self];
+
+            if ([@"Home" isEqualToString:directory]) {
+                [newsRequest setTag:1];
+            }
+            
+            if ([@"Map" isEqualToString:directory]) {
+                [newsRequest setTag:2];
+            }
+            
+            if ([@"Clothes" isEqualToString:directory]) {
+                [newsRequest setTag:3];
+            }
+
             [newsRequest startAsynchronous];
         }
         else
         {
-            /** declare array for convert dictionary to array */
-            NSData *newsFileData = [[NSData alloc] initWithContentsOfFile:newsDataFile];
-            NSString *newsFileString = [[NSString alloc] initWithData:newsFileData encoding:NSUTF8StringEncoding];
-            NSArray *newsArray = [newsFileString objectFromJSONString];
-            
-            /** release variable never use again */
-            [newsFileString release];
-            [newsFileData release];
-
-            NSLog(@"NUMBER OF ITEM FROM NEWS DATA FILE: %d", [newsArray count]);
-            
-            /** init array variable */
-            [self.newsArray removeAllObjects];
-            [self.newsArray addObjectsFromArray:newsArray];
-            
-            /** call delegate for home view */
-            if ([self.delegate respondsToSelector:@selector(getNewsFinished:)])
-                [self.delegate getNewsFinished:self];
+            return NO;
         }
     } 
     else 
     {
-        ASIHTTPRequest *newsRequest = [ASIHTTPRequest requestWithURL:newsUrl];
-        [newsRequest setDidFinishSelector:@selector(getNewsFinished:)];
-        [newsRequest setDidFailSelector:@selector(getNewsFailed:)];
+        ASIHTTPRequest *newsRequest = [ASIHTTPRequest requestWithURL:jsonUrl];
+        [newsRequest setDidFinishSelector:@selector(getJsonDataFinished:)];
+        [newsRequest setDidFailSelector:@selector(getJsonDataFailed:)];
         [newsRequest setDelegate:self];
+        
+        if ([@"Home" isEqualToString:directory]) {
+            [newsRequest setTag:1];
+        }
+        
+        if ([@"Map" isEqualToString:directory]) {
+            [newsRequest setTag:2];
+        }
+        
+        if ([@"Clothes" isEqualToString:directory]) {
+            [newsRequest setTag:3];
+        }
+
         [newsRequest startAsynchronous];
+    }
+    
+    return YES;
+}
+
+-(void)getNews
+{
+    NSString *directory = [NSString stringWithString:@"Home"];
+    NSString *fileName = [NSString stringWithString:@"NewsData.dat"];
+
+    BOOL isSuccess = [self getJsonData:directory fileName:fileName urlString:_newsUrl];
+    
+    if (isSuccess == NO) {
+        /** declare array for convert dictionary to array */
+        NSArray *cacheDirectory = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
+        NSString *subDirectory = [[cacheDirectory objectAtIndex:0] stringByAppendingPathComponent:directory];
+        NSString *jsonDataFile = [subDirectory stringByAppendingPathComponent:fileName];
+
+        NSData *fileData = [[NSData alloc] initWithContentsOfFile:jsonDataFile];
+        NSString *fileString = [[NSString alloc] initWithData:fileData encoding:NSUTF8StringEncoding];
+        NSArray *dataArray = [fileString objectFromJSONString];
+        
+        /** release variable never use again */
+        [fileString release];
+        [fileData release];
+        
+        /** init array variable */
+        [self.jsonDataArray removeAllObjects];
+        [self.jsonDataArray addObjectsFromArray:dataArray];
+        
+        /** call delegate for home view */
+        if ([self.delegate respondsToSelector:@selector(getJsonDataFinished:)])
+            [self.delegate getJsonDataFinished:self];
     }
 }
 
 -(void)getLocations
 {
-    /** declare dictionary varibale for file manager */
-    NSFileManager *fileManager = [NSFileManager defaultManager];
-    NSArray *cacheDirectory = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
-    NSString *homeDirectory = [[cacheDirectory objectAtIndex:0] stringByAppendingPathComponent:@"Map"];
-    NSString *newsDataFile = [homeDirectory stringByAppendingPathComponent:@"LocationsData.dat"];
+    NSString *directory = [NSString stringWithString:@"Map"];
+    NSString *fileName = [NSString stringWithString:@"LocationsData.dat"];
     
-    /** declare url string for ASIHTTPRequest */
-    NSString *newsString = [NSString stringWithString:_locationUrl];
-    NSURL *newsUrl = [NSURL URLWithString:[newsString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+    BOOL isSuccess = [self getJsonData:directory fileName:fileName urlString:_locationUrl];
     
-    /** check data file is exist in cache */
-    if ([fileManager fileExistsAtPath:newsDataFile]) 
-    {
-        NSDictionary *fileAttributesDictionary = [fileManager attributesOfItemAtPath:newsDataFile error:nil];
-        NSDate *fileModificationDate = [fileAttributesDictionary valueForKey:NSFileModificationDate];
-        NSDate *oneHourFromcurrentDate = [[NSDate date] dateByAddingTimeInterval:-3600];
-        NSComparisonResult dateComarisonResult = [oneHourFromcurrentDate compare:fileModificationDate];
+    if (isSuccess == NO) {
+        /** declare array for convert dictionary to array */
+        NSArray *cacheDirectory = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
+        NSString *subDirectory = [[cacheDirectory objectAtIndex:0] stringByAppendingPathComponent:directory];
+        NSString *jsonDataFile = [subDirectory stringByAppendingPathComponent:fileName];
         
-        if (dateComarisonResult == NSOrderedDescending) 
-        {
-            ASIHTTPRequest *newsRequest = [ASIHTTPRequest requestWithURL:newsUrl];
-            [newsRequest setDidFinishSelector:@selector(getLocationsFinished:)];
-            [newsRequest setDidFailSelector:@selector(getLocationsFailed:)];
-            [newsRequest setDelegate:self];
-            [newsRequest startAsynchronous];
-        }
-        else
-        {
-            /** declare array for convert dictionary to array */
-            NSData *newsFileData = [[NSData alloc] initWithContentsOfFile:newsDataFile];
-            NSString *newsFileString = [[NSString alloc] initWithData:newsFileData encoding:NSUTF8StringEncoding];
-            NSArray *newsArray = [newsFileString objectFromJSONString];
-            
-            /** release variable never use again */
-            [newsFileString release];
-            [newsFileData release];
-            
-            NSLog(@"NUMBER OF ITEM FROM LOCATIONS DATA FILE: %d", [newsArray count]);
-            
-            /** init array variable */
-            [self.locationsArray removeAllObjects];
-            [self.locationsArray addObjectsFromArray:newsArray];
-            
-            /** call delegate for map view */
-            if ([self.delegate respondsToSelector:@selector(getLocationsFinished:)])
-                [self.delegate getLocationsFinished:self];
-        }
-    } 
-    else 
-    {
-        ASIHTTPRequest *newsRequest = [ASIHTTPRequest requestWithURL:newsUrl];
-        [newsRequest setDidFinishSelector:@selector(getLocationsFinished:)];
-        [newsRequest setDidFailSelector:@selector(getLocationsFailed:)];
-        [newsRequest setDelegate:self];
-        [newsRequest startAsynchronous];
+        NSData *fileData = [[NSData alloc] initWithContentsOfFile:jsonDataFile];
+        NSString *fileString = [[NSString alloc] initWithData:fileData encoding:NSUTF8StringEncoding];
+        NSArray *dataArray = [fileString objectFromJSONString];
+        
+        /** release variable never use again */
+        [fileString release];
+        [fileData release];
+        
+        /** init array variable */
+        [self.jsonDataArray removeAllObjects];
+        [self.jsonDataArray addObjectsFromArray:dataArray];
+        
+        /** call delegate for home view */
+        if ([self.delegate respondsToSelector:@selector(getJsonDataFinished:)])
+            [self.delegate getJsonDataFinished:self];
     }
 }
 
 -(void)getProducts
 {
-    /** declare dictionary varibale for file manager */
-    NSFileManager *fileManager = [NSFileManager defaultManager];
-    NSArray *cacheDirectory = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
-    NSString *homeDirectory = [[cacheDirectory objectAtIndex:0] stringByAppendingPathComponent:@"Clothes"];
-    NSString *newsDataFile = [homeDirectory stringByAppendingPathComponent:@"ProductsData.dat"];
+    NSString *directory = [NSString stringWithString:@"Clothes"];
+    NSString *fileName = [NSString stringWithString:@"ProductsData.dat"];
     
-    /** declare url string for ASIHTTPRequest */
-    NSString *newsString = [NSString stringWithString:_productUrl];
-    NSURL *newsUrl = [NSURL URLWithString:[newsString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+    BOOL isSuccess = [self getJsonData:directory fileName:fileName urlString:_productUrl];
     
-    /** check data file is exist in cache */
-    if ([fileManager fileExistsAtPath:newsDataFile]) 
-    {
-        NSDictionary *fileAttributesDictionary = [fileManager attributesOfItemAtPath:newsDataFile error:nil];
-        NSDate *fileModificationDate = [fileAttributesDictionary valueForKey:NSFileModificationDate];
-        NSDate *oneHourFromcurrentDate = [[NSDate date] dateByAddingTimeInterval:-3600];
-        NSComparisonResult dateComarisonResult = [oneHourFromcurrentDate compare:fileModificationDate];
+    if (isSuccess == NO) {
+        /** declare array for convert dictionary to array */
+        NSArray *cacheDirectory = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
+        NSString *subDirectory = [[cacheDirectory objectAtIndex:0] stringByAppendingPathComponent:directory];
+        NSString *jsonDataFile = [subDirectory stringByAppendingPathComponent:fileName];
         
-        if (dateComarisonResult == NSOrderedDescending) 
-        {
-            ASIHTTPRequest *newsRequest = [ASIHTTPRequest requestWithURL:newsUrl];
-            [newsRequest setDidFinishSelector:@selector(getProductsFinished:)];
-            [newsRequest setDidFailSelector:@selector(getProductsFailed:)];
-            [newsRequest setDelegate:self];
-            [newsRequest startAsynchronous];
-        }
-        else
-        {
-            /** declare array for convert dictionary to array */
-            NSData *newsFileData = [[NSData alloc] initWithContentsOfFile:newsDataFile];
-            NSString *newsFileString = [[NSString alloc] initWithData:newsFileData encoding:NSUTF8StringEncoding];
-            NSArray *newsArray = [newsFileString objectFromJSONString];
-            
-            /** release variable never use again */
-            [newsFileString release];
-            [newsFileData release];
-            
-            NSLog(@"NUMBER OF ITEM FROM PRODUCTS DATA FILE: %d", [newsArray count]);
-            
-            /** init array variable */
-            [self.productsArray removeAllObjects];
-            [self.productsArray addObjectsFromArray:newsArray];
-            
-            /** call delegate for home view */
-            if ([self.delegate respondsToSelector:@selector(getProductsFinished:)])
-                [self.delegate getProductsFinished:self];
-        }
-    } 
-    else 
-    {
-        ASIHTTPRequest *newsRequest = [ASIHTTPRequest requestWithURL:newsUrl];
-        [newsRequest setDidFinishSelector:@selector(getProductsFinished:)];
-        [newsRequest setDidFailSelector:@selector(getProductsFailed:)];
-        [newsRequest setDelegate:self];
-        [newsRequest startAsynchronous];
+        NSData *fileData = [[NSData alloc] initWithContentsOfFile:jsonDataFile];
+        NSString *fileString = [[NSString alloc] initWithData:fileData encoding:NSUTF8StringEncoding];
+        NSArray *dataArray = [fileString objectFromJSONString];
+        
+        /** release variable never use again */
+        [fileString release];
+        [fileData release];
+        
+        /** init array variable */
+        [self.jsonDataArray removeAllObjects];
+        [self.jsonDataArray addObjectsFromArray:dataArray];
+        
+        /** call delegate for home view */
+        if ([self.delegate respondsToSelector:@selector(getJsonDataFinished:)])
+            [self.delegate getJsonDataFinished:self];
     }
 }
 
 
 #pragma mark - ASIHTTPRequestDelegate
 
--(void)getNewsFinished:(ASIHTTPRequest *)request
+-(void)getJsonDataFinished:(ASIHTTPRequest *)request
 {
     /** declare variable for parsing json */
-    NSData *newsFileData = [request responseData];
+    NSData *fileData = [request responseData];
     NSString *responseString = [request responseString];
-    NSArray *newsArray = [responseString objectFromJSONString];
-    
-    NSLog(@"NUMBER OF ITEM FROM LOCATIONS WEB SERVICE: %d", [newsArray count]);
-    
-    /** declare dictionary varibale for file manager */
+    NSArray *dataArray = [responseString objectFromJSONString];
+
     NSFileManager *fileManager = [NSFileManager defaultManager];
     NSArray *cacheDirectory = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
-    NSString *homeDirectory = [[cacheDirectory objectAtIndex:0] stringByAppendingPathComponent:@"Home"];
-    NSString *newsDataFile = [homeDirectory stringByAppendingPathComponent:@"NewsData.dat"];
+
+    if ([request tag] == 1) {
+        NSString *homeDirectory = [[cacheDirectory objectAtIndex:0] stringByAppendingPathComponent:@"Home"];
+        NSString *newsDataFile = [homeDirectory stringByAppendingPathComponent:@"NewsData.dat"];
+        
+        /** save data file content into cache */
+        [fileManager createFileAtPath:newsDataFile contents:fileData attributes:nil]; 
+    }
     
-    /** save data file content into cache */
-    [fileManager createFileAtPath:newsDataFile contents:newsFileData attributes:nil]; 
+    if ([request tag] == 2) {
+        NSString *homeDirectory = [[cacheDirectory objectAtIndex:0] stringByAppendingPathComponent:@"Map"];
+        NSString *newsDataFile = [homeDirectory stringByAppendingPathComponent:@"LocationsData.dat"];
+        
+        /** save data file content into cache */
+        [fileManager createFileAtPath:newsDataFile contents:fileData attributes:nil]; 
+    }
+    
+    if ([request tag] == 3) {
+        NSString *homeDirectory = [[cacheDirectory objectAtIndex:0] stringByAppendingPathComponent:@"Clothes"];
+        NSString *newsDataFile = [homeDirectory stringByAppendingPathComponent:@"ProductsData.dat"];
+        
+        /** save data file content into cache */
+        [fileManager createFileAtPath:newsDataFile contents:fileData attributes:nil]; 
+    }
     
     /** init array variable */
-    [self.newsArray removeAllObjects];
-    [self.newsArray addObjectsFromArray:newsArray];
+    [self.jsonDataArray removeAllObjects];
+    [self.jsonDataArray addObjectsFromArray:dataArray];
     
     /** call delegate for home view */
-    if ([self.delegate respondsToSelector:@selector(getNewsFinished:)])
-        [self.delegate getNewsFinished:self];
-}
+    if ([self.delegate respondsToSelector:@selector(getJsonDataFinished:)])
+        [self.delegate getJsonDataFinished:self];
 
--(void)getNewsFailed:(ASIHTTPRequest *)request
-{
-    NSLog(@"GET NEWS FAIL");
-}
-
--(void)getLocationsFinished:(ASIHTTPRequest *)request
-{
-    /** declare variable for parsing json */
-    NSData *newsFileData = [request responseData];
-    NSString *responseString = [request responseString];
-    NSArray *newsArray = [responseString objectFromJSONString];
-    
-    NSLog(@"NUMBER OF ITEM FROM LOCATION WEB SERVICE: %d", [newsArray count]);
-    
-    /** declare dictionary varibale for file manager */
-    NSFileManager *fileManager = [NSFileManager defaultManager];
-    NSArray *cacheDirectory = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
-    NSString *homeDirectory = [[cacheDirectory objectAtIndex:0] stringByAppendingPathComponent:@"Map"];
-    NSString *newsDataFile = [homeDirectory stringByAppendingPathComponent:@"LocationsData.dat"];
-    
-    /** save data file content into cache */
-    [fileManager createFileAtPath:newsDataFile contents:newsFileData attributes:nil]; 
-    
-    /** init array variable */
-    [self.locationsArray removeAllObjects];
-    [self.locationsArray addObjectsFromArray:newsArray];
-    
-    /** call delegate for map view */
-    if ([self.delegate respondsToSelector:@selector(getLocationsFinished:)])
-        [self.delegate getLocationsFinished:self];
-}
-
--(void)getLocationsFailed:(ASIHTTPRequest *)request
-{
-    NSLog(@"GET LOCATIONS FAIL");
-}
-
--(void)getProductsFinished:(ASIHTTPRequest *)request
-{
-    /** declare variable for parsing json */
-    NSData *newsFileData = [request responseData];
-    NSString *responseString = [request responseString];
-    NSArray *newsArray = [responseString objectFromJSONString];
-    
-    NSLog(@"NUMBER OF ITEM FROM PRODUCTS WEB SERVICE: %d", [newsArray count]);
-    
-    /** declare dictionary varibale for file manager */
-    NSFileManager *fileManager = [NSFileManager defaultManager];
-    NSArray *cacheDirectory = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
-    NSString *homeDirectory = [[cacheDirectory objectAtIndex:0] stringByAppendingPathComponent:@"Clothes"];
-    NSString *newsDataFile = [homeDirectory stringByAppendingPathComponent:@"ProductsData.dat"];
-    
-    /** save data file content into cache */
-    [fileManager createFileAtPath:newsDataFile contents:newsFileData attributes:nil]; 
-    
-    /** init array variable */
-    [self.productsArray removeAllObjects];
-    [self.productsArray addObjectsFromArray:newsArray];
-    
-    /** call delegate for map view */
-    if ([self.delegate respondsToSelector:@selector(getProductsFinished:)])
-        [self.delegate getProductsFinished:self];
-}
-
--(void)getProductsFailed:(ASIHTTPRequest *)request
-{
-    NSLog(@"GET PRODUCTS FAIL");
 }
 
 #pragma mark - View lifecycle
 
 -(void)dealloc
 {
-    [_newsArray release];
-    [_locationsArray release];
-    [_productsArray release];
+    [_jsonDataArray release];
+    [_delegate release];
     [super dealloc];
 }
 

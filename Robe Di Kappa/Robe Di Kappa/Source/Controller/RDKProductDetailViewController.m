@@ -8,12 +8,14 @@
 
 #import "RDKProductDetailViewController.h"
 
+#import "UIImageView+WebCache.h"
 #import "RDKProductsItem.h"
 #import "RDKColorButton.h"
 
 @implementation RDKProductDetailViewController
 @synthesize productImageView = _productImageView;
 @synthesize productsItem = _productsItem;
+@synthesize thumbArray = _thumbArray;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -34,6 +36,7 @@
 
 - (void)dealloc
 {
+    [_thumbArray release];
     [_productsItem release];
     [_productImageView release];
     [super dealloc];
@@ -41,6 +44,11 @@
 
 #pragma mark -
 #pragma mark - private function
+
+- (void)colorButtonPress:(id)sender
+{
+    
+}
 
 - (void)silverButtonPress:(id)sender
 {
@@ -61,116 +69,82 @@
     // Do any additional setup after loading the view from its nib.
     UIView *bottomView = [[UIView alloc] initWithFrame:CGRectMake(0, 280, 320, 105)];
     
-    UIImageView *bottomBackgroundImageView = [[[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 320, 105)] autorelease];
+    /** declare back ground image */
+    UIImageView *bottomBackgroundImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 320, 105)];
     [bottomBackgroundImageView setImage:[UIImage imageNamed:@"clothes-footer-background.png"]];
     
-    UILabel *titleLable = [[[UILabel alloc] initWithFrame:CGRectMake(5, 10, 150, 20)] autorelease];
+    /** declare title lable */ 
+    UILabel *titleLable = [[UILabel alloc] initWithFrame:CGRectMake(5, 10, 150, 15)];
     [titleLable setBackgroundColor:[UIColor clearColor]];
-    [titleLable setFont:[UIFont boldSystemFontOfSize:13]];
+    [titleLable setFont:[UIFont boldSystemFontOfSize:14]];
     [titleLable setLineBreakMode:UILineBreakModeWordWrap];
     [titleLable setTextColor:[UIColor whiteColor]];
-    [titleLable setText:@"多层次小手提包"];
+    [titleLable setText:self.productsItem.title];
     
-    UILabel *descriptionLable = [[[UILabel alloc] initWithFrame:CGRectMake(5, 32, 150, 20)] autorelease];
-    [descriptionLable setBackgroundColor:[UIColor clearColor]];
-    [descriptionLable setFont:[UIFont systemFontOfSize:10]];
-    [descriptionLable setLineBreakMode:UILineBreakModeWordWrap];
+    /** declare description lable */
+    UILabel *descriptionLable = [[UILabel alloc] initWithFrame:CGRectMake(5, 35, 150, 15)];
     [descriptionLable setTextColor:[UIColor colorWithRed:209.0/255.0 green:209.0/255.0 blue:209.0/255.0 alpha:1.0]];
-    [descriptionLable setText:@"面料：锦纶,人造革,100% 涤"];
+    [descriptionLable setBackgroundColor:[UIColor clearColor]];
+    [descriptionLable setFont:[UIFont systemFontOfSize:11]];
+    [descriptionLable setLineBreakMode:UILineBreakModeWordWrap];
+    [descriptionLable setText:self.productsItem.description];
     
-    UILabel *colorLable = [[UILabel alloc] initWithFrame:CGRectMake(5, 50, 35, 20)];
-    [colorLable setBackgroundColor:[UIColor clearColor]];
-    [colorLable setFont:[UIFont systemFontOfSize:10]];
-    [colorLable setLineBreakMode:UILineBreakModeWordWrap];
+    /** declare rsp lable */
+    UILabel *colorLable = [[UILabel alloc] initWithFrame:CGRectMake(5, 50, 35, 15)];
     [colorLable setTextColor:[UIColor colorWithRed:209.0/255.0 green:209.0/255.0 blue:209.0/255.0 alpha:1.0]];
-    [colorLable setText:@"颜色："];
+    [colorLable setBackgroundColor:[UIColor clearColor]];
+    [colorLable setFont:[UIFont systemFontOfSize:11]];
+    [colorLable setLineBreakMode:UILineBreakModeWordWrap];
+    [colorLable setText:self.productsItem.rsp];
     
-//    UIImage *silverImage = [UIImage imageNamed:@"clothes-silver-color.png"];
-//    UIButton *silverColor = [UIButton buttonWithType:UIButtonTypeCustom];
-//    [silverColor setImage:silverImage forState:UIControlStateNormal];
-//    [silverColor setFrame:CGRectMake(40, 55, silverImage.size.width, silverImage.size.height)];
-//    [silverColor addTarget:self action:@selector(silverButtonPress:) forControlEvents:UIControlEventTouchUpInside];
-    NSString *secondColor = [[self.productsItem.colors objectAtIndex:0] valueForKey:@"color"];
-//    NSLog(@"COLOR - 1: %@", secondColor);
+    /** add all of them into bottom view */
+    [bottomView addSubview:bottomBackgroundImageView];
+    [bottomView addSubview:titleLable];
+    [bottomView addSubview:descriptionLable];
+    [bottomView addSubview:colorLable];
 
-    RDKColorButton *silverColorButton = [[RDKColorButton alloc] initWithFrame:CGRectMake(40, 55, 25, 25)];
-    [silverColorButton setColor:secondColor];
-    [silverColorButton addTarget:self action:@selector(silverButtonPress:) forControlEvents:UIControlEventTouchUpInside];
+    /** add color button into bottom view */
+    for (int i=0; i < [self.productsItem.colors count]; i++) 
+    {
+        /** declare color button */
+        RDKColorButton *colorButton = [[RDKColorButton alloc] initWithFrame:CGRectMake(i*30+40, 55, 25, 25)];
+        [colorButton addTarget:self action:@selector(colorButtonPress:) forControlEvents:UIControlEventTouchUpInside];
+        [colorButton setColor:[[self.productsItem.colors objectAtIndex:i] valueForKey:@"color"]];
+        
+        /** add color button into bottom view */
+        [bottomView addSubview:colorButton];
+        
+        /** release color button */
+        [colorButton release];
+    }
     
-//    UIImage *orangeImage = [UIImage imageNamed:@"clothes-orange-color.png"];
-//    UIButton *orangeColor = [UIButton buttonWithType:UIButtonTypeCustom];
-//    [orangeColor setImage:orangeImage forState:UIControlStateNormal];
-//    [orangeColor setFrame:CGRectMake(70, 55, orangeImage.size.width, orangeImage.size.height)];
-//    [orangeColor addTarget:self action:@selector(orangeButtonPress:) forControlEvents:UIControlEventTouchUpInside];
+    NSArray *viewArray = [[NSArray alloc] initWithArray:[[self.productsItem.colors objectAtIndex:0] valueForKey:@"views"]];
     
-    NSString *firstColor = [[self.productsItem.colors objectAtIndex:1] valueForKey:@"color"];
-//    NSLog(@"COLOR - 2: %@", firstColor);
-    RDKColorButton *orangeColorButton = [[RDKColorButton alloc] initWithFrame:CGRectMake(70, 55, 25, 25)];
-    [orangeColorButton setColor:firstColor];
-    [orangeColorButton addTarget:self action:@selector(orangeButtonPress:) forControlEvents:UIControlEventTouchUpInside];
-    
-    UIImageView *thumbBackgroundImage_1 = [[UIImageView alloc] initWithFrame:CGRectMake(170, 35, 44, 44)];
-    [thumbBackgroundImage_1 setImage:[UIImage imageNamed:@"clothes-view-background.png"]];
-    
-    UIImageView *thumbBackgroundImage_2 = [[UIImageView alloc] initWithFrame:CGRectMake(220, 35, 44, 44)];
-    [thumbBackgroundImage_2 setImage:[UIImage imageNamed:@"clothes-view-background.png"]];
+    for (int i=0; i < [viewArray count]; i++) 
+    {
+        UIImageView *thumbImageView = [[UIImageView alloc] initWithFrame:CGRectMake(i*50+170, 35, 44, 44)];
+        [thumbImageView setBackgroundColor:[UIColor clearColor]];
+        [thumbImageView setContentMode:UIViewContentModeCenter];
+        [thumbImageView setImageWithURL:[NSURL URLWithString:[[viewArray objectAtIndex:i] valueForKey:@"thumbnail"]] placeholderImage:nil];
+        
+        [bottomView addSubview:thumbImageView];
+        
+        [thumbImageView release];
+    }
 
-    UIImageView *thumbBackgroundImage_3 = [[UIImageView alloc] initWithFrame:CGRectMake(270, 35, 44, 44)];
-    [thumbBackgroundImage_3 setImage:[UIImage imageNamed:@"clothes-view-background.png"]];
-    
-    UIImageView *thumbImageView_1 = [[UIImageView alloc] initWithFrame:CGRectMake(170, 35, 44, 44)];
-    [thumbImageView_1 setBackgroundColor:[UIColor clearColor]];
-    [thumbImageView_1 setContentMode:UIViewContentModeCenter];
-    [thumbImageView_1 setImage:[UIImage imageNamed:@"clothes-small-silver-bag.png"]];
-    
-    UIImageView *thumbImageView_2 = [[UIImageView alloc] initWithFrame:CGRectMake(220, 35, 44, 44)];
-    [thumbImageView_2 setBackgroundColor:[UIColor clearColor]];
-    [thumbImageView_2 setContentMode:UIViewContentModeCenter];
-    [thumbImageView_2 setImage:[UIImage imageNamed:@"clothes-small-silver-bag.png"]];
-    
-    UIImageView *thumbImageView_3 = [[UIImageView alloc] initWithFrame:CGRectMake(270, 35, 44, 44)];
-    [thumbImageView_3 setBackgroundColor:[UIColor clearColor]];
-    [thumbImageView_3 setContentMode:UIViewContentModeCenter];
-    [thumbImageView_3 setImage:[UIImage imageNamed:@"clothes-small-silver-bag.png"]];
-    
     self.productImageView = [[[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 320, 250)] autorelease];
     [self.productImageView setBackgroundColor:[UIColor clearColor]];
     [self.productImageView setContentMode:UIViewContentModeCenter];
     [self.productImageView setImage:[UIImage imageNamed:@"clothes-silver-bag.png"]];
-    
+
     UIImageView *shadowImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 210, 320, 50)];
     [shadowImageView setBackgroundColor:[UIColor clearColor]];
     [shadowImageView setContentMode:UIViewContentModeCenter];
     [shadowImageView setImage:[UIImage imageNamed:@"clothes-bag-shadow.png"]];
 
-    [bottomView addSubview:bottomBackgroundImageView];
-    [bottomView addSubview:titleLable];
-    [bottomView addSubview:descriptionLable];
-    [bottomView addSubview:colorLable];
-    [bottomView addSubview:silverColorButton];
-    [bottomView addSubview:orangeColorButton];
-    [bottomView addSubview:thumbBackgroundImage_1];
-    [bottomView addSubview:thumbBackgroundImage_2];
-    [bottomView addSubview:thumbBackgroundImage_3];
-    [bottomView addSubview:thumbImageView_1];
-    [bottomView addSubview:thumbImageView_2];
-    [bottomView addSubview:thumbImageView_3];
-    
     [self.view addSubview:bottomView];
     [self.view addSubview:self.productImageView];
     [self.view addSubview:shadowImageView];
-    
-    [colorLable release];
-    [shadowImageView release];
-    [bottomView release];
-    
-    [thumbBackgroundImage_1 release];
-    [thumbBackgroundImage_2 release];
-    [thumbBackgroundImage_3 release];
-    
-    [thumbImageView_1 release];
-    [thumbImageView_2 release];
-    [thumbImageView_3 release];
 }
 
 - (void)viewDidUnload
