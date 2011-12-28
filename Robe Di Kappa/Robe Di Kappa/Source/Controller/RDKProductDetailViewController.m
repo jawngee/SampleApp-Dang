@@ -9,13 +9,15 @@
 #import "RDKProductDetailViewController.h"
 
 #import "UIImageView+WebCache.h"
+#import "UIButton+WebCache.h"
 #import "RDKProductsItem.h"
 #import "RDKColorButton.h"
 
 @implementation RDKProductDetailViewController
 @synthesize productImageView = _productImageView;
+@synthesize thumbButtonArray = _thumbButtonArray;
+@synthesize colorButtonArray = _colorButtonArray;
 @synthesize productsItem = _productsItem;
-@synthesize thumbArray = _thumbArray;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -36,8 +38,9 @@
 
 - (void)dealloc
 {
-    [_thumbArray release];
     [_productsItem release];
+    [_thumbButtonArray release];
+    [_colorButtonArray release];
     [_productImageView release];
     [super dealloc];
 }
@@ -47,17 +50,28 @@
 
 - (void)colorButtonPress:(id)sender
 {
+    RDKColorButton *colorButton = (RDKColorButton *)sender;
     
+    int index = [self.colorButtonArray indexOfObject:colorButton];
+    
+    NSArray *viewArray = [[NSArray alloc] initWithArray:[[self.productsItem.colors objectAtIndex:index] valueForKey:@"views"]];
+    
+    for (int i=0; i < [self.thumbButtonArray count]; i++) 
+    {
+        UIButton *thumbButton = [self.thumbButtonArray objectAtIndex:i];
+        [thumbButton setImageWithURL:[NSURL URLWithString:[[viewArray objectAtIndex:i] valueForKey:@"thumbnail"]] placeholderImage:nil];
+        
+        NSLog(@"THUMB: %@", [[viewArray objectAtIndex:i] valueForKey:@"thumbnail"]);
+    }
+    
+    [self.productImageView setImageWithURL:[NSURL URLWithString:[[viewArray objectAtIndex:0] valueForKey:@"image"]] placeholderImage:nil];
+
+    [viewArray release];
 }
 
-- (void)silverButtonPress:(id)sender
+- (void)thumbButtonPress:(id)sender
 {
-    [self.productImageView setImage:[UIImage imageNamed:@"clothes-silver-bag.png"]];
-}
-
-- (void)orangeButtonPress:(id)sender
-{
-    [self.productImageView setImage:[UIImage imageNamed:@"clothes-orange-bag.png"]];
+    
 }
 
 #pragma mark - View lifecycle
@@ -65,6 +79,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    self.thumbButtonArray = [[NSMutableArray alloc] init];
+    self.colorButtonArray = [[NSMutableArray alloc] init];
     
     // Do any additional setup after loading the view from its nib.
     UIView *bottomView = [[UIView alloc] initWithFrame:CGRectMake(0, 280, 320, 105)];
@@ -102,7 +119,13 @@
     [bottomView addSubview:titleLable];
     [bottomView addSubview:descriptionLable];
     [bottomView addSubview:colorLable];
-
+    
+    /** release variable */
+    [bottomBackgroundImageView release];
+    [titleLable release];
+    [descriptionLable release];
+    [colorLable release];
+    
     /** add color button into bottom view */
     for (int i=0; i < [self.productsItem.colors count]; i++) 
     {
@@ -113,6 +136,7 @@
         
         /** add color button into bottom view */
         [bottomView addSubview:colorButton];
+        [self.colorButtonArray addObject:colorButton];
         
         /** release color button */
         [colorButton release];
@@ -122,20 +146,21 @@
     
     for (int i=0; i < [viewArray count]; i++) 
     {
-        UIImageView *thumbImageView = [[UIImageView alloc] initWithFrame:CGRectMake(i*50+170, 35, 44, 44)];
-        [thumbImageView setBackgroundColor:[UIColor clearColor]];
-        [thumbImageView setContentMode:UIViewContentModeCenter];
-        [thumbImageView setImageWithURL:[NSURL URLWithString:[[viewArray objectAtIndex:i] valueForKey:@"thumbnail"]] placeholderImage:nil];
+        UIButton *thumbButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        [thumbButton setFrame:CGRectMake(i*50+170, 35, 44, 44)];
+        [thumbButton setImageWithURL:[NSURL URLWithString:[[viewArray objectAtIndex:i] valueForKey:@"thumbnail"]] placeholderImage:nil];
+        [thumbButton addTarget:self action:@selector(thumbButtonPress:) forControlEvents:UIControlEventTouchUpInside];
         
-        [bottomView addSubview:thumbImageView];
-        
-        [thumbImageView release];
+        /** add thumb button into bottom view */
+        [bottomView addSubview:thumbButton];
+        /** add thumb button into thumb array */
+        [self.thumbButtonArray addObject:thumbButton];
     }
 
     self.productImageView = [[[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 320, 250)] autorelease];
     [self.productImageView setBackgroundColor:[UIColor clearColor]];
     [self.productImageView setContentMode:UIViewContentModeCenter];
-    [self.productImageView setImage:[UIImage imageNamed:@"clothes-silver-bag.png"]];
+    [self.productImageView setImageWithURL:[NSURL URLWithString:[[viewArray objectAtIndex:0] valueForKey:@"image"]] placeholderImage:nil];
 
     UIImageView *shadowImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 210, 320, 50)];
     [shadowImageView setBackgroundColor:[UIColor clearColor]];
@@ -145,6 +170,10 @@
     [self.view addSubview:bottomView];
     [self.view addSubview:self.productImageView];
     [self.view addSubview:shadowImageView];
+    
+    [shadowImageView release];
+    [bottomView release];
+    [viewArray release];
 }
 
 - (void)viewDidUnload

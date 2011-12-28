@@ -24,6 +24,8 @@
         
         /** add gradient overlay image view */
         [self addSubview:gradientOverlay];
+        
+        [gradientOverlay release];
     }
     return self;
 }

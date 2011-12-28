@@ -17,6 +17,27 @@
 
 - (void)setImageWithURL:(NSURL *)url placeholderImage:(UIImage *)placeholder
 {
+    CGRect viewframe = [self bounds];
+    
+    UIActivityIndicatorView *activity = (UIActivityIndicatorView *)[self viewWithTag:9999];
+    
+    if (activity == nil) 
+    {
+        /** declare activity indicator */ 
+        UIActivityIndicatorView *indicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+        [indicator setCenter:CGPointMake(viewframe.size.width/2, viewframe.size.height/2)];
+//        [indicator setCenter:[self center]];
+        [indicator setHidesWhenStopped:YES];
+        [indicator startAnimating];
+        [indicator setTag:9999];
+        
+        /** add activity indicator into view */
+        [self addSubview:indicator];
+        
+        /** release activity indicator */
+        [indicator release];
+    }
+    
     [self setImageWithURL:url placeholderImage:placeholder options:0];
 }
 
@@ -42,6 +63,16 @@
 
 - (void)webImageManager:(SDWebImageManager *)imageManager didFinishWithImage:(UIImage *)image
 {
+    /** remove activity view from super view */
+    UIActivityIndicatorView *activity = (UIActivityIndicatorView *)[self viewWithTag:9999];
+    
+    if (activity != nil) 
+    {
+        [activity stopAnimating];
+        [activity removeFromSuperview];
+    }
+    
+    /** set image when finish loading */
     self.image = image;
 }
 

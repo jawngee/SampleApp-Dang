@@ -51,6 +51,8 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    self.productDetailViewArray = [[NSMutableArray alloc] init];
+    
     /** create custom back button */
     UIImage *backImage = [UIImage imageNamed:@"global-back-button.png"];
     UIButton *backButton = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -90,7 +92,7 @@
 		[self.productDetailViewArray addObject:productDetailView];
         
         /** release product detail view */
-//		[productDetailView release];
+		[productDetailView release];
 	}
     
     // Set the contentSize equal to the size of the UIImageView
